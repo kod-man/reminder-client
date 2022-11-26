@@ -34,17 +34,16 @@ function RegisterPage() {
 
             <Stack width="100%" spacing={3}>
               <Input
+                size="lg"
                 pr="4.5rem"
                 type="email"
                 placeholder="Enter your email..."
-                height="55"
               />
-              <InputGroup size="md">
+              <InputGroup size="lg">
                 <Input
                   pr="4.5rem"
                   type="password"
                   placeholder="Enter your password..."
-                  height="55"
                 />
                 <InputRightElement
                   children={<AiOutlineEyeInvisible color="gray" />}

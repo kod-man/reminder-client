@@ -7,19 +7,23 @@ import { FaApple } from "react-icons/fa";
 const ContinueWiths = () => {
   return (
     <VStack spacing={4} direction="row" align="center">
-      <Button width="350px" colorScheme="gray" size="md">
+      <Button width="350px" colorScheme="gray" size="md" variant="outline">
         <FcGoogle />
-        <Text ml="2">Continue with Google</Text>
+        <Text as="b" ml="2">
+          Continue with Google
+        </Text>
       </Button>
 
-      <Button width="350px" colorScheme="gray" size="md">
+      <Button width="350px" colorScheme="gray" size="md" variant="outline">
         <FaFacebook color="#1877f2" margin-right="1em" />
-        <Text ml="2">Continue with Facebook</Text>
+        <Text as="b" ml="2">
+          Continue with Facebook
+        </Text>
       </Button>
 
-      <Button width="350px" colorScheme="gray" size="md">
+      <Button width="350px" colorScheme="gray" size="md" variant="outline">
         <FaApple />
-        <Text ml="2" color="black">
+        <Text as="b" ml="2" color="black">
           Continue with Apple
         </Text>
       </Button>
