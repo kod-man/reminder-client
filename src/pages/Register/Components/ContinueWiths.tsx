@@ -1,4 +1,4 @@
-import { VStack, Button, Box, Text } from "@chakra-ui/react";
+import { VStack, Button, Text } from "@chakra-ui/react";
 import React from "react";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";

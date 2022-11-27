@@ -1,7 +1,6 @@
 import {
   Box,
   Divider,
-  HStack,
   Link,
   VStack,
   Text,
@@ -10,7 +9,6 @@ import {
   InputRightElement,
   Button,
   Flex,
-  Spacer,
   Stack,
 } from "@chakra-ui/react";
 import React from "react";
@@ -21,7 +19,7 @@ import { AiOutlineEyeInvisible } from "react-icons/ai";
 
 function RegisterPage() {
   return (
-    <Flex mr="40" ml="40" flexDirection="column">
+    <Flex mx="40" flexDirection="column">
       <Todoist />
       <Flex gap="28" justifyContent="center" alignItems="center">
         <Box>
@@ -35,7 +33,7 @@ function RegisterPage() {
             <Stack width="100%" spacing={3}>
               <Input
                 size="lg"
-                pr="4.5rem"
+                pr="4"
                 type="email"
                 placeholder="Enter your email..."
               />

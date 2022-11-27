@@ -13,7 +13,7 @@ const BgPics = () => {
         <Image src="https://d3ptyyxy2at9ui.cloudfront.net/assets/images/ae01c415678c90d0c606bc6917758502.jpg" />
         <Box mt="5" ml="10">
           <Text as="b" fontSize="sm">
-            30 million+{" "}
+            30 million+
           </Text>
           <Text fontSize="sm">app dowloads </Text>
         </Box>
@@ -23,8 +23,7 @@ const BgPics = () => {
         <Image src="https://d3ptyyxy2at9ui.cloudfront.net/assets/images/573fa908fbccdf1600f90f16a0c2e311.jpg" />
         <Box margin="5" ml="10">
           <Text as="b" fontSize="sm">
-            {" "}
-            15 years+{" "}
+            15 years+
           </Text>
           <Text fontSize="sm"> in business </Text>
         </Box>
@@ -44,7 +43,7 @@ const BgPics = () => {
         <Image src="https://d3ptyyxy2at9ui.cloudfront.net/assets/images/ba90575091d9eafd60f851f7297cb202.jpg" />
         <Box margin="5" ml="10">
           <Text as="b" fontSize="sm">
-            1 million+{" "}
+            1 million+
           </Text>
           <Text fontSize="sm">pro users </Text>
         </Box>
