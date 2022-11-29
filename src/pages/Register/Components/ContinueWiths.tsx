@@ -1,32 +1,26 @@
-import { VStack, Button, Text } from "@chakra-ui/react";
-import React from "react";
-import { FaFacebook } from "react-icons/fa";
+import { VStack } from "@chakra-ui/react";
+import { FaApple, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { FaApple } from "react-icons/fa";
+import CardCW from "./CardCW";
+
+const dataBtn = [
+  {
+    text: "Continue with Google",
+    Icon: FcGoogle,
+  },
+  { text: "Continue with Facebook", Icon: FaFacebook },
+  {
+    text: "Continue with Apple",
+    Icon: FaApple,
+  },
+];
 
 const ContinueWiths = () => {
   return (
     <VStack spacing={4} direction="row" align="center">
-      <Button width="350px" colorScheme="gray" size="md" variant="outline">
-        <FcGoogle />
-        <Text as="b" ml="2">
-          Continue with Google
-        </Text>
-      </Button>
-
-      <Button width="350px" colorScheme="gray" size="md" variant="outline">
-        <FaFacebook color="#1877f2" margin-right="1em" />
-        <Text as="b" ml="2">
-          Continue with Facebook
-        </Text>
-      </Button>
-
-      <Button width="350px" colorScheme="gray" size="md" variant="outline">
-        <FaApple />
-        <Text as="b" ml="2" color="black">
-          Continue with Apple
-        </Text>
-      </Button>
+      {dataBtn.map((item) => (
+        <CardCW text={item.text} Icon={item.Icon} />
+      ))}
     </VStack>
   );
 };
