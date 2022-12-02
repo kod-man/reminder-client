@@ -1,5 +1,6 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { FC } from "react";
+
 type CardProps = {
   src: string;
   text1: string;
@@ -7,7 +8,7 @@ type CardProps = {
 };
 
 const Card: FC<CardProps> = ({ src, text1, text2 }) => {
-  return <>(
+  return (
     <Box padding="1">
       <Image src={src} />
       <Box mt="5" ml="10">
@@ -18,6 +19,5 @@ const Card: FC<CardProps> = ({ src, text1, text2 }) => {
       </Box>
     </Box>
   );
-  </>
 };
 export default Card;

@@ -9,7 +9,6 @@ import {
   Link,
   Stack,
   Text,
-  useMediaQuery,
   VStack,
 } from "@chakra-ui/react";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
@@ -18,15 +17,10 @@ import ContinueWiths from "./Components/ContinueWiths";
 import Todoist from "./Components/Todoist";
 
 function RegisterPage() {
-
   return (
-    <Flex mr="40" ml="40" direction="column">
+    <Flex mx="40" flexDirection="column">
       <Todoist />
-      <Flex
-        justifyContent="center"
-        alignItems="center"
-        display="flex"
-      >
+      <Flex justifyContent="center" alignItems="center">
         <Box>
           <VStack align="flex-start">
             <Text as="b" fontSize="3xl">
@@ -38,7 +32,7 @@ function RegisterPage() {
             <Stack width="100%" spacing={3}>
               <Input
                 size="lg"
-                pr="4.5rem"
+                pr="4"
                 type="email"
                 placeholder="Enter your email..."
               />
@@ -91,9 +85,11 @@ function RegisterPage() {
             </Text>
           </VStack>
         </Box>
+
         {/* 
-right-side background image part
+background image part
  */}
+
         <Box>
           <BgPics />
         </Box>
