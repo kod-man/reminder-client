@@ -1,3 +1,4 @@
+
 import { Grid, useMediaQuery } from "@chakra-ui/react";
 import Card from "./Card";
 
@@ -25,24 +26,20 @@ const data = [
 ];
 
 const BgPics = () => {
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
-  if (isLargerThan800)
-    return (
-      <Grid
-        templateRows="repeat(2, 1fr)"
-        templateColumns="repeat(2, 1fr)"
-        maxWidth="400"
-        maxH="700"
-        ml="14"
-      >
-        <>
-          {data.map((item) => (
-            <Card src={item.src} text1={item.text1} text2={item.text2} />
-          ))}
-        </>
-      </Grid>
-    );
-  return null;
+  return (
+    <Grid
+      templateRows="repeat(2, 1fr)"
+      templateColumns="repeat(2, 1fr)"
+      maxWidth="400"
+      maxH="700"
+    >
+      <>
+        {data.map((item) => (
+          <Card src={item.src} text1={item.text1} text2={item.text2} />
+        ))}
+      </>
+    </Grid>
+  );
 };
 
 export default BgPics;
