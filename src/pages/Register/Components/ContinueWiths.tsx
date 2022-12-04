@@ -1,8 +1,6 @@
-import { VStack, Button, Box, Text } from "@chakra-ui/react";
-import React from "react";
-import { FaFacebook } from "react-icons/fa";
+import { Button, Text, VStack } from "@chakra-ui/react";
+import { FaApple, FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { FaApple } from "react-icons/fa";
 
 const ContinueWiths = () => {
   return (
