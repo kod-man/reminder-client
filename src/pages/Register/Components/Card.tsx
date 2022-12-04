@@ -1,5 +1,6 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { FC } from "react";
+
 type CardProps = {
   src: string;
   text1: string;

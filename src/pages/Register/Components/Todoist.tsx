@@ -1,5 +1,4 @@
 import { HStack, Text } from "@chakra-ui/react";
-import React from "react";
 import { SiTodoist } from "react-icons/si";
 
 const Todoist = () => {

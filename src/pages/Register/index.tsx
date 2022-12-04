@@ -1,27 +1,26 @@
 import {
   Box,
-  Divider,
-  Link,
-  VStack,
-  Text,
-  InputGroup,
-  Input,
-  InputRightElement,
   Button,
+  Divider,
   Flex,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Link,
   Stack,
+  Text,
+  VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
 import BgPics from "./Components/BgPic";
 import ContinueWiths from "./Components/ContinueWiths";
 import Todoist from "./Components/Todoist";
-import { AiOutlineEyeInvisible } from "react-icons/ai";
 
 function RegisterPage() {
   return (
     <Flex mx="40" flexDirection="column">
       <Todoist />
-      <Flex gap="28" justifyContent="center" alignItems="center">
+      <Flex justifyContent="center" alignItems="center">
         <Box>
           <VStack align="flex-start">
             <Text as="b" fontSize="3xl">
