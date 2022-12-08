@@ -17,13 +17,14 @@ export const InputValidation = (name: string, value: string) => {
     } else if (value.length < 7) {
       errors[name] = "Password needs to be 7 characters or more!";
     } else if (!/\d/.test(value)) {
-      errors[name] = "Password must contain number!";
+      errors[name] = "Password must contain at least one number!";
     } else if (!/[A-Z]/.test(value)) {
-      errors[name] = "Password must contain one upperCase!";
+      errors[name] = "Password must contain at least one upperCase!";
     } else if (!/[a-z]/.test(value)) {
-      errors[name] = "Password must contain one lowerCase!";
+      errors[name] = "Password must contain at least one lowerCase!";
     } else if (!/\W|_/g.test(value)) {
-      errors[name] = "Password must contain one special character(symbol)!";
+      errors[name] =
+        "Password must contain at least one special character(symbol)!";
     }
   }
   return errors;
