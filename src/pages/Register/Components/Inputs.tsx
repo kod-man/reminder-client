@@ -26,19 +26,16 @@ const Inputs = () => {
     password: "",
   });
 
-  // to make password visible or invisible
-  const [type, setType] = React.useState("password");
-  const [icon, setIcon] = React.useState(<AiOutlineEyeInvisible />);
-  const handleToggle = () => {
-    if (type === "password") {
-      setIcon(<AiOutlineEye />);
-      setType("text");
+    // to make password visible or invisible
+  const [open, setOpen] = React.useState(false);
+  const toggleHandle = () => {
+    if (open === false) {
+      setOpen(true);
     } else {
-      setIcon(<AiOutlineEyeInvisible />);
-      setType("password");
+      setOpen(false);
     }
   };
-
+  
   const HandleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -93,12 +90,15 @@ const Inputs = () => {
             <Input
               name="password"
               pr="4.5rem"
-              type={type}
+              type={open ? "text" : "password"}
               placeholder="Enter your password..."
               onChange={HandleOnChange}
               value={formData.password}
             />
-            <InputRightElement onClick={handleToggle} children={icon} />
+            <InputRightElement
+              onClick={toggleHandle}
+              children={open ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+            />
           </InputGroup>
           {formErrors.password ? (
             <Text color="red" as="i">
