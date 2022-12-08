@@ -40,7 +40,9 @@ const Inputs = () => {
     }));
 
     //how to make  button default disabled (failed)
-    setDisabled(!Boolean(errors.password) && !Boolean(errors.email));
+    const hasErrors = errors.password || errors.email;
+    const hasEmptyValues = !(formData.password && formData.email);
+    setDisabled(Boolean(hasErrors) || Boolean(hasEmptyValues));
   };
 
   const submitHandler = () => {

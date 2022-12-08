@@ -8,22 +8,22 @@ export const InputValidation = (name: string, value: string) => {
     if (!value) {
       errors[name] = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(value)) {
-      errors[name] = "Email address is invalid !";
+      errors[name] = "Email address is invalid!";
     }
   }
   if (name === "password") {
     if (!value) {
-      errors[name] = "Password is required !";
+      errors[name] = "Password is required!";
     } else if (value.length < 7) {
-      errors[name] = "Password needs to be 7 characters or more !";
+      errors[name] = "Password needs to be 7 characters or more!";
     } else if (!/\d/.test(value)) {
-      errors[name] = "Password must caontain number !";
+      errors[name] = "Password must contain number!";
     } else if (!/[A-Z]/.test(value)) {
-      errors[name] = "Password must caontain one UpperCase !";
+      errors[name] = "Password must contain one upperCase!";
     } else if (!/[a-z]/.test(value)) {
-      errors[name] = "Password must caontain one LowerCase !";
+      errors[name] = "Password must contain one lowerCase!";
     } else if (!/\W|_/g.test(value)) {
-      errors[name] = "Password must caontain one special character(symbol) !";
+      errors[name] = "Password must contain one special character(symbol)!";
     }
   }
   return errors;
