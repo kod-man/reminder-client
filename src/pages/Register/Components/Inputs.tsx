@@ -26,16 +26,10 @@ const Inputs = () => {
     password: "",
   });
 
-    // to make password visible or invisible
+  // to make password visible or invisible
   const [open, setOpen] = React.useState(false);
-  const toggleHandle = () => {
-    if (open === false) {
-      setOpen(true);
-    } else {
-      setOpen(false);
-    }
-  };
-  
+  const toggleHandle = () => setOpen(!open);
+
   const HandleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
