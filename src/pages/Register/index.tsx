@@ -19,7 +19,7 @@ function RegisterPage() {
             <Inputs />
             <Text fontSize="xs" width="350px">
               By continuing with Google, Apple, or Email, you agree to Todoist’s
-              <Link mr="1" textDecoration="underline">
+              <Link mr="1" ml="1" textDecoration="underline">
                 Terms of Service
               </Link>
               and
