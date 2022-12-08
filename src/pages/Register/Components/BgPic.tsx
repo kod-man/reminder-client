@@ -34,6 +34,7 @@ const BgPics = () => {
         templateColumns="repeat(2, 1fr)"
         maxWidth="400"
         maxH="700"
+        ml={20}
       >
         <>
           {data.map((item) => (

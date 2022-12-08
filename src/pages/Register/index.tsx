@@ -1,19 +1,7 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Flex,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Link,
-  Stack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { Box, Divider, Flex, Link, Text, VStack } from "@chakra-ui/react";
 import BgPics from "./Components/BgPic";
 import ContinueWiths from "./Components/ContinueWiths";
+import Inputs from "./Components/Inputs";
 import Todoist from "./Components/Todoist";
 
 function RegisterPage() {
@@ -28,43 +16,7 @@ function RegisterPage() {
             </Text>
             <ContinueWiths />
             <Divider orientation="horizontal" />
-
-            <Stack width="100%" spacing={3}>
-              <Input
-                size="lg"
-                pr="4"
-                type="email"
-                placeholder="Enter your email..."
-              />
-              <InputGroup size="lg">
-                <Input
-                  pr="4.5rem"
-                  type="password"
-                  placeholder="Enter your password..."
-                />
-                <InputRightElement
-                  children={<AiOutlineEyeInvisible color="gray" />}
-                />
-              </InputGroup>
-            </Stack>
-
-            <Button
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              mt="4"
-              variant="solid"
-              width="350px"
-              size="lg"
-              height="52px"
-              border="2px"
-              color="white"
-              colorScheme="red"
-              borderRadius="9"
-            >
-              <Text>Sign up with Email</Text>
-            </Button>
-
+            <Inputs />
             <Text fontSize="xs" width="350px">
               By continuing with Google, Apple, or Email, you agree to Todoist’s
               <Link mr="1" textDecoration="underline">
