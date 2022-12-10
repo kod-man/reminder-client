@@ -12,7 +12,7 @@ import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { InputValidation } from "../utils/InputValidation";
 
-const Inputs = () => {
+const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
   const [disabled, setDisabled] = React.useState(true);
 
@@ -117,7 +117,7 @@ const Inputs = () => {
         colorScheme="red"
         borderRadius="9"
       >
-        <Text>Sign up with Email</Text>
+        <Text>{page === "register" ? "Sign up with Email" : "Log in"}</Text>
       </Button>
     </>
   );
