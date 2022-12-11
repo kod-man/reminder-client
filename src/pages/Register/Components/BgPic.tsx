@@ -38,7 +38,7 @@ const BgPics = () => {
       >
         <>
           {data.map((item) => (
-            <Card src={item.src} text1={item.text1} text2={item.text2} />
+            <Card key={item.src} src={item.src} text1={item.text1} text2={item.text2} />
           ))}
         </>
       </Grid>

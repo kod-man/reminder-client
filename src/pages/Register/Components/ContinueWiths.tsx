@@ -19,7 +19,7 @@ const ContinueWiths = () => {
   return (
     <VStack spacing={4} direction="row" align="center">
       {dataBtn.map((item) => (
-        <CardCW text={item.text} Icon={item.Icon} />
+        <CardCW key={item.text}  text={item.text} Icon={item.Icon} />
       ))}
     </VStack>
   );
