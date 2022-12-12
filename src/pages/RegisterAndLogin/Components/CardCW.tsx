@@ -12,7 +12,7 @@ const CardCW: FC<CardProps> = ({ text, Icon }) => {
     <Button width="350px" colorScheme="gray" size="md" variant="outline">
       <Icon />
       <Text as="b" ml="2">
-        {text}
+        Continue with {text}
       </Text>
     </Button>
   );

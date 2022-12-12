@@ -5,12 +5,12 @@ import CardCW from "./CardCW";
 
 const dataBtn = [
   {
-    text: "Continue with Google",
+    text: "Google",
     Icon: FcGoogle,
   },
-  { text: "Continue with Facebook", Icon: FaFacebook },
+  { text: "Facebook", Icon: FaFacebook },
   {
-    text: "Continue with Apple",
+    text: "Apple",
     Icon: FaApple,
   },
 ];
@@ -19,7 +19,7 @@ const ContinueWiths = () => {
   return (
     <VStack spacing={4} direction="row" align="center">
       {dataBtn.map((item) => (
-        <CardCW key={item.text}  text={item.text} Icon={item.Icon} />
+        <CardCW key={item.text} text={item.text} Icon={item.Icon} />
       ))}
     </VStack>
   );
