@@ -5,7 +5,7 @@ import Footer from "./Components/Footer";
 import Inputs from "./Components/Inputs";
 import Todoist from "./Components/Todoist";
 
-function RegisterPage({ page }: { page: string }) {
+function RegisterAndLogin({ page }: { page: string }) {
   return (
     <Flex mx="40" flexDirection="column">
       <Todoist />
@@ -34,4 +34,4 @@ background image part
   );
 }
 
-export default RegisterPage;
+export default RegisterAndLogin;

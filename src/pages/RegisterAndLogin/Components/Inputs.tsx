@@ -90,6 +90,7 @@ const Inputs = ({ page }: { page: string }) => {
               value={formData.password}
             />
             <InputRightElement
+              cursor="pointer"
               onClick={toggleHandle}
               children={open ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
             />
