@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { Axios } from "../../../utils/axios";
 import { InputValidation } from "../utils/InputValidation";
 
 const Inputs = ({ page }: { page: string }) => {
@@ -50,16 +51,29 @@ const Inputs = ({ page }: { page: string }) => {
   };
 
   const submitHandler = () => {
-    console.log("email: ", formData.email);
-    console.log("password: ", formData.password);
-
-    toast({
-      title: "Account created.",
-      description: "We've created your account for you.",
-      status: "success",
-      duration: 5000,
-      isClosable: true,
-    });
+    Axios.post("/user/register", formData)
+      .then((res) => {
+        console.log(res);
+        toast({
+          title: "Account created.",
+          description: "We've created your account for you.",
+          position: "top-right",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err.response.data.meessage);
+        toast({
+          title: "something went wrong.",
+          position: "top-right",
+          description: err.response.data.meessage,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      });
   };
 
   return (
