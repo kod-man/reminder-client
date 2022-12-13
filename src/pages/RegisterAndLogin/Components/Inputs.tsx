@@ -67,11 +67,11 @@ const Inputs = ({ page }: { page: string }) => {
         nav("/login");
       })
       .catch((err) => {
-        console.log(err.response.data.meessage);
+        console.log(err.response.data.message);
         toast({
-          title: "something went wrong.",
+          title: "Something went wrong.",
           position: "top-right",
-          description: err.response.data.meessage,
+          description: err.response.data.message,
           status: "error",
           duration: 5000,
           isClosable: true,
