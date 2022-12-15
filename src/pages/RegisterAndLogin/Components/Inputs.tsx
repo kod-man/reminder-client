@@ -6,6 +6,7 @@ import {
   InputRightElement,
   Stack,
   Text,
+  ToastPosition,
   useToast,
 } from "@chakra-ui/react";
 import React from "react";
@@ -52,6 +53,12 @@ const Inputs = ({ page }: { page: string }) => {
     setDisabled(Boolean(hasErrors) || Boolean(hasEmptyValues));
   };
 
+  const defaultToastProps = {
+    position: "top-right" as ToastPosition,
+    duration: 2000,
+    isClosable: true,
+  };
+
   const submitHandler = () => {
     Axios.post("/user/register", formData)
       .then((res) => {
@@ -59,10 +66,8 @@ const Inputs = ({ page }: { page: string }) => {
         toast({
           title: "Account created.",
           description: "We've created your account for you.",
-          position: "top-right",
           status: "success",
-          duration: 5000,
-          isClosable: true,
+          ...defaultToastProps,
         });
         nav("/login");
       })
@@ -71,21 +76,17 @@ const Inputs = ({ page }: { page: string }) => {
           console.log(err.response.data.message);
           toast({
             title: "Something went wrong.",
-            position: "top-right",
             description: err.response.data.message,
             status: "error",
-            duration: 5000,
-            isClosable: true,
+            ...defaultToastProps,
           });
         } else {
           console.log(err);
           toast({
             title: "Something went wrong.",
-            position: "top-right",
             description: "server-error",
             status: "error",
-            duration: 5000,
-            isClosable: true,
+            ...defaultToastProps,
           });
         }
       });
