@@ -16,11 +16,11 @@ function Footer({ page }: { page: string }) {
       ) : null}
       <Text fontSize="xs" width="350px">
         By continuing with Google, Apple, or Email, you agree to Todoist’s
-        <Text as="u" mr="1" ml="1" textDecoration="underline">
+        <Text as="u" mr="1" ml="1" textDecoration="underline" cursor="pointer">
           Terms of Service
         </Text>
         and
-        <Text as="u" ml="1" textDecoration="underline">
+        <Text as="u" ml="1" textDecoration="underline" cursor="pointer">
           Privacy Policy
         </Text>
         .
@@ -28,7 +28,7 @@ function Footer({ page }: { page: string }) {
       <Divider orientation="horizontal" />
       <Text fontSize="sm" textAlign="center" width="350px" ml="25">
         {page === "register" ? "Already signed up?" : "Don't have an account?"}
-        <Text as="u" ml="1" textDecoration="underline">
+        <Text as="u" ml="1" textDecoration="underline" cursor="pointer">
           {page === "register" ? "Log in" : "Sign up"}
         </Text>
       </Text>
