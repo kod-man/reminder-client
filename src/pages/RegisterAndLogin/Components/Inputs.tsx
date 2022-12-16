@@ -62,36 +62,71 @@ const Inputs = ({ page }: { page: string }) => {
   };
 
   const submitHandler = () => {
-    Axios.post(API.register, formData)
-      .then((res) => {
-        console.log(res);
-        toast({
-          ...defaultToastProps,
-          title: "Account created.",
-          description: "We've created your account for you.",
-          status: "success",
+    if (page === "register") {
+      Axios.post(API.register, formData)
+        .then((res) => {
+          console.log(res);
+          toast({
+            ...defaultToastProps,
+            title: "Account created.",
+            description: "We've created your account for you.",
+            status: "success",
+          });
+          nav(PATHS.LOGIN);
+        })
+        .catch((err) => {
+          if (err.response) {
+            console.log(err.response.data.message);
+            toast({
+              ...defaultToastProps,
+              title: "Something went wrong.",
+              description: err.response.data.message,
+              status: "error",
+            });
+          } else {
+            console.log(err);
+            toast({
+              ...defaultToastProps,
+              title: "Something went wrong.",
+              description: "server-error",
+              status: "error",
+            });
+          }
         });
-        nav(PATHS.LOGIN);
-      })
-      .catch((err) => {
-        if (err.response) {
-          console.log(err.response.data.message);
+    }
+    // validation in login and then redirect to the home
+    if (page === "login") {
+      Axios.post(API.login, formData)
+        .then((res) => {
           toast({
             ...defaultToastProps,
-            title: "Something went wrong.",
-            description: err.response.data.message,
-            status: "error",
+            title: "Successfully logged in.",
+            description: "You're logged in.",
+            status: "success",
           });
-        } else {
-          console.log(err);
-          toast({
-            ...defaultToastProps,
-            title: "Something went wrong.",
-            description: "server-error",
-            status: "error",
-          });
-        }
-      });
+          console.log(res);
+          nav(PATHS.HOME);
+        })
+        .catch((err) => {
+          if (err.response) {
+            console.log(err.response.data.message);
+            toast({
+              ...defaultToastProps,
+              title: "Something went wrong.",
+              description: err.response.data.message,
+              status: "error",
+            });
+          } else {
+            console.log(err);
+            toast({
+              ...defaultToastProps,
+              title: "Something went wrong.",
+              description: "server-error",
+              status: "error",
+            });
+          }
+        });
+    }
   };
 
   return (
