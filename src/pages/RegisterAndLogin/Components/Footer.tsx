@@ -16,7 +16,7 @@ function Footer({ page }: { page: string }) {
       ) : null}
       <Text fontSize="xs" width="350px">
         By continuing with Google, Apple, or Email, you agree to Todoist’s
-        <Text as="u" mr="1" textDecoration="underline">
+        <Text as="u" mr="1" ml="1" textDecoration="underline">
           Terms of Service
         </Text>
         and
