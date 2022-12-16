@@ -13,6 +13,8 @@ import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
+import { PATHS } from "../../../utils/paths";
+import { API } from "../../../utils/usedApi";
 import { InputValidation } from "../utils/InputValidation";
 
 const Inputs = ({ page }: { page: string }) => {
@@ -60,33 +62,33 @@ const Inputs = ({ page }: { page: string }) => {
   };
 
   const submitHandler = () => {
-    Axios.post("/user/register", formData)
+    Axios.post(API.register, formData)
       .then((res) => {
         console.log(res);
         toast({
+          ...defaultToastProps,
           title: "Account created.",
           description: "We've created your account for you.",
           status: "success",
-          ...defaultToastProps,
         });
-        nav("/login");
+        nav(PATHS.LOGIN);
       })
       .catch((err) => {
         if (err.response) {
           console.log(err.response.data.message);
           toast({
+            ...defaultToastProps,
             title: "Something went wrong.",
             description: err.response.data.message,
             status: "error",
-            ...defaultToastProps,
           });
         } else {
           console.log(err);
           toast({
+            ...defaultToastProps,
             title: "Something went wrong.",
             description: "server-error",
             status: "error",
-            ...defaultToastProps,
           });
         }
       });
@@ -127,7 +129,7 @@ const Inputs = ({ page }: { page: string }) => {
           </InputGroup>
           {formErrors.password ? (
             <Text color="red" as="i">
-              {formErrors.password}{" "}
+              {formErrors.password}
             </Text>
           ) : null}
         </Stack>

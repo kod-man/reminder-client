@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../utils/axios";
-import { Routes } from "../utils/routes";
+import { API } from "../utils/usedApi";
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
@@ -18,9 +18,9 @@ export const useSignup = () => {
       email: "",
     };
 
-    Axios.post(Routes.register, newUser)
+    Axios.post(API.register, newUser)
       .then((res) => {
-        navigate(Routes.login);
+        navigate(API.login);
       })
       .catch((err) => {
         setIsLoading(false);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Axios } from "../utils/axios";
-import { Routes } from "../utils/routes";
+import { API } from "../utils/usedApi";
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
@@ -15,7 +15,7 @@ export const useLogin = () => {
       email: "",
     };
 
-    Axios.post(Routes.login, loginData)
+    Axios.post(API.login, loginData)
       .then((res) => {
         const { token } = res.data.response;
         localStorage.setItem("token", token);
