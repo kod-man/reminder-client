@@ -6,15 +6,19 @@ import {
   InputRightElement,
   Stack,
   Text,
+  ToastPosition,
   useToast,
 } from "@chakra-ui/react";
 import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { Axios } from "../../../utils/axios";
 import { InputValidation } from "../utils/InputValidation";
 
 const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
   const [disabled, setDisabled] = React.useState(true);
+  const nav = useNavigate();
 
   const [formData, setFormData] = React.useState({
     email: "",
@@ -49,17 +53,43 @@ const Inputs = ({ page }: { page: string }) => {
     setDisabled(Boolean(hasErrors) || Boolean(hasEmptyValues));
   };
 
-  const submitHandler = () => {
-    console.log("email: ", formData.email);
-    console.log("password: ", formData.password);
+  const defaultToastProps = {
+    position: "top-right" as ToastPosition,
+    duration: 2000,
+    isClosable: true,
+  };
 
-    toast({
-      title: "Account created.",
-      description: "We've created your account for you.",
-      status: "success",
-      duration: 5000,
-      isClosable: true,
-    });
+  const submitHandler = () => {
+    Axios.post("/user/register", formData)
+      .then((res) => {
+        console.log(res);
+        toast({
+          title: "Account created.",
+          description: "We've created your account for you.",
+          status: "success",
+          ...defaultToastProps,
+        });
+        nav("/login");
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+          toast({
+            title: "Something went wrong.",
+            description: err.response.data.message,
+            status: "error",
+            ...defaultToastProps,
+          });
+        } else {
+          console.log(err);
+          toast({
+            title: "Something went wrong.",
+            description: "server-error",
+            status: "error",
+            ...defaultToastProps,
+          });
+        }
+      });
   };
 
   return (
