@@ -92,8 +92,10 @@ const Inputs = ({ page }: { page: string }) => {
             description: "You're logged in.",
             status: "success",
           });
-          console.log(res);
+          localStorage.setItem("token", res.data.response.token);
           navigate(PATHS.HOME);
+          // update local storage
+          window.location.reload();
         })
         .catch((err) => {
           if (err.response) {
