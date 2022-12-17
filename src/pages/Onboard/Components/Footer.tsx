@@ -1,34 +1,43 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import { Icon } from "@chakra-ui/react";
-import { MdSettings } from "react-icons/md";
-
+import { AiOutlineBulb } from "react-icons/ai";
 function Footer() {
   return (
     <Flex
       alignItems="center"
       justifyContent="center"
-      h="100vh"
-      mt="-570"
       flexDirection="column"
+      mt="10"
     >
       <Box
-        maxW="1200"
+        w="950px"
         h="30"
         borderWidth="1px"
         borderRadius="lg"
-        backgroundColor="red.100"
+        backgroundColor="orange.100"
         display="flex"
         alignItems="center"
         justifyContent="center"
         p="10"
         mb="45"
       >
-        <Icon as={MdSettings} mr="5" />
+        <Flex
+          alignItems="center"
+          justifyContent="center"
+          mr="2"
+          bgColor="white"
+          w="10"
+          h="10"
+          border="1px"
+          borderColor="yellow.300"
+          borderRadius="50%"
+        >
+          <AiOutlineBulb />
+        </Flex>
         <Text>
           Todoist'e harika bir başlangıç yapmanı sağlayabilmemiz için bu iki
           basit soruyu cevapla.
         </Text>
-        <Icon as={MdSettings} ml="5" />
+        <Text ml="2">😊</Text>
       </Box>
       <Button
         size="inherit"
@@ -37,6 +46,7 @@ function Footer() {
         border="2px"
         color="white"
         backgroundColor="red.200"
+        _hover={{ cursor: "not-allowed" }}
       >
         Devam Et
       </Button>
