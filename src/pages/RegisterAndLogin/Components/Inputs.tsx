@@ -6,13 +6,17 @@ import {
   InputRightElement,
   Stack,
   Text,
-  ToastPosition,
   useToast,
 } from "@chakra-ui/react";
 import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
+import {
+  defaultToastProps,
+  genericServerToast,
+  genericValidationToast,
+} from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import { InputValidation } from "../utils/InputValidation";
@@ -20,7 +24,7 @@ import { InputValidation } from "../utils/InputValidation";
 const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
   const [disabled, setDisabled] = React.useState(true);
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = React.useState({
     email: "",
@@ -55,43 +59,52 @@ const Inputs = ({ page }: { page: string }) => {
     setDisabled(Boolean(hasErrors) || Boolean(hasEmptyValues));
   };
 
-  const defaultToastProps = {
-    position: "top-right" as ToastPosition,
-    duration: 2000,
-    isClosable: true,
-  };
-
   const submitHandler = () => {
-    Axios.post(API.register, formData)
-      .then((res) => {
-        console.log(res);
-        toast({
-          ...defaultToastProps,
-          title: "Account created.",
-          description: "We've created your account for you.",
-          status: "success",
+    if (page === "register") {
+      Axios.post(API.register, formData)
+        .then((res) => {
+          console.log(res);
+          toast({
+            ...defaultToastProps,
+            title: "Account created.",
+            description: "We've created your account for you.",
+            status: "success",
+          });
+          navigate(PATHS.LOGIN);
+        })
+        .catch((err) => {
+          if (err.response) {
+            console.log(err.response.data.message);
+            genericValidationToast(toast, err);
+          } else {
+            console.log(err);
+            genericServerToast(toast);
+          }
         });
-        nav(PATHS.LOGIN);
-      })
-      .catch((err) => {
-        if (err.response) {
-          console.log(err.response.data.message);
+    }
+    // validation in login and then redirect to the home
+    if (page === "login") {
+      Axios.post(API.login, formData)
+        .then((res) => {
           toast({
             ...defaultToastProps,
-            title: "Something went wrong.",
-            description: err.response.data.message,
-            status: "error",
+            title: "Successfully logged in.",
+            description: "You're logged in.",
+            status: "success",
           });
-        } else {
-          console.log(err);
-          toast({
-            ...defaultToastProps,
-            title: "Something went wrong.",
-            description: "server-error",
-            status: "error",
-          });
-        }
-      });
+          console.log(res);
+          navigate(PATHS.HOME);
+        })
+        .catch((err) => {
+          if (err.response) {
+            console.log(err.response.data.message);
+            genericValidationToast(toast, err);
+          } else {
+            console.log(err);
+            genericServerToast(toast);
+          }
+        });
+    }
   };
 
   return (
