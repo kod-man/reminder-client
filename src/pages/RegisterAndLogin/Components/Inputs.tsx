@@ -6,13 +6,17 @@ import {
   InputRightElement,
   Stack,
   Text,
-  ToastPosition,
   useToast,
 } from "@chakra-ui/react";
 import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
+import {
+  defaultToastProps,
+  genericServerToast,
+  genericValidationToast,
+} from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import { InputValidation } from "../utils/InputValidation";
@@ -20,7 +24,7 @@ import { InputValidation } from "../utils/InputValidation";
 const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
   const [disabled, setDisabled] = React.useState(true);
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = React.useState({
     email: "",
@@ -55,12 +59,6 @@ const Inputs = ({ page }: { page: string }) => {
     setDisabled(Boolean(hasErrors) || Boolean(hasEmptyValues));
   };
 
-  const defaultToastProps = {
-    position: "top-right" as ToastPosition,
-    duration: 2000,
-    isClosable: true,
-  };
-
   const submitHandler = () => {
     if (page === "register") {
       Axios.post(API.register, formData)
@@ -72,25 +70,15 @@ const Inputs = ({ page }: { page: string }) => {
             description: "We've created your account for you.",
             status: "success",
           });
-          nav(PATHS.LOGIN);
+          navigate(PATHS.LOGIN);
         })
         .catch((err) => {
           if (err.response) {
             console.log(err.response.data.message);
-            toast({
-              ...defaultToastProps,
-              title: "Something went wrong.",
-              description: err.response.data.message,
-              status: "error",
-            });
+            genericValidationToast(toast, err);
           } else {
             console.log(err);
-            toast({
-              ...defaultToastProps,
-              title: "Something went wrong.",
-              description: "server-error",
-              status: "error",
-            });
+            genericServerToast(toast);
           }
         });
     }
@@ -105,25 +93,15 @@ const Inputs = ({ page }: { page: string }) => {
             status: "success",
           });
           console.log(res);
-          nav(PATHS.HOME);
+          navigate(PATHS.HOME);
         })
         .catch((err) => {
           if (err.response) {
             console.log(err.response.data.message);
-            toast({
-              ...defaultToastProps,
-              title: "Something went wrong.",
-              description: err.response.data.message,
-              status: "error",
-            });
+            genericValidationToast(toast, err);
           } else {
             console.log(err);
-            toast({
-              ...defaultToastProps,
-              title: "Something went wrong.",
-              description: "server-error",
-              status: "error",
-            });
+            genericServerToast(toast);
           }
         });
     }
