@@ -1,18 +1,28 @@
-import { Box, Button, Flex, IconButton, Menu, MenuButton, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  Menu,
+  MenuButton,
+  Tag,
+  Text,
+} from "@chakra-ui/react";
 import { AiOutlineHome } from "react-icons/ai";
-import { BsSearch } from "react-icons/bs";
+import { BsBell, BsSearch } from "react-icons/bs";
+import { HiPlus } from "react-icons/hi";
 import Drawerr from "./Components/Drawer";
 
 function HomePage() {
   return (
     <>
       <Flex
-        height="10"
+        direction="row"
+        h={10}
         width="100%"
         bg="#db4c3f"
-        border={1}
-        borderColor="black"
         flexDir="row"
+        alignItems="center"
       >
         <Drawerr />
         <Menu>
@@ -24,12 +34,41 @@ function HomePage() {
             color="white"
           />
         </Menu>
-        <Box as={Button} bg="#db4c3f"
-            color="white"  >
+        <Box as={Button} bg="#db4c3f" color="white">
           {<BsSearch />}
-           <Text ml={3} fontSize='xs'  >Search</Text>
+          <Text ml={3} fontSize="xs">
+            Search
+          </Text>
         </Box>
-
+        <Flex
+          mt={0}
+          mr={0}
+          flexDirection="row"
+          justifyContent="flex-end"
+          h={10}
+          bg="#db4c3f"
+        >
+          <Box as={Button} bg="#db4c3f" color="white">
+            {<HiPlus />}
+          </Box>
+          <Box as={Button} bg="#db4c3f" color="white">
+            {<BsBell />}
+          </Box>
+          <Tag
+            display="block"
+            m="auto"
+            height={8}
+            width={8}
+            as={Button}
+            bg="white"
+            color="white"
+            border={1}
+            borderRadius="40"
+            borderColor="white"
+          >
+            <Text color="#db4c3f">MC</Text>
+          </Tag>
+        </Flex>
       </Flex>
     </>
   );

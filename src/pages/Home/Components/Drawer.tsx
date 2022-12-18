@@ -27,41 +27,10 @@ function Drawerr() {
               Inbox
               {<BsFillInboxFill color="blue" />}
             </Box>
-           
           </DrawerContent>
-              
         </DrawerContent>
       </Drawer>
     </>
   )
 }
 export default Drawerr;
-
-{/* <Menu>
-          <MenuButton
-            as={IconButton}
-            aria-label="Options"
-            icon={<AiOutlineMenu />}
-            // variant="outline"
-            bg="#db4c3f"
-            color="white"
-          />
-          <MenuList>
-            <MenuItem icon={<BsFillInboxFill color="blue" />}>
-              Inbox
-            </MenuItem>
-            <MenuItem icon={<MdToday  color="green"/>} >
-              today
-            </MenuItem>
-            <MenuItem icon={<GrCalculator color="#8d63cd"/>} >
-              Upcoming
-            </MenuItem>
-            <MenuItem icon={<AiOutlineAppstore color="orange" />}>
-              Filter & Labels
-            </MenuItem>
-            <MenuItem >
-            <Flex direction="column"><Text>Projects</Text>
-            <Text>Personal 🙂</Text></Flex>
-             </MenuItem>
-          </MenuList>
-        </Menu> */}
