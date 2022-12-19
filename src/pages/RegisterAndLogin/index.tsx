@@ -21,11 +21,6 @@ function RegisterAndLogin({ page }: { page: string }) {
             <Footer page={page} />
           </VStack>
         </Box>
-
-        {/* 
-background image part
- */}
-
         <Box>
           <BgPics />
         </Box>

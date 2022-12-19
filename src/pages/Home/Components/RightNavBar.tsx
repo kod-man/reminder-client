@@ -13,9 +13,26 @@ const RightNavBar = () => {
       height="100%"
       spacing={4}
     >
-      <GoPlus color="white" size="20px" />
-      <BsBell color="white" size="20px" />
       <Flex
+        _hover={{ bg: "#e27065" }}
+        cursor="pointer"
+        borderRadius="20%"
+        padding={1}
+      >
+        <GoPlus color="white" size="20px" />
+      </Flex>
+      <Flex
+        _hover={{ bg: "#e27065" }}
+        cursor="pointer"
+        borderRadius="20%"
+        padding={1}
+      >
+        <BsBell color="white" size="20px" />
+      </Flex>
+      <Flex
+        _hover={{ bg: "gray.100" }}
+        cursor="pointer"
+        padding={1}
         w={7}
         h={7}
         border="1px solid white"
