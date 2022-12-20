@@ -4,18 +4,16 @@ import RightNavBar from "./Components/RightNavBar";
 
 function HomePage() {
   return (
-    <>
-      <Flex
-        h={10}
-        bg="#db4c3f"
-        alignItems="center"
-        justifyContent="center"
-        py={2}
-      >
-        <LeftSideBar />
-        <RightNavBar />
-      </Flex>
-    </>
+    <Flex
+      h={10}
+      bg="#db4c3f"
+      alignItems="center"
+      justifyContent="center"
+      py={2}
+    >
+      <LeftSideBar />
+      <RightNavBar />
+    </Flex>
   );
 }
 

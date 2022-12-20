@@ -46,7 +46,7 @@ function LeftNavBar() {
       >
         <AiOutlineHome
           cursor="pointer"
-          onClick={() => navigate(PATHS.REGISTER)} //for now to check i am sending to login page
+          onClick={() => navigate(PATHS.LOGIN)}
           size="20px"
           color="white"
         />
