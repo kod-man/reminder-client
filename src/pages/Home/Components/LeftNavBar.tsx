@@ -71,6 +71,7 @@ function LeftNavBar() {
           _hover={{ _placeholder: { color: "black" } }}
           height={7}
           borderRadius="3"
+          _focusVisible={{ outline: "none" }}
         />
       </InputGroup>
       <LeftDrawer isOpen={isOpen} onClose={onClose} />
