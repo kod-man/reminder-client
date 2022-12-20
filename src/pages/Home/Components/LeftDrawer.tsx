@@ -24,8 +24,6 @@ const LeftDrawer = ({ isOpen, onClose }: DrawerProps) => {
           <DrawerHeader>Comin soon...</DrawerHeader>
 
           <DrawerBody>
-            {/* Coming 
-      soon */}
           </DrawerBody>
 
           <DrawerFooter>
