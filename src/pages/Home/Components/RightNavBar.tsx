@@ -1,6 +1,5 @@
 import { Flex, HStack } from "@chakra-ui/react";
-import { BsBell } from "react-icons/bs";
-import { GoPlus } from "react-icons/go";
+import { BsBell, BsPlus } from "react-icons/bs";
 
 const RightNavBar = () => {
   return (
@@ -19,7 +18,7 @@ const RightNavBar = () => {
         borderRadius="20%"
         padding={1}
       >
-        <GoPlus color="white" size="20px" />
+        <BsPlus color="white" size="23px" />
       </Flex>
       <Flex
         _hover={{ bg: "#e27065" }}

@@ -1,5 +1,4 @@
 import {
-  Box,
   Flex,
   HStack,
   Input,
@@ -53,18 +52,17 @@ function LeftNavBar() {
         />
       </Flex>
 
-      <Box
+      <InputGroup
+        alignItems="center"
         bgColor="#e27065"
         _hover={{ bg: "white" }}
-        h={10}
-        w={175}
+        w={200}
         margin="1"
       >
-        <InputGroup >
-          <InputLeftElement children={<BsSearch color="white"/>} />
-          <Input type="text" placeholder="Search" textColor="black"   />
-        </InputGroup>
-      </Box>
+        <InputLeftElement children={<BsSearch color="white" />} />
+        <Input type="text" placeholder="Search" textColor="black" />
+      </InputGroup>
+
       <LeftDrawer isOpen={isOpen} onClose={onClose} />
     </HStack>
   );
