@@ -51,18 +51,28 @@ function LeftNavBar() {
           color="white"
         />
       </Flex>
-
       <InputGroup
         alignItems="center"
         bgColor="#e27065"
-        _hover={{ bg: "white" }}
-        w={200}
-        margin="1"
+        w={175}
+        borderRadius="3"
+        _hover={{ bg: "white", svg: { fill: "black" } }}
       >
-        <InputLeftElement children={<BsSearch color="white" />} />
-        <Input type="text" placeholder="Search" textColor="black" />
+        <InputLeftElement
+          children={<BsSearch color="white" />}
+          height={8}
+          boxSize={7}
+          alignItems="center"
+        />
+        <Input
+          type="text"
+          placeholder="Search"
+          _placeholder={{ color: "white" }}
+          _hover={{ _placeholder: { color: "black" } }}
+          height={7}
+          borderRadius="3"
+        />
       </InputGroup>
-
       <LeftDrawer isOpen={isOpen} onClose={onClose} />
     </HStack>
   );
