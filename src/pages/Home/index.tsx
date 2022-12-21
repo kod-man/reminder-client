@@ -1,8 +1,19 @@
+import { Flex } from "@chakra-ui/react";
+import LeftSideBar from "./Components/LeftNavBar";
+import RightNavBar from "./Components/RightNavBar";
+
 function HomePage() {
   return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
+    <Flex
+      h={10}
+      bg="#db4c3f"
+      alignItems="center"
+      justifyContent="center"
+      py={2}
+    >
+      <LeftSideBar />
+      <RightNavBar />
+    </Flex>
   );
 }
 
