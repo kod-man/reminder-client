@@ -3,6 +3,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import HomePage from "./pages/Home";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import RegisterAndLogin from "./pages/RegisterAndLogin";
+import TodayPage from "./pages/TodayPage";
 import { PATHS } from "./utils/paths";
 
 export const App = () => {
@@ -24,6 +25,7 @@ export const App = () => {
         }
       />
       <Route path={PATHS.NOT_FOUND} element={<NotFoundPage />} />
+      <Route path={PATHS.TODAY} element={<TodayPage />} />
     </Routes>
   );
 };
