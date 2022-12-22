@@ -2,7 +2,6 @@ import {
   Box,
   Divider,
   Flex,
-  HStack,
   Menu,
   MenuButton,
   MenuItem,
@@ -10,7 +9,9 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { AiOutlinePrinter } from "react-icons/ai";
+import { AiOutlinePrinter, AiOutlineStar } from "react-icons/ai";
+import { BiExit } from "react-icons/bi";
+import { BsDownload, BsPeople } from "react-icons/bs";
 import { FiActivity, FiSettings } from "react-icons/fi";
 import { IoIosGitCompare } from "react-icons/io";
 import { VscSymbolColor } from "react-icons/vsc";
@@ -35,7 +36,6 @@ const ProfileMenu = () => {
       >
         MC
       </Flex>
-
       <MenuList>
         <Flex
           cursor="pointer"
@@ -45,47 +45,44 @@ const ProfileMenu = () => {
           mb="2"
           borderRadius="5"
         >
-          <Flex
-            m={1}
-            w={12}
-            h={12}
-            border="3px solid #db4c3f"
-            fontSize="xl"
-            color="#db4c3f"
-            alignItems="center"
-            justifyContent="center"
-            backgroundColor="white"
-            borderRadius="50%"
-          >
-            MC
-          </Flex>
-          <VStack>
-            <Flex flexDir="column" m={2}>
-              <Text as="b" fontSize="sm">
-                Murat Can
-              </Text>
-              <Text fontSize="xm">muratal0606@gmail.com</Text>
-            </Flex>
+          <Box>
             <Flex>
-              <HStack justifyContent="flex-start" alignItems="center" mb={1}>
-                <Box h={4} w={4} mr="1">
-                  <FiSettings color="#c3c3c3" />
-                </Box>
-                <Text fontSize="small">Settings</Text>
-              </HStack>
-              <Text
-                fontSize="x-small"
-                ml="20"
-                mt="2"
-                mr="1"
-                as="sub"
-                textColor="GrayText"
+              <Flex
+                m={1}
+                w={12}
+                h={12}
+                border="3px solid #db4c3f"
+                fontSize="xl"
+                color="#db4c3f"
+                alignItems="center"
+                justifyContent="center"
+                backgroundColor="white"
+                borderRadius="50%"
               >
-                0 then S
-              </Text>
+                MC
+              </Flex>
+              <VStack>
+                <Flex flexDir="column" m={2}>
+                  <Text as="b" fontSize="sm">
+                    Murat Can
+                  </Text>
+                  <Text fontSize="xm">muratal0606@gmail.com</Text>
+                </Flex>
+              </VStack>
             </Flex>
-          </VStack>
+            <Flex alignItems="center" ml={2} mb="1">
+              <Box h={4} w={4} mr="1" justifyContent="flex-start">
+                <FiSettings color="#c3c3c3" />
+              </Box>
+              <Box>
+                <Text fontSize="small" ml="2">
+                  Settings
+                </Text>
+              </Box>
+            </Flex>
+          </Box>
         </Flex>
+
         <Divider />
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
           <Flex justifyContent="flex-start" alignItems="center" mb={1}>
@@ -95,11 +92,6 @@ const ProfileMenu = () => {
             <Box>
               <Text fontSize="small" ml="2">
                 Theme
-              </Text>
-            </Box>
-            <Box width={10} ml="32">
-              <Text fontSize="x-small" textColor="GrayText" ml={0}>
-                0 then T
               </Text>
             </Box>
           </Flex>
@@ -114,11 +106,6 @@ const ProfileMenu = () => {
                 Activity log
               </Text>
             </Box>
-            <Box width={10} ml="32">
-              <Text fontSize="x-small" textColor="GrayText">
-                G then A
-              </Text>
-            </Box>
           </Flex>
         </MenuItem>
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
@@ -131,26 +118,16 @@ const ProfileMenu = () => {
                 Print
               </Text>
             </Box>
-            <Box width={10} ml="32">
-              <Text fontSize="x-small" textColor="GrayText" ml={4}>
-                CtrlP
-              </Text>
-            </Box>
           </Flex>
         </MenuItem>
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
-          <Flex
-            justifyContent="flex-start"
-            alignItems="center"
-            mr="2"
-            borderRadius="4%"
-          >
+          <Flex justifyContent="flex-start" alignItems="center" mr="2">
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
               <IoIosGitCompare color="gray" />
             </Box>
             <Box>
               <Text fontSize="small" ml="2">
-                Integration
+                Integrations
               </Text>
             </Box>
           </Flex>
@@ -158,19 +135,52 @@ const ProfileMenu = () => {
         </MenuItem>
         <Divider />
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
-          5
+          <Flex justifyContent="flex-start" alignItems="center" mr="2">
+            <Box h={4} w={4} mr="1" justifyContent="flex-start">
+              <AiOutlineStar color="#f4c771" />
+            </Box>
+            <Box>
+              <Text fontSize="small" ml="2">
+                Upgrade to Pro
+              </Text>
+            </Box>
+          </Flex>
         </MenuItem>
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
-          6
+          <Flex justifyContent="flex-start" alignItems="center" mr="2">
+            <Box h={4} w={4} mr="1" justifyContent="flex-start">
+              <BsPeople color="gray" />
+            </Box>
+            <Box>
+              <Text fontSize="small" ml="2">
+                Upgrade to Business
+              </Text>
+            </Box>
+          </Flex>
         </MenuItem>
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
-          7
+          <Flex justifyContent="flex-start" alignItems="center" mr="2">
+            <Box h={4} w={4} mr="1" justifyContent="flex-start">
+              <BsDownload color="gray" />
+            </Box>
+            <Box>
+              <Text fontSize="small" ml="2">
+                Download Apps
+              </Text>
+            </Box>
+          </Flex>
         </MenuItem>
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
-          8
-        </MenuItem>
-        <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
-          9
+          <Flex justifyContent="flex-start" alignItems="center" mr="2">
+            <Box h={4} w={4} mr="1" justifyContent="flex-start">
+              <BiExit color="gray" />
+            </Box>
+            <Box>
+              <Text fontSize="small" ml="2">
+                Log out
+              </Text>
+            </Box>
+          </Flex>
         </MenuItem>
       </MenuList>
     </Menu>
