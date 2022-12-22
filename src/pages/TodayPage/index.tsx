@@ -3,11 +3,13 @@ import Center from "./Components/Center";
 import Footer from "./Components/Footer";
 
 import Header from "./Components/Header";
+import Menu from "./Components/Menu";
 
 function TodayPage() {
   return (
-    <Flex h="100vh" direction="column" alignItems="center">
+    <Flex direction="column" alignItems="center">
       <Header />
+      <Menu />
       <Center />
       <Footer />
     </Flex>

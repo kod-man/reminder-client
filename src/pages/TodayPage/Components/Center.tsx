@@ -3,7 +3,7 @@ import { Flex, Img, Text } from "@chakra-ui/react";
 function Center() {
   return (
     <Flex
-      mt="4"
+      mt="24"
       w="100%"
       alignItems="flex-start"
       justifyContent="center"
