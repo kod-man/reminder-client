@@ -72,7 +72,7 @@ const ProfileMenu = () => {
             </Flex>
             <Flex alignItems="center" ml={2} mb="1">
               <Box h={4} w={4} mr="1" justifyContent="flex-start">
-                <FiSettings color="#c3c3c3" />
+                <FiSettings color="gray" />
               </Box>
               <Box>
                 <Text fontSize="small" ml="2">
@@ -87,7 +87,7 @@ const ProfileMenu = () => {
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
           <Flex justifyContent="flex-start" alignItems="center" mb={1}>
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
-              <VscSymbolColor color="#c3c3c3" />
+              <VscSymbolColor color="gray" />
             </Box>
             <Box>
               <Text fontSize="small" ml="2">
@@ -99,7 +99,7 @@ const ProfileMenu = () => {
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
           <Flex justifyContent="flex-start" alignItems="center" mb={1}>
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
-              <FiActivity color="#c3c3c3" />
+              <FiActivity color="gray" />
             </Box>
             <Box>
               <Text fontSize="small" ml="2">
@@ -111,7 +111,7 @@ const ProfileMenu = () => {
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
           <Flex justifyContent="flex-start" alignItems="center" mb={1}>
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
-              <AiOutlinePrinter color="#c3c3c3" />
+              <AiOutlinePrinter color="gray" />
             </Box>
             <Box>
               <Text fontSize="small" ml="2">
