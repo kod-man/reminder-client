@@ -2,6 +2,9 @@ import { Box, Flex, Spacer, Text } from "@chakra-ui/react";
 import { AiOutlineMenu, AiOutlinePlus } from "react-icons/ai";
 
 function Header() {
+  const date = new Date();
+  const options = { weekday: "short", day: "numeric", month: "short" };
+  const today = date.toLocaleDateString("en-US", options);
   return (
     <Flex w="100%">
       <Box mt="12" ml="32" p="4">
@@ -9,7 +12,9 @@ function Header() {
           <Text as="b" fontSize="xl" mr="2">
             Bugün
           </Text>
-          <Text mt="2" fontSize="sm" color="gray"></Text>
+          <Text mt="2" fontSize="sm" color="gray">
+            {today}
+          </Text>
         </Flex>
         <Flex mt="4">
           <Text mt="1">
