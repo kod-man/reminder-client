@@ -84,7 +84,19 @@ const ProfileMenu = () => {
         </Flex>
 
         <Divider />
-        <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
+        <MenuItem
+          _hover={{
+            color: "black",
+            backgroundColor: "#f3f3f3",
+            display: "flex",
+            padding: "1 , 1",
+            marginLeft: "1",
+            marginTop: "1",
+            marginBottom: "2",
+            borderRadius: "5",
+            maxW: "96%",
+          }}
+        >
           <Flex justifyContent="flex-start" alignItems="center" mb={1}>
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
               <VscSymbolColor color="gray" />
@@ -96,7 +108,19 @@ const ProfileMenu = () => {
             </Box>
           </Flex>
         </MenuItem>
-        <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
+        <MenuItem
+          _hover={{
+            color: "black",
+            backgroundColor: "#f3f3f3",
+            display: "flex",
+            padding: "1 , 1",
+            marginLeft: "1",
+            marginTop: "1",
+            marginBottom: "2",
+            borderRadius: "5",
+            maxW: "96%",
+          }}
+        >
           <Flex justifyContent="flex-start" alignItems="center" mb={1}>
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
               <FiActivity color="gray" />
@@ -108,7 +132,19 @@ const ProfileMenu = () => {
             </Box>
           </Flex>
         </MenuItem>
-        <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
+        <MenuItem
+          _hover={{
+            color: "black",
+            backgroundColor: "#f3f3f3",
+            display: "flex",
+            padding: "1 , 1",
+            marginLeft: "1",
+            marginTop: "1",
+            marginBottom: "2",
+            borderRadius: "5",
+            maxW: "96%",
+          }}
+        >
           <Flex justifyContent="flex-start" alignItems="center" mb={1}>
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
               <AiOutlinePrinter color="gray" />
@@ -120,7 +156,19 @@ const ProfileMenu = () => {
             </Box>
           </Flex>
         </MenuItem>
-        <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
+        <MenuItem
+          _hover={{
+            color: "black",
+            backgroundColor: "#f3f3f3",
+            display: "flex",
+            padding: "1 , 1",
+            marginLeft: "1",
+            marginTop: "1",
+            marginBottom: "2",
+            borderRadius: "5",
+            maxW: "96%",
+          }}
+        >
           <Flex justifyContent="flex-start" alignItems="center" mr="2">
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
               <IoIosGitCompare color="gray" />
@@ -133,7 +181,19 @@ const ProfileMenu = () => {
           </Flex>
         </MenuItem>
         <Divider />
-        <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
+        <MenuItem
+          _hover={{
+            color: "black",
+            backgroundColor: "#f3f3f3",
+            display: "flex",
+            padding: "1 , 1",
+            marginLeft: "1",
+            marginTop: "1",
+            marginBottom: "2",
+            borderRadius: "5",
+            maxW: "96%",
+          }}
+        >
           <Flex justifyContent="flex-start" alignItems="center" mr="2">
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
               <AiOutlineStar color="#f4c771" />
@@ -145,7 +205,19 @@ const ProfileMenu = () => {
             </Box>
           </Flex>
         </MenuItem>
-        <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
+        <MenuItem
+          _hover={{
+            color: "black",
+            backgroundColor: "#f3f3f3",
+            display: "flex",
+            padding: "1 , 1",
+            marginLeft: "1",
+            marginTop: "1",
+            marginBottom: "2",
+            borderRadius: "5",
+            maxW: "96%",
+          }}
+        >
           <Flex justifyContent="flex-start" alignItems="center" mr="2">
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
               <BsPeople color="gray" />
@@ -157,7 +229,19 @@ const ProfileMenu = () => {
             </Box>
           </Flex>
         </MenuItem>
-        <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
+        <MenuItem
+          _hover={{
+            color: "black",
+            backgroundColor: "#f3f3f3",
+            display: "flex",
+            padding: "1 , 1",
+            marginLeft: "1",
+            marginTop: "1",
+            marginBottom: "2",
+            borderRadius: "5",
+            maxW: "96%",
+          }}
+        >
           <Flex justifyContent="flex-start" alignItems="center" mr="2">
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
               <BsDownload color="gray" />
@@ -169,7 +253,19 @@ const ProfileMenu = () => {
             </Box>
           </Flex>
         </MenuItem>
-        <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
+        <MenuItem
+          _hover={{
+            color: "black",
+            backgroundColor: "#f3f3f3",
+            display: "flex",
+            padding: "1 , 1",
+            marginLeft: "1",
+            marginTop: "1",
+            marginBottom: "1",
+            borderRadius: "5",
+            maxW: "96%",
+          }}
+        >
           <Flex justifyContent="flex-start" alignItems="center" mr="2">
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
               <BiExit color="gray" />
