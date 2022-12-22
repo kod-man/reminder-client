@@ -131,7 +131,6 @@ const ProfileMenu = () => {
               </Text>
             </Box>
           </Flex>
-          <Divider />
         </MenuItem>
         <Divider />
         <MenuItem _hover={{ color: "black", backgroundColor: "#f3f3f3" }}>
