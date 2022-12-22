@@ -11,7 +11,7 @@ function Header() {
   const formattedDate = date.toLocaleDateString("en-US", options);
 
   return (
-    <Flex w="100%">
+    <Flex w="75%">
       <Box mt="12" ml="32" p="4">
         <Flex>
           <Text as="b" fontSize="xl" mr="2">

@@ -3,9 +3,9 @@ import {
   Button,
   Flex,
   Spacer,
-  Link,
   Text,
   ButtonGroup,
+  Input,
 } from "@chakra-ui/react";
 import { AiFillFolderOpen } from "react-icons/ai";
 import { BsAlarm, BsFlag, BsPuzzle } from "react-icons/bs";
@@ -19,14 +19,14 @@ function Menu() {
       border="1px"
       borderColor="gray.300"
       h="124px"
-      w="75%"
+      w="56%"
       borderRadius="12"
     >
-      <Flex ml="3" mt="3" color="gray">
-        Görev ismi
+      <Flex ml="3" mt="3">
+        <Input variant="unstyled" placeholder="Görev ismi" />
       </Flex>
-      <Flex ml="3" mt="2" color="gray">
-        Açıklama
+      <Flex ml="3" mt="3">
+        <Input variant="unstyled" placeholder="Açıklama" />
       </Flex>
       <Flex ml="3" mt="2">
         <Box>
@@ -46,23 +46,25 @@ function Menu() {
         </Box>
         <Spacer />
         <Flex>
-          <Link mr="3">
-            <FaTicketAlt size="24" />
-          </Link>
-          <Link mr="3">
-            <BsFlag size="24" />
-          </Link>
-          <Link mr="3">
-            <BsAlarm size="24" />
-          </Link>
-          <Link mr="3">
-            <BsPuzzle size="24" />
-          </Link>
+          <Button mr="1" size="xs" variant="ghost">
+            <FaTicketAlt size="20" />
+          </Button>
+          <Button mr="1" size="xs" variant="ghost">
+            <BsFlag size="20" />
+          </Button>
+          <Button mr="1" size="xs" variant="ghost">
+            <BsAlarm size="20" />
+          </Button>
+          <Button mr="1" size="xs" variant="ghost">
+            <BsPuzzle size="20" />
+          </Button>
         </Flex>
       </Flex>
       <Flex justifyContent="flex-end" mt="10">
         <ButtonGroup variant="outline" spacing="3">
-          <Button backgroundColor="#F7FAFC">İptal</Button>
+          <Button pr="6" pl="6" backgroundColor="#F7FAFC">
+            İptal
+          </Button>
           <Button
             backgroundColor="red.200"
             color="white"

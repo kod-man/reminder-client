@@ -4,7 +4,7 @@ function Center() {
   return (
     <Flex
       mt="24"
-      w="100%"
+      w="75%"
       alignItems="flex-start"
       justifyContent="center"
       h="432px"

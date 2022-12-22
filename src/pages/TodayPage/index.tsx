@@ -7,7 +7,7 @@ import Menu from "./Components/Menu";
 
 function TodayPage() {
   return (
-    <Flex direction="column" alignItems="center">
+    <Flex direction="column" alignItems="center" w="100%">
       <Header />
       <Menu />
       <Center />
