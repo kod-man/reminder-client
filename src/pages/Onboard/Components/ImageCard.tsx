@@ -1,4 +1,4 @@
-import { Flex, Image, Text, Box } from "@chakra-ui/react";
+import { Flex, Image, Text, Box, useMediaQuery } from "@chakra-ui/react";
 
 type ImageCardProps = {
   src: string;
@@ -6,10 +6,11 @@ type ImageCardProps = {
 };
 
 function ImageCard({ src, text }: ImageCardProps) {
+  const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   return (
     <Flex
-      w="300px"
-      h="400px"
+      w={isLargerThan700 ? "180px" : "400px"}
+      h={isLargerThan700 ? "300px" : "100px"}
       border="1px"
       borderColor="gray.300"
       borderRadius="lg"
@@ -18,6 +19,7 @@ function ImageCard({ src, text }: ImageCardProps) {
       alignItems="center"
       position="relative"
       _hover={{ borderColor: "black" }}
+      mr="24px"
     >
       <Image boxSize="160px" objectFit="cover" src={src} alt="1" />
       <Text>{text}</Text>

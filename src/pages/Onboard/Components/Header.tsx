@@ -9,9 +9,9 @@ function Header() {
       </Box>
       <Spacer />
       <Box p="2" mt="30" mr="83">
-        <Point color="red.500" />
-        <Point color="red.100" />
-        <Point color="red.100" />
+        {[1, 2, 3].map((item) => (
+          <Point key={item} index={item} />
+        ))}
 
         <Button ml="5" variant="ghost" color="red.300">
           Atla
