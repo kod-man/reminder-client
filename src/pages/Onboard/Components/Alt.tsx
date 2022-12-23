@@ -1,9 +1,6 @@
 import { Button, Flex } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
-import { PATHS } from "../../../utils/paths";
 
-function Footer2() {
-  const navigate = useNavigate();
+function Alt() {
   return (
     <Flex
       alignItems="center"
@@ -19,7 +16,6 @@ function Footer2() {
         color="white"
         backgroundColor="red.500"
         mb="4"
-        onClick={() => navigate(PATHS.ONBOARD3)}
       >
         Devam Et
       </Button>
@@ -27,4 +23,4 @@ function Footer2() {
   );
 }
 
-export default Footer2;
+export default Alt;

@@ -3,6 +3,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
+import { StepProvider } from "./context/StepContext";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 
@@ -14,9 +15,11 @@ root.render(
   <React.StrictMode>
     <ColorModeScript />
     <ChakraProvider theme={theme}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <StepProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </StepProvider>
     </ChakraProvider>
   </React.StrictMode>
 );

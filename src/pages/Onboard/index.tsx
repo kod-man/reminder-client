@@ -1,12 +1,13 @@
 import Center from "./Components/Center";
 import Header from "./Components/Header";
-import Footer from "./Components/Footer";
+import Alt from "./Components/Alt";
+
 function Onboard() {
   return (
     <>
       <Header />
       <Center />
-      <Footer />
+      <Alt />
     </>
   );
 }
