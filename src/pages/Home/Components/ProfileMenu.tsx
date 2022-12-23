@@ -24,7 +24,7 @@ const dataProfileMenu = [
   { Icon: AiOutlinePrinter, text: "Integrations" },
   { Icon: AiOutlineStar, text: "Upgrade to Pro" },
   { Icon: IoIosGitCompare, text: "Upgarde to Business" },
-  { Icon: BsPeople, text: "download apps" },
+  { Icon: BsPeople, text: "Download apps" },
 ];
 
 const ProfileMenu = () => {
