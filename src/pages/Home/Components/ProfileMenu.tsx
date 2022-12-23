@@ -11,10 +11,21 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlinePrinter, AiOutlineStar } from "react-icons/ai";
 import { BiExit } from "react-icons/bi";
-import { BsDownload, BsPeople } from "react-icons/bs";
+import { BsPeople } from "react-icons/bs";
 import { FiActivity, FiSettings } from "react-icons/fi";
 import { IoIosGitCompare } from "react-icons/io";
 import { VscSymbolColor } from "react-icons/vsc";
+import ProfileCards from "./ProfileCards";
+
+const dataProfileMenu = [
+  { Icon: VscSymbolColor, text: "Theme" },
+  { Icon: FiActivity, text: "Activity Log" },
+  { Icon: AiOutlinePrinter, text: "Print" },
+  { Icon: AiOutlinePrinter, text: "Integrations" },
+  { Icon: AiOutlineStar, text: "Upgrade to Pro" },
+  { Icon: IoIosGitCompare, text: "Upgarde to Business" },
+  { Icon: BsPeople, text: "download apps" },
+];
 
 const ProfileMenu = () => {
   return (
@@ -82,181 +93,18 @@ const ProfileMenu = () => {
             </Flex>
           </Box>
         </Flex>
+        <Divider />
+
+        {dataProfileMenu.map((item) => (
+          <ProfileCards key={item.text} text={item.text} Icon={item.Icon} />
+        ))}
 
         <Divider />
         <MenuItem
           _hover={{
             color: "black",
-            backgroundColor: "#f3f3f3",
-            display: "flex",
-            padding: "1 , 1",
-            marginLeft: "1",
-            marginTop: "1",
-            marginBottom: "2",
-            borderRadius: "5",
-            maxW: "96%",
-          }}
-        >
-          <Flex justifyContent="flex-start" alignItems="center" mb={1}>
-            <Box h={4} w={4} mr="1" justifyContent="flex-start">
-              <VscSymbolColor color="gray" />
-            </Box>
-            <Box>
-              <Text fontSize="small" ml="2">
-                Theme
-              </Text>
-            </Box>
-          </Flex>
-        </MenuItem>
-        <MenuItem
-          _hover={{
-            color: "black",
-            backgroundColor: "#f3f3f3",
-            display: "flex",
-            padding: "1 , 1",
-            marginLeft: "1",
-            marginTop: "1",
-            marginBottom: "2",
-            borderRadius: "5",
-            maxW: "96%",
-          }}
-        >
-          <Flex justifyContent="flex-start" alignItems="center" mb={1}>
-            <Box h={4} w={4} mr="1" justifyContent="flex-start">
-              <FiActivity color="gray" />
-            </Box>
-            <Box>
-              <Text fontSize="small" ml="2">
-                Activity log
-              </Text>
-            </Box>
-          </Flex>
-        </MenuItem>
-        <MenuItem
-          _hover={{
-            color: "black",
-            backgroundColor: "#f3f3f3",
-            display: "flex",
-            padding: "1 , 1",
-            marginLeft: "1",
-            marginTop: "1",
-            marginBottom: "2",
-            borderRadius: "5",
-            maxW: "96%",
-          }}
-        >
-          <Flex justifyContent="flex-start" alignItems="center" mb={1}>
-            <Box h={4} w={4} mr="1" justifyContent="flex-start">
-              <AiOutlinePrinter color="gray" />
-            </Box>
-            <Box>
-              <Text fontSize="small" ml="2">
-                Print
-              </Text>
-            </Box>
-          </Flex>
-        </MenuItem>
-        <MenuItem
-          _hover={{
-            color: "black",
-            backgroundColor: "#f3f3f3",
-            display: "flex",
-            padding: "1 , 1",
-            marginLeft: "1",
-            marginTop: "1",
-            marginBottom: "2",
-            borderRadius: "5",
-            maxW: "96%",
-          }}
-        >
-          <Flex justifyContent="flex-start" alignItems="center" mr="2">
-            <Box h={4} w={4} mr="1" justifyContent="flex-start">
-              <IoIosGitCompare color="gray" />
-            </Box>
-            <Box>
-              <Text fontSize="small" ml="2">
-                Integrations
-              </Text>
-            </Box>
-          </Flex>
-        </MenuItem>
-        <Divider />
-        <MenuItem
-          _hover={{
-            color: "black",
-            backgroundColor: "#f3f3f3",
-            display: "flex",
-            padding: "1 , 1",
-            marginLeft: "1",
-            marginTop: "1",
-            marginBottom: "2",
-            borderRadius: "5",
-            maxW: "96%",
-          }}
-        >
-          <Flex justifyContent="flex-start" alignItems="center" mr="2">
-            <Box h={4} w={4} mr="1" justifyContent="flex-start">
-              <AiOutlineStar color="#f4c771" />
-            </Box>
-            <Box>
-              <Text fontSize="small" ml="2">
-                Upgrade to Pro
-              </Text>
-            </Box>
-          </Flex>
-        </MenuItem>
-        <MenuItem
-          _hover={{
-            color: "black",
-            backgroundColor: "#f3f3f3",
-            display: "flex",
-            padding: "1 , 1",
-            marginLeft: "1",
-            marginTop: "1",
-            marginBottom: "2",
-            borderRadius: "5",
-            maxW: "96%",
-          }}
-        >
-          <Flex justifyContent="flex-start" alignItems="center" mr="2">
-            <Box h={4} w={4} mr="1" justifyContent="flex-start">
-              <BsPeople color="gray" />
-            </Box>
-            <Box>
-              <Text fontSize="small" ml="2">
-                Upgrade to Business
-              </Text>
-            </Box>
-          </Flex>
-        </MenuItem>
-        <MenuItem
-          _hover={{
-            color: "black",
-            backgroundColor: "#f3f3f3",
-            display: "flex",
-            padding: "1 , 1",
-            marginLeft: "1",
-            marginTop: "1",
-            marginBottom: "2",
-            borderRadius: "5",
-            maxW: "96%",
-          }}
-        >
-          <Flex justifyContent="flex-start" alignItems="center" mr="2">
-            <Box h={4} w={4} mr="1" justifyContent="flex-start">
-              <BsDownload color="gray" />
-            </Box>
-            <Box>
-              <Text fontSize="small" ml="2">
-                Download Apps
-              </Text>
-            </Box>
-          </Flex>
-        </MenuItem>
-        <MenuItem
-          _hover={{
-            color: "black",
-            backgroundColor: "#f3f3f3",
+            backgroundColor: "tomato",
+            textColor: "white",
             display: "flex",
             padding: "1 , 1",
             marginLeft: "1",
@@ -266,7 +114,7 @@ const ProfileMenu = () => {
             maxW: "96%",
           }}
         >
-          <Flex justifyContent="flex-start" alignItems="center" mr="2">
+          <Flex justifyContent="flex-start" alignItems="center" mr="2" ml="25%">
             <Box h={4} w={4} mr="1" justifyContent="flex-start">
               <BiExit color="gray" />
             </Box>
