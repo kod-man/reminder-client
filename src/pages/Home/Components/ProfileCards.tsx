@@ -15,9 +15,7 @@ const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
         backgroundColor: "#f3f3f3",
         display: "flex",
         padding: "1",
-        marginLeft: "1",
-        marginTop: "1",
-        marginBottom: "2",
+        margin: "1, 0, 2,  1",
         borderRadius: "5",
         maxW: "95%",
       }}
