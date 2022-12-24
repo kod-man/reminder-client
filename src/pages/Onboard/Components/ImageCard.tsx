@@ -9,20 +9,36 @@ function ImageCard({ src, text }: ImageCardProps) {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   return (
     <Flex
-      w={isLargerThan700 ? "180px" : "400px"}
-      h={isLargerThan700 ? "300px" : "100px"}
+      w={isLargerThan700 ? "264px" : "100%"}
+      h={isLargerThan700 ? "342px" : "140px"}
       border="1px"
       borderColor="gray.300"
       borderRadius="lg"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
+      flexDirection={isLargerThan700 ? "column" : "row"}
+      justifyContent={isLargerThan700 ? "center" : "start"}
+      alignItems={isLargerThan700 ? "center" : "center"}
       position="relative"
       _hover={{ borderColor: "black" }}
-      mr="24px"
+      mr={isLargerThan700 ? "32px" : "32px"}
+      mb={isLargerThan700 ? "0px" : "24px"}
+      p={isLargerThan700 ? "0" : "8"}
     >
-      <Image boxSize="160px" objectFit="cover" src={src} alt="1" />
-      <Text>{text}</Text>
+      <Image
+        src={src}
+        boxSize={isLargerThan700 ? "120px" : "116px"}
+        objectFit="cover"
+        alt="1"
+        display="flex"
+        // ml={isLargerThan700 ? "0px" : "20px"}
+      />
+
+      <Text
+        as="b"
+        ml={isLargerThan700 ? "0px" : "50px"}
+        mt={isLargerThan700 ? "10px" : "0px"}
+      >
+        {text}
+      </Text>
       <Box
         position="absolute"
         top="10px"
