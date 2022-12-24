@@ -14,7 +14,7 @@ const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
         color: "black",
         backgroundColor: "#f3f3f3",
         display: "flex",
-        padding: "1 , 1",
+        padding: "1",
         marginLeft: "1",
         marginTop: "1",
         marginBottom: "2",
@@ -26,11 +26,9 @@ const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
         <Box h={4} w={4} mr="1" justifyContent="flex-start">
           <Icon color="gray" />
         </Box>
-        <Box>
-          <Text fontSize="small" ml="2">
-            {text}
-          </Text>
-        </Box>
+        <Text fontSize="small" ml="2">
+          {text}
+        </Text>
       </Flex>
     </MenuItem>
   );
