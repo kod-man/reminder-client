@@ -126,8 +126,9 @@ function Center() {
             width="90px"
             border="2px"
             color="white"
-            backgroundColor="red.500"
+            backgroundColor="red.200"
             mb="4"
+            _hover={{ cursor: "not-allowed" }}
           >
             Devam Et
           </Button>

@@ -1,25 +1,11 @@
-import {
-  Button,
-  Flex,
-  Input,
-  Link,
-  Text,
-  useMediaQuery,
-} from "@chakra-ui/react";
-import React from "react";
+import { Button, Flex, Input, Text, useMediaQuery } from "@chakra-ui/react";
 
 function Card3() {
   const [isLargerThan700] = useMediaQuery("(min-width: 700px)");
   return (
     <>
-      <Flex
-        border="1px solid blue"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <Flex flexDirection="column" alignItems="center" justifyContent="center">
         <Flex
-          border="1px solid red"
           alignItems="center"
           justifyContent="center"
           h="28"
@@ -47,9 +33,9 @@ function Card3() {
           </Flex>
         </Flex>
         <Flex
+          border="1px solid red"
           w={isLargerThan700 ? "264px" : "100%"}
           h="404px"
-          border="1px"
           borderColor="gray.300"
           borderRadius="lg"
           flexDirection="column"
@@ -92,6 +78,8 @@ function Card3() {
         </Flex>
       </Flex>
       <Button
+        justifyContent="center"
+        alignItems="center"
         size="inherit"
         height="36px"
         width="140px"
@@ -99,6 +87,8 @@ function Card3() {
         color="white"
         backgroundColor="red.200"
         mt="10"
+        ml={isLargerThan700 ? "0px" : "172px"}
+        _hover={{ cursor: "not-allowed" }}
       >
         Todoist'i başlat
       </Button>
