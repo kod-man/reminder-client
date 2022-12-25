@@ -97,7 +97,7 @@ const ProfileMenu = () => {
         ))}
 
         <Divider />
-        <ProfileCards text={"Logout"} Icon={FiSettings} />
+        <ProfileCards text="Logout" Icon={FiSettings} />
       </MenuList>
     </Menu>
   );
