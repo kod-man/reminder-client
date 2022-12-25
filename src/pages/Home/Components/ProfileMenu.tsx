@@ -74,7 +74,9 @@ const ProfileMenu = () => {
                   <Text as="b" fontSize="sm">
                     Murat Can
                   </Text>
-                  <Text fontSize="xs">muratal0606@gmail.com</Text>
+                  <Text fontSize="xs" color="grey">
+                    muratal0606@gmail.com
+                  </Text>
                 </Flex>
               </VStack>
             </Flex>
