@@ -4,7 +4,7 @@ import { AiOutlineMenu, AiOutlinePlus } from "react-icons/ai";
 function Header() {
   const date = new Date();
   const options = { weekday: "short", day: "numeric", month: "short" };
-  const today = date.toLocaleDateString("en-US", options);
+  const today = date.toLocaleDateString("en-US");
   return (
     <Flex w="100%">
       <Box mt="12" ml="32" p="4">
