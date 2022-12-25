@@ -13,11 +13,6 @@ const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
       _hover={{
         color: "black",
         backgroundColor: "#f3f3f3",
-        display: "flex",
-        padding: "1",
-        margin: "1, 0, 2,  1",
-        borderRadius: "5",
-        maxW: "95%",
       }}
     >
       <Flex justifyContent="flex-start" alignItems="center" mb={1}>
