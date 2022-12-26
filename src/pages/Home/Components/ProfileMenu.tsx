@@ -12,6 +12,7 @@ import { AiOutlinePrinter, AiOutlineStar } from "react-icons/ai";
 import { BsPeople } from "react-icons/bs";
 import { FiActivity, FiSettings } from "react-icons/fi";
 import { IoIosGitCompare } from "react-icons/io";
+import { BiGitCompare } from "react-icons/bi";
 import { VscSymbolColor } from "react-icons/vsc";
 import ProfileCards from "./ProfileCards";
 
@@ -19,7 +20,7 @@ const dataProfileMenu = [
   { Icon: VscSymbolColor, text: "Theme" },
   { Icon: FiActivity, text: "Activity Log" },
   { Icon: AiOutlinePrinter, text: "Print" },
-  { Icon: AiOutlinePrinter, text: "Integrations" },
+  { Icon: BiGitCompare, text: "Integrations" },
   { Icon: AiOutlineStar, text: "Upgrade to Pro" },
   { Icon: IoIosGitCompare, text: "Upgarde to Business" },
   { Icon: BsPeople, text: "Download apps" },
