@@ -1,6 +1,9 @@
 import { Button, Flex, Input, Text } from "@chakra-ui/react";
+import { useState } from "react";
 
 function OnboardingCard() {
+  const [name, setName] = useState("");
+
   return (
     <>
       <Flex flexDirection="column" alignItems="center" justifyContent="center">
@@ -51,6 +54,8 @@ function OnboardingCard() {
           </Button>
           <Flex mt="6">
             <Input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               _focusVisible={{ boxShadow: "none", outline: "none" }}
               _placeholder={{
                 opacity: 1,
@@ -62,6 +67,7 @@ function OnboardingCard() {
           </Flex>
         </Flex>
         <Button
+          disabled={!name.trim() || name.length < 1}
           justifyContent="center"
           alignItems="center"
           size="inherit"
@@ -69,9 +75,8 @@ function OnboardingCard() {
           width="140px"
           border="2px"
           color="white"
-          backgroundColor="red.200"
+          backgroundColor="red"
           mt="10"
-          _hover={{ cursor: "not-allowed" }}
         >
           Todoist'i başlat
         </Button>
