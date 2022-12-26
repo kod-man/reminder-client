@@ -3,6 +3,13 @@ import { useState } from "react";
 
 function Card3() {
   const [name, setName] = useState("");
+  const [selectedImage, setSelectedImage] = useState("");
+  const imageChange = (e: any) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setSelectedImage(e.target.files[0]);
+    }
+  };
+  console.log(selectedImage);
 
   return (
     <>
@@ -73,7 +80,10 @@ function Card3() {
                 placeholder="İsmini ekle"
                 size="xs"
                 id="upload_image"
+                accept="image/png"
+                onChange={imageChange}
               />
+
               <Flex
                 border="1px"
                 borderColor="#EDF2F7"
