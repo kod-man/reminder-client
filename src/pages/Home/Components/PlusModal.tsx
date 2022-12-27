@@ -8,34 +8,29 @@ import {
   ModalFooter,
   ModalOverlay,
   Text,
+  Tooltip,
   useDisclosure,
 } from "@chakra-ui/react";
-import { BiGitCompare } from "react-icons/bi";
 import { BsAlarm, BsFlag, BsInboxFill, BsPlus } from "react-icons/bs";
 import { MdLabelOutline, MdToday } from "react-icons/md";
+import ModalCard from "./ModalCard";
 
-const dataModalLeft = [
-  {
-    Icon: BiGitCompare,
-    text: "Today",
-  },
-  {
-    Icon: BsInboxFill,
-    text: "Inbox",
-  },
-];
-const dataModaRight = [
+const dataGrayIcon = [
   {
     Icon: MdLabelOutline,
+    text: "Add label(s) @",
   },
   {
     Icon: BsFlag,
+    text: "Set the priority  p1, p2, p3, p4",
   },
   {
     Icon: BsAlarm,
+    text: "Add reminder(s)",
   },
   {
     Icon: MdToday,
+    text: "insert from integration",
   },
 ];
 const PlusModal = () => {
@@ -63,7 +58,6 @@ const PlusModal = () => {
               placeholder="Task name"
               border="none"
               fontSize="xl"
-              fontFamily="initial"
               textColor="#2b2b2b"
               variant="unstyled"
             />
@@ -80,25 +74,31 @@ const PlusModal = () => {
                   Today
                 </Text>
               </Button>
-              <Button color="blue" size="sm" ml={2}>
-                <BsInboxFill />
-                <Text ml={1} fontSize="xs">
-                  Inbox
-                </Text>
-              </Button>
+
+              <Tooltip
+                hasArrow
+                label="Select a project #"
+                bg="black"
+                color="white"
+                borderRadius="5"
+                placement="top-start"
+              >
+                <Button color="blue" size="sm" ml={2}>
+                  <BsInboxFill />
+                  <Text ml={1} fontSize="xs">
+                    Inbox
+                  </Text>
+                </Button>
+              </Tooltip>
+
               <Flex ml={14}>
-                <Button color="gray" size="sm" ml={2}>
-                  <MdLabelOutline />
-                </Button>
-                <Button color="gray" size="sm" ml={2}>
-                  <BsFlag />
-                </Button>
-                <Button color="gray" size="sm" ml={2}>
-                  <BsAlarm />
-                </Button>
-                <Button color="gray" size="sm" ml={2}>
-                  <BiGitCompare />
-                </Button>
+                {dataGrayIcon.map((item) => (
+                  <ModalCard
+                    key={item.text}
+                    Icon={item.Icon}
+                    text={item.text}
+                  />
+                ))}
               </Flex>
             </Flex>
           </ModalBody>
