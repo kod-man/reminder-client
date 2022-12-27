@@ -1,15 +1,29 @@
-import { Button, Flex, FormLabel, Input, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { Button, Flex, FormLabel, Image, Input, Text } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 
 function Card3() {
   const [name, setName] = useState("");
-  const [selectedImage, setSelectedImage] = useState("");
-  const imageChange = (e: any) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState("");
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview("");
+      return;
     }
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e: any) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+
+    setSelectedFile(e.target.files[0]);
   };
-  console.log(selectedImage);
 
   return (
     <>
@@ -34,21 +48,21 @@ function Card3() {
           w="30%"
           minW="200px"
           h="404px"
-          borderColor="gray.200"
+          borderColor="blue"
           borderRadius="lg"
           flexDirection="column"
           justifyContent="start"
           alignItems="center"
         >
           <Flex
-            as="b"
+            border="1px solid red"
             fontSize="lg"
             mt="6"
             flexDirection="column"
             justifyContent="start"
             alignItems="center"
           >
-            <Flex>Profilin</Flex>
+            <Text as="b">Profilin</Text>
             <FormLabel htmlFor="upload_image">
               <Flex
                 w="180px"
@@ -62,10 +76,20 @@ function Card3() {
                 fontSize="100"
                 typeof="button"
                 flexDirection="column"
-                ml="3"
+                // ml="3"
                 cursor="pointer"
               >
-                N
+                {preview ? (
+                  <Image
+                    w="180px"
+                    h="180px"
+                    objectFit="cover"
+                    borderRadius="full"
+                    src={preview}
+                  />
+                ) : (
+                  "N"
+                )}
               </Flex>
               <Input
                 color="white"
@@ -80,8 +104,8 @@ function Card3() {
                 placeholder="İsmini ekle"
                 size="xs"
                 id="upload_image"
-                accept="image/png"
-                onChange={imageChange}
+                accept="image/png, image/jpg, image/jpeg"
+                onChange={onSelectFile}
               />
 
               <Flex
@@ -94,11 +118,12 @@ function Card3() {
                 w="130px"
                 h="32px"
                 alignItems="center"
-                ml="10"
+                // ml="10"
                 cursor="pointer"
               >
-                Fotoğraf yükle
+                {preview ? "Fotoğraf değiştir" : "Fotoğraf yükle"}
               </Flex>
+
               <Flex mt="6">
                 <Input
                   value={name}
