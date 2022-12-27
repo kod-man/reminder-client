@@ -52,10 +52,15 @@ const PlusModal = () => {
         borderRadius="20%"
         padding={1}
       >
-        <BsPlus color="white" size="23px" />
+        <BsPlus color="white" size="30px" />
       </Flex>
 
-      <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+      <Modal
+        closeOnOverlayClick={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        size="xl"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalBody pb={3}>
@@ -96,7 +101,6 @@ const PlusModal = () => {
                   </Text>
                 </Button>
               </Tooltip>
-
               <Flex ml={14}>
                 {dataGrayIcon.map((item) => (
                   <ModalCard
@@ -108,7 +112,6 @@ const PlusModal = () => {
               </Flex>
             </Flex>
           </ModalBody>
-
           <ModalFooter>
             <Button onClick={onClose} size="sm">
               Cancel
