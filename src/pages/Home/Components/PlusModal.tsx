@@ -11,6 +11,7 @@ import {
   Tooltip,
   useDisclosure,
 } from "@chakra-ui/react";
+import React from "react";
 import { BsAlarm, BsFlag, BsInboxFill, BsPlus } from "react-icons/bs";
 import { MdLabelOutline, MdToday } from "react-icons/md";
 import ModalCard from "./ModalCard";
@@ -35,7 +36,11 @@ const dataGrayIcon = [
 ];
 const PlusModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [disabled, setDisabled] = React.useState(true);
 
+  const onChangeTask = (e: React.FormEvent<HTMLInputElement>) => {
+    setDisabled(false);
+  };
   return (
     <>
       <Flex
@@ -60,6 +65,7 @@ const PlusModal = () => {
               fontSize="xl"
               textColor="#2b2b2b"
               variant="unstyled"
+              onChange={onChangeTask}
             />
             <Input
               placeholder="Description"
@@ -107,7 +113,7 @@ const PlusModal = () => {
             <Button onClick={onClose} size="sm">
               Cancel
             </Button>
-            <Button colorScheme="red" ml={2} size="sm" disabled>
+            <Button colorScheme="red" ml={2} size="sm" disabled={disabled}>
               Add task
             </Button>
           </ModalFooter>
