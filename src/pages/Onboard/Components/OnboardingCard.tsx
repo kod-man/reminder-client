@@ -1,13 +1,14 @@
-import { Button, Flex, FormLabel, Image, Input, Text } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Button, Flex, FormLabel, Image, Input, Text } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import Header from './Header';
 
-function Card3() {
-  const [name, setName] = useState("");
+function OnboardingCard() {
+  const [name, setName] = useState('');
   const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState("");
+  const [preview, setPreview] = useState('');
   useEffect(() => {
     if (!selectedFile) {
-      setPreview("");
+      setPreview('');
       return;
     }
     const objectUrl = URL.createObjectURL(selectedFile);
@@ -27,20 +28,8 @@ function Card3() {
 
   return (
     <>
-      <Flex flexDirection="column" alignItems="center" justifyContent="center">
-        <Flex
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Text fontSize="lg" color="gray.500">
-            Daha düzenli olma yolunda ilk adımı attığın için tebrik ederiz.
-          </Text>
-          <Text fontSize="lg" color="gray.500">
-            Sana özel Todoist'in kullanıma hazır.
-          </Text>
-        </Flex>
-
+      <Header />
+      <Flex flexDirection="column" justifyContent="center" alignItems="center">
         <Flex
           border="1px"
           mt="10"
@@ -51,11 +40,10 @@ function Card3() {
           borderColor="gray.200"
           borderRadius="lg"
           flexDirection="column"
-          justifyContent=""
+          justifyContent="center"
           alignItems="center"
-          textAlign="center"
         >
-          <Text as="b" mt="8" fontSize="large">
+          <Text as="b" mt="8" fontSize="lg">
             Profilin
           </Text>
 
@@ -74,15 +62,9 @@ function Card3() {
             cursor="pointer"
           >
             {preview ? (
-              <Image
-                w="180px"
-                h="180px"
-                objectFit="cover"
-                borderRadius="full"
-                src={preview}
-              />
+              <Image w="180px" h="180px" objectFit="contain" borderRadius="full" src={preview} />
             ) : (
-              "N"
+              'N'
             )}
           </Flex>
           <FormLabel
@@ -113,38 +95,35 @@ function Card3() {
               cursor="pointer"
               w="130px"
             >
-              {preview ? "Fotoğraf değiştir" : "Fotoğraf yükle"}
+              {preview ? 'Fotoğraf değiştir' : 'Fotoğraf yükle'}
             </Flex>
           </FormLabel>
           <Flex mt="6">
             <Input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              _focusVisible={{ boxShadow: "none", outline: "none" }}
+              _focusVisible={{ boxShadow: 'none', outline: 'none' }}
               w="48"
               _placeholder={{
                 opacity: 1,
-                textAlign: "center",
+                textAlign: 'center',
               }}
               type="text"
               placeholder="İsmini ekle"
-              size="md"
               mb="8"
             />
           </Flex>
         </Flex>
         <Button
-          disabled={!name.trim() || name.length < 1}
+          disabled={!name.trim()}
           justifyContent="center"
           alignItems="center"
-          size="inherit"
           height="36px"
           width="140px"
-          border="2px"
           color="white"
           backgroundColor="red.400"
           mt="10"
-          _hover={{ bg: "#C53030" }}
+          _hover={{ bg: '#C53030' }}
         >
           Todoist'i başlat
         </Button>
@@ -153,4 +132,4 @@ function Card3() {
   );
 }
 
-export default Card3;
+export default OnboardingCard;
