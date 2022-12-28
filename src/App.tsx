@@ -4,7 +4,7 @@ import HomePage from './pages/Home';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import Onboard from './pages/Onboard';
 import RegisterAndLogin from './pages/RegisterAndLogin';
-import TodayPage from './pages/TodayPage';
+import TodayPage from './pages/TodayPage/Components';
 import { PATHS } from './utils/paths';
 
 export const App = () => {
