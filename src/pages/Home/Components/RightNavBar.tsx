@@ -1,5 +1,7 @@
 import { Flex, HStack } from "@chakra-ui/react";
-import { BsBell, BsPlus } from "react-icons/bs";
+import { BsBell } from "react-icons/bs";
+import PlusModal from "./PlusModal";
+import ProfileMenu from "./ProfileMenu";
 
 const RightNavBar = () => {
   return (
@@ -12,14 +14,7 @@ const RightNavBar = () => {
       height="100%"
       spacing={4}
     >
-      <Flex
-        _hover={{ bg: "#e27065" }}
-        cursor="pointer"
-        borderRadius="20%"
-        padding={1}
-      >
-        <BsPlus color="white" size="23px" />
-      </Flex>
+      <PlusModal />
       <Flex
         _hover={{ bg: "#e27065" }}
         cursor="pointer"
@@ -28,22 +23,7 @@ const RightNavBar = () => {
       >
         <BsBell color="white" size="20px" />
       </Flex>
-      <Flex
-        _hover={{ bg: "gray.100" }}
-        cursor="pointer"
-        padding={1}
-        w={7}
-        h={7}
-        border="1px solid white"
-        fontSize="xs"
-        color="green"
-        alignItems="center"
-        justifyContent="center"
-        backgroundColor="white"
-        borderRadius="50%"
-      >
-        MC
-      </Flex>
+      <ProfileMenu />
     </HStack>
   );
 };

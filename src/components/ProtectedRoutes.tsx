@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { PATHS } from "../utils/paths";
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { PATHS } from '../utils/paths';
 
 type ProtectedRoutesProps = {
   token: string | null;
@@ -9,7 +9,6 @@ type ProtectedRoutesProps = {
 
 function ProtectedRoutes({ children, token }: ProtectedRoutesProps) {
   const navigate = useNavigate();
-  console.log("token", token);
 
   useEffect(() => {
     if (!token) {
