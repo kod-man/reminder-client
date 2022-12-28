@@ -10,7 +10,7 @@ function Header() {
   const today = date.toLocaleDateString("en-US");
   return (
     <>
-      <Flex w="100%">
+      <Flex w="100%" border="1px solid blue">
         <Box mt="12" ml="32" p="4">
           <Flex>
             <Text as="b" fontSize="xl" mr="2">
@@ -22,7 +22,7 @@ function Header() {
           </Flex>
           {!isAddTaskOpen && (
             <Flex mt="4">
-              <Text mt="1">
+              <Text mt="1" onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}>
                 <AiOutlinePlus color="red" />
               </Text>
               {/* button a a her tikladiginda state i degistir, false ise true, true ise false yap */}
@@ -66,10 +66,10 @@ function Header() {
         )}
         {/* Burada Center dedigimiz component sadece gorev ekleme menusu aktif degilken gozukecek  */}
         {!isAddTaskOpen && (
-          <Box m="4" p="4" mt="12" mr="32">
+          <Flex alignItems="center" direction="column">
             <Center />
             <Footer />
-          </Box>
+          </Flex>
         )}
       </Flex>
     </>
