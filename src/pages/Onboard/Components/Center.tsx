@@ -4,7 +4,7 @@ import OnboardingCard from './OnboardingCard';
 
 function Center() {
   return (
-    <Flex flexDirection="column" justifyContent="center" h="100%" mb="40">
+    <Flex flexDirection="column" justifyContent="center" mb="40">
       <OnboardingCard />
     </Flex>
   );
