@@ -169,8 +169,9 @@ function Header() {
               </Button>
               <Button
                 color="white"
-                bg={!taskName ? "red.300" : "red"}
+                bg={!taskName ? "red.300" : "red.500"}
                 disabled={!taskName.trim() || taskName.length < 1}
+                _hover={!taskName ? { bg: "" } : { bg: "red.700" }}
               >
                 Görev ekle
               </Button>
