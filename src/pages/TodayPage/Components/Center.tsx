@@ -1,6 +1,6 @@
 import { Flex, Img, Text } from "@chakra-ui/react";
 
-function Center() {
+function Centere() {
   return (
     <Flex
       mt="4"
@@ -16,7 +16,7 @@ function Center() {
         alignItems="center"
         w="380px"
       >
-        <Img src="https://d3ptyyxy2at9ui.cloudfront.net/assets/images/d7c6fac19c896959feaaffd6472ca7a0.jpg"></Img>
+        <Img src="https://d3ptyyxy2at9ui.cloudfront.net/assets/images/d7c6fac19c896959feaaffd6472ca7a0.jpg" />
         <Text as="b" fontSize="lg" mb="2">
           Bugün neler yapman gerekiyor?
         </Text>
@@ -28,4 +28,4 @@ function Center() {
   );
 }
 
-export default Center;
+export default Centere;
