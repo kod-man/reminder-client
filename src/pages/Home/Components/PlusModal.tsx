@@ -39,16 +39,21 @@ const PlusModal = () => {
   const [disabled, setDisabled] = React.useState(true);
 
   const usersId = localStorage.getItem("userId");
-  
+  const[Tasktitle, setTasktitle]=React.useState({
+    Tasktitle:"",
+  })
+ 
 
-  const onChangeTaskName = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+  const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setTasktitle((prev) => ({ ...prev,value }));
+    
     setDisabled(false);
   };
 
-const userData = [
+  const userData = [
     {
-      title: "",
+      title: Tasktitle,
       priority: "", // O
       description: "", //O
       date: "", //O
@@ -56,6 +61,9 @@ const userData = [
     },
   ];
 
+  const seeData = () => {
+    console.log(userData);
+  };
 
   return (
     <>
@@ -132,7 +140,13 @@ const userData = [
             <Button onClick={onClose} size="sm">
               Cancel
             </Button>
-            <Button colorScheme="red" ml={2} size="sm" disabled={disabled}>
+            <Button
+              colorScheme="red"
+              ml={2}
+              size="sm"
+              disabled={disabled}
+              onClick={seeData}
+            >
               Add task
             </Button>
           </ModalFooter>
