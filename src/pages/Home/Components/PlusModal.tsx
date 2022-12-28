@@ -38,9 +38,25 @@ const PlusModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [disabled, setDisabled] = React.useState(true);
 
-  const onChangeTask = (e: React.FormEvent<HTMLInputElement>) => {
+  const usersId = localStorage.getItem("userId");
+  
+
+  const onChangeTaskName = (e: React.FormEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
     setDisabled(false);
   };
+
+const userData = [
+    {
+      title: "",
+      priority: "", // O
+      description: "", //O
+      date: "", //O
+      userId: usersId,
+    },
+  ];
+
+
   return (
     <>
       <Flex
@@ -70,7 +86,7 @@ const PlusModal = () => {
               fontSize="xl"
               textColor="#2b2b2b"
               variant="unstyled"
-              onChange={onChangeTask}
+              onChange={onChangeTaskName}
             />
             <Input
               placeholder="Description"
