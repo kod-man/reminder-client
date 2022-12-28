@@ -10,6 +10,7 @@ import Center from "./Center";
 import Footer from "./Footer";
 function Header() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
+  const [taskName, setTaskName] = useState("");
   const date = new Date();
   const options = { weekday: "short", day: "numeric", month: "short" };
   const today = date.toLocaleDateString("en-US");
@@ -85,6 +86,8 @@ function Header() {
               >
                 <Box w="200px">
                   <Input
+                    value={taskName}
+                    onChange={(e) => setTaskName(e.target.value)}
                     ml="3"
                     mt="3"
                     variant="unstyled"
@@ -161,8 +164,14 @@ function Header() {
               </Flex>
             </Box>
             <Flex justifyContent="flex-end" mt="3">
-              <Button mr="4">İptal</Button>
-              <Button color="white" bg="red.200">
+              <Button mr="4" onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}>
+                İptal
+              </Button>
+              <Button
+                color="white"
+                bg={!taskName ? "red.300" : "red"}
+                disabled={!taskName.trim() || taskName.length < 1}
+              >
                 Görev ekle
               </Button>
             </Flex>
