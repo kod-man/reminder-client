@@ -80,7 +80,7 @@ function CreateReminder() {
                   placeholder='Açıklama'
                   _placeholder={{ opacity: 1, color: "gray.500" }}
                 />
-                <Flex direction='row' ml='3' mt='2'>
+                <Flex ml='3' mt='2'>
                   <Flex
                     border='1px'
                     borderColor='gray.300'
@@ -100,7 +100,6 @@ function CreateReminder() {
                   </Flex>
                   <Flex
                     color='blue.400'
-                    flexDirection='row'
                     border='1px'
                     borderColor='gray.300'
                     borderRadius='md'
