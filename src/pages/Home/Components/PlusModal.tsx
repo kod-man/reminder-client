@@ -23,7 +23,7 @@ const dataGrayIcon = [
   },
   {
     Icon: BsFlag,
-    text: "Set the priority  Low(-), Medium(*), High(+)",
+    text: "Set the priority  Low, Medium, High",
   },
   {
     Icon: BsAlarm,
@@ -36,30 +36,22 @@ const dataGrayIcon = [
 ];
 const PlusModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [disabled, setDisabled] = React.useState(true);
-
   const usersId = localStorage.getItem("userId");
-  const [tasktitle, setTasktitle] = React.useState("");
+  const [title, setTitle] = React.useState("");
 
   const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTasktitle(e.target.value);
-
-    setDisabled(false);
+    setTitle(e.target.value.trim());
   };
 
-  const userData = [
-    {
-      title: tasktitle,
-      priority: "", // O
-      description: "", //O
-      date: "", //O
-      userId: usersId,
-    },
-  ];
-
+  const userData = {
+    title,
+    priority: "", // O
+    description: "", //O
+    date: "", //O
+    usersId,
+  };
   const seeData = () => {
     console.log(userData);
-    console.log(tasktitle.length);
   };
 
   return (
@@ -122,7 +114,7 @@ const PlusModal = () => {
                   </Text>
                 </Button>
               </Tooltip>
-              <Flex ml={14}>
+              <Flex ml="auto">
                 {dataGrayIcon.map((item) => (
                   <ModalCard
                     key={item.text}
@@ -141,7 +133,7 @@ const PlusModal = () => {
               colorScheme="red"
               ml={2}
               size="sm"
-              disabled={disabled}
+              disabled={!title.trim()}
               onClick={seeData}
             >
               Add task
