@@ -44,9 +44,6 @@ const PlusModal = () => {
   const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTasktitle(e.target.value);
 
-    if (tasktitle.length === 0) {
-      setDisabled(true);
-    }
     setDisabled(false);
   };
 
