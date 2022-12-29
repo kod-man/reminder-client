@@ -23,7 +23,7 @@ const dataGrayIcon = [
   },
   {
     Icon: BsFlag,
-    text: "Set the priority  p1, p2, p3, p4",
+    text: "Set the priority  Low(-), Medium(*), High(+)",
   },
   {
     Icon: BsAlarm,
@@ -39,21 +39,20 @@ const PlusModal = () => {
   const [disabled, setDisabled] = React.useState(true);
 
   const usersId = localStorage.getItem("userId");
-  const[Tasktitle, setTasktitle]=React.useState({
-    Tasktitle:"",
-  })
- 
+  const [tasktitle, setTasktitle] = React.useState("");
 
   const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setTasktitle((prev) => ({ ...prev,value }));
-    
+    setTasktitle(e.target.value);
+
+    if (tasktitle.length === 0) {
+      setDisabled(true);
+    }
     setDisabled(false);
   };
 
   const userData = [
     {
-      title: Tasktitle,
+      title: tasktitle,
       priority: "", // O
       description: "", //O
       date: "", //O
@@ -63,6 +62,7 @@ const PlusModal = () => {
 
   const seeData = () => {
     console.log(userData);
+    console.log(tasktitle.length);
   };
 
   return (
