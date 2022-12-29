@@ -23,7 +23,7 @@ function Header() {
         </Flex>
       </Box>
       <Spacer />
-      <Box mt='12'>
+      <Box mt='12' _hover={{ bg: "gray.100" }} cursor='pointer'>
         <Flex>
           <Text mt='1'>
             <AiOutlineMenu color='gray' />

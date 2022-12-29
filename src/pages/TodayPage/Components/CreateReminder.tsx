@@ -26,33 +26,28 @@ function CreateReminder() {
             w={isLargerThan800 ? "60%" : "80%"}
             mt='2'
             alignItems='center'
-            _hover={{ color: "red" }}
             cursor='pointer'
           >
             <Text
               _hover={{ bg: "red", color: "white" }}
               onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
               borderRadius='100%'
-              bg='white'
               color='red'
             >
               <AiOutlinePlusCircle />
             </Text>
-            {/* button a a her tikladiginda state i degistir, false ise true, true ise false yap */}
-
-            <Text
+            <Flex
               color='gray'
               ml='2'
+              _hover={{ color: "red" }}
               onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
             >
               Görev Ekle
-            </Text>
+            </Flex>
           </Flex>
           <Centere />
         </>
       )}
-
-      {/* Burada Gorev eklemeyi koyucaz cunku state artik true, yani gorev ekleme menusu aktif  */}
       {isAddTaskOpen && (
         <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
           <Box
@@ -132,16 +127,36 @@ function CreateReminder() {
                 w='200px'
                 mb='4'
               >
-                <Text fontSize='lg' mr='4'>
+                <Text
+                  fontSize='lg'
+                  mr='4'
+                  cursor='pointer'
+                  _hover={{ bg: "gray.200" }}
+                >
                   🏷
                 </Text>
-                <Text fontSize='lg' mr='4'>
+                <Text
+                  fontSize='lg'
+                  mr='4'
+                  cursor='pointer'
+                  _hover={{ bg: "gray.200" }}
+                >
                   🏳
                 </Text>
-                <Text fontSize='lg' mr='4'>
+                <Text
+                  fontSize='lg'
+                  mr='4'
+                  cursor='pointer'
+                  _hover={{ bg: "gray.200" }}
+                >
                   ⏲
                 </Text>
-                <Text fontSize='lg' mr='4'>
+                <Text
+                  fontSize='lg'
+                  mr='4'
+                  cursor='pointer'
+                  _hover={{ bg: "gray.200" }}
+                >
                   🧩
                 </Text>
               </Box>
