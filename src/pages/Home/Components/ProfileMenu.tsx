@@ -9,10 +9,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { AiOutlinePrinter, AiOutlineStar } from "react-icons/ai";
+import { BiGitCompare } from "react-icons/bi";
 import { BsPeople } from "react-icons/bs";
 import { FiActivity, FiSettings } from "react-icons/fi";
 import { IoIosGitCompare } from "react-icons/io";
-import { BiGitCompare } from "react-icons/bi";
 import { VscSymbolColor } from "react-icons/vsc";
 import ProfileCards from "./ProfileCards";
 

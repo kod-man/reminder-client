@@ -38,15 +38,19 @@ const PlusModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const usersId = localStorage.getItem("userId");
   const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
 
   const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value.trim());
+  };
+  const onChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDescription(e.target.value.trim());
   };
 
   const userData = {
     title,
     priority: "", // O
-    description: "", //O
+    description, //O
     date: "", //O
     usersId,
   };
@@ -90,6 +94,7 @@ const PlusModal = () => {
               border="none"
               fontSize="small"
               variant="unstyled"
+              onChange={onChangeDescription}
             />
             <Flex mt={5}>
               <Button color="green" size="sm">
