@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlinePrinter, AiOutlineStar } from "react-icons/ai";
 import { BiGitCompare } from "react-icons/bi";
-import { BsPeople } from "react-icons/bs";
+import { BsDownload, BsPeople } from "react-icons/bs";
 import { FiActivity, FiSettings } from "react-icons/fi";
 import { IoIosGitCompare } from "react-icons/io";
 import { VscSymbolColor } from "react-icons/vsc";
@@ -22,8 +22,8 @@ const dataProfileMenu = [
   { Icon: AiOutlinePrinter, text: "Print" },
   { Icon: BiGitCompare, text: "Integrations" },
   { Icon: AiOutlineStar, text: "Upgrade to Pro" },
-  { Icon: IoIosGitCompare, text: "Upgarde to Business" },
-  { Icon: BsPeople, text: "Download apps" },
+  { Icon:BsPeople , text: "Upgarde to Business" },
+  { Icon: BsDownload, text: "Download apps" },
 ];
 
 const ProfileMenu = () => {
