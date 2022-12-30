@@ -119,8 +119,7 @@ function CreateReminder() {
                 </Flex>
               </Box>
               <Spacer />
-              <Box
-                display='flex'
+              <Flex
                 alignItems='flex-end'
                 justifyContent='flex-end'
                 w='200px'
@@ -136,7 +135,7 @@ function CreateReminder() {
                     {icon}
                   </Text>
                 ))}
-              </Box>
+              </Flex>
             </Flex>
           </Box>
           <Flex justifyContent='flex-end' mt='3'>
@@ -145,7 +144,7 @@ function CreateReminder() {
             </Button>
             <Button
               color='white'
-              bg={!taskName ? "red.300" : "red.500"}
+              bg={!taskName.trim() ? "red.300" : "red.500"}
               disabled={!taskName.trim()}
               _hover={!taskName ? { bg: "" } : { bg: "red.700" }}
             >
