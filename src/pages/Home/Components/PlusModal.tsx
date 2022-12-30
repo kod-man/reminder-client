@@ -7,6 +7,7 @@ import {
   ModalContent,
   ModalFooter,
   ModalOverlay,
+  Select,
   Text,
   Tooltip,
   useDisclosure,
@@ -16,14 +17,14 @@ import { BsAlarm, BsFlag, BsInboxFill, BsPlus } from "react-icons/bs";
 import { MdLabelOutline, MdToday } from "react-icons/md";
 import ModalCard from "./ModalCard";
 
+// {
+//   Icon: BsFlag,
+//   text: "Set the priority  Low, Medium, High",
+// },
 const dataGrayIcon = [
   {
     Icon: MdLabelOutline,
     text: "Add label(s) @",
-  },
-  {
-    Icon: BsFlag,
-    text: "Set the priority  Low, Medium, High",
   },
   {
     Icon: BsAlarm,
@@ -120,6 +121,27 @@ const PlusModal = () => {
                 </Button>
               </Tooltip>
               <Flex ml="auto">
+                <Tooltip
+                  hasArrow
+                  label="Set the priority  Low, Medium, High"
+                  bg="black"
+                  color="white"
+                  borderRadius="5"
+                  placement="top-start"
+                >
+                  <Button
+                    color="gray"
+                    size="sm"
+                    bg="#edf2f7"
+                    as={Select}
+                    icon={<BsFlag />}
+                    variant="Flushed"
+                  >
+                    <option value="Low"><BsFlag color="yellow" /></option>
+                    <option value="Medium"><BsFlag color="blue" /></option>
+                    <option value="High"><BsFlag color="red" /> </option>
+                  </Button>
+                </Tooltip>
                 {dataGrayIcon.map((item) => (
                   <ModalCard
                     key={item.text}

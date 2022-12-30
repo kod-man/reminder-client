@@ -17,7 +17,7 @@ const ModalCard: FC<CardProps> = ({ Icon, text }) => {
       borderRadius="5"
       placement="top-start"
     >
-      <Button color="gray" size="sm" ml={2}>
+      <Button color="gray" size="sm" h="100%" width="100%" ml={2}>
         <Icon />
       </Button>
     </Tooltip>
