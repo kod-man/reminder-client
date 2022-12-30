@@ -18,7 +18,7 @@ function CreateReminder() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
-  const iconLists = [" 🏷", "  🏳", "⏲", "🧩"];
+  const iconLists = ["🏷", "🏳", "⏲", "🧩"];
   return (
     <>
       {!isAddTaskOpen && (
