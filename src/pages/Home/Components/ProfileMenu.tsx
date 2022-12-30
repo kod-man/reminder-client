@@ -32,27 +32,27 @@ const ProfileMenu = () => {
       <Flex
         as={MenuButton}
         _hover={{ bg: "gray.200" }}
-        cursor="pointer"
+        cursor='pointer'
         padding={1}
         w={8}
         h={8}
-        border="1px solid white"
-        fontSize="xs"
-        color="green"
-        alignItems="center"
-        justifyContent="center"
-        backgroundColor="white"
-        borderRadius="50%"
+        border='1px solid white'
+        fontSize='xs'
+        color='green'
+        alignItems='center'
+        justifyContent='center'
+        backgroundColor='white'
+        borderRadius='50%'
       >
         MC
       </Flex>
       <MenuList>
         <Flex
-          cursor="pointer"
+          cursor='pointer'
           _hover={{ backgroundColor: "#f3f3f3" }}
-          mx="1"
-          mb="2"
-          borderRadius="5"
+          mx='1'
+          mb='2'
+          borderRadius='5'
         >
           <Box>
             <Flex>
@@ -60,32 +60,32 @@ const ProfileMenu = () => {
                 m={1}
                 w={12}
                 h={12}
-                border="3px solid #db4c3f"
-                fontSize="xl"
-                color="#db4c3f"
-                alignItems="center"
-                justifyContent="center"
-                backgroundColor="white"
-                borderRadius="50%"
+                border='3px solid #db4c3f'
+                fontSize='xl'
+                color='#db4c3f'
+                alignItems='center'
+                justifyContent='center'
+                backgroundColor='white'
+                borderRadius='50%'
               >
                 MC
               </Flex>
               <VStack>
-                <Flex flexDir="column" m={2}>
-                  <Text as="b" fontSize="sm">
+                <Flex flexDir='column' m={2}>
+                  <Text as='b' fontSize='sm'>
                     Murat Can
                   </Text>
-                  <Text fontSize="xs" color="gray">
+                  <Text fontSize='xs' color='gray'>
                     muratal0606@gmail.com
                   </Text>
                 </Flex>
               </VStack>
             </Flex>
-            <Flex alignItems="center" ml={2} mb="1">
-              <Box h={4} w={4} mr="1" justifyContent="flex-start">
-                <FiSettings color="gray" />
+            <Flex alignItems='center' ml={2} mb='1'>
+              <Box h={4} w={4} mr='1' justifyContent='flex-start'>
+                <FiSettings color='gray' />
               </Box>
-              <Text fontSize="small" ml="2">
+              <Text fontSize='small' ml='2'>
                 Settings
               </Text>
             </Flex>
@@ -98,7 +98,7 @@ const ProfileMenu = () => {
         ))}
 
         <Divider />
-        <ProfileCards text="Logout" Icon={FiSettings} />
+        <ProfileCards text='Logout' Icon={FiSettings} />
       </MenuList>
     </Menu>
   );
