@@ -18,6 +18,7 @@ function CreateReminder() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [taskName, setTaskName] = useState("");
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+  const iconLists = [" 🏷", "  🏳", "⏲", "🧩"];
   return (
     <>
       {!isAddTaskOpen && (
@@ -51,7 +52,6 @@ function CreateReminder() {
       {isAddTaskOpen && (
         <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
           <Box
-            display='flex'
             alignItems='center'
             justifyContent='center'
             flexDirection='column'
@@ -126,38 +126,16 @@ function CreateReminder() {
                 w='200px'
                 mb='4'
               >
-                <Text
-                  fontSize='lg'
-                  mr='4'
-                  cursor='pointer'
-                  _hover={{ bg: "gray.200" }}
-                >
-                  🏷
-                </Text>
-                <Text
-                  fontSize='lg'
-                  mr='4'
-                  cursor='pointer'
-                  _hover={{ bg: "gray.200" }}
-                >
-                  🏳
-                </Text>
-                <Text
-                  fontSize='lg'
-                  mr='4'
-                  cursor='pointer'
-                  _hover={{ bg: "gray.200" }}
-                >
-                  ⏲
-                </Text>
-                <Text
-                  fontSize='lg'
-                  mr='4'
-                  cursor='pointer'
-                  _hover={{ bg: "gray.200" }}
-                >
-                  🧩
-                </Text>
+                {iconLists.map((icon) => (
+                  <Text
+                    fontSize='lg'
+                    mr='4'
+                    cursor='pointer'
+                    _hover={{ bg: "gray.200" }}
+                  >
+                    {icon}
+                  </Text>
+                ))}
               </Box>
             </Flex>
           </Box>
@@ -168,7 +146,7 @@ function CreateReminder() {
             <Button
               color='white'
               bg={!taskName ? "red.300" : "red.500"}
-              disabled={!taskName.trim() || taskName.length < 1}
+              disabled={!taskName.trim()}
               _hover={!taskName ? { bg: "" } : { bg: "red.700" }}
             >
               Görev ekle
