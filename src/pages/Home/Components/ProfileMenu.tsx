@@ -12,7 +12,7 @@ import { AiOutlinePrinter, AiOutlineStar } from "react-icons/ai";
 import { BiGitCompare } from "react-icons/bi";
 import { BsDownload, BsPeople } from "react-icons/bs";
 import { FiActivity, FiSettings } from "react-icons/fi";
-import { IoIosGitCompare } from "react-icons/io";
+import { IoIosGitCompare, IoIosLogOut } from "react-icons/io";
 import { VscSymbolColor } from "react-icons/vsc";
 import ProfileCards from "./ProfileCards";
 
@@ -98,7 +98,7 @@ const ProfileMenu = () => {
         ))}
 
         <Divider />
-        <ProfileCards text="Logout" Icon={FiSettings} />
+        <ProfileCards text="Logout" Icon={IoIosLogOut} />
       </MenuList>
     </Menu>
   );

@@ -15,9 +15,17 @@ import {
   ModalContent,
   ModalFooter,
   ModalOverlay,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
   Text,
   Tooltip,
   useDisclosure,
+  VStack,
 } from "@chakra-ui/react";
 import React from "react";
 import { BiGitCompare } from "react-icons/bi";
@@ -61,16 +69,6 @@ const PlusModal = () => {
       text: "insert from integration",
     },
   ];
-
-  // const changeIconColor: String(value: string)=>{
-  //   if(value === "Low"){
-  //     setIconColor("yellow")
-  //   }else if(value ==="Medium"){
-  //     setIconColor("blue")
-  //   }else if (value === "High" )
-  //   setIconColor("red")
-  //   else setIconColor("gray")
-  // };
 
   const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value.trim());
@@ -146,7 +144,7 @@ const PlusModal = () => {
               >
                 <Button color="blue" size="sm" ml={2}>
                   <BsInboxFill />
-                  <Text ml={1} fontSize="xs">
+                  <Text ml={1} fontSize="xs" color="black">
                     Inbox
                   </Text>
                 </Button>
@@ -169,29 +167,49 @@ const PlusModal = () => {
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={<MdLabelOutline color={iconColor} />}
+                      icon={
+                        <MdLabelOutline
+                          color={iconColor}
+                          style={{ transform: "rotate(-45deg)" }}
+                        />
+                      }
                       variant="Flushed"
                     ></MenuButton>
                   </Tooltip>
                   <MenuList scale="sm">
-                    <MenuItem>
-                      <Flex direction="column">
-                        <Box bg="white" h={8} w={20} color="white">
-                          <Input
-                            htmlSize={10}
-                            width="auto"
-                            placeholder="Type a label"
-                            size="sm"
-                          />
-                        </Box>
-                        <Divider />
-                        <Flex flexDirection="row" alignItems="center">
-                          <MdLabel color="gray" />
-                          <Text mx={2}>read</Text>
-                          <Checkbox color="gray" ml="10"></Checkbox>
-                        </Flex>
+                    <VStack align="stretch" as={MenuItem} background="white">
+                      <Box
+                        bg="white"
+                        h={8}
+                        w={20}
+                        color="white"
+                        backgroundColor="white !important"
+                      >
+                        <Input
+                          border="none"
+                          width="auto"
+                          placeholder="Type a label"
+                          size="sm"
+                        />
+                      </Box>
+                      <Divider />
+                      <Flex
+                        flexDirection="row"
+                        alignItems="center"
+                        background="#f3f3f3"
+                        width="100%"
+                        height="100%"
+                      >
+                        <MdLabel
+                          color="gray"
+                          style={{ transform: "rotate(-45deg)" }}
+                        />
+                        <Text mx={2} color="black">
+                          read
+                        </Text>
+                        <Checkbox color="gray" ml="10"></Checkbox>
                       </Flex>
-                    </MenuItem>
+                    </VStack>
                   </MenuList>
                 </Menu>
 
@@ -238,8 +256,7 @@ const PlusModal = () => {
                     <MenuItem value="High"></MenuItem>
                   </MenuList>
                 </Menu>
-
-                <Menu>
+                <Popover>
                   <Tooltip
                     hasArrow
                     label="Add reminder(s)"
@@ -248,20 +265,41 @@ const PlusModal = () => {
                     borderRadius="5"
                     placement="top-start"
                   >
-                    <MenuButton
-                      _hover={{ bg: "gray.200" }}
-                      mx={1}
-                      as={IconButton}
-                      borderRadius={5}
-                      color="white"
-                      size="sm"
-                      bg="#edf2f7"
-                      icon={<BsAlarm color={iconColor} />}
-                      variant="Flushed"
-                    ></MenuButton>
+                    <Box display="inline-block">
+                      <PopoverTrigger>
+                        <Button
+                          _hover={{ bg: "gray.200" }}
+                          mx={1}
+                          as={IconButton}
+                          borderRadius={5}
+                          color="white"
+                          size="sm"
+                          bg="#edf2f7"
+                          icon={<BsAlarm color={iconColor} />}
+                          variant="Flushed"
+                        ></Button>
+                      </PopoverTrigger>
+                    </Box>
                   </Tooltip>
-                  <MenuList></MenuList>
-                </Menu>
+                  <PopoverContent width={450} height={150}>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverHeader as="b" p="1 2">
+                      Go Pro
+                    </PopoverHeader>
+                    <Text m={2} fontSize="sm">
+                      Reminders are only available on Pro and Business plans.
+                    </Text>
+                    <PopoverBody ml="auto" mt={7}>
+                      <Button size="sm" mr={2}>
+                        Cancel
+                      </Button>
+                      <Button color="white" bg="tomato" size="sm">
+                        Upgrade for more
+                      </Button>
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
 
                 <Menu>
                   <Tooltip
