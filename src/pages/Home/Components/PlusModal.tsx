@@ -46,15 +46,10 @@ const PlusModal = () => {
   const [priority, setPriority] = React.useState("");
   const [iconColor, setIconColor] = React.useState("gray");
 
-  const priorityHandler = () => {
-    alert("done");
-  };
-
   const dataGrayIcon = [
     {
       Icon: MdLabelOutline,
       text: "Add label(s) @",
-      onclikc: priorityHandler,
     },
     {
       Icon: BsFlag,
@@ -127,7 +122,13 @@ const PlusModal = () => {
               onChange={onChangeDescription}
             />
             <Flex mt={5}>
-              <Button color="green" size="sm">
+              <Button
+                color="green"
+                size="sm"
+                background="white"
+                border="1px"
+                borderColor="gray.300"
+              >
                 <MdToday />
                 <Text ml={1} fontSize="xs">
                   Today
@@ -142,15 +143,22 @@ const PlusModal = () => {
                 borderRadius="5"
                 placement="top-start"
               >
-                <Button color="blue" size="sm" ml={2}>
+                <Button
+                  color="blue"
+                  size="sm"
+                  ml={2}
+                  background="white"
+                  border="1px"
+                  borderColor="gray.300"
+                >
                   <BsInboxFill />
-                  <Text ml={1} fontSize="xs" color="black">
+                  <Text ml={1} fontSize="xs" color="gray.600">
                     Inbox
                   </Text>
                 </Button>
               </Tooltip>
               <Flex ml="auto">
-                <Menu>
+                <Menu closeOnSelect={false}>
                   <Tooltip
                     hasArrow
                     label="Add label(s) @"
@@ -160,6 +168,10 @@ const PlusModal = () => {
                     placement="top-start"
                   >
                     <MenuButton
+                      background="white"
+                      border="1px"
+                      borderColor="gray.300"
+                      bgColor="white"
                       _hover={{ bg: "gray.200" }}
                       mx={1}
                       as={IconButton}
@@ -169,7 +181,7 @@ const PlusModal = () => {
                       bg="#edf2f7"
                       icon={
                         <MdLabelOutline
-                          color={iconColor}
+                          color="gray"
                           style={{ transform: "rotate(-45deg)" }}
                         />
                       }
@@ -223,6 +235,10 @@ const PlusModal = () => {
                     placement="top-start"
                   >
                     <MenuButton
+                      background="white"
+                      border="1px"
+                      borderColor="gray.300"
+                      bgColor="white"
                       _hover={{ bg: "gray.200" }}
                       mx={1}
                       as={IconButton}
@@ -256,7 +272,7 @@ const PlusModal = () => {
                     <MenuItem value="High"></MenuItem>
                   </MenuList>
                 </Menu>
-                <Popover>
+                <Popover placement="start">
                   <Tooltip
                     hasArrow
                     label="Add reminder(s)"
@@ -268,6 +284,10 @@ const PlusModal = () => {
                     <Box display="inline-block">
                       <PopoverTrigger>
                         <Button
+                          background="white"
+                          border="1px"
+                          borderColor="gray.300"
+                          bgColor="white"
                           _hover={{ bg: "gray.200" }}
                           mx={1}
                           as={IconButton}
@@ -290,11 +310,16 @@ const PlusModal = () => {
                     <Text m={2} fontSize="sm">
                       Reminders are only available on Pro and Business plans.
                     </Text>
-                    <PopoverBody ml="auto" mt={7}>
+                    <PopoverBody ml="auto" mt={5}>
                       <Button size="sm" mr={2}>
                         Cancel
                       </Button>
-                      <Button color="white" bg="tomato" size="sm">
+                      <Button
+                        color="white"
+                        bg="tomato"
+                        size="sm"
+                        _hover={{ backgroundColor: "red.500" }}
+                      >
                         Upgrade for more
                       </Button>
                     </PopoverBody>
@@ -304,13 +329,17 @@ const PlusModal = () => {
                 <Menu>
                   <Tooltip
                     hasArrow
-                    label=""
+                    label="insert from integration"
                     bg="black"
                     color="white"
                     borderRadius="5"
                     placement="top-start"
                   >
                     <MenuButton
+                      background="white"
+                      border="1px"
+                      borderColor="gray.300"
+                      bgColor="white"
                       _hover={{ bg: "gray.200" }}
                       mx={1}
                       as={IconButton}
