@@ -311,7 +311,13 @@ const PlusModal = () => {
                       Reminders are only available on Pro and Business plans.
                     </Text>
                     <PopoverBody ml="auto" mt={5}>
-                      <Button size="sm" mr={2}>
+                      <Button
+                        size="sm"
+                        mr={2}
+                        mb="2"
+                        as={PopoverCloseButton}
+                        w="16"
+                      >
                         Cancel
                       </Button>
                       <Button
