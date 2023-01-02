@@ -9,7 +9,9 @@ import {
   Menu,
   MenuButton,
   MenuItem,
+  MenuItemOption,
   MenuList,
+  MenuOptionGroup,
   Modal,
   ModalBody,
   ModalContent,
@@ -72,6 +74,17 @@ const PlusModal = () => {
   const onChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(e.target.value.trim());
   };
+
+  // const changetIconColor = () => {
+  //   if(value === "Low"){
+  //     setIconColor("green")
+  //   } else if(value === "Medium"){
+  //     setIconColor("blue")
+  //   }else if(value === "High") {
+  //     setIconColor("red")
+  //   }
+  //   setIconColor("gray")
+  // }
 
   const userData = {
     title,
@@ -253,25 +266,50 @@ const PlusModal = () => {
                     ></MenuButton>
                   </Tooltip>
                   <MenuList>
-                    <MenuItem value="Low">
-                      <BsFlagFill color="green" />
-                      <Text fontSize="sm" ml={3}>
-                        Priority Low
-                      </Text>
-                    </MenuItem>
-                    <MenuItem value="Medium">
-                      <BsFlagFill color="blue" />
-                      <Text fontSize="sm" ml={3}>
-                        Priority Medium
-                      </Text>
-                    </MenuItem>
-                    <MenuItem value="Low">
-                      <BsFlagFill color="red" />
-                      <Text fontSize="sm" ml={3}>
-                        Priority High
-                      </Text>
-                    </MenuItem>
-                    <MenuItem value="High"></MenuItem>
+                    <MenuOptionGroup>
+                      <MenuItemOption
+                        value="Low"
+                        onClick={() => {
+                          setPriority("Low");
+                        }}
+                        justifyContent="center"
+                        alignItems="center"
+                        display="flex"
+                      >
+                        <BsFlagFill color="green" />
+                        <Text fontSize="sm" ml={3}>
+                          Priority Low
+                        </Text>
+                      </MenuItemOption>
+                      <MenuItemOption
+                        value="Medium"
+                        onClick={() => {
+                          setPriority("Medium");
+                        }}
+                        justifyContent="center"
+                        alignItems="center"
+                        display="flex"
+                      >
+                        <BsFlagFill color="blue" />
+                        <Text fontSize="sm" ml={3}>
+                          Priority Medium
+                        </Text>
+                      </MenuItemOption>
+                      <MenuItemOption
+                        value="High"
+                        onClick={() => {
+                          setPriority("High");
+                        }}
+                        justifyContent="center"
+                        alignItems="center"
+                        display="flex"
+                      >
+                        <BsFlagFill color="red" />
+                        <Text fontSize="sm" ml={3}>
+                          Priority High
+                        </Text>
+                      </MenuItemOption>
+                    </MenuOptionGroup>
                   </MenuList>
                 </Menu>
                 <Popover placement="start">
