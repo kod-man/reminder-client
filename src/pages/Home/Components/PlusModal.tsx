@@ -261,7 +261,7 @@ const PlusModal = () => {
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={<BsFlag color={iconColor} />}
+                      icon={<BsFlagFill color={iconColor} />}
                       variant="Flushed"
                     ></MenuButton>
                   </Tooltip>
