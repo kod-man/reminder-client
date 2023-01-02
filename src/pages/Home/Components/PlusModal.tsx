@@ -32,13 +32,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { BiGitCompare } from "react-icons/bi";
-import {
-  BsAlarm,
-  BsFlag,
-  BsFlagFill,
-  BsInboxFill,
-  BsPlus,
-} from "react-icons/bs";
+import { BsAlarm, BsFlagFill, BsInboxFill, BsPlus } from "react-icons/bs";
 import { MdLabel, MdLabelOutline, MdToday } from "react-icons/md";
 
 const PlusModal = () => {
@@ -49,24 +43,24 @@ const PlusModal = () => {
   const [priority, setPriority] = React.useState("");
   const [iconColor, setIconColor] = React.useState("gray");
 
-  const dataGrayIcon = [
-    {
-      Icon: MdLabelOutline,
-      text: "Add label(s) @",
-    },
-    {
-      Icon: BsFlag,
-      text: "Set the priority  Low, Medium, High",
-    },
-    {
-      Icon: BsAlarm,
-      text: "Add reminder(s)",
-    },
-    {
-      Icon: MdToday,
-      text: "insert from integration",
-    },
-  ];
+  // const dataGrayIcon = [
+  //   {
+  //     Icon: MdLabelOutline,
+  //     text: "Add label(s) @",
+  //   },
+  //   {
+  //     Icon: BsFlag,
+  //     text: "Set the priority  Low, Medium, High",
+  //   },
+  //   {
+  //     Icon: BsAlarm,
+  //     text: "Add reminder(s)",
+  //   },
+  //   {
+  //     Icon: MdToday,
+  //     text: "insert from integration",
+  //   },
+  // ];
 
   const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value.trim());
@@ -221,6 +215,7 @@ const PlusModal = () => {
                       </Stack>
                       <Divider />
                       <Flex
+                      border="none"
                         flexDirection="row"
                         alignItems="center"
                         background="#f3f3f3"
@@ -282,7 +277,7 @@ const PlusModal = () => {
                       </MenuItemOption>
                       <MenuItemOption
                         onClick={() => {
-                          setPriority("Medium"), setIconColor("blue");
+                          setPriority("Medium"), setIconColor("#2c75e1");
                         }}
                         justifyContent="center"
                         alignItems="center"
@@ -295,7 +290,7 @@ const PlusModal = () => {
                       </MenuItemOption>
                       <MenuItemOption
                         onClick={() => {
-                          setPriority("High"), setIconColor("red");
+                          setPriority("High"), setIconColor("tomato");
                         }}
                         justifyContent="center"
                         alignItems="center"
@@ -304,6 +299,19 @@ const PlusModal = () => {
                         <BsFlagFill color="red" />
                         <Text fontSize="sm" ml={3}>
                           Priority High
+                        </Text>
+                      </MenuItemOption>
+                      <MenuItemOption
+                        onClick={() => {
+                          setPriority("High"), setIconColor("gray");
+                        }}
+                        justifyContent="center"
+                        alignItems="center"
+                        display="flex"
+                      >
+                        <BsFlagFill color="gray" />
+                        <Text fontSize="sm" ml={3}>
+                          No Priority
                         </Text>
                       </MenuItemOption>
                     </MenuOptionGroup>
