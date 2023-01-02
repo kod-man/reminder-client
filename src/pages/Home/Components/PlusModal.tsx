@@ -22,6 +22,7 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverTrigger,
+  Stack,
   Text,
   Tooltip,
   useDisclosure,
@@ -190,20 +191,21 @@ const PlusModal = () => {
                   </Tooltip>
                   <MenuList scale="sm">
                     <VStack align="stretch" as={MenuItem} background="white">
-                      <Box
+                      <Stack
                         bg="white"
                         h={8}
-                        w={20}
-                        color="white"
+                        w="100%"
                         backgroundColor="white !important"
                       >
                         <Input
+                          onClick={(e) => e.stopPropagation()}
+                          type="text"
                           border="none"
-                          width="auto"
+                          width="100%"
                           placeholder="Type a label"
-                          size="sm"
+                          size="md"
                         />
-                      </Box>
+                      </Stack>
                       <Divider />
                       <Flex
                         flexDirection="row"
