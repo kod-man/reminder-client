@@ -268,9 +268,8 @@ const PlusModal = () => {
                   <MenuList>
                     <MenuOptionGroup>
                       <MenuItemOption
-                        value="Low"
                         onClick={() => {
-                          setPriority("Low");
+                          setPriority("Low"), setIconColor("green");
                         }}
                         justifyContent="center"
                         alignItems="center"
@@ -282,9 +281,8 @@ const PlusModal = () => {
                         </Text>
                       </MenuItemOption>
                       <MenuItemOption
-                        value="Medium"
                         onClick={() => {
-                          setPriority("Medium");
+                          setPriority("Medium"), setIconColor("blue");
                         }}
                         justifyContent="center"
                         alignItems="center"
@@ -296,9 +294,8 @@ const PlusModal = () => {
                         </Text>
                       </MenuItemOption>
                       <MenuItemOption
-                        value="High"
                         onClick={() => {
-                          setPriority("High");
+                          setPriority("High"), setIconColor("red");
                         }}
                         justifyContent="center"
                         alignItems="center"
@@ -335,7 +332,7 @@ const PlusModal = () => {
                           color="white"
                           size="sm"
                           bg="#edf2f7"
-                          icon={<BsAlarm color={iconColor} />}
+                          icon={<BsAlarm color="gray" />}
                           variant="Flushed"
                         ></Button>
                       </PopoverTrigger>
@@ -393,7 +390,7 @@ const PlusModal = () => {
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={<BiGitCompare color={iconColor} />}
+                      icon={<BiGitCompare color="gray" />}
                       variant="Flushed"
                     ></MenuButton>
                   </Tooltip>
