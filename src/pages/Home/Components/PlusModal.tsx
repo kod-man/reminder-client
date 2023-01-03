@@ -40,7 +40,7 @@ const PlusModal = () => {
   const usersId = localStorage.getItem("userId");
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const [priority, setPriority] = React.useState("");
+  const [priority, setPriority] = React.useState("Low");
   const [iconColor, setIconColor] = React.useState("gray");
 
   // const dataGrayIcon = [
@@ -260,11 +260,11 @@ const PlusModal = () => {
                       variant="Flushed"
                     ></MenuButton>
                   </Tooltip>
-                  <MenuList minWidth="300px">
+                  <MenuList>
                     <MenuOptionGroup>
                       <MenuItemOption
                         onClick={() => {
-                          setPriority("Low"), setIconColor("green");
+                          setPriority("Low"); setIconColor("green");
                         }}
                         justifyContent="center"
                         alignItems="center"
@@ -272,12 +272,12 @@ const PlusModal = () => {
                       >
                         <BsFlagFill color="green" />
                         <Text fontSize="sm" ml={3}>
-                          Priority Low
+                          Priority {priority}
                         </Text>
                       </MenuItemOption>
                       <MenuItemOption
                         onClick={() => {
-                          setPriority("Medium"), setIconColor("#2c75e1");
+                          setPriority("Medium"); setIconColor("#2c75e1");
                         }}
                         justifyContent="center"
                         alignItems="center"
@@ -285,12 +285,12 @@ const PlusModal = () => {
                       >
                         <BsFlagFill color="blue" />
                         <Text fontSize="sm" ml={3}>
-                          Priority Medium
+                        Priority {priority}
                         </Text>
                       </MenuItemOption>
                       <MenuItemOption
                         onClick={() => {
-                          setPriority("High"), setIconColor("tomato");
+                          setPriority("High"); setIconColor("tomato");
                         }}
                         justifyContent="center"
                         alignItems="center"
@@ -298,12 +298,12 @@ const PlusModal = () => {
                       >
                         <BsFlagFill color="red" />
                         <Text fontSize="sm" ml={3}>
-                          Priority High
+                        Priority {priority}
                         </Text>
                       </MenuItemOption>
                       <MenuItemOption
                         onClick={() => {
-                          setPriority("High"), setIconColor("gray");
+                          setPriority("High"); setIconColor("gray");
                         }}
                         justifyContent="center"
                         alignItems="center"
