@@ -215,7 +215,7 @@ const PlusModal = () => {
                       </Stack>
                       <Divider />
                       <Flex
-                      border="none"
+                        border="none"
                         flexDirection="row"
                         alignItems="center"
                         background="#f3f3f3"
@@ -260,7 +260,7 @@ const PlusModal = () => {
                       variant="Flushed"
                     ></MenuButton>
                   </Tooltip>
-                  <MenuList>
+                  <MenuList minWidth="300px">
                     <MenuOptionGroup>
                       <MenuItemOption
                         onClick={() => {
