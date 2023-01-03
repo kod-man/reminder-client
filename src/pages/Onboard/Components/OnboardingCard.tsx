@@ -1,11 +1,30 @@
-import { Button, Flex, FormLabel, Image, Input, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  FormLabel,
+  Image,
+  Input,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Axios } from "../../../utils/axios";
+import {
+  defaultToastProps,
+  genericServerToast,
+  genericValidationToast,
+} from "../../../utils/genericToast";
+import { PATHS } from "../../../utils/paths";
+import { API } from "../../../utils/usedApi";
 import Header from "./Header";
 
 function OnboardingCard() {
   const [name, setName] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState("");
+  const toast = useToast();
+  const navigate = useNavigate();
   useEffect(() => {
     if (!selectedFile) {
       setPreview("");
@@ -27,7 +46,32 @@ function OnboardingCard() {
   };
   const submitHandler = (e: any) => {
     e.preventDefault();
-    console.log(name);
+    const userId = localStorage.getItem("userId");
+    const newUserData = {
+      userId,
+      userName: name,
+      imageSrc: preview,
+    };
+    Axios.put(API.username, newUserData)
+      .then((res) => {
+        console.log(res);
+        toast({
+          ...defaultToastProps,
+          title: "Your data has been saved.",
+          description: "You're ready to go!",
+          status: "success",
+        });
+        navigate(PATHS.HOME);
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+          genericValidationToast(toast, err);
+        } else {
+          console.log(err);
+          genericServerToast(toast);
+        }
+      });
   };
 
   return (
