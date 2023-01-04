@@ -11,7 +11,6 @@ import {
   MenuItem,
   MenuItemOption,
   MenuList,
-  MenuOptionGroup,
   Modal,
   ModalBody,
   ModalContent,
@@ -29,11 +28,26 @@ import {
   Tooltip,
   useDisclosure,
   VStack,
-} from "@chakra-ui/react";
-import React from "react";
-import { BiGitCompare } from "react-icons/bi";
-import { BsAlarm, BsFlagFill, BsInboxFill, BsPlus } from "react-icons/bs";
-import { MdLabel, MdLabelOutline, MdToday } from "react-icons/md";
+} from '@chakra-ui/react';
+import React from 'react';
+import { BiGitCompare } from 'react-icons/bi';
+import { BsAlarm, BsFlagFill, BsInboxFill, BsPlus } from 'react-icons/bs';
+import { MdLabel, MdLabelOutline, MdToday } from 'react-icons/md';
+
+const PrioList = [
+  {
+    color: 'gray',
+    text: 'Low',
+  },
+  {
+    color: 'green',
+    text: 'Medium',
+  },
+  {
+    color: 'red',
+    text: 'High',
+  },
+];
 
 const PlusModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,29 +57,20 @@ const PlusModal = () => {
   const [priority, setPriority] = React.useState("Low");
   const [iconColor, setIconColor] = React.useState("gray");
 
-  const prioData = [
-    {
-      text: "Low",
-      color: "gray",
-    },
-    { text: "Medium", color: "green" },
-    { text: "High", color: "red" },
-  ];
 
-  const [selectedPrio, setSelectedPrio] = React.useState(prioData[0]);
-
-  
   const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value.trim());
   };
   const onChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(e.target.value.trim());
   };
+
+
   const userData = {
     title,
     priority, // O
     description, //O
-    date: "", //O
+    date: '', //O
     usersId,
   };
   const seeData = () => {
@@ -78,7 +83,7 @@ const PlusModal = () => {
         bg="#db4c3f"
         as={Button}
         onClick={onOpen}
-        _hover={{ bg: "#e27065" }}
+        _hover={{ bg: '#e27065' }}
         cursor="pointer"
         borderRadius="20%"
         padding={1}
@@ -86,12 +91,7 @@ const PlusModal = () => {
         <BsPlus color="white" size="30px" />
       </Flex>
 
-      <Modal
-        closeOnOverlayClick={false}
-        isOpen={isOpen}
-        onClose={onClose}
-        size="lg"
-      >
+      <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} size="lg">
         <ModalOverlay />
         <ModalContent>
           <ModalBody pb={3}>
@@ -161,30 +161,20 @@ const PlusModal = () => {
                       border="1px"
                       borderColor="gray.300"
                       bgColor="white"
-                      _hover={{ bg: "gray.200" }}
+                      _hover={{ bg: 'gray.200' }}
                       mx={1}
                       as={IconButton}
                       borderRadius={5}
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={
-                        <MdLabelOutline
-                          color="gray"
-                          style={{ transform: "rotate(-45deg)" }}
-                        />
-                      }
+                      icon={<MdLabelOutline color="gray" style={{ transform: 'rotate(-45deg)' }} />}
                       variant="Flushed"
                     ></MenuButton>
                   </Tooltip>
                   <MenuList scale="sm">
                     <VStack align="stretch" as={MenuItem} background="white">
-                      <Stack
-                        bg="white"
-                        h={8}
-                        w="100%"
-                        backgroundColor="white !important"
-                      >
+                      <Stack bg="white" h={8} w="100%" backgroundColor="white !important">
                         <Input
                           onClick={(e) => e.stopPropagation()}
                           type="text"
@@ -203,10 +193,7 @@ const PlusModal = () => {
                         width="100%"
                         height="100%"
                       >
-                        <MdLabel
-                          color="gray"
-                          style={{ transform: "rotate(-45deg)" }}
-                        />
+                        <MdLabel color="gray" style={{ transform: 'rotate(-45deg)' }} />
                         <Text mx={2} color="black">
                           read
                         </Text>
@@ -230,34 +217,72 @@ const PlusModal = () => {
                       border="1px"
                       borderColor="gray.300"
                       bgColor="white"
-                      _hover={{ bg: "gray.200" }}
+                      _hover={{ bg: 'gray.200' }}
                       mx={1}
                       as={IconButton}
                       borderRadius={5}
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={<BsFlagFill color={iconColor} />}
+                      icon={<BsFlagFill color={selectedPrio.color} />}
                       variant="Flushed"
                     ></MenuButton>
                   </Tooltip>
                   <MenuList>
-                   <MenuOptionGroup>
-                    {prioData.map((prio)=> (
-                      <MenuItemOption 
-                      onClick={()=> {
-                        setSelectedPrio(prio);
-                      }}
+                    <MenuOptionGroup>
+                      <MenuItemOption
+                        onClick={() => {
+                          setPriority("Low"); setIconColor("green");
+                        }}
+                        justifyContent="center"
+                        alignItems="center"
+                        display="flex"
                       >
-                        <Flex>
-                          <BsFlagFill color={prio.color} />
-                          <Text>
-                            {prio.text}
-                          </Text>
-                        </Flex>
+                        <BsFlagFill color="green" />
+                        <Text fontSize="sm" ml={3}>
+                          Priority {priority}
+                        </Text>
                       </MenuItemOption>
-                    ))}
-                   </MenuOptionGroup>
+                      <MenuItemOption
+                        onClick={() => {
+                          setPriority("Medium"); setIconColor("#2c75e1");
+                        }}
+                        justifyContent="center"
+                        alignItems="center"
+                        display="flex"
+                      >
+                        <BsFlagFill color="blue" />
+                        <Text fontSize="sm" ml={3}>
+                        Priority {priority}
+                        </Text>
+                      </MenuItemOption>
+                      <MenuItemOption
+                        onClick={() => {
+                          setPriority("High"); setIconColor("tomato");
+                        }}
+                        justifyContent="center"
+                        alignItems="center"
+                        display="flex"
+                      >
+                        <BsFlagFill color="red" />
+                        <Text fontSize="sm" ml={3}>
+                        Priority {priority}
+                        </Text>
+                      </MenuItemOption>
+                      <MenuItemOption
+                        onClick={() => {
+                          setPriority("High"); setIconColor("gray");
+                        }}
+                        justifyContent="center"
+                        alignItems="center"
+                        display="flex"
+                      >
+                        <BsFlagFill color="gray" />
+                        <Text fontSize="sm" ml={3}>
+                          No Priority
+                        </Text>
+                      </MenuItemOption>
+                    </MenuOptionGroup>
                   </MenuList>
                 </Menu>
                 <Popover placement="start">
@@ -276,7 +301,7 @@ const PlusModal = () => {
                           border="1px"
                           borderColor="gray.300"
                           bgColor="white"
-                          _hover={{ bg: "gray.200" }}
+                          _hover={{ bg: 'gray.200' }}
                           mx={1}
                           as={IconButton}
                           borderRadius={5}
@@ -299,20 +324,14 @@ const PlusModal = () => {
                       Reminders are only available on Pro and Business plans.
                     </Text>
                     <PopoverBody ml="auto" mt={5}>
-                      <Button
-                        size="sm"
-                        mr={2}
-                        mb="2"
-                        as={PopoverCloseButton}
-                        w="16"
-                      >
+                      <Button size="sm" mr={2} mb="2" as={PopoverCloseButton} w="16">
                         Cancel
                       </Button>
                       <Button
                         color="white"
                         bg="tomato"
                         size="sm"
-                        _hover={{ backgroundColor: "red.500" }}
+                        _hover={{ backgroundColor: 'red.500' }}
                       >
                         Upgrade for more
                       </Button>
@@ -334,7 +353,7 @@ const PlusModal = () => {
                       border="1px"
                       borderColor="gray.300"
                       bgColor="white"
-                      _hover={{ bg: "gray.200" }}
+                      _hover={{ bg: 'gray.200' }}
                       mx={1}
                       as={IconButton}
                       borderRadius={5}
@@ -356,15 +375,6 @@ const PlusModal = () => {
                     </Flex>
                   </MenuList>
                 </Menu>
-
-                {/* 
-                {dataGrayIcon.map((item) => (
-                  <ModalCard
-                    key={item.text}
-                    Icon={item.Icon}
-                    text={item.text}
-                  />
-                ))} */}
               </Flex>
             </Flex>
           </ModalBody>
@@ -373,13 +383,7 @@ const PlusModal = () => {
             <Button onClick={onClose} size="sm">
               Cancel
             </Button>
-            <Button
-              colorScheme="red"
-              ml={2}
-              size="sm"
-              disabled={!title.trim()}
-              onClick={seeData}
-            >
+            <Button colorScheme="red" ml={2} size="sm" disabled={!title.trim()} onClick={seeData}>
               Add task
             </Button>
           </ModalFooter>
