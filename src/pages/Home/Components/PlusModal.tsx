@@ -43,43 +43,24 @@ const PlusModal = () => {
   const [priority, setPriority] = React.useState("Low");
   const [iconColor, setIconColor] = React.useState("gray");
 
-  // const dataGrayIcon = [
-  //   {
-  //     Icon: MdLabelOutline,
-  //     text: "Add label(s) @",
-  //   },
-  //   {
-  //     Icon: BsFlag,
-  //     text: "Set the priority  Low, Medium, High",
-  //   },
-  //   {
-  //     Icon: BsAlarm,
-  //     text: "Add reminder(s)",
-  //   },
-  //   {
-  //     Icon: MdToday,
-  //     text: "insert from integration",
-  //   },
-  // ];
+  const prioData = [
+    {
+      text: "Low",
+      color: "gray",
+    },
+    { text: "Medium", color: "green" },
+    { text: "High", color: "red" },
+  ];
 
+  const [selectedPrio, setSelectedPrio] = React.useState(prioData[0]);
+
+  
   const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value.trim());
   };
   const onChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(e.target.value.trim());
   };
-
-  // const changetIconColor = () => {
-  //   if(value === "Low"){
-  //     setIconColor("green")
-  //   } else if(value === "Medium"){
-  //     setIconColor("blue")
-  //   }else if(value === "High") {
-  //     setIconColor("red")
-  //   }
-  //   setIconColor("gray")
-  // }
-
   const userData = {
     title,
     priority, // O
@@ -261,60 +242,22 @@ const PlusModal = () => {
                     ></MenuButton>
                   </Tooltip>
                   <MenuList>
-                    <MenuOptionGroup>
-                      <MenuItemOption
-                        onClick={() => {
-                          setPriority("Low"); setIconColor("green");
-                        }}
-                        justifyContent="center"
-                        alignItems="center"
-                        display="flex"
+                   <MenuOptionGroup>
+                    {prioData.map((prio)=> (
+                      <MenuItemOption 
+                      onClick={()=> {
+                        setSelectedPrio(prio);
+                      }}
                       >
-                        <BsFlagFill color="green" />
-                        <Text fontSize="sm" ml={3}>
-                          Priority {priority}
-                        </Text>
+                        <Flex>
+                          <BsFlagFill color={prio.color} />
+                          <Text>
+                            {prio.text}
+                          </Text>
+                        </Flex>
                       </MenuItemOption>
-                      <MenuItemOption
-                        onClick={() => {
-                          setPriority("Medium"); setIconColor("#2c75e1");
-                        }}
-                        justifyContent="center"
-                        alignItems="center"
-                        display="flex"
-                      >
-                        <BsFlagFill color="blue" />
-                        <Text fontSize="sm" ml={3}>
-                        Priority {priority}
-                        </Text>
-                      </MenuItemOption>
-                      <MenuItemOption
-                        onClick={() => {
-                          setPriority("High"); setIconColor("tomato");
-                        }}
-                        justifyContent="center"
-                        alignItems="center"
-                        display="flex"
-                      >
-                        <BsFlagFill color="red" />
-                        <Text fontSize="sm" ml={3}>
-                        Priority {priority}
-                        </Text>
-                      </MenuItemOption>
-                      <MenuItemOption
-                        onClick={() => {
-                          setPriority("High"); setIconColor("gray");
-                        }}
-                        justifyContent="center"
-                        alignItems="center"
-                        display="flex"
-                      >
-                        <BsFlagFill color="gray" />
-                        <Text fontSize="sm" ml={3}>
-                          No Priority
-                        </Text>
-                      </MenuItemOption>
-                    </MenuOptionGroup>
+                    ))}
+                   </MenuOptionGroup>
                   </MenuList>
                 </Menu>
                 <Popover placement="start">
