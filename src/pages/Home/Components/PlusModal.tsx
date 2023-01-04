@@ -50,7 +50,7 @@ const PlusModal = () => {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [priority, setPriority] = React.useState("Low");
-  const [iconColor, setIconColor] = React.useState("gray");
+  const [iconColor, setIconColor] = React.useState(prioData[0].color);
 
   const [selectedPrio, setSelectedPrio] = React.useState(prioData[0]);
 
@@ -89,7 +89,8 @@ const PlusModal = () => {
         closeOnOverlayClick={false}
         isOpen={isOpen}
         onClose={onClose}
-        size="lg"
+        size="md"
+        
       >
         <ModalOverlay />
         <ModalContent>
@@ -97,7 +98,8 @@ const PlusModal = () => {
             <Input
               placeholder="Task name"
               border="none"
-              fontSize="xl"
+              fontSize="20"
+              fontFamily="inherit"
               textColor="#2b2b2b"
               variant="unstyled"
               onChange={onChangeTaskName}
@@ -193,7 +195,7 @@ const PlusModal = () => {
                           size="md"
                         />
                       </Stack>
-                      <Divider />
+                      <Divider/>
                       <Flex
                         border="none"
                         flexDirection="row"
@@ -246,6 +248,7 @@ const PlusModal = () => {
                         <MenuItemOption
                           onClick={() => {
                             setSelectedPrio(prio);
+                            setIconColor(prio.color);
                           }}
                         >
                           <Flex>
@@ -353,15 +356,6 @@ const PlusModal = () => {
                     </Flex>
                   </MenuList>
                 </Menu>
-
-                {/* 
-                {dataGrayIcon.map((item) => (
-                  <ModalCard
-                    key={item.text}
-                    Icon={item.Icon}
-                    text={item.text}
-                  />
-                ))} */}
               </Flex>
             </Flex>
           </ModalBody>
