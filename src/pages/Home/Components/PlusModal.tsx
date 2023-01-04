@@ -90,7 +90,6 @@ const PlusModal = () => {
         isOpen={isOpen}
         onClose={onClose}
         size="md"
-        
       >
         <ModalOverlay />
         <ModalContent>
@@ -159,8 +158,6 @@ const PlusModal = () => {
                   >
                     <MenuButton
                       background="white"
-                      border="1px"
-                      borderColor="gray.300"
                       bgColor="white"
                       _hover={{ bg: "gray.200" }}
                       mx={1}
@@ -195,7 +192,7 @@ const PlusModal = () => {
                           size="md"
                         />
                       </Stack>
-                      <Divider/>
+                      <Divider />
                       <Flex
                         border="none"
                         flexDirection="row"
@@ -228,7 +225,6 @@ const PlusModal = () => {
                   >
                     <MenuButton
                       background="white"
-                      border="1px"
                       borderColor="gray.300"
                       bgColor="white"
                       _hover={{ bg: "gray.200" }}
@@ -273,7 +269,6 @@ const PlusModal = () => {
                       <PopoverTrigger>
                         <Button
                           background="white"
-                          border="1px"
                           borderColor="gray.300"
                           bgColor="white"
                           _hover={{ bg: "gray.200" }}
@@ -331,7 +326,6 @@ const PlusModal = () => {
                   >
                     <MenuButton
                       background="white"
-                      border="1px"
                       borderColor="gray.300"
                       bgColor="white"
                       _hover={{ bg: "gray.200" }}
