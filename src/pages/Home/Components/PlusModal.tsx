@@ -62,9 +62,9 @@ const PlusModal = () => {
   };
   const userData = {
     title,
-    priority, // O
-    description, //O
-    date: "", //O
+    priority,
+    description,
+    date: "",
     usersId,
   };
   const seeData = () => {
