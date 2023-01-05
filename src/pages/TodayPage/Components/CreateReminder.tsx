@@ -18,13 +18,14 @@ import { BiPencil, BiMessage } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
 import { FaDiceSix } from "react-icons/fa";
 import Centere from "./Center";
-import NewCard from "./NewCard";
+
 function CreateReminder() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [goster, setGoster] = useState(false);
   const [gosterFlex, setGosterFlex] = useState(false);
-
   const [taskName, setTaskName] = useState("");
+  const [explanation, setExplanation] = useState("");
+
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const iconLists = ["🏷", "🏳", "⏲", "🧩"];
   return (
@@ -88,10 +89,16 @@ function CreateReminder() {
                     h='20px'
                   ></Flex>
                   <Flex ml='2' direction='column'>
-                    <Text>Random</Text>
-                    <Text fontSize='sm' color='gray'>
-                      abc
-                    </Text>
+                    <Input
+                      variant='unstyled'
+                      value={taskName}
+                      onChange={(e) => setTaskName(e.target.value)}
+                    />
+                    <Input
+                      variant='unstyled'
+                      value={explanation}
+                      onChange={(e) => e.target.value}
+                    />
                   </Flex>
                 </Flex>
                 <Spacer />
@@ -163,6 +170,8 @@ function CreateReminder() {
                   variant='unstyled'
                   placeholder='Açıklama'
                   _placeholder={{ opacity: 1, color: "gray.500" }}
+                  value={explanation}
+                  onChange={(e) => setExplanation(e.target.value)}
                 />
                 <Flex ml='3' mt='2'>
                   <Flex
