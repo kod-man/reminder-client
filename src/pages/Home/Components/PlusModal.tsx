@@ -245,6 +245,7 @@ const PlusModal = () => {
                           onClick={() => {
                             setSelectedPrio(prio);
                             setIconColor(prio.color);
+                            setPriority(prio.text);
                           }}
                         >
                           <Flex>
