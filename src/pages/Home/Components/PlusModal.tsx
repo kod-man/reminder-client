@@ -319,7 +319,7 @@ const PlusModal = () => {
                 <Menu>
                   <Tooltip
                     hasArrow
-                    label="insert from integration"
+                    label="Insert from integration"
                     bg="black"
                     color="white"
                     borderRadius="5"
