@@ -1,19 +1,18 @@
-import {
-  Text,
-  Flex,
-  Spacer,
-  Box,
-  StackDivider,
-  VStack,
-} from "@chakra-ui/react";
+import { Text, Flex, Spacer, VStack } from "@chakra-ui/react";
 import React from "react";
 import { AiFillFolderOpen, AiOutlineCalendar } from "react-icons/ai";
-import { BiMessage, BiMessageAlt, BiPencil } from "react-icons/bi";
+import { BiMessage, BiPencil } from "react-icons/bi";
 
 function NewCard() {
   return (
-    <Flex borderBottom='1px solid red' w='60%' h='80px'>
-      <Flex p='4'>
+    <Flex
+      borderBottom='1px solid'
+      borderColor='gray.200'
+      w='60%'
+      h='80px'
+      mt='8'
+    >
+      <Flex>
         <Flex
           border='1px solid gray'
           borderRadius='100%'
@@ -40,21 +39,13 @@ function NewCard() {
             <BiMessage />
           </Text>
         </Flex>
-        <Flex h='40px' justifyContent='flex-end' alignItems='flex-end'>
+        <Flex h='30px' justifyContent='flex-end' alignItems='flex-end'>
           <Text color='blackAlpha.700' mr='1' fontSize='sm'>
             Klasör
           </Text>
           <AiFillFolderOpen />
         </Flex>
       </VStack>
-      {/* <Flex border='1px solid red'>
-        <Text>A</Text>
-        <Text>A</Text>
-        <Text>A</Text> */}
-      {/* <Flex border='1px solid blue'>
-          
-        </Flex> */}
-      {/*  */}
     </Flex>
   );
 }
