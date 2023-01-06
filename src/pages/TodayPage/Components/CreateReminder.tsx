@@ -26,7 +26,7 @@ function CreateReminder() {
   const [explanation, setExplanation] = useState("");
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const iconLists = ["🏷", "🏳", "⏲", "🧩"];
-  const iconLists2 = [<BiPencil />, <AiOutlineCalendar />, <BiMessage />];
+  const icons = [<BiPencil />, <AiOutlineCalendar />, <BiMessage />];
 
   return (
     <>
@@ -94,7 +94,7 @@ function CreateReminder() {
                 <Spacer />
                 <VStack spacing={4} align='stretch'>
                   <Flex>
-                    {iconLists2.map((icon2) => (
+                    {icons.map((icon2) => (
                       <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
                         {icon2}
                       </Text>
