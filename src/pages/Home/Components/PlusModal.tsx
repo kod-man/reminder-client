@@ -30,9 +30,11 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { BiGitCompare } from "react-icons/bi";
-import { BsAlarm, BsFlagFill, BsInboxFill, BsPlus } from "react-icons/bs";
-import { MdLabel, MdLabelOutline, MdToday } from "react-icons/md";
+import { BsAlarm, BsFlagFill } from "react-icons/bs";
+import { MdLabel, MdLabelOutline } from "react-icons/md";
+import InboxIcon from "../../../icons/InboxIcon";
 import PlusIcon from "../../../icons/Plus";
+import TodayIcon from "../../../icons/TodayIcon";
 import MyTooltip from "./MyTooltip";
 
 const prioData = [
@@ -83,7 +85,7 @@ const PlusModal = () => {
         borderRadius="20%"
         padding={1}
       >
-        <PlusIcon color="white"/>
+        <PlusIcon color="white" />
       </Flex>
 
       <Modal
@@ -119,7 +121,7 @@ const PlusModal = () => {
                 border="1px"
                 borderColor="gray.300"
               >
-                <MdToday />
+                <TodayIcon color="#058527!important" />
                 <Text ml={1} fontSize="xs">
                   Today
                 </Text>
@@ -134,7 +136,7 @@ const PlusModal = () => {
                   border="1px"
                   borderColor="gray.300"
                 >
-                  <BsInboxFill />
+                  <InboxIcon color="#246fe0" />
                   <Text ml={1} fontSize="xs" color="gray.600">
                     Inbox
                   </Text>
@@ -227,9 +229,11 @@ const PlusModal = () => {
                           setPriority(prio.text);
                         }}
                       >
-                        <Flex >
+                        <Flex>
                           <BsFlagFill color={prio.color} />
-                          <Text fontSize="sm" ml={3}>{prio.text}</Text>
+                          <Text fontSize="sm" ml={3}>
+                            {prio.text}
+                          </Text>
                         </Flex>
                       </MenuItemOption>
                     ))}
