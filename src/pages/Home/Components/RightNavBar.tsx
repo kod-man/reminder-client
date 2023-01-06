@@ -1,5 +1,5 @@
 import { Flex, HStack } from "@chakra-ui/react";
-import { BsBell } from "react-icons/bs";
+import BellIcon from "../../../icons/BellIcon";
 import PlusModal from "./PlusModal";
 import ProfileMenu from "./ProfileMenu";
 
@@ -21,7 +21,7 @@ const RightNavBar = () => {
         borderRadius="20%"
         padding={1}
       >
-        <BsBell color="white" size="20px" />
+        <BellIcon color="white" />
       </Flex>
       <ProfileMenu />
     </HStack>

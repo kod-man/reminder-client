@@ -6,9 +6,10 @@ import {
   InputLeftElement,
   useDisclosure,
 } from "@chakra-ui/react";
-import { AiOutlineHome, AiOutlineMenu } from "react-icons/ai";
-import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import HomeIcon from "../../../icons/HomeIcon";
+import OpenCloseIcon from "../../../icons/OpenCloseIcon";
+import SearchIcon from "../../../icons/SearchIcon";
 import { PATHS } from "../../../utils/paths";
 import LeftDrawer from "./LeftDrawer";
 
@@ -31,12 +32,7 @@ function LeftNavBar() {
         borderRadius="20%"
         padding={1}
       >
-        <AiOutlineMenu
-          onClick={onOpen}
-          color="white"
-          size="20px"
-          cursor="pointer"
-        />
+        <OpenCloseIcon color="white" onClick={onOpen} />
       </Flex>
       <Flex
         _hover={{ bg: "#e27065" }}
@@ -44,12 +40,7 @@ function LeftNavBar() {
         borderRadius="20%"
         padding={1}
       >
-        <AiOutlineHome
-          cursor="pointer"
-          onClick={() => navigate(PATHS.LOGIN)}
-          size="20px"
-          color="white"
-        />
+        <HomeIcon color="white" onClick={() => navigate(PATHS.LOGIN)} />
       </Flex>
       <InputGroup
         alignItems="center"
@@ -59,7 +50,7 @@ function LeftNavBar() {
         _hover={{ bg: "white", svg: { fill: "black" } }}
       >
         <InputLeftElement
-          children={<BsSearch color="white" />}
+          children={<SearchIcon color="white" />}
           height={8}
           boxSize={7}
           alignItems="center"

@@ -32,6 +32,7 @@ import React from "react";
 import { BiGitCompare } from "react-icons/bi";
 import { BsAlarm, BsFlagFill, BsInboxFill, BsPlus } from "react-icons/bs";
 import { MdLabel, MdLabelOutline, MdToday } from "react-icons/md";
+import PlusIcon from "../../../icons/Plus";
 import MyTooltip from "./MyTooltip";
 
 const prioData = [
@@ -82,7 +83,7 @@ const PlusModal = () => {
         borderRadius="20%"
         padding={1}
       >
-        <BsPlus color="white" size="30px" />
+        <PlusIcon color="white"/>
       </Flex>
 
       <Modal
