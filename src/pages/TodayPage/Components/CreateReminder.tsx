@@ -14,7 +14,7 @@ import {
   AiOutlineCalendar,
   AiOutlinePlusCircle,
 } from "react-icons/ai";
-import { BiPencil, BiMessage } from "react-icons/bi";
+import { BiMessage, BiPencil } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
 
 import Centere from "./Center";
@@ -26,6 +26,8 @@ function CreateReminder() {
   const [explanation, setExplanation] = useState("");
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const iconLists = ["🏷", "🏳", "⏲", "🧩"];
+  const iconLists2 = [<BiPencil />, <AiOutlineCalendar />, <BiMessage />];
+
   return (
     <>
       {!isAddTaskOpen && (
@@ -59,15 +61,8 @@ function CreateReminder() {
       {isAddTaskOpen && (
         <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
           {gosterFlex && (
-            <Flex w='940px' mb='2'>
-              <Flex
-                borderBottom='1px solid'
-                borderColor='gray.200'
-                w='100%'
-                h='80px'
-                mt='8'
-                cursor='pointer'
-              >
+            <Flex w='100%' mb='2' border='1px solid red'>
+              <Flex border='1px solid blue' w='100%' h='80px' cursor='pointer'>
                 <Flex>
                   <Flex
                     border='1px solid gray'
@@ -91,19 +86,14 @@ function CreateReminder() {
                   </Flex>
                 </Flex>
                 <Spacer />
-                <VStack spacing={4} align='stretch'>
+                <VStack spacing={4} align='stretch' border='1px solid green'>
                   <Flex>
-                    <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
-                      <BiPencil />
-                    </Text>
-                    <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
-                      <AiOutlineCalendar />
-                    </Text>
-                    <Text fontSize='2xl' _hover={{ bg: "gray.200" }}>
-                      <BiMessage />
-                    </Text>
+                    {iconLists2.map((icon2) => (
+                      <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
+                        {icon2}
+                      </Text>
+                    ))}
                   </Flex>
-
                   <Flex
                     h='30px'
                     justifyContent='flex-end'
@@ -112,19 +102,12 @@ function CreateReminder() {
                     <Text color='blackAlpha.700' mr='1' fontSize='sm'>
                       Klasör
                     </Text>
-                    <AiFillFolderOpen />
+                    <AiFillFolderOpen color='blue' />
                   </Flex>
                 </VStack>
               </Flex>
 
-              <Flex
-                h='30px'
-                justifyContent='center'
-                alignItems='center'
-                ml='3'
-                mt='6'
-                _hover={{ bg: "gray.200" }}
-              >
+              <Flex h='20px' mt='1' _hover={{ bg: "gray.200" }}>
                 <BsThreeDots />
               </Flex>
             </Flex>
