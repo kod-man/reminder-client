@@ -34,6 +34,7 @@ import React from "react";
 import { BiGitCompare } from "react-icons/bi";
 import { BsAlarm, BsFlagFill, BsInboxFill, BsPlus } from "react-icons/bs";
 import { MdLabel, MdLabelOutline, MdToday } from "react-icons/md";
+import { PropsWithChildren } from 'react'
 
 const prioData = [
   {
@@ -61,26 +62,11 @@ const PlusModal = () => {
     setDescription(e.target.value.trim());
   };
 
-  function MyTooltip(props: {
-    label:
-      | string
-      | number
-      | boolean
-      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-      | React.ReactFragment
-      | React.ReactPortal
-      | null
-      | undefined;
-    children:
-      | string
-      | number
-      | boolean
-      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-      | React.ReactFragment
-      | React.ReactPortal
-      | null
-      | undefined;
-  }) {
+  interface MyTooltipProps {
+    label: string
+  }
+  
+  function MyTooltip(props: PropsWithChildren<MyTooltipProps> ) {
     return (
       <Tooltip
         hasArrow
@@ -92,8 +78,8 @@ const PlusModal = () => {
       >
         {props.children}
       </Tooltip>
-    );
-  }
+    )
+  }  
 
   const userData = {
     title,
