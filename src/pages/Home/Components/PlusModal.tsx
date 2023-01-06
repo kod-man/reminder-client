@@ -11,7 +11,6 @@ import {
   MenuItem,
   MenuItemOption,
   MenuList,
-  MenuOptionGroup,
   Modal,
   ModalBody,
   ModalContent,
@@ -26,7 +25,6 @@ import {
   PopoverTrigger,
   Stack,
   Text,
-  Tooltip,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
@@ -34,7 +32,7 @@ import React from "react";
 import { BiGitCompare } from "react-icons/bi";
 import { BsAlarm, BsFlagFill, BsInboxFill, BsPlus } from "react-icons/bs";
 import { MdLabel, MdLabelOutline, MdToday } from "react-icons/md";
-import { PropsWithChildren } from 'react'
+import MyTooltip from "./MyTooltip";
 
 const prioData = [
   {
@@ -61,25 +59,6 @@ const PlusModal = () => {
   const onChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(e.target.value.trim());
   };
-
-  interface MyTooltipProps {
-    label: string
-  }
-  
-  function MyTooltip(props: PropsWithChildren<MyTooltipProps> ) {
-    return (
-      <Tooltip
-        hasArrow
-        label={props.label}
-        bg="black"
-        color="white"
-        borderRadius="5"
-        placement="top-start"
-      >
-        {props.children}
-      </Tooltip>
-    )
-  }  
 
   const userData = {
     title,
@@ -145,14 +124,7 @@ const PlusModal = () => {
                 </Text>
               </Button>
 
-              <Tooltip
-                hasArrow
-                label="Select a project #"
-                bg="black"
-                color="white"
-                borderRadius="5"
-                placement="top-start"
-              >
+              <MyTooltip label="Select a project #">
                 <Button
                   color="blue"
                   size="sm"
@@ -166,7 +138,7 @@ const PlusModal = () => {
                     Inbox
                   </Text>
                 </Button>
-              </Tooltip>
+              </MyTooltip>
               <Flex ml="auto">
                 <Menu closeOnSelect={false}>
                   <MyTooltip label="Add label(s) @">
@@ -243,25 +215,23 @@ const PlusModal = () => {
                       bg="#edf2f7"
                       icon={<BsFlagFill color={iconColor} />}
                       variant="Flushed"
-                    ></MenuButton>
+                    />
                   </MyTooltip>
                   <MenuList>
-                    <MenuOptionGroup>
-                      {prioData.map((prio) => (
-                        <MenuItemOption
-                          onClick={() => {
-                            setSelectedPrio(prio);
-                            setIconColor(prio.color);
-                            setPriority(prio.text);
-                          }}
-                        >
-                          <Flex>
-                            <BsFlagFill color={prio.color} />
-                            <Text>{prio.text}</Text>
-                          </Flex>
-                        </MenuItemOption>
-                      ))}
-                    </MenuOptionGroup>
+                    {prioData.map((prio) => (
+                      <MenuItemOption
+                        onClick={() => {
+                          setSelectedPrio(prio);
+                          setIconColor(prio.color);
+                          setPriority(prio.text);
+                        }}
+                      >
+                        <Flex >
+                          <BsFlagFill color={prio.color} />
+                          <Text>{prio.text}</Text>
+                        </Flex>
+                      </MenuItemOption>
+                    ))}
                   </MenuList>
                 </Menu>
                 <Popover placement="start">
