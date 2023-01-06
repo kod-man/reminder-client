@@ -1,29 +1,20 @@
-import {
-  Box,
-  Divider,
-  Flex,
-  Menu,
-  MenuButton,
-  MenuList,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { AiOutlinePrinter, AiOutlineStar } from "react-icons/ai";
-import { BiGitCompare } from "react-icons/bi";
-import { BsDownload, BsPeople } from "react-icons/bs";
-import { FiActivity, FiSettings } from "react-icons/fi";
-import { IoIosLogOut } from "react-icons/io";
-import { VscSymbolColor } from "react-icons/vsc";
-import ProfileCards from "./ProfileCards";
+import { Box, Divider, Flex, Menu, MenuButton, MenuList, Text, VStack } from '@chakra-ui/react';
+import { AiOutlinePrinter, AiOutlineStar } from 'react-icons/ai';
+import { BiGitCompare } from 'react-icons/bi';
+import { BsDownload, BsPeople } from 'react-icons/bs';
+import { FiActivity, FiSettings } from 'react-icons/fi';
+import { IoIosLogOut } from 'react-icons/io';
+import { VscSymbolColor } from 'react-icons/vsc';
+import ProfileCards from './ProfileCards';
 
 const dataProfileMenu = [
-  { Icon: VscSymbolColor, text: "Theme" },
-  { Icon: FiActivity, text: "Activity Log" },
-  { Icon: AiOutlinePrinter, text: "Print" },
-  { Icon: BiGitCompare, text: "Integrations" },
-  { Icon: AiOutlineStar, text: "Upgrade to Pro" },
-  { Icon: BsPeople, text: "Upgarde to Business" },
-  { Icon: BsDownload, text: "Download apps" },
+  { Icon: VscSymbolColor, text: 'Theme' },
+  { Icon: FiActivity, text: 'Activity Log' },
+  { Icon: AiOutlinePrinter, text: 'Print' },
+  { Icon: BiGitCompare, text: 'Integrations' },
+  { Icon: AiOutlineStar, text: 'Upgrade to Pro' },
+  { Icon: BsPeople, text: 'Upgarde to Business' },
+  { Icon: BsDownload, text: 'Download apps' },
 ];
 
 const ProfileMenu = () => {
@@ -31,7 +22,7 @@ const ProfileMenu = () => {
     <Menu>
       <Flex
         as={MenuButton}
-        _hover={{ bg: "gray.200" }}
+        _hover={{ bg: 'gray.200' }}
         cursor="pointer"
         padding={1}
         w={8}
@@ -49,7 +40,7 @@ const ProfileMenu = () => {
       <MenuList>
         <Flex
           cursor="pointer"
-          _hover={{ backgroundColor: "#f3f3f3" }}
+          _hover={{ backgroundColor: '#f3f3f3' }}
           mx="1"
           mb="2"
           borderRadius="5"
