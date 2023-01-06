@@ -16,16 +16,14 @@ import {
 } from "react-icons/ai";
 import { BiPencil, BiMessage } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
-import { FaDiceSix } from "react-icons/fa";
+
 import Centere from "./Center";
 
 function CreateReminder() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
-  const [goster, setGoster] = useState(false);
   const [gosterFlex, setGosterFlex] = useState(false);
   const [taskName, setTaskName] = useState("");
   const [explanation, setExplanation] = useState("");
-
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const iconLists = ["🏷", "🏳", "⏲", "🧩"];
   return (
@@ -61,17 +59,7 @@ function CreateReminder() {
       {isAddTaskOpen && (
         <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
           {gosterFlex && (
-            <Flex w='100%'>
-              {!goster && (
-                <Flex
-                  justifyContent='center'
-                  alignItems='center'
-                  mr='3'
-                  mt='-8'
-                >
-                  <FaDiceSix color='gray' />
-                </Flex>
-              )}
+            <Flex w='940px' mb='2'>
               <Flex
                 borderBottom='1px solid'
                 borderColor='gray.200'
@@ -79,7 +67,6 @@ function CreateReminder() {
                 h='80px'
                 mt='8'
                 cursor='pointer'
-                onMouseUp={() => setGoster(!goster)}
               >
                 <Flex>
                   <Flex
@@ -96,26 +83,27 @@ function CreateReminder() {
                     />
                     <Input
                       variant='unstyled'
+                      color='gray'
                       value={explanation}
                       onChange={(e) => e.target.value}
+                      fontSize='xs'
                     />
                   </Flex>
                 </Flex>
                 <Spacer />
                 <VStack spacing={4} align='stretch'>
-                  {!goster && (
-                    <Flex>
-                      <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
-                        <BiPencil />
-                      </Text>
-                      <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
-                        <AiOutlineCalendar />
-                      </Text>
-                      <Text fontSize='2xl' _hover={{ bg: "gray.200" }}>
-                        <BiMessage />
-                      </Text>
-                    </Flex>
-                  )}
+                  <Flex>
+                    <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
+                      <BiPencil />
+                    </Text>
+                    <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
+                      <AiOutlineCalendar />
+                    </Text>
+                    <Text fontSize='2xl' _hover={{ bg: "gray.200" }}>
+                      <BiMessage />
+                    </Text>
+                  </Flex>
+
                   <Flex
                     h='30px'
                     justifyContent='flex-end'
@@ -136,7 +124,6 @@ function CreateReminder() {
                 ml='3'
                 mt='6'
                 _hover={{ bg: "gray.200" }}
-                display='none'
               >
                 <BsThreeDots />
               </Flex>
