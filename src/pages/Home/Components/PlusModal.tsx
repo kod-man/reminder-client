@@ -60,6 +60,41 @@ const PlusModal = () => {
   const onChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(e.target.value.trim());
   };
+
+  function MyTooltip(props: {
+    label:
+      | string
+      | number
+      | boolean
+      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+      | React.ReactFragment
+      | React.ReactPortal
+      | null
+      | undefined;
+    children:
+      | string
+      | number
+      | boolean
+      | React.ReactElement<any, string | React.JSXElementConstructor<any>>
+      | React.ReactFragment
+      | React.ReactPortal
+      | null
+      | undefined;
+  }) {
+    return (
+      <Tooltip
+        hasArrow
+        label={props.label}
+        bg="black"
+        color="white"
+        borderRadius="5"
+        placement="top-start"
+      >
+        {props.children}
+      </Tooltip>
+    );
+  }
+
   const userData = {
     title,
     priority,
@@ -148,14 +183,7 @@ const PlusModal = () => {
               </Tooltip>
               <Flex ml="auto">
                 <Menu closeOnSelect={false}>
-                  <Tooltip
-                    hasArrow
-                    label="Add label(s) @"
-                    bg="black"
-                    color="white"
-                    borderRadius="5"
-                    placement="top-start"
-                  >
+                  <MyTooltip label="Add label(s) @">
                     <MenuButton
                       background="white"
                       bgColor="white"
@@ -174,7 +202,7 @@ const PlusModal = () => {
                       }
                       variant="Flushed"
                     ></MenuButton>
-                  </Tooltip>
+                  </MyTooltip>
                   <MenuList scale="sm">
                     <VStack align="stretch" as={MenuItem} background="white">
                       <Stack
@@ -215,14 +243,7 @@ const PlusModal = () => {
                 </Menu>
 
                 <Menu>
-                  <Tooltip
-                    hasArrow
-                    label="Set the priority  Low, Medium, High"
-                    bg="black"
-                    color="white"
-                    borderRadius="5"
-                    placement="top-start"
-                  >
+                  <MyTooltip label="Set the priority  Low, Medium, High">
                     <MenuButton
                       background="white"
                       borderColor="gray.300"
@@ -237,7 +258,7 @@ const PlusModal = () => {
                       icon={<BsFlagFill color={iconColor} />}
                       variant="Flushed"
                     ></MenuButton>
-                  </Tooltip>
+                  </MyTooltip>
                   <MenuList>
                     <MenuOptionGroup>
                       {prioData.map((prio) => (
@@ -258,14 +279,7 @@ const PlusModal = () => {
                   </MenuList>
                 </Menu>
                 <Popover placement="start">
-                  <Tooltip
-                    hasArrow
-                    label="Add reminder(s)"
-                    bg="black"
-                    color="white"
-                    borderRadius="5"
-                    placement="top-start"
-                  >
+                  <MyTooltip label="Add reminder(s)">
                     <Box display="inline-block">
                       <PopoverTrigger>
                         <Button
@@ -284,7 +298,7 @@ const PlusModal = () => {
                         ></Button>
                       </PopoverTrigger>
                     </Box>
-                  </Tooltip>
+                  </MyTooltip>
                   <PopoverContent width={450} height={150}>
                     <PopoverArrow />
                     <PopoverCloseButton />
@@ -317,14 +331,7 @@ const PlusModal = () => {
                 </Popover>
 
                 <Menu>
-                  <Tooltip
-                    hasArrow
-                    label="Insert from integration"
-                    bg="black"
-                    color="white"
-                    borderRadius="5"
-                    placement="top-start"
-                  >
+                  <MyTooltip label="Insert from integration">
                     <MenuButton
                       background="white"
                       borderColor="gray.300"
@@ -339,7 +346,7 @@ const PlusModal = () => {
                       icon={<BiGitCompare color="gray" />}
                       variant="Flushed"
                     ></MenuButton>
-                  </Tooltip>
+                  </MyTooltip>
                   <MenuList>
                     <Flex>
                       <Box mx="2">
