@@ -228,7 +228,7 @@ const PlusModal = () => {
                       >
                         <Flex >
                           <BsFlagFill color={prio.color} />
-                          <Text>{prio.text}</Text>
+                          <Text fontSize="sm" ml={3}>{prio.text}</Text>
                         </Flex>
                       </MenuItemOption>
                     ))}
