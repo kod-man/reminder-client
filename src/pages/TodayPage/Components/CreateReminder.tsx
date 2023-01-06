@@ -61,8 +61,14 @@ function CreateReminder() {
       {isAddTaskOpen && (
         <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
           {gosterFlex && (
-            <Flex w='100%' mb='2' border='1px solid red'>
-              <Flex border='1px solid blue' w='100%' h='80px' cursor='pointer'>
+            <Flex w='100%' mb='2'>
+              <Flex
+                borderBottom='1px solid'
+                borderColor='gray.200'
+                w='100%'
+                h='80px'
+                cursor='pointer'
+              >
                 <Flex>
                   <Flex
                     border='1px solid gray'
@@ -86,7 +92,7 @@ function CreateReminder() {
                   </Flex>
                 </Flex>
                 <Spacer />
-                <VStack spacing={4} align='stretch' border='1px solid green'>
+                <VStack spacing={4} align='stretch'>
                   <Flex>
                     {iconLists2.map((icon2) => (
                       <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
