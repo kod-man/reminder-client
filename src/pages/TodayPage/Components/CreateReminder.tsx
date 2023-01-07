@@ -8,6 +8,7 @@ import {
   useMediaQuery,
   VStack,
 } from "@chakra-ui/react";
+
 import { useState } from "react";
 import {
   AiFillFolderOpen,
@@ -22,24 +23,31 @@ import Welcome from "./Center";
 function CreateReminder() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [showTodoCard, setShowTodoCard] = useState(false);
-  const [taskName, setTaskName] = useState("");
-  const [explanation, setExplanation] = useState("");
+  const [toDoData, setToDoData] = useState({
+    title: "",
+    description: "",
+    date: "",
+    priority: "",
+    label: "",
+  });
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setToDoData((prev) => ({ ...prev, [name]: value }));
+  };
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const iconLists = ["🏷", "🏳", "⏲", "🧩"];
   const icons = [<BiPencil />, <AiOutlineCalendar />, <BiMessage />];
 
   const submitHandler = (e: any) => {
     e.preventDefault();
+
     const userId = localStorage.getItem("userId");
     const newUserData = {
       userId,
-      title: taskName,
-      description: "",
-      date: "",
-      priority: "",
-      label: "",
+      ...toDoData,
     };
     console.log(newUserData);
+    setShowTodoCard(!showTodoCard);
   };
 
   return (
@@ -93,14 +101,14 @@ function CreateReminder() {
                   <Flex ml='2' direction='column'>
                     <Input
                       variant='unstyled'
-                      value={taskName}
-                      onChange={(e) => setTaskName(e.target.value)}
+                      value={toDoData.title}
+                      onChange={handleOnChange}
                     />
                     <Input
                       variant='unstyled'
                       color='gray'
-                      value={explanation}
-                      onChange={(e) => e.target.value}
+                      value={toDoData.description}
+                      onChange={handleOnChange}
                       fontSize='xs'
                     />
                   </Flex>
@@ -146,22 +154,24 @@ function CreateReminder() {
             >
               <Box w='200px'>
                 <Input
-                  value={taskName}
-                  onChange={(e) => setTaskName(e.target.value)}
+                  value={toDoData.title}
+                  onChange={handleOnChange}
                   ml='3'
                   mt='3'
                   variant='unstyled'
                   placeholder='Görev ismi'
                   _placeholder={{ opacity: 1, color: "gray.500" }}
+                  name='title'
                 />
                 <Input
+                  name='description'
                   mt='2'
                   ml='3'
                   variant='unstyled'
                   placeholder='Açıklama'
                   _placeholder={{ opacity: 1, color: "gray.500" }}
-                  value={explanation}
-                  onChange={(e) => setExplanation(e.target.value)}
+                  value={toDoData.description}
+                  onChange={handleOnChange}
                 />
                 <Flex ml='3' mt='2'>
                   <Flex
@@ -227,15 +237,13 @@ function CreateReminder() {
             </Button>
             <Button
               color='white'
-              bg={!taskName.trim() ? "red.300" : "red.500"}
-              disabled={!taskName.trim()}
-              _hover={!taskName ? { bg: "" } : { bg: "red.700" }}
-              onClick={() => setShowTodoCard(!showTodoCard)}
-              // onClick={() => submitHandler}
+              bg={!toDoData.title.trim() ? "red.300" : "red.500"}
+              disabled={!toDoData.title.trim()}
+              _hover={!toDoData.title ? { bg: "" } : { bg: "red.700" }}
+              onClick={submitHandler}
             >
               Görev ekle
             </Button>
-            <Button onClick={submitHandler}>Görev ekle</Button>
           </Flex>
         </Flex>
       )}
