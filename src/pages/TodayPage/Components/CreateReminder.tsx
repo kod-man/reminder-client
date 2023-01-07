@@ -244,16 +244,3 @@ function CreateReminder() {
 }
 
 export default CreateReminder;
-function post(
-  username: string,
-  newUserData: {
-    userId: string | null;
-    title: string;
-    description: string;
-    date: string;
-    priority: string;
-    label: string;
-  }
-) {
-  throw new Error("Function not implemented.");
-}
