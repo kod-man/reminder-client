@@ -165,7 +165,6 @@ const PlusModal = () => {
                       background="white"
                       bgColor="white"
                       _hover={{ bg: "gray.200" }}
-                      mx={1}
                       as={IconButton}
                       borderRadius={5}
                       color="white"
@@ -218,7 +217,6 @@ const PlusModal = () => {
                       borderColor="gray.300"
                       bgColor="white"
                       _hover={{ bg: "gray.200" }}
-                      mx={1}
                       as={IconButton}
                       borderRadius={5}
                       color="white"
@@ -249,14 +247,13 @@ const PlusModal = () => {
                 </Menu>
                 <Popover placement="start">
                   <MyTooltip label="Add reminder(s)">
-                    <Box display="inline-block">
+                    <Box>
                       <PopoverTrigger>
                         <Button
                           background="white"
                           borderColor="gray.300"
                           bgColor="white"
                           _hover={{ bg: "gray.200" }}
-                          mx={1}
                           as={IconButton}
                           borderRadius={5}
                           color="white"
@@ -282,6 +279,7 @@ const PlusModal = () => {
                         size="sm"
                         mr={2}
                         mb="2"
+                        textDecoration="inherit"
                         as={PopoverCloseButton}
                         w="16"
                       >
@@ -291,6 +289,7 @@ const PlusModal = () => {
                         color="white"
                         bg="tomato"
                         size="sm"
+                        textDecoration="inherit"
                         _hover={{ backgroundColor: "red.500" }}
                       >
                         Upgrade for more
@@ -306,7 +305,6 @@ const PlusModal = () => {
                       borderColor="gray.300"
                       bgColor="white"
                       _hover={{ bg: "gray.200" }}
-                      mx={1}
                       as={IconButton}
                       borderRadius={5}
                       color="white"
