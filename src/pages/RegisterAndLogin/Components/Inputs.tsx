@@ -92,8 +92,8 @@ const Inputs = ({ page }: { page: string }) => {
             description: "You're logged in.",
             status: 'success',
           });
-          localStorage.setItem('token', res.data.response.token);
-          localStorage.setItem('userId', res.data.response.user.id);
+          sessionStorage.setItem('token', res.data.response.token);
+          sessionStorage.setItem('userId', res.data.response.user.id);
 
           navigate(PATHS.HOME);
           // update local storage
