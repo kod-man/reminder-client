@@ -103,6 +103,7 @@ function CreateReminder() {
                       variant='unstyled'
                       value={toDoData.title}
                       onChange={handleOnChange}
+                      name='title'
                     />
                     <Input
                       variant='unstyled'
@@ -110,6 +111,7 @@ function CreateReminder() {
                       value={toDoData.description}
                       onChange={handleOnChange}
                       fontSize='xs'
+                      name='description'
                     />
                   </Flex>
                 </Flex>
