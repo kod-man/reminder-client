@@ -7,6 +7,7 @@ import {
   Text,
   useMediaQuery,
   VStack,
+  useToast,
 } from "@chakra-ui/react";
 
 import { useState } from "react";
@@ -18,11 +19,21 @@ import {
 import { BiMessage, BiPencil } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
 
+import { Axios } from "../../../utils/axios";
+import {
+  defaultToastProps,
+  genericServerToast,
+  genericValidationToast,
+} from "../../../utils/genericToast";
+
+import { API } from "../../../utils/usedApi";
+
 import Welcome from "./Center";
 
 function CreateReminder() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [showTodoCard, setShowTodoCard] = useState(false);
+  const toast = useToast();
   const [toDoData, setToDoData] = useState({
     title: "",
     description: "",
@@ -30,6 +41,7 @@ function CreateReminder() {
     priority: "",
     label: "",
   });
+
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setToDoData((prev) => ({ ...prev, [name]: value }));
@@ -46,7 +58,26 @@ function CreateReminder() {
       userId,
       ...toDoData,
     };
-    console.log(newUserData);
+
+    Axios.post(API.addReminder, newUserData)
+      .then((res) => {
+        console.log(res);
+        toast({
+          ...defaultToastProps,
+          title: "Reminder added succesfully.",
+          status: "success",
+        });
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+          genericValidationToast(toast, err);
+        } else {
+          console.log(err);
+          genericServerToast(toast);
+        }
+      });
+
     setShowTodoCard(!showTodoCard);
   };
 
