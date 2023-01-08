@@ -58,13 +58,13 @@ function CreateReminder() {
       userId,
       ...toDoData,
     };
-    console.log(newUserData);
+
     Axios.post(API.addReminder, newUserData)
       .then((res) => {
         console.log(res);
         toast({
           ...defaultToastProps,
-          title: "Reminder added succesfuly.",
+          title: "Reminder added succesfully.",
           status: "success",
         });
       })
