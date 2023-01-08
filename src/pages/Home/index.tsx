@@ -5,7 +5,7 @@ import RightNavBar from "./Components/RightNavBar";
 function HomePage() {
   return (
     <Flex
-      h={10}
+      h={9}
       bg="#db4c3f"
       alignItems="center"
       justifyContent="center"

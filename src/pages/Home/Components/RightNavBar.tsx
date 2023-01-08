@@ -1,6 +1,8 @@
 import { Flex, HStack } from "@chakra-ui/react";
 import BellIcon from "../../../icons/BellIcon";
+import HelpAndInfo from "./HelpAndInfo";
 import PlusModal from "./PlusModal";
+import Productivity from "./Productivity";
 import ProfileMenu from "./ProfileMenu";
 
 const RightNavBar = () => {
@@ -12,9 +14,12 @@ const RightNavBar = () => {
       ml="auto"
       flexBasis="150px"
       height="100%"
-      spacing={4}
+      spacing={2}
     >
+      
       <PlusModal />
+      <Productivity />
+      <HelpAndInfo />
       <Flex
         _hover={{ bg: "#e27065" }}
         cursor="pointer"
@@ -23,6 +28,7 @@ const RightNavBar = () => {
       >
         <BellIcon color="white" />
       </Flex>
+      
       <ProfileMenu />
     </HStack>
   );

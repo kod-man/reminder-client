@@ -84,6 +84,7 @@ const PlusModal = () => {
         cursor="pointer"
         borderRadius="20%"
         padding={1}
+        h="8"
       >
         <PlusIcon color="white" />
       </Flex>
