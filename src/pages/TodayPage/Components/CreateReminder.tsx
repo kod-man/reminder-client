@@ -7,6 +7,7 @@ import {
   Text,
   useMediaQuery,
   VStack,
+  useToast,
 } from "@chakra-ui/react";
 
 import { useState } from "react";
@@ -17,12 +18,22 @@ import {
 } from "react-icons/ai";
 import { BiMessage, BiPencil } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { Axios } from "../../../utils/axios";
+import {
+  defaultToastProps,
+  genericServerToast,
+  genericValidationToast,
+} from "../../../utils/genericToast";
+import { PATHS } from "../../../utils/paths";
+import { API } from "../../../utils/usedApi";
 
 import Welcome from "./Center";
 
 function CreateReminder() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [showTodoCard, setShowTodoCard] = useState(false);
+  const toast = useToast();
   const [toDoData, setToDoData] = useState({
     title: "",
     description: "",
@@ -30,6 +41,7 @@ function CreateReminder() {
     priority: "",
     label: "",
   });
+  const navigate = useNavigate();
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setToDoData((prev) => ({ ...prev, [name]: value }));
@@ -47,6 +59,28 @@ function CreateReminder() {
       ...toDoData,
     };
     console.log(newUserData);
+    Axios.post(API.today, newUserData)
+      .then((res) => {
+        console.log(res);
+        toast({
+          ...defaultToastProps,
+          title: "Your data has been saved.",
+        });
+        navigate(PATHS.TODAY);
+        sessionStorage.setItem("token", res.data.response.token);
+        sessionStorage.setItem("userId", res.data.response.user.id);
+        window.location.reload();
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+          genericValidationToast(toast, err);
+        } else {
+          console.log(err);
+          genericServerToast(toast);
+        }
+      });
+
     setShowTodoCard(!showTodoCard);
   };
 
