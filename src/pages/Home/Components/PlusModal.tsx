@@ -30,10 +30,14 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { BiGitCompare } from "react-icons/bi";
-import { BsAlarm, BsFlagFill } from "react-icons/bs";
-import { MdLabel, MdLabelOutline } from "react-icons/md";
+import ClockIcon from "../../../icons/ClockIcon";
+import FlagIcon from "../../../icons/FlagIcon";
 import InboxIcon from "../../../icons/InboxIcon";
-import PlusIcon from "../../../icons/Plus";
+import IntegrationIcon from "../../../icons/IntegrationIcon";
+import LabelIcon from "../../../icons/LabelIcon";
+import MiniFlagIcon from "../../../icons/MiniFlagIcon";
+import MiniLabelIcon from "../../../icons/MiniLabelIcon";
+import PlusIcon from "../../../icons/PlusIcon";
 import TodayIcon from "../../../icons/TodayIcon";
 import MyTooltip from "./MyTooltip";
 
@@ -116,11 +120,17 @@ const PlusModal = () => {
             />
             <Flex mt={5}>
               <Button
+                display="flex"
+                boxSizing="border-box"
+                justifyContent="space-between"
+                align-item="center"
+                height="28px"
+                padding="0 8px"
                 color="green"
                 size="sm"
                 background="white"
-                border="1px"
-                borderColor="gray.300"
+                border="1px solid #ccc"
+                transition="background-color .3s cubic-bezier(.4,0,.2,1)"
               >
                 <TodayIcon color="#058527!important" />
                 <Text ml={1} fontSize="xs">
@@ -130,12 +140,18 @@ const PlusModal = () => {
 
               <MyTooltip label="Select a project #">
                 <Button
-                  color="blue"
+                  display="flex"
+                  boxSizing="border-box"
+                  justifyContent="space-between"
+                  align-item="center"
+                  height="28px"
+                  padding="0 8px"
+                  color="green"
                   size="sm"
-                  ml={2}
                   background="white"
-                  border="1px"
-                  borderColor="gray.300"
+                  border="1px solid #ccc"
+                  transition="background-color .3s cubic-bezier(.4,0,.2,1)"
+                  ml={2}
                 >
                   <InboxIcon color="#246fe0" />
                   <Text ml={1} fontSize="xs" color="gray.600">
@@ -156,12 +172,7 @@ const PlusModal = () => {
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={
-                        <MdLabelOutline
-                          color="gray"
-                          style={{ transform: "rotate(-45deg)" }}
-                        />
-                      }
+                      icon={<LabelIcon color="gray" />}
                       variant="Flushed"
                     ></MenuButton>
                   </MyTooltip>
@@ -191,10 +202,7 @@ const PlusModal = () => {
                         width="100%"
                         height="100%"
                       >
-                        <MdLabel
-                          color="gray"
-                          style={{ transform: "rotate(-45deg)" }}
-                        />
+                        <MiniLabelIcon color="gray" />
                         <Text mx={2} color="black">
                           read
                         </Text>
@@ -217,7 +225,7 @@ const PlusModal = () => {
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={<BsFlagFill color={iconColor} />}
+                      icon={<FlagIcon color={iconColor} />}
                       variant="Flushed"
                     />
                   </MyTooltip>
@@ -231,7 +239,7 @@ const PlusModal = () => {
                         }}
                       >
                         <Flex>
-                          <BsFlagFill color={prio.color} />
+                          <MiniFlagIcon color={prio.color} />
                           <Text fontSize="sm" ml={3}>
                             {prio.text}
                           </Text>
@@ -255,7 +263,7 @@ const PlusModal = () => {
                           color="white"
                           size="sm"
                           bg="#edf2f7"
-                          icon={<BsAlarm color="gray" />}
+                          icon={<ClockIcon color="gray" />}
                           variant="Flushed"
                         ></Button>
                       </PopoverTrigger>
@@ -305,7 +313,7 @@ const PlusModal = () => {
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={<BiGitCompare color="gray" />}
+                      icon={<IntegrationIcon color="gray" />}
                       variant="Flushed"
                     ></MenuButton>
                   </MyTooltip>
@@ -323,7 +331,7 @@ const PlusModal = () => {
               </Flex>
             </Flex>
           </ModalBody>
-          <Divider />
+          <Divider border=".25" />
           <ModalFooter>
             <Button onClick={onClose} size="sm">
               Cancel

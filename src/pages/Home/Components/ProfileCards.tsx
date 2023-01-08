@@ -21,16 +21,17 @@ const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
           borderRadius: "5px",
         }}
         px={2}
-        h="30px"
-        w="100%"
+        h="24"
+        w="24"
         justifyContent="flex-start"
         alignItems="center"
         mb={1}
+        p="1"
       >
-        <Box h={4} w={4} mr="1" justifyContent="flex-start">
+        <Box h={4} w={4} mr="1" justifyContent="center" alignItems="center" textAlign="left" padding="5px -10px" >
           <Icon color="gray" />
         </Box>
-        <Text fontSize="small" ml="2">
+        <Text fontSize=".81rem" ml="2" mt={1}>
           {text}
         </Text>
       </Flex>
