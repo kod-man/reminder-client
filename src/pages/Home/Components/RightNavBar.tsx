@@ -16,7 +16,6 @@ const RightNavBar = () => {
       height="100%"
       spacing={1}
     >
-      
       <PlusModal />
       <Productivity />
       <HelpAndInfo />
@@ -28,7 +27,7 @@ const RightNavBar = () => {
       >
         <BellIcon color="white" />
       </Flex>
-      
+
       <ProfileMenu />
     </HStack>
   );

@@ -1,4 +1,4 @@
-const OpenCloseIcon = (props: any) => {
+const HamburgerIcon = (props: any) => {
   return (
     <svg className="menu_icon" width="24" height="24" viewBox="0 0 24 24">
       <path
@@ -11,4 +11,4 @@ const OpenCloseIcon = (props: any) => {
   );
 };
 
-export default OpenCloseIcon;
+export default HamburgerIcon;

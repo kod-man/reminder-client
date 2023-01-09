@@ -7,8 +7,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import HamburgerIcon from "../../../icons/HamburgerIcon";
 import HomeIcon from "../../../icons/HomeIcon";
-import OpenCloseIcon from "../../../icons/OpenCloseIcon";
 import SearchIcon from "../../../icons/SearchIcon";
 import { PATHS } from "../../../utils/paths";
 import LeftDrawer from "./LeftDrawer";
@@ -32,7 +32,7 @@ function LeftNavBar() {
         borderRadius="20%"
         padding={1}
       >
-        <OpenCloseIcon color="white" onClick={onOpen} />
+        <HamburgerIcon color="white" onClick={onOpen} />
       </Flex>
       <Flex
         _hover={{ bg: "#e27065" }}
