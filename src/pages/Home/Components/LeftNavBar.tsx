@@ -24,7 +24,7 @@ function LeftNavBar() {
       ml={5}
       height="100%"
       flexBasis="200px"
-      spacing={4}
+      spacing={2}
     >
       <Flex
         _hover={{ bg: "#e27065" }}
@@ -51,16 +51,17 @@ function LeftNavBar() {
       >
         <InputLeftElement
           children={<SearchIcon color="white" />}
-          height={8}
+          height={7}
           boxSize={7}
           alignItems="center"
         />
         <Input
+          border="none"
           type="text"
           placeholder="Search"
           _placeholder={{ color: "white" }}
           _hover={{ _placeholder: { color: "black" } }}
-          height={7}
+          height={6}
           borderRadius="3"
           _focusVisible={{ outline: "none" }}
         />

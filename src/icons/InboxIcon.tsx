@@ -1,9 +1,9 @@
 const InboxIcon = (props:any) => {
   return (
     <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
       className="project_icon GjN0JRk project_icon_inbox"
       {...props}
     >
