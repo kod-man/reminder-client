@@ -28,7 +28,7 @@ const RightNavBar = () => {
         borderRadius="20%"
         background="#db4c3f"
         p={0}
-        ml="1px !important"
+        ml="0px !important"
       >
         <BellIcon color="white" />
       </Flex>

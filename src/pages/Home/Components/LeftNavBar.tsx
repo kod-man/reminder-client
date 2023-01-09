@@ -40,7 +40,7 @@ function LeftNavBar() {
         cursor="pointer"
         borderRadius="20%"
         padding={1}
-        ml="1px !important"
+        ml="0px !important"
       >
         <HomeIcon color="white" onClick={() => navigate(PATHS.LOGIN)} />
       </Flex>
