@@ -70,6 +70,7 @@ const ProfileMenu = () => {
                 justifyContent="center"
                 backgroundColor="white"
                 borderRadius="50%"
+                p={1}
               >
                 MC
               </Flex>

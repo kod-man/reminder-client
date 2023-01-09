@@ -31,6 +31,7 @@ function LeftNavBar() {
         cursor="pointer"
         borderRadius="20%"
         padding={1}
+        
       >
         <HamburgerIcon color="white" onClick={onOpen} />
       </Flex>
@@ -39,6 +40,7 @@ function LeftNavBar() {
         cursor="pointer"
         borderRadius="20%"
         padding={1}
+        ml="1px !important"
       >
         <HomeIcon color="white" onClick={() => navigate(PATHS.LOGIN)} />
       </Flex>
@@ -61,8 +63,8 @@ function LeftNavBar() {
           placeholder="Search"
           _placeholder={{ color: "white" }}
           _hover={{ _placeholder: { color: "black" } }}
-          height={8}
-          borderRadius="3"
+          height={7}
+          borderRadius="4"
           _focusVisible={{ outline: "none" }}
         />
       </InputGroup>

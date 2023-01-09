@@ -1,4 +1,4 @@
-import { Flex, HStack } from "@chakra-ui/react";
+import { Button, Flex, HStack } from "@chakra-ui/react";
 import BellIcon from "../../../icons/BellIcon";
 import HelpAndInfo from "./HelpAndInfo";
 import PlusModal from "./PlusModal";
@@ -14,16 +14,21 @@ const RightNavBar = () => {
       ml="auto"
       flexBasis="150px"
       height="100%"
-      spacing={1}
     >
       <PlusModal />
       <Productivity />
       <HelpAndInfo />
+
       <Flex
+        as={Button}
+        h="32px"
+        w="32px"
         _hover={{ bg: "#e27065" }}
         cursor="pointer"
         borderRadius="20%"
-        padding={1}
+        background="#db4c3f"
+        p={0}
+        ml="1px !important"
       >
         <BellIcon color="white" />
       </Flex>

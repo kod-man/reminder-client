@@ -6,7 +6,7 @@ const HelpAndInfo = () => {
     <Flex
       as={Button}
       p="1"
-      h={8}
+      boxSize="30px"
       background="#db4c3f"
       _hover={{ bg: "#e27065" }}
     >
