@@ -36,12 +36,11 @@ const ProfileMenu = () => {
         as={MenuButton}
         _hover={{ bg: "gray.200" }}
         cursor="pointer"
-        padding={1}
-        w={8}
-        h={8}
+        w="8"
+        h="8"
         border="1px solid white"
         fontSize="xs"
-        color="green"
+        color="red"
         alignItems="center"
         justifyContent="center"
         backgroundColor="white"
