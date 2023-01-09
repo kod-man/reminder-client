@@ -46,8 +46,9 @@ const ProfileMenu = () => {
         borderRadius="50%"
         textStyle="bold"
       >
-        <Text as="b" fontFamily="initial">MC</Text>
-        
+        <Text as="b" fontSize="xsm">
+          MC
+        </Text>
       </Flex>
       <MenuList>
         <Flex

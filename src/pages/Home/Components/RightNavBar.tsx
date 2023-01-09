@@ -10,7 +10,7 @@ const RightNavBar = () => {
     <HStack
       align-items="center"
       justifyContent="end"
-      mr="5"
+      mr="7"
       ml="auto"
       flexBasis="150px"
       height="100%"
