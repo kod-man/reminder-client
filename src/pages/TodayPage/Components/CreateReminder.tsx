@@ -31,7 +31,9 @@ import { API } from "../../../utils/usedApi";
 import Welcome from "./Center";
 
 function CreateReminder() {
-  useEffect(() => {}, []);
+  useEffect(() => {
+    Axios.get(API.allReminder, newUserData.userId);
+  }, []);
 
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [showTodoCard, setShowTodoCard] = useState(false);
