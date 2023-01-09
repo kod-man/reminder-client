@@ -10,7 +10,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AiFillFolderOpen,
   AiOutlineCalendar,
@@ -31,6 +31,8 @@ import { API } from "../../../utils/usedApi";
 import Welcome from "./Center";
 
 function CreateReminder() {
+  useEffect(() => {}, []);
+
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [showTodoCard, setShowTodoCard] = useState(false);
   const toast = useToast();
