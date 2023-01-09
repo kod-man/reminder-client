@@ -34,19 +34,20 @@ const ProfileMenu = () => {
     <Menu>
       <Flex
         as={MenuButton}
-        _hover={{ bg: "gray.200" }}
         cursor="pointer"
-        w="8"
-        h="8"
+        h="7"
+        w="7"
         border="1px solid white"
         fontSize="xs"
-        color="red"
+        color="#db4c3f"
         alignItems="center"
         justifyContent="center"
         backgroundColor="white"
         borderRadius="50%"
+        textStyle="bold"
       >
-        MC
+        <Text as="b" fontFamily="initial">MC</Text>
+        
       </Flex>
       <MenuList>
         <Flex

@@ -10,11 +10,11 @@ const RightNavBar = () => {
     <HStack
       align-items="center"
       justifyContent="end"
-      mr="3"
+      mr="5"
       ml="auto"
       flexBasis="150px"
       height="100%"
-      spacing={2}
+      spacing={1}
     >
       
       <PlusModal />

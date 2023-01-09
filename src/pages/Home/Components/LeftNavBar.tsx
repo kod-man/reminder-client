@@ -61,7 +61,7 @@ function LeftNavBar() {
           placeholder="Search"
           _placeholder={{ color: "white" }}
           _hover={{ _placeholder: { color: "black" } }}
-          height={6}
+          height={8}
           borderRadius="3"
           _focusVisible={{ outline: "none" }}
         />

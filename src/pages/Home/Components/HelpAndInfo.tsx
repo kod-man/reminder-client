@@ -9,7 +9,6 @@ const HelpAndInfo = () => {
       h={8}
       background="#db4c3f"
       _hover={{ bg: "#e27065" }}
-      
     >
       <QuestionIcon color="white" />
     </Flex>
