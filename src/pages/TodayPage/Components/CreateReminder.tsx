@@ -80,7 +80,7 @@ function CreateReminder() {
     setShowTodoCard(!showTodoCard);
   };
   useEffect(() => {
-    Axios.get(`/reminder/all/${userId}`)
+    Axios.get(`${API.allReminder}/${userId}`)
       .then((res) => {
         console.log(res);
       })
