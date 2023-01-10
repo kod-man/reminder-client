@@ -8,6 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import ActivityIcon from "../../../icons/ActivityIcon";
 import BusinessIcon from "../../../icons/BusinessIcon";
 import DownloadIcon from "../../../icons/DownloadIcon";
@@ -17,6 +18,7 @@ import PrintIcon from "../../../icons/PrintIcon";
 import SettingsIcon from "../../../icons/SettingsIcon";
 import ThemeIcon from "../../../icons/ThemeIcon";
 import UpgradeIcon from "../../../icons/UpgradeIcon";
+import { PATHS } from "../../../utils/paths";
 import ProfileCards from "./ProfileCards";
 
 const dataProfileMenu = [
@@ -30,6 +32,12 @@ const dataProfileMenu = [
 ];
 
 const ProfileMenu = () => {
+  const navigate = useNavigate();
+  const onClickLogOut = () => {
+    navigate(PATHS.LOGIN);
+    console.log("qqq")
+  }
+
   return (
     <Menu>
       <Flex
@@ -103,7 +111,9 @@ const ProfileMenu = () => {
         ))}
 
         <Divider />
+        <Box onClick={onClickLogOut}>
         <ProfileCards text="Logout" Icon={LogoutIcon} />
+        </Box>
       </MenuList>
     </Menu>
   );
