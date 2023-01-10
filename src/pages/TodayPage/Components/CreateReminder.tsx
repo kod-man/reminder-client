@@ -32,7 +32,19 @@ import Welcome from "./Center";
 
 function CreateReminder() {
   useEffect(() => {
-    Axios.get(API.allReminder, newUserData.userId);
+    Axios.get(API.allReminder, "userId")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+          genericValidationToast(toast, err);
+        } else {
+          console.log(err);
+          genericServerToast(toast);
+        }
+      });
   }, []);
 
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
