@@ -50,7 +50,7 @@ function CreateReminder() {
   const iconLists = ["🏷", "🏳", "⏲", "🧩"];
   const icons = [<BiPencil />, <AiOutlineCalendar />, <BiMessage />];
 
-  const userId = localStorage.getItem("userId");
+  const userId = sessionStorage.getItem("userId");
   const newUserData = {
     userId,
     ...toDoData,
