@@ -10,7 +10,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AiFillFolderOpen,
   AiOutlineCalendar,
@@ -50,14 +50,13 @@ function CreateReminder() {
   const iconLists = ["🏷", "🏳", "⏲", "🧩"];
   const icons = [<BiPencil />, <AiOutlineCalendar />, <BiMessage />];
 
+  const userId = sessionStorage.getItem("userId");
+  const newUserData = {
+    userId,
+    ...toDoData,
+  };
   const submitHandler = (e: any) => {
     e.preventDefault();
-
-    const userId = localStorage.getItem("userId");
-    const newUserData = {
-      userId,
-      ...toDoData,
-    };
 
     Axios.post(API.addReminder, newUserData)
       .then((res) => {
@@ -80,7 +79,19 @@ function CreateReminder() {
 
     setShowTodoCard(!showTodoCard);
   };
-
+  useEffect(() => {
+    Axios.get(`${API.allReminder}/${userId}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+        } else {
+          console.log(err);
+        }
+      });
+  });
   return (
     <>
       {!isAddTaskOpen && (
