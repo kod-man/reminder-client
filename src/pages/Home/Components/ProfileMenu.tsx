@@ -1,46 +1,75 @@
-import { Box, Divider, Flex, Menu, MenuButton, MenuList, Text, VStack } from '@chakra-ui/react';
-import { AiOutlinePrinter, AiOutlineStar } from 'react-icons/ai';
-import { BiGitCompare } from 'react-icons/bi';
-import { BsDownload, BsPeople } from 'react-icons/bs';
-import { FiActivity, FiSettings } from 'react-icons/fi';
-import { IoIosLogOut } from 'react-icons/io';
-import { VscSymbolColor } from 'react-icons/vsc';
-import ProfileCards from './ProfileCards';
+import {
+  Box,
+  Divider,
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ActivityIcon from "../../../icons/ActivityIcon";
+import BusinessIcon from "../../../icons/BusinessIcon";
+import DownloadIcon from "../../../icons/DownloadIcon";
+import IntegrationIcon from "../../../icons/IntegrationIcon";
+import LogoutIcon from "../../../icons/LogoutIcon";
+import PrintIcon from "../../../icons/PrintIcon";
+import SettingsIcon from "../../../icons/SettingsIcon";
+import ThemeIcon from "../../../icons/ThemeIcon";
+import UpgradeIcon from "../../../icons/UpgradeIcon";
+import { PATHS } from "../../../utils/paths";
+import ProfileCards from "./ProfileCards";
 
 const dataProfileMenu = [
-  { Icon: VscSymbolColor, text: 'Theme' },
-  { Icon: FiActivity, text: 'Activity Log' },
-  { Icon: AiOutlinePrinter, text: 'Print' },
-  { Icon: BiGitCompare, text: 'Integrations' },
-  { Icon: AiOutlineStar, text: 'Upgrade to Pro' },
-  { Icon: BsPeople, text: 'Upgarde to Business' },
-  { Icon: BsDownload, text: 'Download apps' },
+  { Icon: ThemeIcon, text: "Theme" },
+  { Icon: ActivityIcon, text: "Activity Log" },
+  { Icon: PrintIcon, text: "Print" },
+  { Icon: IntegrationIcon, text: "Integrations" },
+  { Icon: UpgradeIcon, text: "Upgrade to Pro" },
+  { Icon: BusinessIcon, text: "Upgarde to Business" },
+  { Icon: DownloadIcon, text: "Download apps" },
 ];
-
 const ProfileMenu = () => {
+  const navigate = useNavigate();
+  const [render, setRender] = useState(false);
+
+  useEffect(() => {
+    if (render) {
+      navigate(PATHS.LOGIN);
+    }
+  }, [render]);
+
+  const onClickLogOut = () => {
+    sessionStorage.removeItem("token");
+    setRender(true);
+    // window.location.reload(); // bad way
+  };
   return (
     <Menu>
       <Flex
         as={MenuButton}
-        _hover={{ bg: 'gray.200' }}
         cursor="pointer"
-        padding={1}
-        w={8}
-        h={8}
+        h="7"
+        w="7"
         border="1px solid white"
         fontSize="xs"
-        color="green"
+        color="#db4c3f"
         alignItems="center"
         justifyContent="center"
         backgroundColor="white"
         borderRadius="50%"
+        textStyle="bold"
       >
-        MC
+        <Text as="b" fontSize="xsm">
+          MC
+        </Text>
       </Flex>
       <MenuList>
         <Flex
           cursor="pointer"
-          _hover={{ backgroundColor: '#f3f3f3' }}
+          _hover={{ backgroundColor: "#f3f3f3" }}
           mx="1"
           mb="2"
           borderRadius="5"
@@ -58,6 +87,7 @@ const ProfileMenu = () => {
                 justifyContent="center"
                 backgroundColor="white"
                 borderRadius="50%"
+                p={1}
               >
                 MC
               </Flex>
@@ -74,7 +104,7 @@ const ProfileMenu = () => {
             </Flex>
             <Flex alignItems="center" ml={2} mb="1">
               <Box h={4} w={4} mr="1" justifyContent="flex-start">
-                <FiSettings color="gray" />
+                <SettingsIcon color="#808080" />
               </Box>
               <Text fontSize="small" ml="2">
                 Settings
@@ -89,7 +119,9 @@ const ProfileMenu = () => {
         ))}
 
         <Divider />
-        <ProfileCards text="Logout" Icon={IoIosLogOut} />
+        <Box onClick={onClickLogOut}>
+          <ProfileCards text="Logout" Icon={LogoutIcon} />
+        </Box>
       </MenuList>
     </Menu>
   );
