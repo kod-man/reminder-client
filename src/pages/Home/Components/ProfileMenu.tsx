@@ -8,6 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ActivityIcon from "../../../icons/ActivityIcon";
 import BusinessIcon from "../../../icons/BusinessIcon";
@@ -30,14 +31,21 @@ const dataProfileMenu = [
   { Icon: BusinessIcon, text: "Upgarde to Business" },
   { Icon: DownloadIcon, text: "Download apps" },
 ];
-
 const ProfileMenu = () => {
   const navigate = useNavigate();
-  const onClickLogOut = () => {
-    navigate(PATHS.LOGIN);
-    console.log("qqq")
-  }
+  const [render, setRender] = useState(false);
 
+  useEffect(() => {
+    if (render) {
+      navigate(PATHS.LOGIN);
+    }
+  }, [render]);
+
+  const onClickLogOut = () => {
+    sessionStorage.removeItem("token");
+    setRender(true);
+    // window.location.reload(); // bad way
+  };
   return (
     <Menu>
       <Flex
@@ -112,7 +120,7 @@ const ProfileMenu = () => {
 
         <Divider />
         <Box onClick={onClickLogOut}>
-        <ProfileCards text="Logout" Icon={LogoutIcon} />
+          <ProfileCards text="Logout" Icon={LogoutIcon} />
         </Box>
       </MenuList>
     </Menu>

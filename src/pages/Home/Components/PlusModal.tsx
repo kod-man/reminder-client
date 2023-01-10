@@ -52,7 +52,7 @@ const prioData = [
 
 const PlusModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const usersId = localStorage.getItem("userId");
+  const usersId = sessionStorage.getItem("userId");
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [priority, setPriority] = React.useState("Low");
