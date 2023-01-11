@@ -28,13 +28,12 @@ const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
         p="1"
       >
         <Flex
-          h={4}
-          w={4}
+          h={5}
+          w={6}
           mr="1"
           justifyContent="center"
           alignItems="center"
           textAlign="left"
-          padding="5px -10px"
         >
           <Icon color="gray" />
         </Flex>
