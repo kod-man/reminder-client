@@ -330,7 +330,7 @@ const PlusModal = () => {
               </Flex>
             </Flex>
           </ModalBody>
-          <Divider border=".25" />
+          <Divider border="1" />
           <ModalFooter>
             <Button onClick={onClose} size="sm">
               Cancel
