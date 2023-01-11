@@ -22,7 +22,7 @@ import UpgradeIcon from "../../../icons/UpgradeIcon";
 import { PATHS } from "../../../utils/paths";
 import ProfileCards from "./ProfileCards";
 
-const dataProfileMenu = [
+const ProfilMenuData = [
   { Icon: ThemeIcon, text: "Theme" },
   { Icon: ActivityIcon, text: "Activity Log" },
   { Icon: PrintIcon, text: "Print" },
@@ -114,7 +114,7 @@ const ProfileMenu = () => {
         </Flex>
         <Divider />
 
-        {dataProfileMenu.map((item) => (
+        {ProfilMenuData.map((item) => (
           <ProfileCards key={item.text} text={item.text} Icon={item.Icon} />
         ))}
 
