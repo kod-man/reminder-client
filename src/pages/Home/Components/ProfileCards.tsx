@@ -6,7 +6,7 @@ type CardProps = {
   Icon: IconType;
   text: string;
 };
-
+// 1
 const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
   return (
     <MenuItem
