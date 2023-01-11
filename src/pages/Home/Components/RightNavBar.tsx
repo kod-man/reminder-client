@@ -1,8 +1,8 @@
 import { Button, Flex, HStack } from "@chakra-ui/react";
 import BellIcon from "../../../icons/BellIcon";
+import RisingArrowIcon from "../../../icons/RisingArrowIcon";
 import HelpAndInfo from "./HelpAndInfo";
 import PlusModal from "./PlusModal";
-import Productivity from "./Productivity";
 import ProfileMenu from "./ProfileMenu";
 
 const RightNavBar = () => {
@@ -16,7 +16,19 @@ const RightNavBar = () => {
       height="100%"
     >
       <PlusModal />
-      <Productivity />
+      <Flex
+        as={Button}
+        p="1"
+        h={8}
+        background="#db4c3f"
+        _hover={{ bg: "#e27065" }}
+        fontWeight="light"
+        textColor="white"
+        fontSize="sm"
+      >
+        <RisingArrowIcon color="white" />
+        0/5
+      </Flex>
       <HelpAndInfo />
 
       <Flex
