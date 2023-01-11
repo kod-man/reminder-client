@@ -31,7 +31,6 @@ function LeftNavBar() {
         cursor="pointer"
         borderRadius="20%"
         padding={1}
-        
       >
         <HamburgerIcon color="white" onClick={onOpen} />
       </Flex>
@@ -42,7 +41,7 @@ function LeftNavBar() {
         padding={1}
         ml="0px !important"
       >
-        <HomeIcon color="white" onClick={() => navigate(PATHS.LOGIN)} />
+        <HomeIcon color="white" onClick={() => navigate(PATHS.HOME)} />
       </Flex>
       <InputGroup
         alignItems="center"

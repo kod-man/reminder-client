@@ -60,9 +60,9 @@ const ProfileMenu = () => {
         justifyContent="center"
         backgroundColor="white"
         borderRadius="50%"
-        textStyle="bold"
+        fontWeight="bold"
       >
-        <Text as="b" fontSize="xsm">
+        <Text as="b" fontSize="xs">
           MC
         </Text>
       </Flex>

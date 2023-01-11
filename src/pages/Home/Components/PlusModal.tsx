@@ -123,7 +123,7 @@ const PlusModal = () => {
                 display="flex"
                 boxSizing="border-box"
                 justifyContent="space-between"
-                align-item="center"
+                align-items="center"
                 height="28px"
                 padding="0 8px"
                 color="green"
@@ -143,7 +143,7 @@ const PlusModal = () => {
                   display="flex"
                   boxSizing="border-box"
                   justifyContent="space-between"
-                  align-item="center"
+                  align-items="center"
                   height="28px"
                   padding="0 8px"
                   color="green"
@@ -211,7 +211,6 @@ const PlusModal = () => {
                     </VStack>
                   </MenuList>
                 </Menu>
-
                 <Menu>
                   <MyTooltip label="Set the priority  Low, Medium, High">
                     <MenuButton

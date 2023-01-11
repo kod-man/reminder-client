@@ -38,7 +38,7 @@ const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
         >
           <Icon color="gray" />
         </Box>
-        <Text fontSize=".81rem" ml="2" mt={1}>
+        <Text fontSize="13px" ml="2" mt={1}>
           {text}
         </Text>
       </Flex>
