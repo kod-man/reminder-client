@@ -1,7 +1,7 @@
 import { HStack } from "@chakra-ui/react";
 import BellIcon from "../../../icons/BellIcon";
+import QuestionIcon from "../../../icons/QuestionIcon";
 import RisingArrowIcon from "../../../icons/RisingArrowIcon";
-import HelpAndInfo from "./HelpAndInfo";
 import PlusModal from "./PlusModal";
 import ProfileMenu from "./ProfileMenu";
 
@@ -17,7 +17,7 @@ const RightNavBar = () => {
     >
       <PlusModal />
       <RisingArrowIcon color="white" />
-      <HelpAndInfo />
+      <QuestionIcon color="white" />
       <BellIcon color="white" />
       <ProfileMenu />
     </HStack>

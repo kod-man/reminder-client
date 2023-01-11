@@ -1,13 +1,4 @@
-import {
-  Box,
-  Divider,
-  Flex,
-  Menu,
-  MenuButton,
-  MenuList,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Divider, Flex, Menu, MenuButton, MenuList, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ActivityIcon from "../../../icons/ActivityIcon";
