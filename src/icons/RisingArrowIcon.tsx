@@ -1,4 +1,4 @@
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 
 const RisingArrowIcon = (props: any) => {
   return (
@@ -32,6 +32,9 @@ const RisingArrowIcon = (props: any) => {
           </g>
         </g>
       </svg>
+      <Text ml={1} fontWeight="light" fontSize="xs">
+        0/5
+      </Text>
     </Flex>
   );
 };

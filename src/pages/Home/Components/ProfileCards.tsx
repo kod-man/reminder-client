@@ -1,4 +1,4 @@
-import { Box, Flex, MenuItem, Text } from "@chakra-ui/react";
+import { Flex, MenuItem, Text } from "@chakra-ui/react";
 import { FC } from "react";
 import { IconType } from "react-icons";
 
@@ -27,7 +27,7 @@ const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
         mb={1}
         p="1"
       >
-        <Box
+        <Flex
           h={4}
           w={4}
           mr="1"
@@ -37,7 +37,7 @@ const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
           padding="5px -10px"
         >
           <Icon color="gray" />
-        </Box>
+        </Flex>
         <Text fontSize="13px" ml="2" mt={1}>
           {text}
         </Text>
