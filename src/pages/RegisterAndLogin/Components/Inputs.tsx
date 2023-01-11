@@ -95,7 +95,7 @@ const Inputs = ({ page }: { page: string }) => {
           sessionStorage.setItem("token", res.data.response.token);
           sessionStorage.setItem("userId", res.data.response.user.id);
 
-          navigate(PATHS.HOME);
+          navigate(PATHS.ONBOARD);
           // update local storage
           window.location.reload();
         })
