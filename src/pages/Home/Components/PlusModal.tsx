@@ -226,6 +226,7 @@ const PlusModal = () => {
                           setIconColor(prio.color);
                           setPriority(prio.text);
                         }}
+                        key={prio.text}
                       >
                         <Flex>
                           <MiniFlagIcon color={prio.color} />

@@ -12,15 +12,9 @@ const RisingArrowIcon = (props: any) => {
       textColor="white"
       fontSize="sm"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        {...props}
-      >
-        <g fill="none" fill-rule="evenodd">
-          <g fill="currentColor" fill-rule="nonzero">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" {...props}>
+        <g fill="none" fillRule="evenodd">
+          <g fill="currentColor" fillRule="nonzero">
             <g>
               <g>
                 <path
