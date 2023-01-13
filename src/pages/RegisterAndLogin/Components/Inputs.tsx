@@ -8,7 +8,7 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
@@ -25,7 +25,6 @@ const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
   const [disabled, setDisabled] = React.useState(true);
   const navigate = useNavigate();
-  const [userName, setUserName] = React.useState("");
 
   const [formData, setFormData] = React.useState({
     email: "",
@@ -112,27 +111,6 @@ const Inputs = ({ page }: { page: string }) => {
     }
   };
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const res = await Axios.get("/user/me", {
-          headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-          },
-        });
-        if (res.data.userName === "") {
-          navigate(PATHS.ONBOARD);
-        } else {
-          navigate(PATHS.HOME);
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchUser();
-  }, [navigate]);
-
-  
   return (
     <>
       <FormControl>

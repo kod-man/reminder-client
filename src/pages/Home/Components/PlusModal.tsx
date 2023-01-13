@@ -52,12 +52,11 @@ const prioData = [
 
 const PlusModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const usersId = sessionStorage.getItem("userId");
+  const userId = sessionStorage.getItem("userId");
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [priority, setPriority] = React.useState("Low");
   const [iconColor, setIconColor] = React.useState(prioData[0].color);
-
   const [selectedPrio, setSelectedPrio] = React.useState(prioData[0]);
 
   const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +71,7 @@ const PlusModal = () => {
     priority,
     description,
     date: "",
-    usersId,
+    userId,
   };
   const showData = () => {
     console.log(userData);
