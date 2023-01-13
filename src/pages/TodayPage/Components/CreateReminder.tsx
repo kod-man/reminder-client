@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import { BsThreeDots } from "react-icons/bs";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
@@ -19,7 +18,6 @@ import {
 } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
 import Welcome from "./Center";
-import IconsBar from "./IconsBar";
 import IconsCard from "./IconsCard";
 import ReminderCard from "./ReminderCard";
 import TodayCard from "./TodayCard";
@@ -29,9 +27,7 @@ function CreateReminder() {
   const toast = useToast();
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
-  const [showTodoCard, setShowTodoCard] = useState(false);
   const [refreshGet, setRefreshGet] = useState(false);
-
   const [toDoData, setToDoData] = useState({
     title: "",
     description: "",
@@ -41,7 +37,6 @@ function CreateReminder() {
   });
   const [reminders, setReminders] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const userId = sessionStorage.getItem("userId");
   const newUserData = {
     userId,
@@ -53,7 +48,6 @@ function CreateReminder() {
   };
   const submitHandler = (e: any) => {
     e.preventDefault();
-
     Axios.post(API.addReminder, newUserData)
       .then((res) => {
         console.log(res);
@@ -81,7 +75,6 @@ function CreateReminder() {
       label: "",
     });
   };
-
   useEffect(() => {
     Axios.get(`${API.allReminder}/${userId}`)
       .then((res) => {
@@ -100,6 +93,14 @@ function CreateReminder() {
   }, [userId, refreshGet]);
   return (
     <>
+      {!loading && reminders.length === 0 && <Welcome />}
+      {reminders.map((reminder: Reminder) => (
+        <ReminderCard
+          key={reminder._id}
+          title={reminder.title}
+          description={reminder.description}
+        />
+      ))}
       <Flex
         w={isLargerThan800 ? "60%" : "80%"}
         mt='2'
@@ -123,59 +124,8 @@ function CreateReminder() {
           Görev Ekle
         </Flex>
       </Flex>
-      {!loading && reminders.length === 0 && <Welcome />}
-      {reminders.map((reminder: Reminder) => (
-        <ReminderCard
-          key={reminder._id}
-          title={reminder.title}
-          description={reminder.description}
-        />
-      ))}
-
       {isAddTaskOpen && (
         <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
-          {showTodoCard && (
-            <Flex w='100%' mb='2'>
-              <Flex
-                borderBottom='1px solid'
-                borderColor='gray.200'
-                w='100%'
-                h='80px'
-                cursor='pointer'
-              >
-                <Flex>
-                  <Flex
-                    border='1px solid gray'
-                    borderRadius='100%'
-                    w='20px'
-                    h='20px'
-                  ></Flex>
-                  <Flex ml='2' direction='column'>
-                    <Input
-                      variant='unstyled'
-                      value={toDoData.title}
-                      onChange={handleOnChange}
-                      name='title'
-                    />
-                    <Input
-                      variant='unstyled'
-                      color='gray'
-                      value={toDoData.description}
-                      onChange={handleOnChange}
-                      fontSize='xs'
-                      name='description'
-                    />
-                  </Flex>
-                </Flex>
-                <Spacer />
-                <IconsBar />
-              </Flex>
-
-              <Flex h='20px' mt='1' _hover={{ bg: "gray.200" }}>
-                <BsThreeDots />
-              </Flex>
-            </Flex>
-          )}
           <Box
             alignItems='center'
             justifyContent='center'
