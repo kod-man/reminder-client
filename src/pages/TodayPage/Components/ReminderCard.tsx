@@ -1,5 +1,6 @@
 import { Flex, Input, Spacer, useMediaQuery } from "@chakra-ui/react";
-import { BsThreeDots } from "react-icons/bs";
+import CircleIcon from "../icons/CircleIcon";
+import TreeDoteIcon from "../icons/TreeDoteIcon";
 import IconsBar from "./IconsBar";
 
 type ReminderCardProps = {
@@ -21,10 +22,15 @@ function ReminderCard({ title, description }: ReminderCardProps) {
         <Flex>
           <Flex
             border='1px solid gray'
-            borderRadius='100%'
-            w='20px'
-            h='20px'
-          ></Flex>
+            borderRadius='50%'
+            w='16px'
+            h='16px'
+            alignItems='center'
+            justifyContent='center'
+            overflow='hidden'
+          >
+            <CircleIcon />
+          </Flex>
           <Flex ml='2' direction='column'>
             <Input variant='unstyled' value={title} name='title' />
             <Input
@@ -39,8 +45,14 @@ function ReminderCard({ title, description }: ReminderCardProps) {
         <Spacer />
         <IconsBar />
       </Flex>
-      <Flex h='20px' mt='1' _hover={{ bg: "gray.200" }}>
-        <BsThreeDots />
+      <Flex
+        w='24px'
+        h='24px'
+        _hover={{ bg: "gray.200" }}
+        alignItems='center'
+        justifyContent='center'
+      >
+        <TreeDoteIcon color='gray' />
       </Flex>
     </Flex>
   );

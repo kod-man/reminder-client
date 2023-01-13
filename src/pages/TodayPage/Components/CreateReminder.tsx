@@ -9,7 +9,6 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
@@ -17,6 +16,7 @@ import {
   genericServerToast,
 } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
+import PlusIcon from "../icons/PlusIcon";
 import Welcome from "./Center";
 import IconsCard from "./IconsCard";
 import ReminderCard from "./ReminderCard";
@@ -171,7 +171,7 @@ function CreateReminder() {
             borderRadius='100%'
             color='red'
           >
-            <AiOutlinePlusCircle />
+            <PlusIcon />
           </Text>
           <Flex
             color='gray'

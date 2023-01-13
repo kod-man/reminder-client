@@ -1,7 +1,9 @@
 import { VStack, Flex, Text } from "@chakra-ui/react";
-import { AiFillFolderOpen, AiOutlineCalendar } from "react-icons/ai";
-import { BiMessage, BiPencil } from "react-icons/bi";
-const icons = [<BiPencil />, <AiOutlineCalendar />, <BiMessage />];
+import DateIcon from "../icons/DateIcon";
+import FolderIcon from "../icons/FolderIcon";
+import MessageIcon from "../icons/MessageIcon";
+import PenIcon from "../icons/PenIcon";
+const icons = [<PenIcon />, <DateIcon />, <MessageIcon />];
 function IconsBar() {
   return (
     <VStack spacing={4} align='stretch'>
@@ -16,7 +18,9 @@ function IconsBar() {
         <Text color='blackAlpha.700' mr='1' fontSize='sm'>
           Klasör
         </Text>
-        <AiFillFolderOpen color='blue' />
+        <Flex mb='1'>
+          <FolderIcon color='blue' />
+        </Flex>
       </Flex>
     </VStack>
   );

@@ -1,6 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
-
-import { AiOutlineCalendar, AiFillFolderOpen } from "react-icons/ai";
+import FolderIcon from "../icons/FolderIcon";
+import TodayIcon from "../icons/TodayIcon";
 
 function TodayCard() {
   return (
@@ -19,7 +19,7 @@ function TodayCard() {
         cursor='pointer'
         _hover={{ bg: "gray.200" }}
       >
-        <AiOutlineCalendar />
+        <TodayIcon />
         <Text ml='1'>Bugün</Text>
       </Flex>
       <Flex
@@ -35,7 +35,7 @@ function TodayCard() {
         cursor='pointer'
         _hover={{ bg: "gray.200" }}
       >
-        <AiFillFolderOpen />
+        <FolderIcon color='blue.500' />
         <Text color='blackAlpha.700' ml='1'>
           Klasör
         </Text>
