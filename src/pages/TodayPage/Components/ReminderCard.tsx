@@ -10,12 +10,7 @@ type ReminderCardProps = {
 function ReminderCard({ title, description }: ReminderCardProps) {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   return (
-    <Flex
-      w={isLargerThan800 ? "60%" : "80%"}
-      justifyContent='center'
-      mb='2'
-      border='1px solid red'
-    >
+    <Flex w={isLargerThan800 ? "60%" : "80%"} justifyContent='center' mb='2'>
       <Flex
         borderBottom='1px solid'
         borderColor='gray.200'

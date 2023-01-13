@@ -101,30 +101,8 @@ function CreateReminder() {
           description={reminder.description}
         />
       ))}
-      <Flex
-        w={isLargerThan800 ? "60%" : "80%"}
-        mt='2'
-        alignItems='center'
-        cursor='pointer'
-      >
-        <Text
-          _hover={{ bg: "red", color: "white" }}
-          onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
-          borderRadius='100%'
-          color='red'
-        >
-          <AiOutlinePlusCircle />
-        </Text>
-        <Flex
-          color='gray'
-          ml='2'
-          _hover={{ color: "red" }}
-          onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
-        >
-          Görev Ekle
-        </Flex>
-      </Flex>
-      {isAddTaskOpen && (
+
+      {isAddTaskOpen ? (
         <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
           <Box
             alignItems='center'
@@ -178,6 +156,30 @@ function CreateReminder() {
             >
               Görev ekle
             </Button>
+          </Flex>
+        </Flex>
+      ) : (
+        <Flex
+          w={isLargerThan800 ? "60%" : "80%"}
+          mt='2'
+          alignItems='center'
+          cursor='pointer'
+        >
+          <Text
+            _hover={{ bg: "red", color: "white" }}
+            onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
+            borderRadius='100%'
+            color='red'
+          >
+            <AiOutlinePlusCircle />
+          </Text>
+          <Flex
+            color='gray'
+            ml='2'
+            _hover={{ color: "red" }}
+            onClick={() => setIsAddTaskOpen(true)}
+          >
+            Görev Ekle
           </Flex>
         </Flex>
       )}
