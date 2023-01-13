@@ -8,7 +8,7 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
@@ -24,6 +24,7 @@ import { InputValidation } from "../utils/InputValidation";
 const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
   const [disabled, setDisabled] = React.useState(true);
+  const [username, setUserName] = React.useState(true);
   const navigate = useNavigate();
 
   const [formData, setFormData] = React.useState({
@@ -110,6 +111,24 @@ const Inputs = ({ page }: { page: string }) => {
         });
     }
   };
+  
+useEffect(()=> {
+    Axios.get(`${API.allReminder}/${username}`)
+    .then((res) => {
+      const data= res.data;
+      setUserName(data);
+      console.log(data);
+      navigate(PATHS.HOME);
+    })
+    .catch((err)=> {
+      if (err.response) {
+        console.log(err.response.data.message);
+      }else {
+        console.log(err)
+      }
+    });
+
+  }, [username])
 
   return (
     <>
