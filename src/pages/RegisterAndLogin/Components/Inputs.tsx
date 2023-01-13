@@ -24,8 +24,8 @@ import { InputValidation } from "../utils/InputValidation";
 const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
   const [disabled, setDisabled] = React.useState(true);
-  const [username, setUserName] = React.useState(true);
   const navigate = useNavigate();
+  const [userName, setUserName] = React.useState("");
 
   const [formData, setFormData] = React.useState({
     email: "",
@@ -111,60 +111,63 @@ const Inputs = ({ page }: { page: string }) => {
         });
     }
   };
-  
-useEffect(()=> {
-    Axios.get(`${API.allReminder}/${username}`)
-    .then((res) => {
-      const data= res.data;
-      setUserName(data);
-      console.log(data);
-      navigate(PATHS.HOME);
-    })
-    .catch((err)=> {
-      if (err.response) {
-        console.log(err.response.data.message);
-      }else {
-        console.log(err)
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await Axios.get("/user/me", {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          },
+        });
+        if (res.data.userName === "") {
+          navigate(PATHS.ONBOARD);
+        } else {
+          navigate(PATHS.HOME);
+        }
+      } catch (err) {
+        console.error(err);
       }
-    });
+    };
+    fetchUser();
+  }, [navigate]);
 
-  }, [username])
-
+  
   return (
     <>
       <FormControl>
-        <Stack width='100%' spacing={3}>
+        <Stack width="100%" spacing={3}>
           <Input
-            name='email'
-            size='lg'
-            pr='4'
-            type='email'
-            placeholder='Enter your email...'
+            name="email"
+            size="lg"
+            pr="4"
+            type="email"
+            placeholder="Enter your email..."
             onChange={HandleOnChange}
             value={formData.email}
           />
           {formErrors.email ? (
-            <Text color='red' as='i'>
+            <Text color="red" as="i">
               {formErrors.email}{" "}
             </Text>
           ) : null}
-          <InputGroup size='lg'>
+          <InputGroup size="lg">
             <Input
-              name='password'
-              pr='4.5rem'
+              name="password"
+              pr="4.5rem"
               type={open ? "text" : "password"}
-              placeholder='Enter your password...'
+              placeholder="Enter your password..."
               onChange={HandleOnChange}
               value={formData.password}
             />
             <InputRightElement
-              cursor='pointer'
+              cursor="pointer"
               onClick={toggleHandle}
               children={open ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
             />
           </InputGroup>
           {formErrors.password ? (
-            <Text color='red' as='i'>
+            <Text color="red" as="i">
               {formErrors.password}
             </Text>
           ) : null}
@@ -173,18 +176,18 @@ useEffect(()=> {
       <Button
         disabled={disabled}
         onClick={submitHandler}
-        display='flex'
-        justifyContent='center'
-        alignItems='center'
-        mt='4'
-        variant='solid'
-        width='350px'
-        size='lg'
-        height='52px'
-        border='2px'
-        color='white'
-        colorScheme='red'
-        borderRadius='9'
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        mt="4"
+        variant="solid"
+        width="350px"
+        size="lg"
+        height="52px"
+        border="2px"
+        color="white"
+        colorScheme="red"
+        borderRadius="9"
       >
         <Text>{page === "register" ? "Sign up with Email" : "Log in"}</Text>
       </Button>
