@@ -36,6 +36,8 @@ function CreateReminder() {
     label: "",
   });
   const [reminders, setReminders] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const userId = sessionStorage.getItem("userId");
   const newUserData = {
     userId,
@@ -75,6 +77,7 @@ function CreateReminder() {
       .then((res) => {
         const data = res.data;
         setReminders(data);
+        setLoading(false);
       })
       .catch((err) => {
         if (err.response) {
@@ -82,6 +85,7 @@ function CreateReminder() {
         } else {
           console.log(err);
         }
+        setLoading(false);
       });
   }, [userId]);
   return (
@@ -111,7 +115,7 @@ function CreateReminder() {
               Görev Ekle
             </Flex>
           </Flex>
-          <Welcome />
+          {!loading && reminders.length === 0 && <Welcome />}
         </>
       )}
       {isAddTaskOpen && (
