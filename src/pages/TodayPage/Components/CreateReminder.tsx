@@ -21,13 +21,17 @@ import { API } from "../../../utils/usedApi";
 import Welcome from "./Center";
 import IconsBar from "./IconsBar";
 import IconsCard from "./IconsCard";
+import ReminderCard from "./ReminderCard";
 import TodayCard from "./TodayCard";
+import { Reminder } from "./types";
 
 function CreateReminder() {
   const toast = useToast();
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [showTodoCard, setShowTodoCard] = useState(false);
+  const [refreshGet, setRefreshGet] = useState(false);
+
   const [toDoData, setToDoData] = useState({
     title: "",
     description: "",
@@ -68,8 +72,14 @@ function CreateReminder() {
           genericServerToast(toast);
         }
       });
-
-    setShowTodoCard(!showTodoCard);
+    setRefreshGet(!refreshGet);
+    setToDoData({
+      title: "",
+      description: "",
+      date: "",
+      priority: "",
+      label: "",
+    });
   };
 
   useEffect(() => {
@@ -87,37 +97,41 @@ function CreateReminder() {
         }
         setLoading(false);
       });
-  }, [userId]);
+  }, [userId, refreshGet]);
   return (
     <>
-      {!isAddTaskOpen && (
-        <>
-          <Flex
-            w={isLargerThan800 ? "60%" : "80%"}
-            mt='2'
-            alignItems='center'
-            cursor='pointer'
-          >
-            <Text
-              _hover={{ bg: "red", color: "white" }}
-              onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
-              borderRadius='100%'
-              color='red'
-            >
-              <AiOutlinePlusCircle />
-            </Text>
-            <Flex
-              color='gray'
-              ml='2'
-              _hover={{ color: "red" }}
-              onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
-            >
-              Görev Ekle
-            </Flex>
-          </Flex>
-          {!loading && reminders.length === 0 && <Welcome />}
-        </>
-      )}
+      <Flex
+        w={isLargerThan800 ? "60%" : "80%"}
+        mt='2'
+        alignItems='center'
+        cursor='pointer'
+      >
+        <Text
+          _hover={{ bg: "red", color: "white" }}
+          onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
+          borderRadius='100%'
+          color='red'
+        >
+          <AiOutlinePlusCircle />
+        </Text>
+        <Flex
+          color='gray'
+          ml='2'
+          _hover={{ color: "red" }}
+          onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
+        >
+          Görev Ekle
+        </Flex>
+      </Flex>
+      {!loading && reminders.length === 0 && <Welcome />}
+      {reminders.map((reminder: Reminder) => (
+        <ReminderCard
+          key={reminder._id}
+          title={reminder.title}
+          description={reminder.description}
+        />
+      ))}
+
       {isAddTaskOpen && (
         <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
           {showTodoCard && (
@@ -202,8 +216,7 @@ function CreateReminder() {
             </Flex>
           </Box>
           <Flex justifyContent='flex-end' mt='3'>
-            <Button mr='4'>
-              {/* onClick={() => setIsAddTaskOpen(!isAddTaskOpen)} */}
+            <Button mr='4' onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}>
               İptal
             </Button>
             <Button
