@@ -24,8 +24,10 @@ import IconsCard from "./IconsCard";
 import TodayCard from "./TodayCard";
 
 function CreateReminder() {
-  const [showTodoCard, setShowTodoCard] = useState(false);
   const toast = useToast();
+  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+  const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
+  const [showTodoCard, setShowTodoCard] = useState(false);
   const [toDoData, setToDoData] = useState({
     title: "",
     description: "",
@@ -33,16 +35,15 @@ function CreateReminder() {
     priority: "",
     label: "",
   });
-
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setToDoData((prev) => ({ ...prev, [name]: value }));
-  };
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+  const [reminders, setReminders] = useState([]);
   const userId = sessionStorage.getItem("userId");
   const newUserData = {
     userId,
     ...toDoData,
+  };
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setToDoData((prev) => ({ ...prev, [name]: value }));
   };
   const submitHandler = (e: any) => {
     e.preventDefault();
@@ -68,12 +69,12 @@ function CreateReminder() {
 
     setShowTodoCard(!showTodoCard);
   };
-  const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
 
   useEffect(() => {
     Axios.get(`${API.allReminder}/${userId}`)
       .then((res) => {
-        console.log(res);
+        const data = res.data;
+        setReminders(data);
       })
       .catch((err) => {
         if (err.response) {
@@ -82,7 +83,7 @@ function CreateReminder() {
           console.log(err);
         }
       });
-  });
+  }, [userId]);
   return (
     <>
       {!isAddTaskOpen && (

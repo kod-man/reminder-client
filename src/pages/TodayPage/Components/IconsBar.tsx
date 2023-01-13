@@ -1,14 +1,13 @@
 import { VStack, Flex, Text } from "@chakra-ui/react";
 import { AiFillFolderOpen, AiOutlineCalendar } from "react-icons/ai";
 import { BiMessage, BiPencil } from "react-icons/bi";
-
+const icons = [<BiPencil />, <AiOutlineCalendar />, <BiMessage />];
 function IconsBar() {
-  const icons = [<BiPencil />, <AiOutlineCalendar />, <BiMessage />];
   return (
     <VStack spacing={4} align='stretch'>
       <Flex>
-        {icons.map((icon2) => (
-          <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
+        {icons.map((icon2, index) => (
+          <Text key={index} fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
             {icon2}
           </Text>
         ))}
