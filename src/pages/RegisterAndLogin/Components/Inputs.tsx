@@ -40,6 +40,8 @@ const Inputs = ({ page }: { page: string }) => {
   const [open, setOpen] = React.useState(false);
   const toggleHandle = () => setOpen(!open);
 
+  const userId = sessionStorage.getItem("userId");
+
   const HandleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -94,6 +96,24 @@ const Inputs = ({ page }: { page: string }) => {
           });
           sessionStorage.setItem("token", res.data.response.token);
           sessionStorage.setItem("userId", res.data.response.user.id);
+
+          Axios.get(`${API.getUser}/${userId}`)
+          .then((response) => {
+            if (response.data.user.userName) {
+              navigate(PATHS.HOME);
+            }
+            console.log(response);
+          })
+          .catch((err) => {
+            if (err.response) {
+              console.log(err.response.data.message);
+              genericValidationToast(toast, err);
+            } else {
+              console.log(err);
+              genericServerToast(toast);
+            }
+          });
+      }
 
           navigate(PATHS.ONBOARD);
           // update local storage
