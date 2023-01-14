@@ -115,7 +115,6 @@ const Inputs = ({ page }: { page: string }) => {
               }
             });
 
-          navigate(PATHS.HOME);
           // update local storage
           window.location.reload();
         })
