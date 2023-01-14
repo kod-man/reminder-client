@@ -18,7 +18,7 @@ import {
 } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
 
-import Welcome from "./Center";
+import Welcome from "./Welcome";
 import IconsCard from "./IconsCard";
 import ReminderCard from "./ReminderCard";
 import TodayCard from "./TodayCard";
@@ -29,6 +29,7 @@ function CreateReminder() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [refreshGet, setRefreshGet] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
   const [toDoData, setToDoData] = useState({
     title: "",
     description: "",
@@ -47,6 +48,7 @@ function CreateReminder() {
     const { value, name } = e.target;
     setToDoData((prev) => ({ ...prev, [name]: value }));
   };
+
   const submitHandler = (e: any) => {
     e.preventDefault();
     Axios.post(API.addReminder, newUserData)
@@ -94,7 +96,6 @@ function CreateReminder() {
   }, [userId, refreshGet]);
   return (
     <>
-      {!loading && reminders.length === 0 && <Welcome />}
       {reminders.map((reminder: Reminder) => (
         <ReminderCard
           key={reminder._id}
@@ -145,7 +146,13 @@ function CreateReminder() {
             </Flex>
           </Box>
           <Flex justifyContent='flex-end' mt='3'>
-            <Button mr='4' onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}>
+            <Button
+              mr='4'
+              onClick={() => {
+                setIsAddTaskOpen(!isAddTaskOpen);
+                setShowWelcome(true);
+              }}
+            >
               İptal
             </Button>
             <Button
@@ -178,12 +185,16 @@ function CreateReminder() {
             color='gray'
             ml='2'
             _hover={{ color: "red" }}
-            onClick={() => setIsAddTaskOpen(true)}
+            onClick={() => {
+              setIsAddTaskOpen(true);
+              setShowWelcome(false);
+            }}
           >
-            Görev Ekle
+            Görev Ekle2
           </Flex>
         </Flex>
       )}
+      {!loading && reminders.length === 0 && showWelcome && <Welcome />}
     </>
   );
 }
