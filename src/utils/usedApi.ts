@@ -4,4 +4,5 @@ export const API = {
   username: "/user/username",
   addReminder: "/reminder/add",
   allReminder: "/reminder/all",
+  getUser: "user/me"
 };
