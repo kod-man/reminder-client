@@ -6,34 +6,30 @@ import {
   Spacer,
   Text,
   useMediaQuery,
-  VStack,
   useToast,
 } from "@chakra-ui/react";
-
 import { useEffect, useState } from "react";
-import {
-  AiFillFolderOpen,
-  AiOutlineCalendar,
-  AiOutlinePlusCircle,
-} from "react-icons/ai";
-import { BiMessage, BiPencil } from "react-icons/bi";
-import { BsThreeDots } from "react-icons/bs";
-
+import PlusIcon from "../../../icons/PlusIcon";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
-  genericServerToast,
   genericValidationToast,
+  genericServerToast,
 } from "../../../utils/genericToast";
-
 import { API } from "../../../utils/usedApi";
 
-import Welcome from "./Center";
+import Welcome from "./Welcome";
+import IconsCard from "./IconsCard";
+import ReminderCard from "./ReminderCard";
+import TodayCard from "./TodayCard";
+import { Reminder } from "./types";
 
 function CreateReminder() {
-  const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
-  const [showTodoCard, setShowTodoCard] = useState(false);
   const toast = useToast();
+  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+  const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
+  const [refreshGet, setRefreshGet] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
   const [toDoData, setToDoData] = useState({
     title: "",
     description: "",
@@ -41,23 +37,20 @@ function CreateReminder() {
     priority: "",
     label: "",
   });
-
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setToDoData((prev) => ({ ...prev, [name]: value }));
-  };
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
-  const iconLists = ["🏷", "🏳", "⏲", "🧩"];
-  const icons = [<BiPencil />, <AiOutlineCalendar />, <BiMessage />];
-
+  const [reminders, setReminders] = useState([]);
+  const [loading, setLoading] = useState(true);
   const userId = sessionStorage.getItem("userId");
   const newUserData = {
     userId,
     ...toDoData,
   };
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setToDoData((prev) => ({ ...prev, [name]: value }));
+  };
+
   const submitHandler = (e: any) => {
     e.preventDefault();
-
     Axios.post(API.addReminder, newUserData)
       .then((res) => {
         console.log(res);
@@ -76,13 +69,21 @@ function CreateReminder() {
           genericServerToast(toast);
         }
       });
-
-    setShowTodoCard(!showTodoCard);
+    setRefreshGet(!refreshGet);
+    setToDoData({
+      title: "",
+      description: "",
+      date: "",
+      priority: "",
+      label: "",
+    });
   };
   useEffect(() => {
     Axios.get(`${API.allReminder}/${userId}`)
       .then((res) => {
-        console.log(res);
+        const data = res.data;
+        setReminders(data);
+        setLoading(false);
       })
       .catch((err) => {
         if (err.response) {
@@ -90,100 +91,21 @@ function CreateReminder() {
         } else {
           console.log(err);
         }
+        setLoading(false);
       });
-  });
+  }, [userId, refreshGet]);
   return (
     <>
-      {!isAddTaskOpen && (
-        <>
-          <Flex
-            w={isLargerThan800 ? "60%" : "80%"}
-            mt='2'
-            alignItems='center'
-            cursor='pointer'
-          >
-            <Text
-              _hover={{ bg: "red", color: "white" }}
-              onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
-              borderRadius='100%'
-              color='red'
-            >
-              <AiOutlinePlusCircle />
-            </Text>
-            <Flex
-              color='gray'
-              ml='2'
-              _hover={{ color: "red" }}
-              onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
-            >
-              Görev Ekle
-            </Flex>
-          </Flex>
-          <Welcome />
-        </>
-      )}
-      {isAddTaskOpen && (
-        <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
-          {showTodoCard && (
-            <Flex w='100%' mb='2'>
-              <Flex
-                borderBottom='1px solid'
-                borderColor='gray.200'
-                w='100%'
-                h='80px'
-                cursor='pointer'
-              >
-                <Flex>
-                  <Flex
-                    border='1px solid gray'
-                    borderRadius='100%'
-                    w='20px'
-                    h='20px'
-                  ></Flex>
-                  <Flex ml='2' direction='column'>
-                    <Input
-                      variant='unstyled'
-                      value={toDoData.title}
-                      onChange={handleOnChange}
-                      name='title'
-                    />
-                    <Input
-                      variant='unstyled'
-                      color='gray'
-                      value={toDoData.description}
-                      onChange={handleOnChange}
-                      fontSize='xs'
-                      name='description'
-                    />
-                  </Flex>
-                </Flex>
-                <Spacer />
-                <VStack spacing={4} align='stretch'>
-                  <Flex>
-                    {icons.map((icon2) => (
-                      <Text fontSize='2xl' mr='3' _hover={{ bg: "gray.200" }}>
-                        {icon2}
-                      </Text>
-                    ))}
-                  </Flex>
-                  <Flex
-                    h='30px'
-                    justifyContent='flex-end'
-                    alignItems='flex-end'
-                  >
-                    <Text color='blackAlpha.700' mr='1' fontSize='sm'>
-                      Klasör
-                    </Text>
-                    <AiFillFolderOpen color='blue' />
-                  </Flex>
-                </VStack>
-              </Flex>
+      {reminders.map((reminder: Reminder) => (
+        <ReminderCard
+          key={reminder._id}
+          title={reminder.title}
+          description={reminder.description}
+        />
+      ))}
 
-              <Flex h='20px' mt='1' _hover={{ bg: "gray.200" }}>
-                <BsThreeDots />
-              </Flex>
-            </Flex>
-          )}
+      {isAddTaskOpen ? (
+        <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
           <Box
             alignItems='center'
             justifyContent='center'
@@ -217,66 +139,20 @@ function CreateReminder() {
                   value={toDoData.description}
                   onChange={handleOnChange}
                 />
-                <Flex ml='3' mt='2'>
-                  <Flex
-                    border='1px'
-                    borderColor='gray.300'
-                    color='green'
-                    p='2'
-                    mr='2'
-                    borderRadius='md'
-                    w='80px'
-                    h='30px'
-                    alignItems='center'
-                    justifyContent='center'
-                    cursor='pointer'
-                    _hover={{ bg: "gray.200" }}
-                  >
-                    <AiOutlineCalendar />
-                    <Text ml='1'>Bugün</Text>
-                  </Flex>
-                  <Flex
-                    color='blue.400'
-                    border='1px'
-                    borderColor='gray.300'
-                    borderRadius='md'
-                    p='2'
-                    w='80px'
-                    h='30px'
-                    alignItems='center'
-                    justifyContent='center'
-                    cursor='pointer'
-                    _hover={{ bg: "gray.200" }}
-                  >
-                    <AiFillFolderOpen />
-                    <Text color='blackAlpha.700' ml='1'>
-                      Klasör
-                    </Text>
-                  </Flex>
-                </Flex>
+                <TodayCard />
               </Box>
               <Spacer />
-              <Flex
-                alignItems='flex-end'
-                justifyContent='flex-end'
-                w='200px'
-                mb='4'
-              >
-                {iconLists.map((icon) => (
-                  <Text
-                    fontSize='lg'
-                    mr='4'
-                    cursor='pointer'
-                    _hover={{ bg: "gray.200" }}
-                  >
-                    {icon}
-                  </Text>
-                ))}
-              </Flex>
+              <IconsCard />
             </Flex>
           </Box>
           <Flex justifyContent='flex-end' mt='3'>
-            <Button mr='4' onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}>
+            <Button
+              mr='4'
+              onClick={() => {
+                setIsAddTaskOpen(!isAddTaskOpen);
+                setShowWelcome(true);
+              }}
+            >
               İptal
             </Button>
             <Button
@@ -290,7 +166,35 @@ function CreateReminder() {
             </Button>
           </Flex>
         </Flex>
+      ) : (
+        <Flex
+          w={isLargerThan800 ? "60%" : "80%"}
+          mt='2'
+          alignItems='center'
+          cursor='pointer'
+        >
+          <Text
+            _hover={{ bg: "red", color: "white" }}
+            onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
+            borderRadius='100%'
+            color='red'
+          >
+            <PlusIcon />
+          </Text>
+          <Flex
+            color='gray'
+            ml='2'
+            _hover={{ color: "red" }}
+            onClick={() => {
+              setIsAddTaskOpen(true);
+              setShowWelcome(false);
+            }}
+          >
+            Görev Ekle2
+          </Flex>
+        </Flex>
       )}
+      {!loading && reminders.length === 0 && showWelcome && <Welcome />}
     </>
   );
 }

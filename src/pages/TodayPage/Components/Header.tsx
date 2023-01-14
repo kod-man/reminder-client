@@ -1,5 +1,5 @@
 import { Box, Flex, Spacer, Text, useMediaQuery } from "@chakra-ui/react";
-import { AiOutlineMenu } from "react-icons/ai";
+import ViewIcon from "../../../icons/ViewIcon";
 
 function Header() {
   const date = new Date();
@@ -11,7 +11,7 @@ function Header() {
   const today = date.toLocaleDateString("en-US", options);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   return (
-    <Flex w={isLargerThan800 ? "60%" : "80%"}>
+    <Flex w={isLargerThan800 ? "60%" : "80%"} mb='2'>
       <Box mt='12'>
         <Flex>
           <Text as='b' fontSize='xl' mr='2'>
@@ -25,9 +25,7 @@ function Header() {
       <Spacer />
       <Box mt='12' _hover={{ bg: "gray.100" }} cursor='pointer'>
         <Flex>
-          <Text mt='1'>
-            <AiOutlineMenu color='gray' />
-          </Text>
+          <ViewIcon color='gray' />
           {isLargerThan800 ? (
             <Text fontSize='sm' ml='1' color='gray'>
               Görüntüle
