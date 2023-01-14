@@ -27,30 +27,36 @@ import {
   Text,
   useDisclosure,
   VStack,
-} from '@chakra-ui/react';
-import React from 'react';
-import { BiGitCompare } from 'react-icons/bi';
-import { BsAlarm, BsFlagFill, BsInboxFill, BsPlus } from 'react-icons/bs';
-import { MdLabel, MdLabelOutline, MdToday } from 'react-icons/md';
-import MyTooltip from './MyTooltip';
+} from "@chakra-ui/react";
+import React from "react";
+import { BiGitCompare } from "react-icons/bi";
+import ClockIcon from "../../../icons/ClockIcon";
+import FlagIcon from "../../../icons/FlagIcon";
+import InboxIcon from "../../../icons/InboxIcon";
+import IntegrationIcon from "../../../icons/IntegrationIcon";
+import LabelIcon from "../../../icons/LabelIcon";
+import MiniFlagIcon from "../../../icons/MiniFlagIcon";
+import MiniLabelIcon from "../../../icons/MiniLabelIcon";
+import PlusIcon from "../../../icons/PlusIcon";
+import TodayIcon from "../../../icons/TodayIcon";
+import MyTooltip from "./MyTooltip";
 
 const prioData = [
   {
-    text: 'Low',
-    color: 'gray',
+    text: "Low",
+    color: "gray",
   },
-  { text: 'Medium', color: 'green' },
-  { text: 'High', color: 'red' },
+  { text: "Medium", color: "green" },
+  { text: "High", color: "red" },
 ];
 
 const PlusModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const usersId = sessionStorage.getItem('userId');
-  const [title, setTitle] = React.useState('');
-  const [description, setDescription] = React.useState('');
-  const [priority, setPriority] = React.useState('Low');
+  const userId = sessionStorage.getItem("userId");
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [priority, setPriority] = React.useState("Low");
   const [iconColor, setIconColor] = React.useState(prioData[0].color);
-
   const [selectedPrio, setSelectedPrio] = React.useState(prioData[0]);
 
   const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,10 +70,10 @@ const PlusModal = () => {
     title,
     priority,
     description,
-    date: '',
-    usersId,
+    date: "",
+    userId,
   };
-  const seeData = () => {
+  const showData = () => {
     console.log(userData);
   };
 
@@ -77,12 +83,13 @@ const PlusModal = () => {
         bg="#db4c3f"
         as={Button}
         onClick={onOpen}
-        _hover={{ bg: '#e27065' }}
+        _hover={{ bg: "#e27065" }}
         cursor="pointer"
         borderRadius="20%"
         padding={1}
+        h="8"
       >
-        <BsPlus color="white" size="30px" />
+        <PlusIcon color="white" />
       </Flex>
 
       <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} size="md">
@@ -107,13 +114,19 @@ const PlusModal = () => {
             />
             <Flex mt={5}>
               <Button
+                display="flex"
+                boxSizing="border-box"
+                justifyContent="space-between"
+                alignItems="center"
+                height="28px"
+                padding="0 8px"
                 color="green"
                 size="sm"
                 background="white"
-                border="1px"
-                borderColor="gray.300"
+                border="1px solid #ccc"
+                transition="background-color .3s cubic-bezier(.4,0,.2,1)"
               >
-                <MdToday />
+                <TodayIcon color="#058527!important" />
                 <Text ml={1} fontSize="xs">
                   Today
                 </Text>
@@ -121,14 +134,20 @@ const PlusModal = () => {
 
               <MyTooltip label="Select a project #">
                 <Button
-                  color="blue"
+                  display="flex"
+                  boxSizing="border-box"
+                  justifyContent="space-between"
+                  alignItems="center"
+                  height="28px"
+                  padding="0 8px"
+                  color="green"
                   size="sm"
-                  ml={2}
                   background="white"
-                  border="1px"
-                  borderColor="gray.300"
+                  border="1px solid #ccc"
+                  transition="background-color .3s cubic-bezier(.4,0,.2,1)"
+                  ml={2}
                 >
-                  <BsInboxFill />
+                  <InboxIcon color="#246fe0" />
                   <Text ml={1} fontSize="xs" color="gray.600">
                     Inbox
                   </Text>
@@ -140,16 +159,16 @@ const PlusModal = () => {
                     <MenuButton
                       background="white"
                       bgColor="white"
-                      _hover={{ bg: 'gray.200' }}
+                      _hover={{ bg: "gray.200" }}
                       mx={1}
                       as={IconButton}
                       borderRadius={5}
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={<MdLabelOutline color="gray" style={{ transform: 'rotate(-45deg)' }} />}
+                      icon={<LabelIcon color="gray" />}
                       variant="Flushed"
-                    ></MenuButton>
+                    />
                   </MyTooltip>
                   <MenuList scale="sm">
                     <VStack align="stretch" as={MenuItem} background="white">
@@ -172,7 +191,7 @@ const PlusModal = () => {
                         width="100%"
                         height="100%"
                       >
-                        <MdLabel color="gray" style={{ transform: 'rotate(-45deg)' }} />
+                        <MiniLabelIcon color="gray" />
                         <Text mx={2} color="black">
                           read
                         </Text>
@@ -181,21 +200,20 @@ const PlusModal = () => {
                     </VStack>
                   </MenuList>
                 </Menu>
-
                 <Menu>
                   <MyTooltip label="Set the priority  Low, Medium, High">
                     <MenuButton
                       background="white"
                       borderColor="gray.300"
                       bgColor="white"
-                      _hover={{ bg: 'gray.200' }}
+                      _hover={{ bg: "gray.200" }}
                       mx={1}
                       as={IconButton}
                       borderRadius={5}
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={<BsFlagFill color={iconColor} />}
+                      icon={<FlagIcon color={iconColor} />}
                       variant="Flushed"
                     />
                   </MyTooltip>
@@ -207,9 +225,10 @@ const PlusModal = () => {
                           setIconColor(prio.color);
                           setPriority(prio.text);
                         }}
+                        key={prio.text}
                       >
                         <Flex>
-                          <BsFlagFill color={prio.color} />
+                          <MiniFlagIcon color={prio.color} />
                           <Text fontSize="sm" ml={3}>
                             {prio.text}
                           </Text>
@@ -226,14 +245,14 @@ const PlusModal = () => {
                           background="white"
                           borderColor="gray.300"
                           bgColor="white"
-                          _hover={{ bg: 'gray.200' }}
+                          _hover={{ bg: "gray.200" }}
                           mx={1}
                           as={IconButton}
                           borderRadius={5}
                           color="white"
                           size="sm"
                           bg="#edf2f7"
-                          icon={<BsAlarm color="gray" />}
+                          icon={<ClockIcon color="gray" />}
                           variant="Flushed"
                         ></Button>
                       </PopoverTrigger>
@@ -256,7 +275,7 @@ const PlusModal = () => {
                         color="white"
                         bg="tomato"
                         size="sm"
-                        _hover={{ backgroundColor: 'red.500' }}
+                        _hover={{ backgroundColor: "red.500" }}
                       >
                         Upgrade for more
                       </Button>
@@ -270,16 +289,16 @@ const PlusModal = () => {
                       background="white"
                       borderColor="gray.300"
                       bgColor="white"
-                      _hover={{ bg: 'gray.200' }}
+                      _hover={{ bg: "gray.200" }}
                       mx={1}
                       as={IconButton}
                       borderRadius={5}
                       color="white"
                       size="sm"
                       bg="#edf2f7"
-                      icon={<BiGitCompare color="gray" />}
+                      icon={<IntegrationIcon color="gray" />}
                       variant="Flushed"
-                    ></MenuButton>
+                    />
                   </MyTooltip>
                   <MenuList>
                     <Flex>
@@ -295,12 +314,12 @@ const PlusModal = () => {
               </Flex>
             </Flex>
           </ModalBody>
-          <Divider />
+          <Divider border="1" />
           <ModalFooter>
             <Button onClick={onClose} size="sm">
               Cancel
             </Button>
-            <Button colorScheme="red" ml={2} size="sm" disabled={!title.trim()} onClick={seeData}>
+            <Button colorScheme="red" ml={2} size="sm" disabled={!title.trim()} onClick={showData}>
               Add task
             </Button>
           </ModalFooter>

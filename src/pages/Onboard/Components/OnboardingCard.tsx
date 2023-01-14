@@ -1,25 +1,33 @@
-import { Button, Flex, FormLabel, Image, Input, Text, useToast } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Axios } from '../../../utils/axios';
+import {
+  Button,
+  Flex,
+  FormLabel,
+  Image,
+  Input,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
   genericServerToast,
   genericValidationToast,
-} from '../../../utils/genericToast';
-import { PATHS } from '../../../utils/paths';
-import { API } from '../../../utils/usedApi';
-import Header from './Header';
+} from "../../../utils/genericToast";
+import { PATHS } from "../../../utils/paths";
+import { API } from "../../../utils/usedApi";
+import Header from "./Header";
 
 function OnboardingCard() {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [selectedFile, setSelectedFile] = useState();
-  const [preview, setPreview] = useState('');
+  const [preview, setPreview] = useState("");
   const toast = useToast();
   const navigate = useNavigate();
   useEffect(() => {
     if (!selectedFile) {
-      setPreview('');
+      setPreview("");
       return;
     }
     const objectUrl = URL.createObjectURL(selectedFile);
@@ -33,12 +41,12 @@ function OnboardingCard() {
       setSelectedFile(undefined);
       return;
     }
-
     setSelectedFile(e.target.files[0]);
   };
+
   const submitHandler = (e: any) => {
     e.preventDefault();
-    const userId = sessionStorage.getItem('userId');
+    const userId = sessionStorage.getItem("userId");
     const newUserData = {
       userId,
       userName: name,
@@ -49,9 +57,9 @@ function OnboardingCard() {
         console.log(res);
         toast({
           ...defaultToastProps,
-          title: 'Your data has been saved.',
+          title: "Your data has been saved.",
           description: "You're ready to go!",
-          status: 'success',
+          status: "success",
         });
         navigate(PATHS.HOME);
       })
@@ -102,9 +110,15 @@ function OnboardingCard() {
             cursor="pointer"
           >
             {preview ? (
-              <Image w="180px" h="180px" objectFit="contain" borderRadius="full" src={preview} />
+              <Image
+                w="180px"
+                h="180px"
+                objectFit="contain"
+                borderRadius="full"
+                src={preview}
+              />
             ) : (
-              'N'
+              "N"
             )}
           </Flex>
           <FormLabel
@@ -135,18 +149,18 @@ function OnboardingCard() {
               cursor="pointer"
               w="130px"
             >
-              {preview ? 'Fotoğraf değiştir' : 'Fotoğraf yükle'}
+              {preview ? "Fotoğraf değiştir" : "Fotoğraf yükle"}
             </Flex>
           </FormLabel>
           <Flex mt="6">
             <Input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              _focusVisible={{ boxShadow: 'none', outline: 'none' }}
+              _focusVisible={{ boxShadow: "none", outline: "none" }}
               w="48"
               _placeholder={{
                 opacity: 1,
-                textAlign: 'center',
+                textAlign: "center",
               }}
               type="text"
               placeholder="İsmini ekle"
@@ -164,7 +178,7 @@ function OnboardingCard() {
           color="white"
           backgroundColor="red.400"
           mt="10"
-          _hover={{ bg: '#C53030' }}
+          _hover={{ bg: "#C53030" }}
         >
           Todoist'i başlat
         </Button>

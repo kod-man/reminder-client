@@ -6,9 +6,10 @@ import {
   InputLeftElement,
   useDisclosure,
 } from "@chakra-ui/react";
-import { AiOutlineHome, AiOutlineMenu } from "react-icons/ai";
-import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import HamburgerIcon from "../../../icons/HamburgerIcon";
+import HomeIcon from "../../../icons/HomeIcon";
+import SearchIcon from "../../../icons/SearchIcon";
 import { PATHS } from "../../../utils/paths";
 import LeftDrawer from "./LeftDrawer";
 
@@ -23,7 +24,7 @@ function LeftNavBar() {
       ml={5}
       height="100%"
       flexBasis="200px"
-      spacing={4}
+      spacing={2}
     >
       <Flex
         _hover={{ bg: "#e27065" }}
@@ -31,25 +32,16 @@ function LeftNavBar() {
         borderRadius="20%"
         padding={1}
       >
-        <AiOutlineMenu
-          onClick={onOpen}
-          color="white"
-          size="20px"
-          cursor="pointer"
-        />
+        <HamburgerIcon color="white" onClick={onOpen} />
       </Flex>
       <Flex
         _hover={{ bg: "#e27065" }}
         cursor="pointer"
         borderRadius="20%"
         padding={1}
+        ml="0px !important"
       >
-        <AiOutlineHome
-          cursor="pointer"
-          onClick={() => navigate(PATHS.LOGIN)}
-          size="20px"
-          color="white"
-        />
+        <HomeIcon color="white" onClick={() => navigate(PATHS.HOME)} />
       </Flex>
       <InputGroup
         alignItems="center"
@@ -59,18 +51,19 @@ function LeftNavBar() {
         _hover={{ bg: "white", svg: { fill: "black" } }}
       >
         <InputLeftElement
-          children={<BsSearch color="white" />}
-          height={8}
+          children={<SearchIcon color="white" />}
+          height={7}
           boxSize={7}
           alignItems="center"
         />
         <Input
+          border="none"
           type="text"
           placeholder="Search"
           _placeholder={{ color: "white" }}
           _hover={{ _placeholder: { color: "black" } }}
           height={7}
-          borderRadius="3"
+          borderRadius="4"
           _focusVisible={{ outline: "none" }}
         />
       </InputGroup>
