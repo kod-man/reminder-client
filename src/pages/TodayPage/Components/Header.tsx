@@ -1,5 +1,4 @@
 import { Box, Flex, Spacer, Text, useMediaQuery } from "@chakra-ui/react";
-import { AiOutlineMenu } from "react-icons/ai";
 import ViewIcon from "../icons/ViewIcon";
 
 function Header() {
