@@ -1,8 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react";
-import AlarmIcon from "../icons/AlarmIcon";
-import FlagIcon from "../icons/FlagIcon";
-import JigsawIcon from "../icons/JigsawIcon";
-import TicketIcon from "../icons/TicketIcon";
+import AlarmIcon from "../../../icons/AlarmIcon";
+import FlagIcon from "../../../icons/FlagIcon";
+import JigsawIcon from "../../../icons/JigsawIcon";
+import TicketIcon from "../../../icons/TicketIcon";
+
 const iconLists = [<TicketIcon />, <FlagIcon />, <AlarmIcon />, <JigsawIcon />];
 function IconsCard() {
   return (

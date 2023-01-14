@@ -1,6 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
-import FolderIcon from "../icons/FolderIcon";
-import TodayIcon from "../icons/TodayIcon";
+import FolderIcon from "../../../icons/FolderIcon";
+import TodayIcon from "../../../icons/TodayIcon";
 
 function TodayCard() {
   return (

@@ -1,6 +1,6 @@
 import { Flex, Input, Spacer, useMediaQuery } from "@chakra-ui/react";
+import TreeDoteIcon from "../../../icons/TreeDoteIcon";
 
-import TreeDoteIcon from "../icons/TreeDoteIcon";
 import IconsBar from "./IconsBar";
 
 type ReminderCardProps = {

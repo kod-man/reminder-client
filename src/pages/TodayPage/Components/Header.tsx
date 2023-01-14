@@ -1,5 +1,5 @@
 import { Box, Flex, Spacer, Text, useMediaQuery } from "@chakra-ui/react";
-import ViewIcon from "../icons/ViewIcon";
+import ViewIcon from "../../../icons/ViewIcon";
 
 function Header() {
   const date = new Date();

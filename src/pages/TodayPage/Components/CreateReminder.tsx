@@ -9,6 +9,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import PlusIcon from "../../../icons/PlusIcon";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
@@ -16,7 +17,7 @@ import {
   genericServerToast,
 } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
-import PlusIcon from "../icons/PlusIcon";
+
 import Welcome from "./Center";
 import IconsCard from "./IconsCard";
 import ReminderCard from "./ReminderCard";

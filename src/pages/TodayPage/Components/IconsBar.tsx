@@ -1,8 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react";
-import DateIcon from "../icons/DateIcon";
-import FolderIcon from "../icons/FolderIcon";
-import MessageIcon from "../icons/MessageIcon";
-import PenIcon from "../icons/PenIcon";
+import DateIcon from "../../../icons/DateIcon";
+import FolderIcon from "../../../icons/FolderIcon";
+import MessageIcon from "../../../icons/MessageIcon";
+import PenIcon from "../../../icons/PenIcon";
+
 const icons = [<PenIcon />, <DateIcon />, <MessageIcon />];
 function IconsBar() {
   return (
