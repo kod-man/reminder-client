@@ -11,14 +11,14 @@ type ReminderCardProps = {
 function ReminderCard({ title, description }: ReminderCardProps) {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   return (
-    <Flex w={isLargerThan800 ? "60%" : "80%"} justifyContent='center' mb='2'>
-      <Flex
-        borderBottom='1px solid'
-        borderColor='gray.200'
-        w='100%'
-        h='50px'
-        cursor='pointer'
-      >
+    <Flex
+      borderBottom='1px solid'
+      borderColor='gray.200'
+      w={isLargerThan800 ? "60%" : "80%"}
+      justifyContent='center'
+      mb='4'
+    >
+      <Flex w='100%' h='50px' cursor='pointer'>
         <Flex>
           <Flex
             border='1px solid gray'
