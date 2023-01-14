@@ -25,6 +25,7 @@ const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
   const [disabled, setDisabled] = React.useState(true);
   const navigate = useNavigate();
+  const userId = sessionStorage.getItem("userId");
 
   const [formData, setFormData] = React.useState({
     email: "",
@@ -39,8 +40,6 @@ const Inputs = ({ page }: { page: string }) => {
   // to make password visible or invisible
   const [open, setOpen] = React.useState(false);
   const toggleHandle = () => setOpen(!open);
-
-  const userId = sessionStorage.getItem("userId");
 
   const HandleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -98,24 +97,25 @@ const Inputs = ({ page }: { page: string }) => {
           sessionStorage.setItem("userId", res.data.response.user.id);
 
           Axios.get(`${API.getUser}/${userId}`)
-          .then((response) => {
-            if (response.data.user.userName) {
-              navigate(PATHS.HOME);
-            }
-            console.log(response);
-          })
-          .catch((err) => {
-            if (err.response) {
-              console.log(err.response.data.message);
-              genericValidationToast(toast, err);
-            } else {
-              console.log(err);
-              genericServerToast(toast);
-            }
-          });
-      }
+            .then((response) => {
+              if (response.data.user.userName) {
+                navigate(PATHS.HOME);
+              } else {
+                navigate(PATHS.ONBOARD);
+              }
+              console.log(response);
+            })
+            .catch((err) => {
+              if (err.response) {
+                console.log(err.response.data.message);
+                genericValidationToast(toast, err);
+              } else {
+                console.log(err);
+                genericServerToast(toast);
+              }
+            });
 
-          navigate(PATHS.ONBOARD);
+          navigate(PATHS.HOME);
           // update local storage
           window.location.reload();
         })
