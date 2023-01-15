@@ -64,7 +64,7 @@ const Inputs = ({ page }: { page: string }) => {
     if (page === "register") {
       Axios.post(API.register, formData)
         .then((res) => {
-          console.log(res);
+          console.log("1.res:", res.data);
           toast({
             ...defaultToastProps,
             title: "Account created.",
@@ -84,7 +84,7 @@ const Inputs = ({ page }: { page: string }) => {
         });
     }
     // validation in login and then redirect to the home
-    if (page === "login") {
+    else if (page === "login") {
       Axios.post(API.login, formData)
         .then((res) => {
           toast({
@@ -98,12 +98,12 @@ const Inputs = ({ page }: { page: string }) => {
 
           Axios.get(`${API.getUser}/${userId}`)
             .then((response) => {
+              console.log("2.res :", response.data);
               if (response.data.user.userName) {
                 navigate(PATHS.HOME);
               } else {
                 navigate(PATHS.ONBOARD);
               }
-              console.log(response);
             })
             .catch((err) => {
               if (err.response) {
@@ -116,7 +116,7 @@ const Inputs = ({ page }: { page: string }) => {
             });
 
           // update local storage
-          window.location.reload();
+          // window.location.reload();
         })
         .catch((err) => {
           if (err.response) {
