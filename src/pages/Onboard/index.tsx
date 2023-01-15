@@ -2,10 +2,7 @@ import { Flex, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../utils/axios";
-import {
-  genericServerToast,
-  genericValidationToast,
-} from "../../utils/genericToast";
+import { genericErrorToast } from "../../utils/genericToast";
 import { PATHS } from "../../utils/paths";
 import { API } from "../../utils/usedApi";
 import Todoist from "../RegisterAndLogin/Components/Todoist";
@@ -27,13 +24,7 @@ function Onboard() {
         console.log(response);
       })
       .catch((err) => {
-        if (err.response) {
-          console.log(err.response.data.message);
-          genericValidationToast(toast, err);
-        } else {
-          console.log(err);
-          genericServerToast(toast);
-        }
+        genericErrorToast(err, toast);
         setLoading(false);
       });
   }, [userId, userName]);

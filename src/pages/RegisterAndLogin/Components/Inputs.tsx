@@ -12,11 +12,7 @@ import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
-import {
-  defaultToastProps,
-  genericServerToast,
-  genericValidationToast,
-} from "../../../utils/genericToast";
+import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import { InputValidation } from "../utils/InputValidation";
@@ -73,13 +69,7 @@ const Inputs = ({ page }: { page: string }) => {
           navigate(PATHS.LOGIN);
         })
         .catch((err) => {
-          if (err.response) {
-            console.log(err.response.data.message);
-            genericValidationToast(toast, err);
-          } else {
-            console.log(err);
-            genericServerToast(toast);
-          }
+          genericErrorToast(err, toast);
         });
     }
     // validation in login and then redirect to the home
@@ -100,13 +90,7 @@ const Inputs = ({ page }: { page: string }) => {
           window.location.reload();
         })
         .catch((err) => {
-          if (err.response) {
-            console.log(err.response.data.message);
-            genericValidationToast(toast, err);
-          } else {
-            console.log(err);
-            genericServerToast(toast);
-          }
+          genericErrorToast(err, toast);
         });
     }
   };
