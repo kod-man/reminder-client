@@ -78,6 +78,35 @@ function CreateReminder() {
       label: "",
     });
   };
+  const deleteHandler = (e: any) => {
+    e.preventDefault();
+    Axios.delete(API.delete)
+      .then((res) => {
+        console.log(res);
+        toast({
+          ...defaultToastProps,
+          title: "Reminder added succesfully.",
+          status: "success",
+        });
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+          genericValidationToast(toast, err);
+        } else {
+          console.log(err);
+          genericServerToast(toast);
+        }
+      });
+    setRefreshGet(!refreshGet);
+    setToDoData({
+      title: "",
+      description: "",
+      date: "",
+      priority: "",
+      label: "",
+    });
+  };
   useEffect(() => {
     Axios.get(`${API.allReminder}/${userId}`)
       .then((res) => {
