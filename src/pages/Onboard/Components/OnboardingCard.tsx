@@ -32,7 +32,7 @@ function OnboardingCard() {
     setSelectedFile(e.target.files[0]);
   };
 
-  const submitHandler = (e: any) => {
+  const submitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     const userId = sessionStorage.getItem("userId");
     const newUserData = {

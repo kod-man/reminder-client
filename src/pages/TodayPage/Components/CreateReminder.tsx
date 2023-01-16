@@ -36,7 +36,7 @@ function CreateReminder() {
     setToDoData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const submitHandler = (e: any) => {
+  const submitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     Axios.post(API.addReminder, newUserData)
       .then((res) => {
@@ -70,7 +70,7 @@ function CreateReminder() {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, refreshGet]);
+  }, [userId, refreshGet, toast]);
   return (
     <>
       {reminders.map((reminder: Reminder) => (
@@ -152,7 +152,7 @@ function CreateReminder() {
               setShowWelcome(false);
             }}
           >
-            Görev Ekle2
+            Yeni Görev
           </Flex>
         </Flex>
       )}
