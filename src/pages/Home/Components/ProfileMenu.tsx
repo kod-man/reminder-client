@@ -34,6 +34,7 @@ const ProfileMenu = () => {
 
   const onClickLogOut = () => {
     sessionStorage.removeItem("token");
+    sessionStorage.removeItem("userId");
     setRender(true);
     // window.location.reload(); // bad way
   };
