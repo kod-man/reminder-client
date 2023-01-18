@@ -12,6 +12,14 @@ import ThemeIcon from "../../../icons/ThemeIcon";
 import UpgradeIcon from "../../../icons/UpgradeIcon";
 import { PATHS } from "../../../utils/paths";
 import ProfileCards from "./ProfileCards";
+import { FC } from "react";
+import { Axios } from "../../../utils/axios";
+import { API } from "../../../utils/usedApi";
+
+type CardProps = {
+  DisplayName: string;
+  DisplayEmail: string;
+};
 
 const ProfilMenuData = [
   { Icon: ThemeIcon, text: "Theme" },
@@ -22,21 +30,42 @@ const ProfilMenuData = [
   { Icon: BusinessIcon, text: "Upgarde to Business" },
   { Icon: DownloadIcon, text: "Download apps" },
 ];
-const ProfileMenu = () => {
+const ProfileMenu: FC<CardProps> = ({DisplayName, DisplayEmail}) => {
+  
   const navigate = useNavigate();
   const [render, setRender] = useState(false);
 
+  const [name, setName] = useState(DisplayName);
+  const [email, setEmail] = useState(DisplayEmail);
+  
+  
   useEffect(() => {
     if (render) {
       navigate(PATHS.LOGIN);
     }
+    const userId = sessionStorage.getItem("userId");
+    Axios.get(`${API.getUser}/${userId}`)
+    .then((response) => {
+      if (response.data.user.userName) {
+        setName(response.data.user.userName);
+        setEmail(response.data.user.email);
+      }
+    })
+    .catch((err) => {
+      if (err.response) {
+        console.log(err.response.data.message);
+      } else {
+        console.log(err);
+      }
+    });
   }, [render]);
-
+  const nameInitials = name.split(" ").map((n) => n[0]).join("").toUpperCase();
   const onClickLogOut = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("userId");
     setRender(true);
     // window.location.reload(); // bad way
+
   };
   return (
     <Menu>
@@ -55,7 +84,7 @@ const ProfileMenu = () => {
         fontWeight="bold"
       >
         <Text as="b" fontSize="xs">
-          MC
+          {nameInitials}
         </Text>
       </Flex>
       <MenuList>
@@ -81,15 +110,15 @@ const ProfileMenu = () => {
                 borderRadius="50%"
                 p={1}
               >
-                MC
+                {nameInitials}
               </Flex>
               <VStack>
                 <Flex flexDir="column" m={2}>
                   <Text as="b" fontSize="sm">
-                    Murat Can
+                    {name}
                   </Text>
                   <Text fontSize="xs" color="gray">
-                    muratal0606@gmail.com
+                    {email}
                   </Text>
                 </Flex>
               </VStack>
