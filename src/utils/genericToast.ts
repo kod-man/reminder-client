@@ -6,25 +6,23 @@ export const defaultToastProps = {
   isClosable: true,
 };
 
-export function genericServerToast(
-  toast: (options?: UseToastOptions | undefined) => ToastId
-) {
-  toast({
-    ...defaultToastProps,
-    title: "Something went wrong.",
-    description: "server-error",
-    status: "error",
-  });
-}
-
-export function genericValidationToast(
+export function genericErrorToast(
   toast: (options?: UseToastOptions | undefined) => ToastId,
-  error: any
+  error: any,
 ) {
-  toast({
-    ...defaultToastProps,
-    title: "Something went wrong.",
-    description: error.response.data.message,
-    status: "error",
-  });
+  if (error.response) {
+    toast({
+      ...defaultToastProps,
+      title: "Something went wrong.",
+      description: error.response.data.message,
+      status: "error",
+    });
+  } else {
+    toast({
+      ...defaultToastProps,
+      title: "Something went wrong.",
+      description: "server-error",
+      status: "error",
+    });
+  }
 }
