@@ -1,5 +1,14 @@
-import { Box, Divider, Flex, Menu, MenuButton, MenuList, Text, VStack } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import {
+  Box,
+  Divider,
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
+import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ActivityIcon from "../../../icons/ActivityIcon";
 import BusinessIcon from "../../../icons/BusinessIcon";
@@ -10,11 +19,10 @@ import PrintIcon from "../../../icons/PrintIcon";
 import SettingsIcon from "../../../icons/SettingsIcon";
 import ThemeIcon from "../../../icons/ThemeIcon";
 import UpgradeIcon from "../../../icons/UpgradeIcon";
-import { PATHS } from "../../../utils/paths";
-import ProfileCards from "./ProfileCards";
-import { FC } from "react";
 import { Axios } from "../../../utils/axios";
+import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
+import ProfileCards from "./ProfileCards";
 
 type CardProps = {
   DisplayName: string;
@@ -30,42 +38,43 @@ const ProfilMenuData = [
   { Icon: BusinessIcon, text: "Upgarde to Business" },
   { Icon: DownloadIcon, text: "Download apps" },
 ];
-const ProfileMenu: FC<CardProps> = ({DisplayName, DisplayEmail}) => {
-  
+const ProfileMenu: FC<CardProps> = ({ DisplayName, DisplayEmail }) => {
   const navigate = useNavigate();
   const [render, setRender] = useState(false);
 
   const [name, setName] = useState(DisplayName);
   const [email, setEmail] = useState(DisplayEmail);
-  
-  
+
   useEffect(() => {
     if (render) {
       navigate(PATHS.LOGIN);
     }
     const userId = sessionStorage.getItem("userId");
     Axios.get(`${API.getUser}/${userId}`)
-    .then((response) => {
-      if (response.data.user.userName) {
-        setName(response.data.user.userName);
-        setEmail(response.data.user.email);
-      }
-    })
-    .catch((err) => {
-      if (err.response) {
-        console.log(err.response.data.message);
-      } else {
-        console.log(err);
-      }
-    });
+      .then((response) => {
+        if (response.data.user.userName) {
+          setName(response.data.user.userName);
+          setEmail(response.data.user.email);
+        }
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data.message);
+        } else {
+          console.log(err);
+        }
+      });
   }, [render]);
-  const nameInitials = name.split(" ").map((n) => n[0]).join("").toUpperCase();
+  const nameInitials = name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
   const onClickLogOut = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("userId");
     setRender(true);
     // window.location.reload(); // bad way
-
   };
   return (
     <Menu>
