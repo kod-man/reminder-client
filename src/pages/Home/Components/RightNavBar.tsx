@@ -19,7 +19,7 @@ const RightNavBar = () => {
       <RisingArrowIcon color="white" />
       <QuestionIcon color="white" />
       <BellIcon color="white" />
-      <ProfileMenu />
+      <ProfileMenu DisplayName={""} DisplayEmail={""} />
     </HStack>
   );
 };
