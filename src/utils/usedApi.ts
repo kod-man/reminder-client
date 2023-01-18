@@ -5,5 +5,5 @@ export const API = {
   addReminder: "/reminder/add",
   allReminder: "/reminder/all",
   getUser: "user/me",
-  delete: "reminder/delete",
+  deleteReminder: "reminder/delete",
 };
