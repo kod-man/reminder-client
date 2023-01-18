@@ -1,22 +1,8 @@
-import {
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogCloseButton,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-  Flex,
-  Input,
-  Spacer,
-  useDisclosure,
-  useMediaQuery,
-  useToast,
-} from "@chakra-ui/react";
+import { Flex, Input, Spacer, useDisclosure, useMediaQuery, useToast } from "@chakra-ui/react";
 import { RefObject, useRef } from "react";
 
 import TreeDoteIcon from "../../../icons/TreeDoteIcon";
+import ConfirmModal from "../../../modals/ConfirmModal";
 import { Axios } from "../../../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
@@ -95,31 +81,17 @@ function ReminderCard({ title, description, id, setRefreshGet, refreshGet }: Rem
       >
         <TreeDoteIcon color="gray" />
       </Flex>
-      <AlertDialog
-        motionPreset="slideInBottom"
-        leastDestructiveRef={cancelRef}
-        onClose={onClose}
-        isOpen={isOpen}
-        isCentered
-      >
-        <AlertDialogOverlay />
 
-        <AlertDialogContent>
-          <AlertDialogHeader>Are you sure?</AlertDialogHeader>
-          <AlertDialogCloseButton />
-          <AlertDialogBody>
-            Are you sure you want to delete this reminder? You can't undo this
-          </AlertDialogBody>
-          <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={onClose}>
-              No
-            </Button>
-            <Button onClick={deleteHandler} colorScheme="red" ml={3}>
-              Yes
-            </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+      <ConfirmModal
+        isOpen={isOpen}
+        onClose={onClose}
+        cancelRef={cancelRef}
+        header="Are you sure?"
+        body="Are you sure you want to delete this reminder? You can't undo this"
+        handlerFunction={deleteHandler}
+        confirmButton="Yes"
+        cancelButton="No"
+      />
     </Flex>
   );
 }
