@@ -1,5 +1,15 @@
-import { Box, Divider, Flex, Menu, MenuButton, MenuList, Text, VStack } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import {
+  Box,
+  Divider,
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  Text,
+  VStack,
+  useToast,
+} from "@chakra-ui/react";
+import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ActivityIcon from "../../../icons/ActivityIcon";
 import BusinessIcon from "../../../icons/BusinessIcon";
@@ -10,7 +20,10 @@ import PrintIcon from "../../../icons/PrintIcon";
 import SettingsIcon from "../../../icons/SettingsIcon";
 import ThemeIcon from "../../../icons/ThemeIcon";
 import UpgradeIcon from "../../../icons/UpgradeIcon";
+import { Axios } from "../../../utils/axios";
+import { genericErrorToast } from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
+import { API } from "../../../utils/usedApi";
 import ProfileCards from "./ProfileCards";
 
 const ProfilMenuData = [
@@ -25,13 +38,34 @@ const ProfilMenuData = [
 const ProfileMenu = () => {
   const navigate = useNavigate();
   const [render, setRender] = useState(false);
+  const toast = useToast();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     if (render) {
       navigate(PATHS.LOGIN);
     }
+    const userId = sessionStorage.getItem("userId");
+    Axios.get(`${API.getUser}/${userId}`)
+      .then((response) => {
+        setName(response.data.user.userName);
+        setEmail(response.data.user.email);
+      })
+      .catch((err) => {
+        if (err.response) {
+          genericErrorToast(err, toast);
+        } else {
+          console.log(err);
+        }
+      });
   }, [render]);
-
+  const nameInitials = name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
   const onClickLogOut = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("userId");
@@ -55,7 +89,7 @@ const ProfileMenu = () => {
         fontWeight="bold"
       >
         <Text as="b" fontSize="xs">
-          MC
+          {nameInitials}
         </Text>
       </Flex>
       <MenuList>
@@ -81,15 +115,15 @@ const ProfileMenu = () => {
                 borderRadius="50%"
                 p={1}
               >
-                MC
+                {nameInitials}
               </Flex>
               <VStack>
                 <Flex flexDir="column" m={2}>
                   <Text as="b" fontSize="sm">
-                    Murat Can
+                    {name}
                   </Text>
                   <Text fontSize="xs" color="gray">
-                    muratal0606@gmail.com
+                    {email}
                   </Text>
                 </Flex>
               </VStack>
