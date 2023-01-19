@@ -21,9 +21,9 @@ import SettingsIcon from "../../../icons/SettingsIcon";
 import ThemeIcon from "../../../icons/ThemeIcon";
 import UpgradeIcon from "../../../icons/UpgradeIcon";
 import { Axios } from "../../../utils/axios";
+import { genericErrorToast } from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
-import { genericErrorToast } from "../../utils/genericToast";
 import ProfileCards from "./ProfileCards";
 
 type CardProps = {
