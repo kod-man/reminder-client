@@ -7,6 +7,7 @@ import {
   MenuList,
   Text,
   VStack,
+  useToast,
 } from "@chakra-ui/react";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +23,7 @@ import UpgradeIcon from "../../../icons/UpgradeIcon";
 import { Axios } from "../../../utils/axios";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
+import { genericErrorToast } from "../../utils/genericToast";
 import ProfileCards from "./ProfileCards";
 
 type CardProps = {
@@ -41,6 +43,7 @@ const ProfilMenuData = [
 const ProfileMenu: FC<CardProps> = ({ displayName, displayEmail }) => {
   const navigate = useNavigate();
   const [render, setRender] = useState(false);
+  const toast = useToast();
 
   const [name, setName] = useState(displayName);
   const [email, setEmail] = useState(displayEmail);
@@ -52,12 +55,12 @@ const ProfileMenu: FC<CardProps> = ({ displayName, displayEmail }) => {
     const userId = sessionStorage.getItem("userId");
     Axios.get(`${API.getUser}/${userId}`)
       .then((response) => {
-          setName(response.data.user.userName);
-          setEmail(response.data.user.email);
+        setName(response.data.user.userName);
+        setEmail(response.data.user.email);
       })
       .catch((err) => {
         if (err.response) {
-          console.log(err.response.data.message);
+          genericErrorToast(err, toast);
         } else {
           console.log(err);
         }
