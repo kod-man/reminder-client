@@ -45,8 +45,8 @@ const ProfileMenu: FC<CardProps> = ({ displayName, displayEmail }) => {
   const [render, setRender] = useState(false);
   const toast = useToast();
 
-  const [name, setName] = useState(displayName);
-  const [email, setEmail] = useState(displayEmail);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     if (render) {
