@@ -26,11 +26,6 @@ import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import ProfileCards from "./ProfileCards";
 
-type CardProps = {
-  displayName: string;
-  displayEmail: string;
-};
-
 const ProfilMenuData = [
   { Icon: ThemeIcon, text: "Theme" },
   { Icon: ActivityIcon, text: "Activity Log" },
@@ -40,7 +35,7 @@ const ProfilMenuData = [
   { Icon: BusinessIcon, text: "Upgarde to Business" },
   { Icon: DownloadIcon, text: "Download apps" },
 ];
-const ProfileMenu: FC<CardProps> = ({ displayName, displayEmail }) => {
+const ProfileMenu = () => {
   const navigate = useNavigate();
   const [render, setRender] = useState(false);
   const toast = useToast();
