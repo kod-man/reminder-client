@@ -52,10 +52,8 @@ const ProfileMenu: FC<CardProps> = ({ displayName, displayEmail }) => {
     const userId = sessionStorage.getItem("userId");
     Axios.get(`${API.getUser}/${userId}`)
       .then((response) => {
-        if (response.data.user.userName) {
           setName(response.data.user.userName);
           setEmail(response.data.user.email);
-        }
       })
       .catch((err) => {
         if (err.response) {
