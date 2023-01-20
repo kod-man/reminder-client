@@ -17,8 +17,9 @@ import HamburgerIcon from "../../../icons/HamburgerIcon";
 import InboxIcon from "../../../icons/InboxIcon";
 import TodayIcon from "../../../icons/TodayIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
+import DrawerCards from "./DrawerCards";
 
-const DrawerDate =[
+const DrawerData =[
   { Icon: InboxIcon, text: "Inbox", iconColor:"blue" },
   { Icon: TodayIcon, text: "Today" ,iconColor:"green"},
   { Icon: UpcomingTcon, text: "Upcoming" ,iconColor:"purple"},
