@@ -1,23 +1,39 @@
-import { ChakraProvider, ColorModeScript, theme } from '@chakra-ui/react';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { App } from './App';
+import { ChakraProvider, ColorModeScript, theme } from "@chakra-ui/react";
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import { App } from "./App";
 
-import reportWebVitals from './reportWebVitals';
-import * as serviceWorker from './serviceWorker';
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+import reportWebVitals from "./reportWebVitals";
+import * as serviceWorker from "./serviceWorker";
+import todoReducers from "./store/Todos/todoSlice";
 
-const container = document.getElementById('root');
-if (!container) throw new Error('Failed to find the root element');
+const container = document.getElementById("root");
+if (!container) throw new Error("Failed to find the root element");
 const root = ReactDOM.createRoot(container);
+
+export const store = configureStore({
+  reducer: {
+    todos: todoReducers,
+  },
+});
+
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<typeof store.getState>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;
 
 root.render(
   <React.StrictMode>
     <ColorModeScript />
     <ChakraProvider theme={theme}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
     </ChakraProvider>
   </React.StrictMode>,
 );
