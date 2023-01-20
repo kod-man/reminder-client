@@ -32,7 +32,7 @@ function LeftNavBar() {
         borderRadius="20%"
         padding={1}
       >
-        <HamburgerIcon color="white" onClick={onOpen} />
+        <LeftDrawer />
       </Flex>
       <Flex
         _hover={{ bg: "#e27065" }}
@@ -67,7 +67,6 @@ function LeftNavBar() {
           _focusVisible={{ outline: "none" }}
         />
       </InputGroup>
-      <LeftDrawer isOpen={isOpen} onClose={onClose} />
     </HStack>
   );
 }
