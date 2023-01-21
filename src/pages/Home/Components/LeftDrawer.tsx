@@ -14,14 +14,14 @@ import {
 import React from "react";
 import FilterIcon from "../../../icons/FilterIcon";
 import HamburgerIcon from "../../../icons/HamburgerIcon";
-import InboxIcon from "../../../icons/InboxIcon";
-import TodayIcon from "../../../icons/TodayIcon";
+import InboxDrawerIcon from "../../../icons/InboxIcon";
+import TodayDrawerIcon from "../../../icons/TodayIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
 import DrawerCards from "./DrawerCards";
 
 const DrawerData =[
-  { Icon: InboxIcon, text: "Inbox", iconColor:"blue" },
-  { Icon: TodayIcon, text: "Today" ,iconColor:"green"},
+  { Icon: InboxDrawerIcon, text: "Inbox", iconColor:"blue" },
+  { Icon: TodayDrawerIcon, text: "Today" ,iconColor:"green"},
   { Icon: UpcomingTcon, text: "Upcoming" ,iconColor:"purple"},
   { Icon: FilterIcon, text: "Filters & Labels" ,iconColor:"orange"},
 ];
@@ -52,10 +52,9 @@ const LeftDrawer = () => {
         size="xs"
       >
         <DrawerOverlay bg="#fafafa" />
-
         <DrawerContent>
         {DrawerData.map((item) => (
-          <DrawerCards key={item.text} text={item.text} Icon={item.Icon} color={item.iconColor} />
+          <DrawerCards key={item.text} text={item.text} Icon={item.Icon} iconColor={item.iconColor} />
         ))};
 
         </DrawerContent>
