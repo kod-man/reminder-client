@@ -1,20 +1,35 @@
 const TodayDrawerIcon = (props: any) => {
-    return (
-      <svg
-        data-svgs-path="sm1/calendar_small.svg"
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        {...props}
-      >
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      class="ONBJEQtK++jnfUWJ3V90Dw=="
+      {...props}
+    >
+      <g fill="currentColor" fill-rule="evenodd">
         <path
-          fill="currentColor"
-          fillRule="nonzero"
-          d="M12 2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8zm0 1H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zm-1.25 7a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zm.75-5a.5.5 0 1 1 0 1h-7a.5.5 0 0 1 0-1h7z"
+          fill-rule="nonzero"
+          d="M6 4.5h12A1.5 1.5 0 0 1 19.5 6v2.5h-15V6A1.5 1.5 0 0 1 6 4.5z"
+          opacity=".1"
         ></path>
-      </svg>
-    );
-  };
-  
-  export default TodayDrawerIcon;
+        <path
+          fill-rule="nonzero"
+          d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H6zm1 3h10a.5.5 0 1 1 0 1H7a.5.5 0 0 1 0-1z"
+        ></path>
+        <text
+          font-family="-apple-system, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+          font-size="9"
+          transform="translate(4 2)"
+          font-weight="500"
+        >
+          <tspan x="8" y="15" text-anchor="middle">
+            21
+          </tspan>
+        </text>
+      </g>
+    </svg>
+  );
+};
+
+export default TodayDrawerIcon;
