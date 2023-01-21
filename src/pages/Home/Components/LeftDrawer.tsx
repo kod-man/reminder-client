@@ -54,8 +54,8 @@ const LeftDrawer = () => {
         <DrawerOverlay bg="#fafafa" />
         <DrawerContent>
         {DrawerData.map((item) => (
-          <DrawerCards key={item.text} text={item.text} Icon={item.Icon} iconColor={item.iconColor} />
-        ))};
+          <DrawerCards key={item.text} text={item.text} Icon={item.Icon} iconColor={item.iconColor}/>
+        ))}
 
         </DrawerContent>
       </Drawer>

@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, UnorderedList,List } from "@chakra-ui/react";
 import { FC } from "react";
 import { IconType } from "react-icons";
 
@@ -10,10 +10,13 @@ type CardProps = {
 
 const DrawerCards: FC<CardProps> = ({ Icon, text, iconColor }) => {
   return (
-    <Flex
+    <List spacing="2px" mr="20px"> 
+    <UnorderedList
       _hover={{
         backgroundColor: "transparent",
       }}
+      mt="2px"
+      h="95*%"
     >
       <Flex
         _hover={{
@@ -40,11 +43,12 @@ const DrawerCards: FC<CardProps> = ({ Icon, text, iconColor }) => {
         >
           <Icon color={iconColor} />
         </Flex>
-        <Text fontSize="13px" ml="2" mt={1}>
+        <Text fontSize="15px" ml="1" mt={1} fontFamily="inherit">
           {text}
         </Text>
       </Flex>
-    </Flex>
+    </UnorderedList>
+    </List>
   );
 };
 
