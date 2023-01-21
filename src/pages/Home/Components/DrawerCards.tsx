@@ -1,4 +1,4 @@
-import { Flex, Text, UnorderedList,List } from "@chakra-ui/react";
+import { Flex, List, Text, UnorderedList } from "@chakra-ui/react";
 import { FC } from "react";
 import { IconType } from "react-icons";
 
@@ -10,44 +10,44 @@ type CardProps = {
 
 const DrawerCards: FC<CardProps> = ({ Icon, text, iconColor }) => {
   return (
-    <List spacing="2px" mr="20px"> 
-    <UnorderedList
-      _hover={{
-        backgroundColor: "transparent",
-      }}
-      mt="2px"
-      h="95*%"
-    >
-      <Flex
+    <List spacing="2px" mr="20px" cursor="pointer" >
+      <UnorderedList
         _hover={{
-          color: "black",
-          backgroundColor: "#f3f3f3",
-          borderRadius: "5px",
+          backgroundColor: "transparent",
         }}
-        px={2}
-        w="100%"
-        justifyContent="flex-start"
-        alignItems="center"
-        mb={1}
-        margin-block-start="1em"
-        padding-inline-start="20px"
-        margin-block-end="1em"
+        mt="2px"
+        h="95*%"
       >
         <Flex
-          width="32px"
-          height="32px"
-          mr="1"
-          justifyContent="center"
+          _hover={{
+            color: "black",
+            backgroundColor: "#eeeeee",
+            borderRadius: "5px",
+          }}
+          px={2}
+          w="100%"
+          justifyContent="flex-start"
           alignItems="center"
-          textAlign="left"
+          mb={1}
+          margin-block-start="1em"
+          padding-inline-start="20px"
+          margin-block-end="1em"
         >
-          <Icon color={iconColor} />
+          <Flex
+            width="32px"
+            height="32px"
+            mr="1"
+            justifyContent="center"
+            alignItems="center"
+            textAlign="left"
+          >
+            <Icon color={iconColor} />
+          </Flex>
+          <Text fontSize="15px" ml="1" mt={1} fontFamily="inherit">
+            {text}
+          </Text>
         </Flex>
-        <Text fontSize="15px" ml="1" mt={1} fontFamily="inherit">
-          {text}
-        </Text>
-      </Flex>
-    </UnorderedList>
+      </UnorderedList>
     </List>
   );
 };

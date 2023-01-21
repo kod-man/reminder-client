@@ -4,26 +4,20 @@ import {
   DrawerContent,
   DrawerOverlay,
   Flex,
-  List,
-  ListItem,
-  ListIcon,
-  OrderedList,
-  UnorderedList,
-  Text,
 } from "@chakra-ui/react";
 import React from "react";
 import FilterIcon from "../../../icons/FilterIcon";
 import HamburgerIcon from "../../../icons/HamburgerIcon";
-import UpcomingTcon from "../../../icons/UpcomingTcon";
-import DrawerCards from "./DrawerCards";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
+import UpcomingTcon from "../../../icons/UpcomingTcon";
+import DrawerCards from "./DrawerCards";
 
-const DrawerData =[
-  { Icon: InboxDrawerIcon, text: "Inbox", iconColor:"blue" },
-  { Icon: TodayDrawerIcon, text: "Today" ,iconColor:"green"},
-  { Icon: UpcomingTcon, text: "Upcoming" ,iconColor:"purple"},
-  { Icon: FilterIcon, text: "Filters & Labels" ,iconColor:"orange"},
+const DrawerData = [
+  { Icon: InboxDrawerIcon, text: "Inbox", iconColor: "blue" },
+  { Icon: TodayDrawerIcon, text: "Today", iconColor: "green" },
+  { Icon: UpcomingTcon, text: "Upcoming", iconColor: "purple" },
+  { Icon: FilterIcon, text: "Filters & Labels", iconColor: "orange" },
 ];
 
 type DrawerProps = {
@@ -45,22 +39,27 @@ const LeftDrawer = () => {
       >
         <HamburgerIcon color="white" />
       </Flex>
-      <div style={{ position: 'absolute', top: '45px' }}>
-      <Drawer
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        placement="left"
-        size="xs"
-        
-      >
-        <DrawerOverlay bg="white" mt="44px"/>
-        <DrawerContent  bg="#fafafa" mt="44px">
-        {DrawerData.map((item) => (
-          <DrawerCards key={item.text} text={item.text} Icon={item.Icon} iconColor={item.iconColor}/>
-        ))}
-
-        </DrawerContent>
-      </Drawer>
+      <div style={{ position: "absolute", top: "45px" }}>
+        <Drawer
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          placement="left"
+          size="xs"
+        >
+          <DrawerOverlay bg="white" mt="44px" />
+          <DrawerContent bg="#fafafa" mt="44px">
+            <div style={{ paddingTop: "30px" }}>
+              {DrawerData.map((item) => (
+                <DrawerCards
+                  key={item.text}
+                  text={item.text}
+                  Icon={item.Icon}
+                  iconColor={item.iconColor}
+                />
+              ))}
+            </div>
+          </DrawerContent>
+        </Drawer>
       </div>
     </>
   );
