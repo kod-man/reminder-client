@@ -6,8 +6,9 @@ import {
   DrawerOverlay,
   Flex,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { RefObject } from "react";
 import FilterIcon from "../../../icons/FilterIcon";
 import HamburgerIcon from "../../../icons/HamburgerIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
@@ -24,13 +25,15 @@ const DrawerData = [
 ];
 
 const LeftDrawer = () => {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const { isOpen, onOpen, onClose } = useDisclosure({ isOpen: true });
+  const btnRef: RefObject<HTMLDivElement> = React.useRef(null);
 
   return (
     <>
       <Flex
         as={Button}
-        onClick={() => setIsOpen(true)}
+        onClick={onOpen}
+        ref={btnRef}
         size="35px"
         bg="#db4c3f"
         _hover={{ bg: "#e27065" }}
@@ -40,7 +43,8 @@ const LeftDrawer = () => {
       <div style={{ position: "absolute", top: "45px" }}>
         <Drawer
           isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
+          onClose={onClose}
+          finalFocusRef={btnRef}
           placement="left"
           size="xs"
         >
