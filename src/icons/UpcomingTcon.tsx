@@ -5,10 +5,10 @@ const UpcomingTcon = (props: any) => {
       height="24"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
-      class="SWWJ2mDmoJ5jpYGsCY5nBA=="
+      className="SWWJ2mDmoJ5jpYGsCY5nBA=="
       {...props}
     >
-      <g fill="currentColor" fill-rule="nonzero">
+      <g fill="currentColor" fillRule="nonzero">
         <path
           d="M6 4.5h12A1.5 1.5 0 0119.5 6v2.5h-15V6A1.5 1.5 0 016 4.5z"
           opacity="0.1"

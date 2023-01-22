@@ -4,10 +4,10 @@ const InboxDrawerIcon = (props: any) => {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      class="Dd3PmF2g5h93YIf1bCDdiA=="
+      className="Dd3PmF2g5h93YIf1bCDdiA=="
       {...props}
     >
-      <g fill="currentColor" fill-rule="nonzero">
+      <g fill="currentColor" fillRule="nonzero">
         <path
           d="M10 14.5a2 2 0 104 0h5.5V18a1.5 1.5 0 01-1.5 1.5H6A1.5 1.5 0 014.5 18v-3.5H10z"
           opacity="0.1"
