@@ -10,7 +10,7 @@ type CardProps = {
 
 const DrawerCards: FC<CardProps> = ({ Icon, text, iconColor }) => {
   return (
-    <List spacing="2px" mr="20px" cursor="pointer" >
+    <List spacing="2px" mr="20px" cursor="pointer">
       <UnorderedList
         _hover={{
           backgroundColor: "transparent",
