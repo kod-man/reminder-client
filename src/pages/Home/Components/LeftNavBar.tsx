@@ -7,7 +7,6 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import HamburgerIcon from "../../../icons/HamburgerIcon";
 import HomeIcon from "../../../icons/HomeIcon";
 import SearchIcon from "../../../icons/SearchIcon";
 import { PATHS } from "../../../utils/paths";
