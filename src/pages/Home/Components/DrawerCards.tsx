@@ -29,11 +29,9 @@ const DrawerCards: FC<CardProps> = ({ Icon, text, iconColor }) => {
           justifyContent="flex-start"
           alignItems="center"
           mb={1}
-          margin-block-start="1em"
-          padding-inline-start="20px"
-          margin-block-end="1em"
         >
           <Flex
+            px={1}
             width="32px"
             height="32px"
             mr="1"
@@ -43,7 +41,7 @@ const DrawerCards: FC<CardProps> = ({ Icon, text, iconColor }) => {
           >
             <Icon color={iconColor} />
           </Flex>
-          <Text fontSize="15px" ml="1" mt={1} fontFamily="inherit">
+          <Text fontSize="15px" py="1px" fontFamily="inherit">
             {text}
           </Text>
         </Flex>

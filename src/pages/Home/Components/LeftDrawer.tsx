@@ -23,11 +23,6 @@ const DrawerData = [
   { Icon: FilterIcon, text: "Filters & Labels", iconColor: "orange" },
 ];
 
-type DrawerProps = {
-  isOpen: boolean;
-  onClose: () => void;
-};
-
 const LeftDrawer = () => {
   const [isOpen, setIsOpen] = React.useState(true);
 
