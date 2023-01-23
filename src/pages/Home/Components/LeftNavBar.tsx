@@ -15,6 +15,7 @@ function LeftNavBar() {
   useEffect(() => {
     // run this function on page load and only once
     onOpen();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
