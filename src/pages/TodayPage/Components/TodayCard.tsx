@@ -1,13 +1,18 @@
 import { Flex, Text } from "@chakra-ui/react";
+import { useState } from "react";
 import FolderIcon from "../../../icons/FolderIcon";
 import TodayIcon from "../../../icons/TodayIcon";
 import NewTodayCard from "./NewTodayCard";
 
 function TodayCard() {
+  const [showCard, setShowCard] = useState(false);
   return (
     <>
       <Flex ml='3' mt='2'>
         <Flex
+          onClick={() => {
+            setShowCard(!showCard);
+          }}
           border='1px'
           borderColor='gray.300'
           color='green'
@@ -43,7 +48,7 @@ function TodayCard() {
           </Text>
         </Flex>
       </Flex>
-      <NewTodayCard />
+      {showCard ? <NewTodayCard /> : null}
     </>
   );
 }
