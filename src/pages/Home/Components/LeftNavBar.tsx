@@ -1,21 +1,22 @@
-import {
-  Flex,
-  HStack,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Flex, HStack, Input, InputGroup, InputLeftElement, useDisclosure } from "@chakra-ui/react";
+import { RefObject, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import HamburgerIcon from "../../../icons/HamburgerIcon";
 import HomeIcon from "../../../icons/HomeIcon";
 import SearchIcon from "../../../icons/SearchIcon";
 import { PATHS } from "../../../utils/paths";
-import LeftDrawer from "./LeftDrawer";
+import DrawerComponent from "./DrawerComponent";
 
 function LeftNavBar() {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = useRef() as RefObject<HTMLDivElement>;
+
+  useEffect(() => {
+    // run this function on page load and only once
+    onOpen();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <HStack
@@ -27,12 +28,14 @@ function LeftNavBar() {
       spacing={2}
     >
       <Flex
-        _hover={{ bg: "#e27065" }}
+        _hover={{ bg: "#e27065", cursor: "pointer" }}
         cursor="pointer"
         borderRadius="20%"
         padding={1}
+        ref={btnRef}
+        onClick={onOpen}
       >
-        <HamburgerIcon color="white" onClick={onOpen} />
+        <HamburgerIcon color="white" />
       </Flex>
       <Flex
         _hover={{ bg: "#e27065" }}
@@ -67,7 +70,7 @@ function LeftNavBar() {
           _focusVisible={{ outline: "none" }}
         />
       </InputGroup>
-      <LeftDrawer isOpen={isOpen} onClose={onClose} />
+      <DrawerComponent isOpen={isOpen} onClose={onClose} />
     </HStack>
   );
 }
