@@ -1,13 +1,14 @@
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex, Text } from "@chakra-ui/react";
 
 function Header() {
   return (
     <Flex flexDirection="column" justifyContent="center" alignItems="center">
       <Text fontSize="lg" color="gray.500">
-        Daha düzenli olma yolunda ilk adımı attığın için tebrik ederiz.
+        Congratulations on taking the first step towards becoming more
+        organized.
       </Text>
       <Text fontSize="lg" color="gray.500">
-        Sana özel Todoist'in kullanıma hazır.
+        Your custom Todoist is ready to use.
       </Text>
     </Flex>
   );

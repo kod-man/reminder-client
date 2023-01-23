@@ -7,20 +7,20 @@ import PenIcon from "../../../icons/PenIcon";
 const icons = [<PenIcon />, <DateIcon />, <MessageIcon />];
 function IconsBar() {
   return (
-    <Flex align='stretch' direction='column'>
-      <Flex justifyContent='flex-start'>
+    <Flex align="stretch" direction="column">
+      <Flex justifyContent="flex-start">
         {icons.map((icon2, index) => (
-          <Text key={index} fontSize='2xl' ml='3' _hover={{ bg: "gray.200" }}>
+          <Text key={index} fontSize="2xl" ml="3" _hover={{ bg: "gray.200" }}>
             {icon2}
           </Text>
         ))}
       </Flex>
-      <Flex justifyContent='flex-end' alignItems='flex-end'>
-        <Text color='blackAlpha.700' mr='1' fontSize='sm'>
-          Klasör
+      <Flex justifyContent="flex-end" alignItems="flex-end">
+        <Text color="blackAlpha.700" mr="1" fontSize="sm">
+          Inbox
         </Text>
-        <Flex mb='1'>
-          <FolderIcon color='blue' />
+        <Flex mb="1">
+          <FolderIcon color="blue" />
         </Flex>
       </Flex>
     </Flex>
