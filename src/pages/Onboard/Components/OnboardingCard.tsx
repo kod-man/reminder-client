@@ -1,8 +1,19 @@
-import { Button, Flex, FormLabel, Image, Input, Text, useToast } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  FormLabel,
+  Image,
+  Input,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
-import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
+import {
+  defaultToastProps,
+  genericErrorToast,
+} from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import Header from "./Header";
@@ -74,7 +85,7 @@ function OnboardingCard() {
           alignItems="center"
         >
           <Text as="b" mt="8" fontSize="lg">
-            Profilin
+            Your Profile
           </Text>
 
           <Flex
@@ -92,7 +103,13 @@ function OnboardingCard() {
             cursor="pointer"
           >
             {preview ? (
-              <Image w="180px" h="180px" objectFit="contain" borderRadius="full" src={preview} />
+              <Image
+                w="180px"
+                h="180px"
+                objectFit="contain"
+                borderRadius="full"
+                src={preview}
+              />
             ) : (
               "N"
             )}
@@ -125,7 +142,7 @@ function OnboardingCard() {
               cursor="pointer"
               w="130px"
             >
-              {preview ? "Fotoğraf değiştir" : "Fotoğraf yükle"}
+              {preview ? "Change photo" : "Upload photo"}
             </Flex>
           </FormLabel>
           <Flex mt="6">
@@ -139,7 +156,7 @@ function OnboardingCard() {
                 textAlign: "center",
               }}
               type="text"
-              placeholder="İsmini ekle"
+              placeholder="Add name"
               mb="8"
             />
           </Flex>
@@ -156,7 +173,7 @@ function OnboardingCard() {
           mt="10"
           _hover={{ bg: "#C53030" }}
         >
-          Todoist'i başlat
+          Start Todoist
         </Button>
       </Flex>
     </>

@@ -21,10 +21,9 @@ const LeftDrawer = ({ isOpen, onClose }: DrawerProps) => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Comin soon...</DrawerHeader>
+          <DrawerHeader>Coming Soon...</DrawerHeader>
 
-          <DrawerBody>
-          </DrawerBody>
+          <DrawerBody></DrawerBody>
 
           <DrawerFooter>
             <Button variant="outline" mr={3} onClick={onClose}>
