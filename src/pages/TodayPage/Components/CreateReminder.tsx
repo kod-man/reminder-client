@@ -1,8 +1,20 @@
-import { Box, Button, Flex, Input, Spacer, Text, useMediaQuery, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Input,
+  Spacer,
+  Text,
+  useMediaQuery,
+  useToast,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import PlusIcon from "../../../icons/PlusIcon";
 import { Axios } from "../../../utils/axios";
-import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
+import {
+  defaultToastProps,
+  genericErrorToast,
+} from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
 import IconsCard from "./IconsCard";
 import ReminderCard from "./ReminderCard";
@@ -86,8 +98,18 @@ function CreateReminder() {
 
       {isAddTaskOpen ? (
         <Flex direction="column" w={isLargerThan800 ? "60%" : "80%"} mt="4">
-          <Box alignItems="center" justifyContent="center" flexDirection="column">
-            <Flex border="1px" borderColor="gray.300" h="120px" w="100%" borderRadius="xl">
+          <Box
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
+            <Flex
+              border="1px"
+              borderColor="gray.300"
+              h="120px"
+              w="100%"
+              borderRadius="xl"
+            >
               <Box w="200px">
                 <Input
                   value={toDoData.title}
@@ -95,7 +117,7 @@ function CreateReminder() {
                   ml="3"
                   mt="3"
                   variant="unstyled"
-                  placeholder="Görev ismi"
+                  placeholder="Task name"
                   _placeholder={{ opacity: 1, color: "gray.500" }}
                   name="title"
                 />
@@ -104,7 +126,7 @@ function CreateReminder() {
                   mt="2"
                   ml="3"
                   variant="unstyled"
-                  placeholder="Açıklama"
+                  placeholder="description"
                   _placeholder={{ opacity: 1, color: "gray.500" }}
                   value={toDoData.description}
                   onChange={handleOnChange}
@@ -123,7 +145,7 @@ function CreateReminder() {
                 setShowWelcome(true);
               }}
             >
-              İptal
+              Cancel
             </Button>
             <Button
               color="white"
@@ -132,12 +154,17 @@ function CreateReminder() {
               _hover={!toDoData.title ? { bg: "" } : { bg: "red.700" }}
               onClick={submitHandler}
             >
-              Görev ekle
+              Add task
             </Button>
           </Flex>
         </Flex>
       ) : (
-        <Flex w={isLargerThan800 ? "60%" : "80%"} mt="2" alignItems="center" cursor="pointer">
+        <Flex
+          w={isLargerThan800 ? "60%" : "80%"}
+          mt="2"
+          alignItems="center"
+          cursor="pointer"
+        >
           <Text
             _hover={{ bg: "red", color: "white" }}
             onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
@@ -155,7 +182,7 @@ function CreateReminder() {
               setShowWelcome(false);
             }}
           >
-            Yeni Görev
+            New task
           </Flex>
         </Flex>
       )}
