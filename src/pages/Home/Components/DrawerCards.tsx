@@ -15,8 +15,6 @@ const DrawerCards: FC<CardProps> = ({ Icon, text, iconColor }) => {
         _hover={{
           backgroundColor: "transparent",
         }}
-        mt="2px"
-        h="95*%"
       >
         <Flex
           _hover={{
@@ -24,11 +22,9 @@ const DrawerCards: FC<CardProps> = ({ Icon, text, iconColor }) => {
             backgroundColor: "#eeeeee",
             borderRadius: "5px",
           }}
-          px={2}
           w="100%"
           justifyContent="flex-start"
           alignItems="center"
-          mb={1}
         >
           <Flex
             px={1}
