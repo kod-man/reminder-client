@@ -3,6 +3,7 @@ import ViewIcon from "../../../icons/ViewIcon";
 
 function Header() {
   const date = new Date();
+  console.log(date);
   const options: Intl.DateTimeFormatOptions = {
     weekday: "short",
     day: "numeric",

@@ -1,5 +1,7 @@
 import { Flex, Input, Spacer, Text } from "@chakra-ui/react";
+import { useState } from "react";
 import CouchIcon from "../../../icons/CouchIcon";
+import DeleteIcon from "../../../icons/DeleteIcon";
 import NewTodayIcon from "../../../icons/NewTodayIcon";
 import NextWeekIcon from "../../../icons/NextWeekIcon";
 import SunIcon from "../../../icons/SunIcon";
@@ -24,6 +26,11 @@ function NewTodayCard() {
   const today = date.toLocaleDateString("en-US", options1);
   const tomorrow = weeksDate.toLocaleDateString("en-US", options2);
   const nextWeek = nextWeeks.toLocaleDateString("en-US", options3);
+  const [todays, setTodays] = useState(today);
+  const deleteHandler = (e: any) => {
+    e.preventDefault();
+    setTodays("");
+  };
 
   return (
     <Flex
@@ -35,45 +42,67 @@ function NewTodayCard() {
       w='280px'
       bg='white'
     >
-      <Flex p='2'>{today}</Flex>
+      <Flex p='2'>
+        <Input
+          value={todays}
+          variant='unstyled'
+          placeholder='Bir bitiş tarihi gir'
+          spellCheck='false'
+          onChange={deleteHandler}
+        />
+        <DeleteIcon
+          cursor='pointer'
+          visibility={!todays ? "visible" : "hidden"}
+        />
+      </Flex>
       <hr />
       <Flex direction='column'>
-        <Flex p='2'>
+        <Flex cursor='pointer' _hover={{ bg: "gray.200" }} p='2'>
           <SunIcon color='orange' />
-          <Text ml='2'>Yarın</Text>
+          <Text as='b' ml='2'>
+            Yarın
+          </Text>
           <Spacer />
           <Flex color='gray'>{tomorrow}</Flex>
         </Flex>
-        <Flex p='2'>
+        <Flex cursor='pointer' _hover={{ bg: "gray.200" }} p='2'>
           <NewTodayIcon color='purple' />
-          <Text ml='2'>Bu hafta içinde</Text>
+          <Text as='b' ml='2'>
+            Bu hafta içinde
+          </Text>
           <Spacer />
           <Flex color='gray'>{tomorrow}</Flex>
         </Flex>
-        <Flex p='2'>
+        <Flex cursor='pointer' _hover={{ bg: "gray.200" }} p='2'>
           <CouchIcon color='blue' />
-          <Text ml='2'>Bu hafta sonu</Text>
+          <Text as='b' ml='2'>
+            Bu hafta sonu
+          </Text>
           <Spacer />
           <Flex color='gray'>{tomorrow}</Flex>
         </Flex>
-        <Flex p='2'>
+        <Flex cursor='pointer' _hover={{ bg: "gray.200" }} p='2'>
           <NextWeekIcon color='purple' />
-          <Text ml='2'>Gelecek hafta</Text>
+          <Text as='b' ml='2'>
+            Gelecek hafta
+          </Text>
           <Spacer />
           <Flex color='gray'>{nextWeek}</Flex>
         </Flex>
-        <Flex p='2'>
+        <Flex cursor='pointer' _hover={{ bg: "gray.200" }} p='2'>
           <UpsentIcon />
-          <Text ml='2'>Tarih yok</Text>
+          <Text as='b' ml='2'>
+            Tarih yok
+          </Text>
         </Flex>
       </Flex>
       <hr />
-      <Flex p='2'>
+      <Flex cursor='pointer' p='2'>
         <Input type='date'></Input>
       </Flex>
 
       <hr />
-      <Flex p='2' color='red'>
+      <Flex cursor='pointer' p='2' color='red'>
         + Zaman ekle
       </Flex>
     </Flex>
