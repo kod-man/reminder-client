@@ -27,7 +27,7 @@ function TodoCalendar() {
   const tomorrow = weeksDate.toLocaleDateString("en-US", formatTomorrowOptions);
   const nextWeek = nextWeeks.toLocaleDateString("en-US", formatNextWeekOptions);
   const [todays, setTodays] = useState(today);
-  const deleteHandler = (e: any) => {
+  const onChangeHandler = (e: any) => {
     e.preventDefault();
     setTodays("");
   };
@@ -46,9 +46,8 @@ function TodoCalendar() {
         <Input
           value={todays}
           variant='unstyled'
-          placeholder='Bir bitiş tarihi gir'
-          spellCheck='false'
-          onChange={deleteHandler}
+          placeholder='Type a due date'
+          onChange={onChangeHandler}
         />
         <DeleteIcon
           cursor='pointer'
