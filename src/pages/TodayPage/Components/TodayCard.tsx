@@ -2,7 +2,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import FolderIcon from "../../../icons/FolderIcon";
 import TodayIcon from "../../../icons/TodayIcon";
-import NewTodayCard from "./NewTodayCard";
+import TodoCalendar from "./TodoCalendar ";
 
 function TodayCard() {
   const [showCard, setShowCard] = useState(false);
@@ -48,7 +48,7 @@ function TodayCard() {
           </Text>
         </Flex>
       </Flex>
-      {showCard ? <NewTodayCard /> : null}
+      {showCard ? <TodoCalendar /> : null}
     </>
   );
 }
