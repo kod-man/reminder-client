@@ -60,7 +60,7 @@ function OnboardingCard() {
           description: "You're ready to go!",
           status: "success",
         });
-        navigate(PATHS.HOME);
+        navigate(PATHS.TODAY);
       })
       .catch((err) => {
         genericErrorToast(err, toast);

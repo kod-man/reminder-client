@@ -12,7 +12,10 @@ import React from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
-import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
+import {
+  defaultToastProps,
+  genericErrorToast,
+} from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import { InputValidation } from "../utils/InputValidation";
