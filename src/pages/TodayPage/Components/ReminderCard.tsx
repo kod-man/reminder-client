@@ -1,10 +1,20 @@
-import { Flex, Input, Spacer, useDisclosure, useMediaQuery, useToast } from "@chakra-ui/react";
+import {
+  Flex,
+  Input,
+  Spacer,
+  useDisclosure,
+  useMediaQuery,
+  useToast,
+} from "@chakra-ui/react";
 import { RefObject, useRef } from "react";
 
 import TreeDoteIcon from "../../../icons/TreeDoteIcon";
 import ConfirmModal from "../../../modals/ConfirmModal";
 import { Axios } from "../../../utils/axios";
-import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
+import {
+  defaultToastProps,
+  genericErrorToast,
+} from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
 
 import IconsBar from "./IconsBar";
@@ -17,7 +27,13 @@ type ReminderCardProps = {
   refreshGet: Boolean;
 };
 
-function ReminderCard({ title, description, id, setRefreshGet, refreshGet }: ReminderCardProps) {
+function ReminderCard({
+  title,
+  description,
+  id,
+  setRefreshGet,
+  refreshGet,
+}: ReminderCardProps) {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef() as RefObject<HTMLButtonElement>;
@@ -29,7 +45,7 @@ function ReminderCard({ title, description, id, setRefreshGet, refreshGet }: Rem
         console.log(res);
         toast({
           ...defaultToastProps,
-          title: "Reminder added succesfully.",
+          title: "Reminder removed succesfully.",
           status: "success",
         });
       })
