@@ -1,10 +1,12 @@
-import { Box, Drawer, DrawerContent, DrawerOverlay, Flex, Text } from "@chakra-ui/react";
+import { Box, Drawer, DrawerContent, Flex, Text } from "@chakra-ui/react";
 import { FC } from "react";
+import { useDispatch } from "react-redux";
 import FilterIcon from "../../../icons/FilterIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
 import SmallPlusIcon from "../../../icons/SmallPlusIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
+import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import DrawerCards from "./DrawerCards";
 
 const DrawerData = [
@@ -20,9 +22,15 @@ type DrawerProps = {
 };
 
 const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
+  const dispatch = useDispatch();
   return (
-    <Drawer isOpen={isOpen} onClose={onClose} placement="left" size="xs">
-      <DrawerOverlay bg="white" mt="44px" />
+    <Drawer
+      isOpen={isOpen}
+      onClose={onClose}
+      placement="left"
+      size="xs"
+      onCloseComplete={() => dispatch(toggleDrawer(false))}
+    >
       <DrawerContent bg="#fafafa" mt="44px" paddingTop="30px">
         {DrawerData.map((item) => (
           <DrawerCards

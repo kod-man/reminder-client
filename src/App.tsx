@@ -1,38 +1,39 @@
 import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import ProtectedRoutes from "./components/ProtectedRoutes";
-import HomePage from "./pages/Home";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Onboard from "./pages/Onboard";
 import RegisterAndLogin from "./pages/RegisterAndLogin";
 import TodayPage from "./pages/TodayPage";
 import { PATHS } from "./utils/paths";
 
+const PROTECTED_ROUTES = [
+  { path: PATHS.NOT_FOUND, page: <NotFoundPage />, hasNavbar: false },
+  { path: PATHS.ONBOARD, page: <Onboard />, hasNavbar: false },
+  { path: PATHS.TODAY, page: <TodayPage />, hasNavbar: true },
+];
+
 export const App = () => {
   const token = sessionStorage.getItem("token");
-  const protectedRoutes = [
-    { path: PATHS.HOME, component: <HomePage /> },
-    { path: PATHS.NOT_FOUND, component: <NotFoundPage /> },
-    { path: PATHS.ONBOARD, component: <Onboard /> },
-    { path: PATHS.TODAY, component: <TodayPage /> },
-  ];
 
-  const Pages = protectedRoutes.map((item) => (
-    <Route
-      key={item.path}
-      path={item.path}
-      element={
-        <ProtectedRoutes token={token}>{item.component}</ProtectedRoutes>
-      }
-    />
-  ));
   return (
     <Routes>
-      <Route
-        path={PATHS.REGISTER}
-        element={<RegisterAndLogin page="register" />}
-      />
+      <Route path={PATHS.REGISTER} element={<RegisterAndLogin page="register" />} />
       <Route path={PATHS.LOGIN} element={<RegisterAndLogin page="login" />} />
-      {Pages}
+      {PROTECTED_ROUTES.map(({ path, page, hasNavbar }) => (
+        <Route
+          key={path}
+          path={path}
+          element={
+            <ProtectedRoutes token={token}>
+              <>
+                {hasNavbar && <Navbar />}
+                {page}
+              </>
+            </ProtectedRoutes>
+          }
+        />
+      ))}
     </Routes>
   );
 };

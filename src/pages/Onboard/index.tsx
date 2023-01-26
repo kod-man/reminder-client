@@ -18,7 +18,7 @@ function Onboard() {
       .then((response) => {
         if (response.data.user.userName) {
           setUserName(response.data.user.userName);
-          navigate(PATHS.HOME);
+          navigate(PATHS.TODAY);
         }
         setLoading(false);
         console.log(response);

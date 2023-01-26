@@ -6,12 +6,7 @@ function NotFoundPage() {
   const navigate = useNavigate();
 
   return (
-    <Flex
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      h="100vh"
-    >
+    <Flex flexDirection="column" justifyContent="center" alignItems="center" h="100vh">
       <Text fontSize="2xl" color="teal.400">
         404
       </Text>
@@ -22,7 +17,7 @@ function NotFoundPage() {
         The page you're looking for does not seem to exist
       </Text>
       <Button
-        onClick={() => navigate(PATHS.HOME)}
+        onClick={() => navigate(PATHS.TODAY)}
         colorScheme="teal"
         variant="solid"
         width="250px"
@@ -33,7 +28,7 @@ function NotFoundPage() {
         color="white"
         borderRadius="9"
       >
-        Go To Home
+        Go To Today Page
       </Button>
     </Flex>
   );
