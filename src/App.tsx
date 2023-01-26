@@ -7,32 +7,27 @@ import RegisterAndLogin from "./pages/RegisterAndLogin";
 import TodayPage from "./pages/TodayPage";
 import { PATHS } from "./utils/paths";
 
+const PROTECTED_ROUTES = [
+  { path: PATHS.HOME, page: <HomePage /> },
+  { path: PATHS.NOT_FOUND, page: <NotFoundPage /> },
+  { path: PATHS.ONBOARD, page: <Onboard /> },
+  { path: PATHS.TODAY, page: <TodayPage /> },
+];
+
 export const App = () => {
   const token = sessionStorage.getItem("token");
-  const protectedRoutes = [
-    { path: PATHS.HOME, component: <HomePage /> },
-    { path: PATHS.NOT_FOUND, component: <NotFoundPage /> },
-    { path: PATHS.ONBOARD, component: <Onboard /> },
-    { path: PATHS.TODAY, component: <TodayPage /> },
-  ];
 
-  const Pages = protectedRoutes.map((item) => (
-    <Route
-      key={item.path}
-      path={item.path}
-      element={
-        <ProtectedRoutes token={token}>{item.component}</ProtectedRoutes>
-      }
-    />
-  ));
   return (
     <Routes>
-      <Route
-        path={PATHS.REGISTER}
-        element={<RegisterAndLogin page="register" />}
-      />
+      <Route path={PATHS.REGISTER} element={<RegisterAndLogin page="register" />} />
       <Route path={PATHS.LOGIN} element={<RegisterAndLogin page="login" />} />
-      {Pages}
+      {PROTECTED_ROUTES.map(({ path, page }) => (
+        <Route
+          key={path}
+          path={path}
+          element={<ProtectedRoutes token={token}>{page}</ProtectedRoutes>}
+        />
+      ))}
     </Routes>
   );
 };
