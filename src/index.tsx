@@ -8,6 +8,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
+import drawerReducers from "./store/Drawer/drawerSlice";
 import todoReducers from "./store/Todos/todoSlice";
 
 const container = document.getElementById("root");
@@ -17,6 +18,7 @@ const root = ReactDOM.createRoot(container);
 export const store = configureStore({
   reducer: {
     todos: todoReducers,
+    drawer: drawerReducers,
   },
 });
 
