@@ -1,9 +1,11 @@
 import { Flex, HStack, Input, InputGroup, InputLeftElement, useDisclosure } from "@chakra-ui/react";
 import { RefObject, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import HamburgerIcon from "../../../icons/HamburgerIcon";
 import HomeIcon from "../../../icons/HomeIcon";
 import SearchIcon from "../../../icons/SearchIcon";
+import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import { PATHS } from "../../../utils/paths";
 import DrawerComponent from "./DrawerComponent";
 
@@ -11,12 +13,18 @@ function LeftNavBar() {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef() as RefObject<HTMLDivElement>;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // run this function on page load and only once
     onOpen();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const onClickHandler = () => {
+    onOpen();
+    dispatch(toggleDrawer(true));
+  };
 
   return (
     <HStack
@@ -33,7 +41,7 @@ function LeftNavBar() {
         borderRadius="20%"
         padding={1}
         ref={btnRef}
-        onClick={onOpen}
+        onClick={onClickHandler}
       >
         <HamburgerIcon color="white" />
       </Flex>
@@ -44,7 +52,7 @@ function LeftNavBar() {
         padding={1}
         ml="0px !important"
       >
-        <HomeIcon color="white" onClick={() => navigate(PATHS.HOME)} />
+        <HomeIcon color="white" onClick={() => navigate(PATHS.TODAY)} />
       </Flex>
       <InputGroup
         alignItems="center"
