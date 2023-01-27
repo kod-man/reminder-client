@@ -7,7 +7,13 @@ import TicketIcon from "../../../icons/TicketIcon";
 const iconLists = [<TicketIcon />, <FlagIcon />, <AlarmIcon />, <JigsawIcon />];
 function IconsCard() {
   return (
-    <Flex alignItems='flex-end' justifyContent='flex-end' w='200px' mb='4'>
+    <Flex
+      alignItems='flex-end'
+      justifyContent='flex-end'
+      w='200px'
+      mb='4'
+      display='none'
+    >
       {iconLists.map((icon, index) => (
         <Text
           key={index}

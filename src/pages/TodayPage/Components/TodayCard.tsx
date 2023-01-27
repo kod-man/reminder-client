@@ -5,15 +5,17 @@ import Flag2Icon from "../../../icons/Flag2Icon";
 import TodayIcon from "../../../icons/TodayIcon";
 import TreeDoteIcon from "../../../icons/TreeDoteIcon";
 import TodoCalendar from "./TodoCalendar ";
+import TodoFlag from "./TodoFlag";
 
 function TodayCard() {
-  const [showCard, setShowCard] = useState(false);
+  const [showTodayCard, setShowTodayCard] = useState(false);
+  const [showPriorityCard, setShowPriorityCard] = useState(false);
   return (
     <>
-      <Flex ml='3' mt='2'>
+      <Flex w='100vh' ml='3' mt='2'>
         <Flex
           onClick={() => {
-            setShowCard(!showCard);
+            setShowTodayCard(!showTodayCard);
           }}
           border='1px'
           borderColor='gray.300'
@@ -31,6 +33,9 @@ function TodayCard() {
           <Text ml='1'>Today</Text>
         </Flex>
         <Flex
+          onClick={() => {
+            setShowPriorityCard(!showPriorityCard);
+          }}
           mr='2'
           border='1px'
           borderColor='gray.300'
@@ -51,7 +56,7 @@ function TodayCard() {
           cursor='pointer'
           mr='2'
           border='1px'
-          borderColor='red'
+          borderColor='gray.300'
           borderRadius='md'
           p='2'
           h='30px'
@@ -78,7 +83,8 @@ function TodayCard() {
           <TreeDoteIcon />
         </Flex>
       </Flex>
-      {showCard ? <TodoCalendar /> : null}
+      {showTodayCard ? <TodoCalendar /> : null}
+      {showPriorityCard ? <TodoFlag /> : null}
     </>
   );
 }
