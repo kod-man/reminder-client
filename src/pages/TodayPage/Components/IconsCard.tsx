@@ -12,7 +12,7 @@ function IconsCard() {
       justifyContent='flex-end'
       w='200px'
       mb='4'
-      display='none'
+      // display='none'
     >
       {iconLists.map((icon, index) => (
         <Text

@@ -1,4 +1,5 @@
 import { Divider, Flex, Text } from "@chakra-ui/react";
+
 import ColorFlagIcon from "../../../icons/ColorFlagIcon";
 import FlagIcon from "../../../icons/FlagIcon";
 import TickIcon from "../../../icons/TickIcon";
