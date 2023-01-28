@@ -19,9 +19,9 @@ const RightNavBar = () => {
       <PlusModal />
       <RisingArrowIcon color="white" />
       <QuestionIcon color="white" />
-      <BellIcon color="white" />
+      {/* <BellIcon color="white" /> */} // 
+      <Notification/>
       <ProfileMenu />
-      {/* <Notification/> */}
     </HStack>
   );
 };
