@@ -1,4 +1,5 @@
 import {
+  Box,
   Flex,
   Image,
   Menu,
@@ -7,8 +8,6 @@ import {
   MenuList,
   Tab,
   TabList,
-  TabPanel,
-  TabPanels,
   Tabs,
 } from "@chakra-ui/react";
 import React from "react";
@@ -42,16 +41,24 @@ const Notification = () => {
           }}
         >
           <MenuItem>
-            <Flex py={1} justifyContent="space-between" flexDirection="row">
-              <Tabs variant="soft-rounded" colorScheme="gray">
-                <TabList>
-                  <Tab>Notifications</Tab>
-                  <Tab>Unread</Tab>
-                </TabList>
-              </Tabs>
-              <Flex>
-                <MarkIcon color="gray" ml="10px" />
+            <Flex>
+              <Flex
+                bg="#f5f5f5"
+                borderTopLeftRadius="50%"
+                borderTopRightRadius="50%"
+                borderBottomLeftRadius="50%"
+                borderBottomRightRadius="50%"
+              >
+                <Tabs variant="soft-rounded" colorScheme="gray">
+                  <TabList>
+                    <Tab>Notifications</Tab>
+                    <Tab>Unread</Tab>
+                  </TabList>
+                </Tabs>
               </Flex>
+              <Box ml="170px">
+                <MarkIcon color="gray" />
+              </Box>
             </Flex>
           </MenuItem>
 
