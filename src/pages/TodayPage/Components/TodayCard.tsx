@@ -18,6 +18,7 @@ import ArrowIcon from "../../../icons/ArrowIcon";
 import ClockIcon from "../../../icons/ClockIcon";
 import ColorFlagIcon from "../../../icons/ColorFlagIcon";
 import CouchIcon from "../../../icons/CouchIcon";
+import DeleteIcon from "../../../icons/DeleteIcon";
 import FlagIcon from "../../../icons/FlagIcon";
 import JigsawIcon from "../../../icons/JigsawIcon";
 import SunIcon from "../../../icons/SunIcon";
@@ -68,6 +69,13 @@ function TodayCard() {
               color='green'
               flexDirection='row'
               leftIcon={<TodayIcon />}
+              rightIcon={
+                <Tooltip hasArrow label='Remove due date' placement='top'>
+                  <Button size='xs' bg='white' _hover={{ bg: "#DCDCDC" }}>
+                    <DeleteIcon />
+                  </Button>
+                </Tooltip>
+              }
             >
               Today
             </MenuButton>

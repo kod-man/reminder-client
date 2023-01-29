@@ -3,7 +3,6 @@ import {
   Button,
   Flex,
   Input,
-  Spacer,
   Text,
   useMediaQuery,
   useToast,
