@@ -1,6 +1,7 @@
 import {
   Button,
   Flex,
+  Input,
   Menu,
   MenuButton,
   MenuDivider,
@@ -11,48 +12,92 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { RefObject, useRef, useState } from "react";
-import { BsThreeDots } from "react-icons/bs";
+import { RefObject, useRef } from "react";
 import ArrowIcon from "../../../icons/ArrowIcon";
 import ClockIcon from "../../../icons/ClockIcon";
 import ColorFlagIcon from "../../../icons/ColorFlagIcon";
-import Flag2Icon from "../../../icons/Flag2Icon";
+import CouchIcon from "../../../icons/CouchIcon";
 import FlagIcon from "../../../icons/FlagIcon";
 import JigsawIcon from "../../../icons/JigsawIcon";
+import SunIcon from "../../../icons/SunIcon";
 import TicketIcon from "../../../icons/TicketIcon";
 import TickIcon from "../../../icons/TickIcon";
 import TodayIcon from "../../../icons/TodayIcon";
 import TreeDoteIcon from "../../../icons/TreeDoteIcon";
+import UpsentIcon from "../../../icons/UpsentIcon";
 import ConfirmModal from "../../../modals/ConfirmModal";
-import TodoCalendar from "./TodoCalendar ";
-import TodoFlag from "./TodoFlag";
 
 function TodayCard() {
-  const [showTodayCard, setShowTodayCard] = useState(false);
+  const date = new Date(Date.now());
+  const weeksDate = new Date(Date.now() + 3600 * 1000 * 24);
+  const nextWeeks = new Date(Date.now() + 3600 * 1000 * 24 * 7);
+  const formatNextWeekOptions: Intl.DateTimeFormatOptions = {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  };
+  const formatTomorrowOptions: Intl.DateTimeFormatOptions = {
+    weekday: "short",
+  };
+  const formatTodayOptions: Intl.DateTimeFormatOptions = {
+    month: "short",
+    day: "numeric",
+  };
+  const today = date.toLocaleDateString("en-US", formatTodayOptions);
+  const tomorrow = weeksDate.toLocaleDateString("en-US", formatTomorrowOptions);
+  const nextWeek = nextWeeks.toLocaleDateString("en-US", formatNextWeekOptions);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef() as RefObject<HTMLButtonElement>;
   return (
     <>
       <Flex w='100vh' ml='3' mt='2'>
-        <Flex
-          onClick={() => {
-            setShowTodayCard(!showTodayCard);
-          }}
-          border='1px'
-          borderColor='gray.300'
-          color='green'
-          p='2'
-          mr='2'
-          borderRadius='md'
-          h='30px'
-          alignItems='center'
-          justifyContent='center'
-          cursor='pointer'
-          _hover={{ bg: "gray.200" }}
-        >
-          <TodayIcon />
-          <Text ml='1'>Today</Text>
-        </Flex>
+        <Menu>
+          <MenuButton
+            as={Button}
+            bg='white'
+            border='1px'
+            borderColor='gray.300'
+            borderRadius='md'
+            alignItems='center'
+            justifyContent='center'
+            cursor='pointer'
+            h='30px'
+            mr='2'
+            color='green'
+            flexDirection='row'
+            leftIcon={<TodayIcon />}
+          >
+            Today
+          </MenuButton>
+          <MenuList minWidth='300px'>
+            <MenuGroup title={today}>
+              <MenuDivider />
+              <MenuItem>
+                <SunIcon color='orange' />
+                <Text ml='2'>Tomorrow</Text>
+                <Spacer />
+                <Text color='gray'>{tomorrow}</Text>
+              </MenuItem>
+              <MenuItem>
+                <CouchIcon color='blue' />
+                <Text ml='2'>Next weekend</Text>
+                <Spacer />
+                <Text color='gray'>{nextWeek}</Text>
+              </MenuItem>
+              <MenuItem>
+                <UpsentIcon />
+                <Text ml='2'>No date</Text>
+              </MenuItem>
+              <MenuDivider />
+              <MenuItem>
+                <Input type='date'></Input>
+              </MenuItem>
+              <MenuItem>
+                <Text color='red'>+ Add time</Text>
+              </MenuItem>
+            </MenuGroup>
+          </MenuList>
+        </Menu>
         <Menu>
           <MenuButton
             as={Button}
@@ -66,6 +111,7 @@ function TodayCard() {
             h='30px'
             mr='2'
             color='gray'
+            leftIcon={<FlagIcon />}
           >
             Priority
           </MenuButton>
@@ -158,7 +204,6 @@ function TodayCard() {
         confirmButton='Upgrade for more'
         cancelButton='Cancel'
       />
-      {showTodayCard ? <TodoCalendar /> : null}
     </>
   );
 }

@@ -16,7 +16,6 @@ import {
   genericErrorToast,
 } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
-import IconsCard from "./IconsCard";
 import ReminderCard from "./ReminderCard";
 import TodayCard from "./TodayCard";
 import { Reminder } from "./types";
@@ -97,49 +96,47 @@ function CreateReminder() {
       ))}
 
       {isAddTaskOpen ? (
-        <Flex direction="column" w={isLargerThan800 ? "60%" : "80%"} mt="4">
+        <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
           <Box
-            alignItems="center"
-            justifyContent="center"
-            flexDirection="column"
+            alignItems='center'
+            justifyContent='center'
+            flexDirection='column'
           >
             <Flex
-              border="1px"
-              borderColor="gray.300"
-              h="120px"
-              w="100%"
-              borderRadius="xl"
+              border='1px'
+              borderColor='gray.300'
+              h='120px'
+              w='100%'
+              borderRadius='xl'
             >
-              <Box w="200px">
+              <Box w='200px'>
                 <Input
                   value={toDoData.title}
                   onChange={handleOnChange}
-                  ml="3"
-                  mt="3"
-                  variant="unstyled"
-                  placeholder="Task name"
+                  ml='3'
+                  mt='3'
+                  variant='unstyled'
+                  placeholder='Task name'
                   _placeholder={{ opacity: 1, color: "gray.500" }}
-                  name="title"
+                  name='title'
                 />
                 <Input
-                  name="description"
-                  mt="2"
-                  ml="3"
-                  variant="unstyled"
-                  placeholder="description"
+                  name='description'
+                  mt='2'
+                  ml='3'
+                  variant='unstyled'
+                  placeholder='description'
                   _placeholder={{ opacity: 1, color: "gray.500" }}
                   value={toDoData.description}
                   onChange={handleOnChange}
                 />
                 <TodayCard />
               </Box>
-              <Spacer />
-              <IconsCard />
             </Flex>
           </Box>
-          <Flex justifyContent="flex-end" mt="3">
+          <Flex justifyContent='flex-end' mt='3'>
             <Button
-              mr="4"
+              mr='4'
               onClick={() => {
                 setIsAddTaskOpen(!isAddTaskOpen);
                 setShowWelcome(true);
@@ -148,7 +145,7 @@ function CreateReminder() {
               Cancel
             </Button>
             <Button
-              color="white"
+              color='white'
               bg={!toDoData.title.trim() ? "red.300" : "red.500"}
               disabled={!toDoData.title.trim()}
               _hover={!toDoData.title ? { bg: "" } : { bg: "red.700" }}
@@ -161,21 +158,21 @@ function CreateReminder() {
       ) : (
         <Flex
           w={isLargerThan800 ? "60%" : "80%"}
-          mt="2"
-          alignItems="center"
-          cursor="pointer"
+          mt='2'
+          alignItems='center'
+          cursor='pointer'
         >
           <Text
             _hover={{ bg: "red", color: "white" }}
             onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
-            borderRadius="100%"
-            color="red"
+            borderRadius='100%'
+            color='red'
           >
             <PlusIcon />
           </Text>
           <Flex
-            color="gray"
-            ml="2"
+            color='gray'
+            ml='2'
             _hover={{ color: "red" }}
             onClick={() => {
               setIsAddTaskOpen(true);
