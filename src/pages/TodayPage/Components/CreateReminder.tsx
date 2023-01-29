@@ -96,7 +96,7 @@ function CreateReminder() {
       ))}
 
       {isAddTaskOpen ? (
-        <Flex direction='column' w={isLargerThan800 ? "60%" : "80%"} mt='4'>
+        <Flex direction='column' w={isLargerThan800 ? "40%" : "80%"} mt='4'>
           <Box
             alignItems='center'
             justifyContent='center'
@@ -105,7 +105,7 @@ function CreateReminder() {
             <Flex
               border='1px'
               borderColor='gray.300'
-              h='120px'
+              h='125px'
               w='100%'
               borderRadius='xl'
             >
@@ -121,11 +121,11 @@ function CreateReminder() {
                   name='title'
                 />
                 <Input
-                  name='description'
+                  name='Description'
                   mt='2'
                   ml='3'
                   variant='unstyled'
-                  placeholder='description'
+                  placeholder='Description'
                   _placeholder={{ opacity: 1, color: "gray.500" }}
                   value={toDoData.description}
                   onChange={handleOnChange}

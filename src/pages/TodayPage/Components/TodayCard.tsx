@@ -10,6 +10,7 @@ import {
   MenuList,
   Spacer,
   Text,
+  Tooltip,
   useDisclosure,
 } from "@chakra-ui/react";
 import { RefObject, useRef } from "react";
@@ -50,25 +51,27 @@ function TodayCard() {
   const cancelRef = useRef() as RefObject<HTMLButtonElement>;
   return (
     <>
-      <Flex w='100vh' ml='3' mt='2'>
+      <Flex w='100vh' ml='3' mt='3'>
         <Menu>
-          <MenuButton
-            as={Button}
-            bg='white'
-            border='1px'
-            borderColor='gray.300'
-            borderRadius='md'
-            alignItems='center'
-            justifyContent='center'
-            cursor='pointer'
-            h='30px'
-            mr='2'
-            color='green'
-            flexDirection='row'
-            leftIcon={<TodayIcon />}
-          >
-            Today
-          </MenuButton>
+          <Tooltip hasArrow label='Set due date' placement='top'>
+            <MenuButton
+              as={Button}
+              bg='white'
+              border='1px'
+              borderColor='gray.300'
+              borderRadius='md'
+              alignItems='center'
+              justifyContent='center'
+              cursor='pointer'
+              h='30px'
+              mr='2'
+              color='green'
+              flexDirection='row'
+              leftIcon={<TodayIcon />}
+            >
+              Today
+            </MenuButton>
+          </Tooltip>
           <MenuList minWidth='300px'>
             <MenuGroup title={today}>
               <MenuDivider />
@@ -99,22 +102,24 @@ function TodayCard() {
           </MenuList>
         </Menu>
         <Menu>
-          <MenuButton
-            as={Button}
-            bg='white'
-            border='1px'
-            borderColor='gray.300'
-            borderRadius='md'
-            alignItems='center'
-            justifyContent='center'
-            cursor='pointer'
-            h='30px'
-            mr='2'
-            color='gray'
-            leftIcon={<FlagIcon />}
-          >
-            Priority
-          </MenuButton>
+          <Tooltip hasArrow label='Set priority p1, p2, p3, p4' placement='top'>
+            <MenuButton
+              as={Button}
+              bg='white'
+              border='1px'
+              borderColor='gray.300'
+              borderRadius='md'
+              alignItems='center'
+              justifyContent='center'
+              cursor='pointer'
+              h='30px'
+              mr='2'
+              color='gray'
+              leftIcon={<FlagIcon />}
+            >
+              Priority
+            </MenuButton>
+          </Tooltip>
           <MenuList minWidth='150px' overflowY='scroll'>
             <MenuItem>
               <ColorFlagIcon color='red' />
@@ -139,24 +144,26 @@ function TodayCard() {
             </MenuItem>
           </MenuList>
         </Menu>
-        <Button
-          bg='white'
-          onClick={onOpen}
-          mr='2'
-          border='1px'
-          borderColor='gray.300'
-          borderRadius='md'
-          p='2'
-          h='30px'
-          alignItems='center'
-          justifyContent='center'
-          cursor='pointer'
-        >
-          <ClockIcon />
-          <Text color='gray' ml='1'>
-            Reminders
-          </Text>
-        </Button>
+        <Tooltip hasArrow label='Add reminders' placement='top'>
+          <Button
+            bg='white'
+            onClick={onOpen}
+            mr='2'
+            border='1px'
+            borderColor='gray.300'
+            borderRadius='md'
+            p='2'
+            h='30px'
+            alignItems='center'
+            justifyContent='center'
+            cursor='pointer'
+          >
+            <ClockIcon />
+            <Text color='gray' ml='1'>
+              Reminders
+            </Text>
+          </Button>
+        </Tooltip>
         <Menu>
           <MenuButton
             as={Button}
