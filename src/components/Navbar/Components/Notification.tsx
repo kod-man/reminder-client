@@ -56,8 +56,8 @@ const Notification = () => {
                 borderTopRightRadius="20"
               >
                 <Flex>
-                {/* colorScheme='white'  didint worked  */}
-                  <Tabs variant="soft-rounded"  color="white" textColor="black"> 
+                  {/* colorScheme='white'  didint worked  */}
+                  <Tabs variant="soft-rounded" color="white" textColor="black">
                     <TabList>
                       <Tab
                         style={{
@@ -119,10 +119,16 @@ const Notification = () => {
                 marginTop="10px"
               >
                 <Flex mt="15px" alignItems="center" justifyContent="center">
-                <QuestionMarkIcon color="#d1453b" />
-                <Link color="#d1453b" fontSize="sm" ml="5px" textDecoration="underline" >How to share projects</Link>
+                  <QuestionMarkIcon color="#d1453b" />
+                  <Link
+                    color="#d1453b"
+                    fontSize="sm"
+                    ml="5px"
+                    textDecoration="underline"
+                  >
+                    How to share projects
+                  </Link>
                 </Flex>
-               
               </HStack>
             </Stack>
           </MenuItem>
