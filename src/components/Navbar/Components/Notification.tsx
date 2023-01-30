@@ -14,6 +14,7 @@ import React from "react";
 import BellIcon from "../../../icons/BellIcon";
 import MarkIcon from "../../../icons/MarkIcon";
 
+
 const Notification = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -43,13 +44,15 @@ const Notification = () => {
           <MenuItem>
             <Flex>
               <Flex
+              h="40px"
+              w="200px"
                 bg="#f5f5f5"
-                borderTopLeftRadius="50%"
-                borderTopRightRadius="50%"
-                borderBottomLeftRadius="50%"
-                borderBottomRightRadius="50%"
+                // borderTopLeftRadius="50%"
+                // borderTopRightRadius="50%"
+                borderTopRadius="30%"
+               borderBottomRadius="30%"
               >
-                <Tabs variant="soft-rounded" colorScheme="gray">
+                <Tabs variant="soft-rounded" colorScheme="teal">
                   <TabList>
                     <Tab>Notifications</Tab>
                     <Tab>Unread</Tab>
