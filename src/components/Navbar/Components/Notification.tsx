@@ -47,13 +47,13 @@ const Notification = () => {
           <MenuItem>
             <Flex flexDirection="column">
               <Flex
-                h="45px"
-                w="220px"
+                h="40px"
+                w="200px"
                 bg="#f5f5f5"
-                borderTopLeftRadius="35%"
-                borderBottomLeftRadius="35%"
-                borderBottomRightRadius="35%"
-                borderTopRightRadius="35%"
+                borderTopLeftRadius="20"
+                borderBottomLeftRadius="20"
+                borderBottomRightRadius="20"
+                borderTopRightRadius="20"
               >
                 <Flex>
                   <Tabs variant="soft-rounded" colorScheme="teal">
@@ -100,7 +100,7 @@ const Notification = () => {
               </Flex>
             </Flex>
           </MenuItem>
-          <MenuItem alignItems="center" justifyContent="center">
+          <MenuItem alignItems="center" justifyContent="center" mb="5px">
             <Stack spacing={1} textAlign="center">
               <Text color="black" fontWeight="medium">
                 Stay in the loop
@@ -112,7 +112,11 @@ const Notification = () => {
                 <br />
                 projects.
               </Text>
-              <HStack alignItems="center" justifyContent="center">
+              <HStack
+                alignItems="center"
+                justifyContent="center"
+                marginTop="10px"
+              >
                 <QuestionMarkIcon color="#d1453b" />
                 <Link color="#d1453b"> How to share projects</Link>
               </HStack>
