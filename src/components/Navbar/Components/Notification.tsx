@@ -56,7 +56,8 @@ const Notification = () => {
                 borderTopRightRadius="20"
               >
                 <Flex>
-                  <Tabs variant="soft-rounded" colorScheme="teal">
+                {/* colorScheme='white'  didint worked  */}
+                  <Tabs variant="soft-rounded"  color="white" textColor="black"> 
                     <TabList>
                       <Tab
                         style={{
@@ -92,7 +93,7 @@ const Notification = () => {
             justifyContent="center"
           >
             <Flex box-sizing="border-box" justifyContent="center" margin="auto">
-              <Flex p="0px" justifyContent="center">
+              <Flex mt="10px" justifyContent="center">
                 <Image
                   src="https://d3ptyyxy2at9ui.cloudfront.net/assets/images/14ddf84cccca3f09cad7245007a41e09.jpg"
                   srcSet="https://d3ptyyxy2at9ui.cloudfront.net/assets/images/dfd21d376f6b295a42b0e57c810fba7f.jpg 2x, https://d3ptyyxy2at9ui.cloudfront.net/assets/images/f553f26a1275e2d1ea579ab575e7d5ab.jpg 3x"
@@ -117,8 +118,11 @@ const Notification = () => {
                 justifyContent="center"
                 marginTop="10px"
               >
+                <Flex mt="15px" alignItems="center" justifyContent="center">
                 <QuestionMarkIcon color="#d1453b" />
-                <Link color="#d1453b"> How to share projects</Link>
+                <Link color="#d1453b" fontSize="sm" ml="5px" textDecoration="underline" >How to share projects</Link>
+                </Flex>
+               
               </HStack>
             </Stack>
           </MenuItem>
