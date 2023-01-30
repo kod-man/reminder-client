@@ -34,9 +34,9 @@ const Notification = () => {
 
       <MenuList>
         {/* colorScheme='white'  didint worked  */}
-        <Tabs variant="soft-rounded" color="white" textColor="black">
-          <Flex justifyContent="space-between" alignItems="center" pr={2}>
-            <TabList>
+        <Tabs variant="soft-rounded" colorScheme="whiteAlpha">
+          <Flex justifyContent="space-between" alignItems="center" p={2}>
+            <TabList backgroundColor="gray.400" borderRadius={20}>
               <Tab
                 style={{
                   fontSize: "0.85em",
