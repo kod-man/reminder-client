@@ -74,10 +74,7 @@ const Notification = () => {
                   Stay in the loop
                 </Text>
                 <Text color="#202020" fontSize="sm">
-                  Here, you’ll find notifications for any
-                  <br />
-                  changes that happen in your shared
-                  <br />
+                  Here, you’ll find notifications for any changes that happen in your shared
                   projects.
                 </Text>
                 <HStack alignItems="center" justifyContent="center" marginTop="10px">
