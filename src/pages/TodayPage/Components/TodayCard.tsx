@@ -11,24 +11,15 @@ import {
   Spacer,
   Text,
   Tooltip,
-  useDisclosure,
 } from "@chakra-ui/react";
-import { RefObject, useRef } from "react";
-import ArrowIcon from "../../../icons/ArrowIcon";
-import ClockIcon from "../../../icons/ClockIcon";
-import ColorFlagIcon from "../../../icons/ColorFlagIcon";
 import CouchIcon from "../../../icons/CouchIcon";
 import DeleteIcon from "../../../icons/DeleteIcon";
-import Flag2Icon from "../../../icons/Flag2Icon";
-import FlagIcon from "../../../icons/FlagIcon";
-import JigsawIcon from "../../../icons/JigsawIcon";
 import SunIcon from "../../../icons/SunIcon";
-import TicketIcon from "../../../icons/TicketIcon";
-import TickIcon from "../../../icons/TickIcon";
 import TodayIcon from "../../../icons/TodayIcon";
-import TreeDoteIcon from "../../../icons/TreeDoteIcon";
 import UpsentIcon from "../../../icons/UpsentIcon";
-import ConfirmModal from "../../../modals/ConfirmModal";
+import MenuPriority from "./MenuPriority";
+import MenuReminder from "./MenuReminder";
+import MenuThreeDote from "./MenuThreeDote";
 
 function TodayCard() {
   const date = new Date(Date.now());
@@ -49,8 +40,24 @@ function TodayCard() {
   const today = date.toLocaleDateString("en-US", formatTodayOptions);
   const tomorrow = weeksDate.toLocaleDateString("en-US", formatTomorrowOptions);
   const nextWeek = nextWeeks.toLocaleDateString("en-US", formatNextWeekOptions);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const cancelRef = useRef() as RefObject<HTMLButtonElement>;
+
+  const menuItemsToday = [
+    {
+      icon: <SunIcon color='orange' />,
+      text1: "Tomorrow",
+      text2: tomorrow,
+    },
+    {
+      icon: <CouchIcon color='blue' />,
+      text1: "Next weekend",
+      text2: nextWeek,
+    },
+    {
+      icon: <UpsentIcon />,
+      text1: "No date",
+    },
+  ];
+
   return (
     <>
       <Flex w='100vh' ml='3' mt='3'>
@@ -92,25 +99,17 @@ function TodayCard() {
               </Text>
             </MenuButton>
           </Tooltip>
-          <MenuList minWidth='300px'>
+          <MenuList minWidth='275px'>
             <MenuGroup title={today}>
               <MenuDivider />
-              <MenuItem>
-                <SunIcon color='orange' />
-                <Text ml='2'>Tomorrow</Text>
-                <Spacer />
-                <Text color='gray'>{tomorrow}</Text>
-              </MenuItem>
-              <MenuItem>
-                <CouchIcon color='blue' />
-                <Text ml='2'>Next weekend</Text>
-                <Spacer />
-                <Text color='gray'>{nextWeek}</Text>
-              </MenuItem>
-              <MenuItem>
-                <UpsentIcon />
-                <Text ml='2'>No date</Text>
-              </MenuItem>
+              {menuItemsToday.map((item) => (
+                <MenuItem>
+                  {item.icon}
+                  <Text ml='2'>{item.text1}</Text>
+                  <Spacer />
+                  <Text color='gray'>{item.text2}</Text>
+                </MenuItem>
+              ))}
               <MenuDivider />
               <MenuItem>
                 <Input type='date'></Input>
@@ -121,130 +120,10 @@ function TodayCard() {
             </MenuGroup>
           </MenuList>
         </Menu>
-        <Menu>
-          <Tooltip hasArrow label='Set priority p1, p2, p3, p4' placement='top'>
-            <MenuButton
-              as={Button}
-              bg='white'
-              border='1px'
-              borderColor='gray.300'
-              borderRadius='md'
-              alignItems='center'
-              justifyContent='center'
-              cursor='pointer'
-              h='32px'
-              mr='2'
-              color='gray'
-              p='0'
-              pl='1'
-              leftIcon={<Flag2Icon fontSize='sm' />}
-            >
-              <Text ml='-1' mr='2' fontSize='sm' fontFamily='inherit'>
-                Priority
-              </Text>
-            </MenuButton>
-          </Tooltip>
-          <MenuList minWidth='150px' overflowY='scroll'>
-            <MenuItem>
-              <ColorFlagIcon color='red' />
-
-              <Text ml='2'>Priority 1</Text>
-            </MenuItem>
-
-            <MenuItem>
-              <ColorFlagIcon color='orange' /> <Text ml='2'>Priority 2</Text>
-            </MenuItem>
-
-            <MenuItem>
-              <ColorFlagIcon color='blue' /> <Text ml='2'>Priority 3</Text>
-            </MenuItem>
-
-            <MenuItem>
-              <FlagIcon />
-              <Text ml='3' mr='2'>
-                Priority 4
-              </Text>
-              <TickIcon color='red' />
-            </MenuItem>
-          </MenuList>
-        </Menu>
-        <Tooltip hasArrow label='Add reminders' placement='top'>
-          <Button
-            bg='white'
-            onClick={onOpen}
-            mr='2'
-            border='1px'
-            borderColor='gray.300'
-            borderRadius='md'
-            p='2'
-            h='32px'
-            alignItems='center'
-            justifyContent='center'
-            cursor='pointer'
-          >
-            <ClockIcon />
-            <Text fontSize='sm' fontFamily='inherit' color='gray'>
-              Reminders
-            </Text>
-          </Button>
-        </Tooltip>
-        <Menu>
-          <MenuButton
-            as={Button}
-            bg='white'
-            border='1px'
-            borderColor='gray.300'
-            borderRadius='md'
-            alignItems='center'
-            justifyContent='center'
-            cursor='pointer'
-            h='32px'
-            p='0'
-            minWidth='32px'
-          >
-            <Text
-              display='flex'
-              justifyContent='center'
-              fontSize='2xl'
-              mb='3'
-              color='gray'
-            >
-              ...
-            </Text>
-          </MenuButton>
-          <MenuList>
-            <MenuItem>
-              <TicketIcon /> <Text ml='2'>Labels</Text>
-              <Spacer />
-              <Text>@</Text>
-            </MenuItem>
-            <MenuItem>
-              <ArrowIcon />
-              <Text ml='2'>Move to project</Text>
-              <Spacer />
-              <Text>#</Text>
-            </MenuItem>
-            <MenuDivider />
-
-            <MenuItem>
-              <JigsawIcon />
-              <Text ml='2'>Add extension...</Text>
-            </MenuItem>
-            <MenuDivider />
-            <MenuItem color='red'>Edit task actions</MenuItem>
-          </MenuList>
-        </Menu>
+        <MenuPriority />
+        <MenuReminder />
+        <MenuThreeDote />
       </Flex>
-      <ConfirmModal
-        isOpen={isOpen}
-        onClose={onClose}
-        cancelRef={cancelRef}
-        header='Go Pro'
-        body='Reminders are only available on Pro and Business plans.'
-        handlerFunction={onClose}
-        confirmButton='Upgrade for more'
-        cancelButton='Cancel'
-      />
     </>
   );
 }
