@@ -15,8 +15,11 @@ import {
   genericErrorToast,
 } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
+import MenuPriority from "./MenuPriority";
+import MenuReminder from "./MenuReminder";
+import MenuThreeDote from "./MenuThreeDote";
+import MenuToday from "./MenuToday";
 import ReminderCard from "./ReminderCard";
-import TodayCard from "./TodayCard";
 import { Reminder } from "./types";
 import Welcome from "./Welcome";
 
@@ -129,7 +132,12 @@ function CreateReminder() {
                   value={toDoData.description}
                   onChange={handleOnChange}
                 />
-                <TodayCard />
+                <Flex w='100vh' ml='3' mt='3'>
+                  <MenuToday />
+                  <MenuPriority />
+                  <MenuReminder />
+                  <MenuThreeDote />
+                </Flex>
               </Box>
             </Flex>
           </Box>
