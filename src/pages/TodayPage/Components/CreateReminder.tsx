@@ -95,7 +95,7 @@ function CreateReminder() {
       ))}
 
       {isAddTaskOpen ? (
-        <Flex direction='column' w={isLargerThan800 ? "40%" : "80%"} mt='4'>
+        <Flex direction='column' w={isLargerThan800 ? "55%" : "80%"} mt='4'>
           <Box
             alignItems='center'
             justifyContent='center'
@@ -120,7 +120,7 @@ function CreateReminder() {
                   name='title'
                 />
                 <Input
-                  name='Description'
+                  name='description'
                   mt='2'
                   ml='3'
                   variant='unstyled'
@@ -156,7 +156,7 @@ function CreateReminder() {
         </Flex>
       ) : (
         <Flex
-          w={isLargerThan800 ? "60%" : "80%"}
+          w={isLargerThan800 ? "55%" : "80%"}
           mt='2'
           alignItems='center'
           cursor='pointer'

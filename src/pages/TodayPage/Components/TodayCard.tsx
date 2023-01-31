@@ -19,6 +19,7 @@ import ClockIcon from "../../../icons/ClockIcon";
 import ColorFlagIcon from "../../../icons/ColorFlagIcon";
 import CouchIcon from "../../../icons/CouchIcon";
 import DeleteIcon from "../../../icons/DeleteIcon";
+import Flag2Icon from "../../../icons/Flag2Icon";
 import FlagIcon from "../../../icons/FlagIcon";
 import JigsawIcon from "../../../icons/JigsawIcon";
 import SunIcon from "../../../icons/SunIcon";
@@ -56,6 +57,8 @@ function TodayCard() {
         <Menu>
           <Tooltip hasArrow label='Set due date' placement='top'>
             <MenuButton
+              p='0'
+              pl='1'
               as={Button}
               bg='white'
               border='1px'
@@ -64,20 +67,29 @@ function TodayCard() {
               alignItems='center'
               justifyContent='center'
               cursor='pointer'
-              h='30px'
+              h='32px'
               mr='2'
-              color='green'
+              fontStyle='inherit'
+              color='#07c138'
               flexDirection='row'
               leftIcon={<TodayIcon />}
               rightIcon={
                 <Tooltip hasArrow label='Remove due date' placement='top'>
-                  <Button size='xs' bg='white' _hover={{ bg: "#DCDCDC" }}>
+                  <Button
+                    p='0'
+                    pr='1'
+                    size='xs'
+                    bg='gary'
+                    _hover={{ bg: "#DCDCDC" }}
+                  >
                     <DeleteIcon />
                   </Button>
                 </Tooltip>
               }
             >
-              Today
+              <Text fontSize='sm' fontFamily='inherit'>
+                Today
+              </Text>
             </MenuButton>
           </Tooltip>
           <MenuList minWidth='300px'>
@@ -120,12 +132,16 @@ function TodayCard() {
               alignItems='center'
               justifyContent='center'
               cursor='pointer'
-              h='30px'
+              h='32px'
               mr='2'
               color='gray'
-              leftIcon={<FlagIcon />}
+              p='0'
+              pl='1'
+              leftIcon={<Flag2Icon fontSize='sm' />}
             >
-              Priority
+              <Text ml='-1' mr='2' fontSize='sm' fontFamily='inherit'>
+                Priority
+              </Text>
             </MenuButton>
           </Tooltip>
           <MenuList minWidth='150px' overflowY='scroll'>
@@ -161,13 +177,13 @@ function TodayCard() {
             borderColor='gray.300'
             borderRadius='md'
             p='2'
-            h='30px'
+            h='32px'
             alignItems='center'
             justifyContent='center'
             cursor='pointer'
           >
             <ClockIcon />
-            <Text color='gray' ml='1'>
+            <Text fontSize='sm' fontFamily='inherit' color='gray'>
               Reminders
             </Text>
           </Button>
@@ -182,9 +198,19 @@ function TodayCard() {
             alignItems='center'
             justifyContent='center'
             cursor='pointer'
-            h='30px'
+            h='32px'
+            p='0'
+            minWidth='32px'
           >
-            <TreeDoteIcon />
+            <Text
+              display='flex'
+              justifyContent='center'
+              fontSize='2xl'
+              mb='3'
+              color='gray'
+            >
+              ...
+            </Text>
           </MenuButton>
           <MenuList>
             <MenuItem>
