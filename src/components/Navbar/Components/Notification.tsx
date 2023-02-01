@@ -13,6 +13,7 @@ import {
   TabPanels,
   Tabs,
   Text,
+  Tooltip,
 } from "@chakra-ui/react";
 import BellIcon from "../../../icons/BellIcon";
 import MarkIcon from "../../../icons/MarkIcon";
@@ -54,9 +55,11 @@ const Notification = () => {
                 Unread
               </Tab>
             </TabList>
+            <Tooltip hasArrow label='Mark all as Read' bg='black' placement='top'>
             <Flex cursor="pointer" _hover={{bg:"gray.100"}} borderRadius="3px">
             <MarkIcon color="gray"/>
             </Flex>
+            </Tooltip>
           </Flex>
           <TabPanels>
             <TabPanel w="550px">
