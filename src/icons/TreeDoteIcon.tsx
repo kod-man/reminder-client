@@ -1,5 +1,3 @@
-import React from "react";
-
 function TreeDoteIcon(props: any) {
   return (
     <svg width="15" height="3" {...props}>
