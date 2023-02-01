@@ -54,7 +54,9 @@ const Notification = () => {
                 Unread
               </Tab>
             </TabList>
-            <MarkIcon color="gray" />
+            <Flex cursor="pointer" _hover={{bg:"gray.100"}} borderRadius="3px">
+            <MarkIcon color="gray"/>
+            </Flex>
           </Flex>
           <TabPanels>
             <TabPanel w="550px">
