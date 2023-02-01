@@ -27,7 +27,7 @@ const Notification = () => {
         as={MenuButton}
         _hover={{ bg: "#e27065" }}
         cursor="pointer"
-        borderRadius="20%"
+        borderRadius="7px"
         padding={1}
       >
         <BellIcon color="white" />
@@ -38,7 +38,7 @@ const Notification = () => {
             <TabList backgroundColor="gray.400" borderRadius={20}>
               <Tab
                 style={{
-                  fontSize: "0.85em",
+                  fontSize: "14px",
                   padding: "5px",
                   margin: "5px",
                 }}
@@ -47,7 +47,7 @@ const Notification = () => {
               </Tab>
               <Tab
                 style={{
-                  fontSize: "0.85em",
+                  fontSize: "14px",
                   padding: "5px",
                   margin: "5px",
                 }}
@@ -55,16 +55,25 @@ const Notification = () => {
                 Unread
               </Tab>
             </TabList>
-            <Tooltip hasArrow label='Mark all as Read' bg='black' placement='top'>
-            <Flex cursor="pointer" _hover={{bg:"gray.100"}} borderRadius="3px">
-            <MarkIcon color="gray"/>
-            </Flex>
+            <Tooltip
+              hasArrow
+              label="Mark all as Read"
+              bg="black"
+              placement="top"
+            >
+              <Flex
+                cursor="pointer"
+                _hover={{ bg: "gray.100" }}
+                borderRadius="3px"
+              >
+                <MarkIcon color="gray" />
+              </Flex>
             </Tooltip>
           </Flex>
           <TabPanels>
-            <TabPanel w="550px">
+            <TabPanel w="440px">
               <Flex
-                box-sizing="border-box"
+                boxSizing="border-box"
                 justifyContent="center"
                 margin="auto"
               >
@@ -103,9 +112,9 @@ const Notification = () => {
                 </HStack>
               </Stack>
             </TabPanel>
-            <TabPanel w="550px">
+            <TabPanel w="440px">
               <Flex
-                box-sizing="border-box"
+                boxSizing="border-box"
                 justifyContent="center"
                 margin="auto"
               >
