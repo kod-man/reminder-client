@@ -1,24 +1,14 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Input,
-  Spacer,
-  Text,
-  useMediaQuery,
-  useToast,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Input, Text, useMediaQuery, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import PlusIcon from "../../../icons/PlusIcon";
 import { Axios } from "../../../utils/axios";
-import {
-  defaultToastProps,
-  genericErrorToast,
-} from "../../../utils/genericToast";
+import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
-import IconsCard from "./IconsCard";
+import MenuPriority from "./MenuPriority";
+import MenuReminder from "./MenuReminder";
+import MenuThreeDote from "./MenuThreeDote";
+import MenuToday from "./MenuToday";
 import ReminderCard from "./ReminderCard";
-import TodayCard from "./TodayCard";
 import { Reminder } from "./types";
 import Welcome from "./Welcome";
 
@@ -97,46 +87,42 @@ function CreateReminder() {
       ))}
 
       {isAddTaskOpen ? (
-        <Flex direction="column" w={isLargerThan800 ? "60%" : "80%"} mt="4">
-          <Box
+        <Flex direction="column" w={isLargerThan800 ? "55%" : "80%"} mt="4">
+          <Flex
+            pl={3}
             alignItems="center"
-            justifyContent="center"
-            flexDirection="column"
+            direction="column"
+            border="1px solid"
+            borderColor="gray.300"
+            borderRadius={10}
           >
-            <Flex
-              border="1px"
-              borderColor="gray.300"
-              h="120px"
-              w="100%"
-              borderRadius="xl"
-            >
-              <Box w="200px">
-                <Input
-                  value={toDoData.title}
-                  onChange={handleOnChange}
-                  ml="3"
-                  mt="3"
-                  variant="unstyled"
-                  placeholder="Task name"
-                  _placeholder={{ opacity: 1, color: "gray.500" }}
-                  name="title"
-                />
-                <Input
-                  name="description"
-                  mt="2"
-                  ml="3"
-                  variant="unstyled"
-                  placeholder="description"
-                  _placeholder={{ opacity: 1, color: "gray.500" }}
-                  value={toDoData.description}
-                  onChange={handleOnChange}
-                />
-                <TodayCard />
-              </Box>
-              <Spacer />
-              <IconsCard />
+            <Box w="100%">
+              <Input
+                value={toDoData.title}
+                onChange={handleOnChange}
+                mt="3"
+                variant="unstyled"
+                placeholder="Task name"
+                _placeholder={{ opacity: 1, color: "gray.500" }}
+                name="title"
+              />
+              <Input
+                name="description"
+                mt="2"
+                variant="unstyled"
+                placeholder="Description"
+                _placeholder={{ opacity: 1, color: "gray.500" }}
+                value={toDoData.description}
+                onChange={handleOnChange}
+              />
+            </Box>
+            <Flex w="100%" my="3">
+              <MenuToday />
+              <MenuPriority />
+              <MenuReminder />
+              <MenuThreeDote />
             </Flex>
-          </Box>
+          </Flex>
           <Flex justifyContent="flex-end" mt="3">
             <Button
               mr="4"
@@ -159,12 +145,7 @@ function CreateReminder() {
           </Flex>
         </Flex>
       ) : (
-        <Flex
-          w={isLargerThan800 ? "60%" : "80%"}
-          mt="2"
-          alignItems="center"
-          cursor="pointer"
-        >
+        <Flex w={isLargerThan800 ? "55%" : "80%"} mt="2" alignItems="center" cursor="pointer">
           <Text
             _hover={{ bg: "red", color: "white" }}
             onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
