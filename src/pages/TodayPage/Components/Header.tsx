@@ -11,23 +11,23 @@ function Header() {
   const today = date.toLocaleDateString("en-US", options);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   return (
-    <Flex w={isLargerThan800 ? "55%" : "80%"} mb='2'>
-      <Box mt='12'>
+    <Flex w={isLargerThan800 ? "55%" : "80%"} mb="2">
+      <Box mt="12">
         <Flex>
-          <Text as='b' fontSize='xl' mr='2'>
+          <Text as="b" fontSize="xl" mr="2">
             Today
           </Text>
-          <Text mt='2' fontSize='sm' color='gray'>
+          <Text mt="2" fontSize="sm" color="gray">
             {today}
           </Text>
         </Flex>
       </Box>
       <Spacer />
-      <Box mt='12' _hover={{ bg: "gray.100" }} cursor='pointer'>
+      <Box mt="12" _hover={{ bg: "gray.100" }} cursor="pointer">
         <Flex>
-          <ViewIcon color='gray' />
+          <ViewIcon color="gray" />
           {isLargerThan800 ? (
-            <Text fontSize='sm' ml='1' color='gray'>
+            <Text fontSize="sm" ml="1" color="gray">
               View
             </Text>
           ) : null}
