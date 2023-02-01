@@ -1,21 +1,9 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Input,
-  Spacer,
-  Text,
-  useMediaQuery,
-  useToast,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Input, Spacer, Text, useMediaQuery, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import SpinnerComponent from "../../../components/SpinnerComponent";
+import Spinner from "../../../components/Spinner";
 import PlusIcon from "../../../icons/PlusIcon";
 import { Axios } from "../../../utils/axios";
-import {
-  defaultToastProps,
-  genericErrorToast,
-} from "../../../utils/genericToast";
+import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
 import IconsCard from "./IconsCard";
 import ReminderCard from "./ReminderCard";
@@ -87,7 +75,7 @@ function CreateReminder() {
   return (
     <>
       {loading ? (
-        <SpinnerComponent />
+        <Spinner />
       ) : (
         reminders.map((reminder: Reminder) => (
           <ReminderCard
@@ -103,18 +91,8 @@ function CreateReminder() {
 
       {isAddTaskOpen ? (
         <Flex direction="column" w={isLargerThan800 ? "60%" : "80%"} mt="4">
-          <Box
-            alignItems="center"
-            justifyContent="center"
-            flexDirection="column"
-          >
-            <Flex
-              border="1px"
-              borderColor="gray.300"
-              h="120px"
-              w="100%"
-              borderRadius="xl"
-            >
+          <Box alignItems="center" justifyContent="center" flexDirection="column">
+            <Flex border="1px" borderColor="gray.300" h="120px" w="100%" borderRadius="xl">
               <Box w="200px">
                 <Input
                   value={toDoData.title}
@@ -164,12 +142,7 @@ function CreateReminder() {
           </Flex>
         </Flex>
       ) : (
-        <Flex
-          w={isLargerThan800 ? "60%" : "80%"}
-          mt="2"
-          alignItems="center"
-          cursor="pointer"
-        >
+        <Flex w={isLargerThan800 ? "60%" : "80%"} mt="2" alignItems="center" cursor="pointer">
           <Text
             _hover={{ bg: "red", color: "white" }}
             onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}

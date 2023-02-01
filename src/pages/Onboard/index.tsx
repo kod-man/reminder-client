@@ -1,7 +1,7 @@
 import { Flex, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SpinnerComponent from "../../components/SpinnerComponent";
+import Spinner from "../../components/Spinner";
 import { Axios } from "../../utils/axios";
 import { genericErrorToast } from "../../utils/genericToast";
 import { PATHS } from "../../utils/paths";
@@ -32,7 +32,7 @@ function Onboard() {
   return (
     <>
       {loading ? (
-        <SpinnerComponent />
+        <Spinner />
       ) : (
         !userName && (
           <>
