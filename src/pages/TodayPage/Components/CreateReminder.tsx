@@ -9,6 +9,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import SpinnerComponent from "../../../components/SpinnerComponent";
 import PlusIcon from "../../../icons/PlusIcon";
 import { Axios } from "../../../utils/axios";
 import {
@@ -74,9 +75,9 @@ function CreateReminder() {
   useEffect(() => {
     Axios.get(`${API.allReminder}/${userId}`)
       .then((res) => {
+        setLoading(false);
         const data = res.data;
         setReminders(data);
-        setLoading(false);
       })
       .catch((err) => {
         genericErrorToast(err, toast);
@@ -85,16 +86,20 @@ function CreateReminder() {
   }, [userId, refreshGet, toast]);
   return (
     <>
-      {reminders.map((reminder: Reminder) => (
-        <ReminderCard
-          key={reminder._id}
-          title={reminder.title}
-          description={reminder.description}
-          id={reminder._id}
-          refreshGet={refreshGet}
-          setRefreshGet={setRefreshGet}
-        />
-      ))}
+      {loading ? (
+        <SpinnerComponent />
+      ) : (
+        reminders.map((reminder: Reminder) => (
+          <ReminderCard
+            key={reminder._id}
+            title={reminder.title}
+            description={reminder.description}
+            id={reminder._id}
+            refreshGet={refreshGet}
+            setRefreshGet={setRefreshGet}
+          />
+        ))
+      )}
 
       {isAddTaskOpen ? (
         <Flex direction="column" w={isLargerThan800 ? "60%" : "80%"} mt="4">
