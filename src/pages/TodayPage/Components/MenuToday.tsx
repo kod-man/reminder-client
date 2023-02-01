@@ -1,15 +1,15 @@
 import {
-  Menu,
-  Tooltip,
-  MenuButton,
   Button,
-  MenuList,
-  MenuGroup,
-  MenuDivider,
-  MenuItem,
-  Spacer,
   Input,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuList,
+  Spacer,
   Text,
+  Tooltip,
 } from "@chakra-ui/react";
 import CouchIcon from "../../../icons/CouchIcon";
 import DeleteIcon from "../../../icons/DeleteIcon";
@@ -39,12 +39,12 @@ function MenuToday() {
 
   const menuItemsToday = [
     {
-      icon: <SunIcon color='orange' />,
+      icon: <SunIcon color="orange" />,
       text1: "Tomorrow",
       text2: tomorrow,
     },
     {
-      icon: <CouchIcon color='blue' />,
+      icon: <CouchIcon color="blue" />,
       text1: "Next weekend",
       text2: nextWeek,
     },
@@ -56,60 +56,49 @@ function MenuToday() {
 
   return (
     <Menu>
-      <Tooltip hasArrow label='Set due date' placement='top'>
+      <Tooltip hasArrow label="Set due date" placement="top">
         <MenuButton
-          p='0'
-          pl='1'
+          p="0 0 0 1"
           as={Button}
-          bg='white'
-          border='1px'
-          borderColor='gray.300'
-          borderRadius='md'
-          alignItems='center'
-          justifyContent='center'
-          cursor='pointer'
-          h='32px'
-          mr='2'
-          fontStyle='inherit'
-          color='#07c138'
-          flexDirection='row'
+          bg="white"
+          border="1px"
+          borderColor="gray.300"
+          borderRadius="md"
+          cursor="pointer"
+          h="32px"
+          mr="2"
+          color="#07c138"
           leftIcon={<TodayIcon />}
           rightIcon={
-            <Tooltip hasArrow label='Remove due date' placement='top'>
-              <Button
-                p='0'
-                pr='1'
-                size='xs'
-                bg='gary'
-                _hover={{ bg: "#DCDCDC" }}
-              >
+            <Tooltip hasArrow label="Remove due date" placement="top">
+              <Button p="0 1 0 0" size="xs" bg="gray.200" _hover={{ bg: "#DCDCDC" }}>
                 <DeleteIcon />
               </Button>
             </Tooltip>
           }
         >
-          <Text fontSize='sm' fontFamily='inherit'>
+          <Text fontSize="sm" fontFamily="inherit">
             Today
           </Text>
         </MenuButton>
       </Tooltip>
-      <MenuList minWidth='275px'>
+      <MenuList minWidth="275px">
         <MenuGroup title={today}>
           <MenuDivider />
           {menuItemsToday.map((item) => (
             <MenuItem>
               {item.icon}
-              <Text ml='2'>{item.text1}</Text>
+              <Text ml="2">{item.text1}</Text>
               <Spacer />
-              <Text color='gray'>{item.text2}</Text>
+              <Text color="gray">{item.text2}</Text>
             </MenuItem>
           ))}
           <MenuDivider />
           <MenuItem>
-            <Input type='date'></Input>
+            <Input type="date"></Input>
           </MenuItem>
           <MenuItem>
-            <Text color='red'>+ Add time</Text>
+            <Text color="red">+ Add time</Text>
           </MenuItem>
         </MenuGroup>
       </MenuList>
