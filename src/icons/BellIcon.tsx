@@ -4,8 +4,8 @@ const BellIcon = (props: any) => {
   return (
     <Flex
       as={Button}
-      h="28px"
-      w="28px"
+      h="26px"
+      w="26px"
       _hover={{ bg: "#e27065" }}
       cursor="pointer"
       borderRadius="20%"
