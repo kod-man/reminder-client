@@ -3,7 +3,6 @@ import { FC } from "react";
 import { useDispatch } from "react-redux";
 import FilterIcon from "../../../icons/FilterIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
-import SmallPlusIcon from "../../../icons/SmallPlusIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddProjectModal from "../../../modals/AddProjectModal";
