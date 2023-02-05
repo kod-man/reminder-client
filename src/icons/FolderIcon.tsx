@@ -6,7 +6,7 @@ function FolderIcon(props: any) {
       width='12'
       height='12'
       viewBox='0 0 16 16'
-      class='project_icon project_icon_inbox'
+      className='project_icon project_icon_inbox'
       {...props}
     >
       <g fill='currentColor'>

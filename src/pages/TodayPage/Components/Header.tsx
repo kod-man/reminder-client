@@ -11,7 +11,7 @@ function Header() {
   const today = date.toLocaleDateString("en-US", options);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   return (
-    <Flex w={isLargerThan800 ? "60%" : "80%"} mb="2">
+    <Flex w={isLargerThan800 ? "55%" : "80%"} mb="2">
       <Box mt="12">
         <Flex>
           <Text as="b" fontSize="xl" mr="2">
