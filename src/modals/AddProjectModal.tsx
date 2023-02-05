@@ -1,25 +1,43 @@
 import {
+  Box,
   Button,
   Flex,
+  FormControl,
+  Input,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Select,
+  Switch,
+  Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
+import ColorDotIcon from "../icons/ColorDotIcon";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import SmallPlusIcon from "../icons/SmallPlusIcon";
 
 const AddProjectModal = () => {
+  const colors = [
+    "Berry Red",
+    "Red",
+    "Orange",
+    "Yellow",
+    "Green",
+    "Blue",
+    "Light Blue",
+    "Teal",
+    "Purple",
+    "Gray",
+  ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
 
   return (
     <>
-      {/* <Flex as={Button} onClick={onOpen}> */}
       <Flex
         as={Button}
         onClick={onOpen}
@@ -35,26 +53,74 @@ const AddProjectModal = () => {
       </Flex>
       <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader
+        <ModalContent w="450px" h="275px">
+          <Flex
             flexDirection="row"
-            border="1px solid red"
-            maxW="375px"
-            maxH="45px"
+            justifyContent="center"
+            alignItems="center"
+            h="32px"
           >
-            Add Project
-          </ModalHeader>
-          <Flex>
-            <QuestionMarkIcon color="black" />
+            <Box
+              width="100%"
+              textOverflow="ellipsis"
+              overflow="hidden"
+              whiteSpace="nowrap"
+            >
+              <ModalHeader>Add Project</ModalHeader>
+            </Box>
+            <Flex as="button" border="none" mr="10px">
+              <QuestionMarkIcon color="black" />
+            </Flex>
           </Flex>
 
-          <ModalBody>Lorem count={2}</ModalBody>
+          <ModalBody>
+            <Flex flexDir="column">
+              <Text fontWeight="bold" mb="4px">
+                Name
+              </Text>
+              <Input size="sm" />
+            </Flex>
+
+            <Flex flexDir="column">
+              <Text fontWeight="bold" mb="4px">
+                Color
+              </Text>
+              <Select size="sm">
+                {colors.map((color) => (
+                  <option key={color} value={color}>
+                    <ColorDotIcon color={color} /> {color}
+                  </option>
+                ))}
+              </Select>
+            </Flex>
+            <Flex alignItems="center" mt="10px">
+              <FormControl display="flex" alignItems="center">
+                <Switch colorScheme="gray" />
+                <Text ml="10px">Add to favorites</Text>
+              </FormControl>
+            </Flex>
+          </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
+            <Button
+              colorScheme="gray"
+              mr={3}
+              onClick={onClose}
+              width="70px"
+              height="35px"
+            >
+              Cancel
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
+
+            <Button
+              variant="ghost"
+              backgroundColor="#f1b7b2"
+              style={{ cursor: "not-allowed", backgroundColor: "#f1b7b2" }}
+              width="70px"
+              height="35px"
+            >
+              Add
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
