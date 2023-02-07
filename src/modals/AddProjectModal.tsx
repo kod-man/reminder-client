@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Divider,
   Flex,
   FormControl,
   Input,
@@ -68,11 +69,12 @@ const AddProjectModal = () => {
             >
               <ModalHeader>Add Project</ModalHeader>
             </Box>
+
             <Flex as="button" border="none" mr="10px">
               <QuestionMarkIcon color="black" />
             </Flex>
           </Flex>
-
+          <Divider mt="10px" />
           <ModalBody>
             <Flex flexDir="column">
               <Text fontWeight="bold" mb="4px">

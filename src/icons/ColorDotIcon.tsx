@@ -9,9 +9,11 @@ const ColorDotIcon = (props: any) => {
         width="10px"
         height="10px"
         borderRadius="50%"
+        {...props}
       />
     );
   };
   
   export default ColorDotIcon;
+  
   
