@@ -120,6 +120,7 @@ const AddProjectModal = () => {
               style={{ cursor: "not-allowed", backgroundColor: "#f1b7b2" }}
               width="70px"
               height="35px"
+              textColor="white"
             >
               Add
             </Button>
