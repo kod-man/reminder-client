@@ -41,14 +41,14 @@ const AddProjectModal = () => {
     // "yellow.100",
     "berry red",
     "Red",
-    "Orange",
-    "Yellow",
-    "Green",
-    "Blue",
-    "Light Blue",
-    "Teal",
-    "Purple",
-    "Gray",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "light blue",
+    "teal",
+    "purple",
+    "gray",
   ];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
