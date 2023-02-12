@@ -11,7 +11,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
- 
+  Select,
   Switch,
   Text,
   useDisclosure,
@@ -20,25 +20,9 @@ import React from "react";
 import ColorDotIcon from "../icons/ColorDotIcon";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import SmallPlusIcon from "../icons/SmallPlusIcon";
-// import {
-//   AsyncCreatableSelect,
-//   AsyncSelect,
-//   CreatableSelect,
-//   Select,
-// } from "chakra-react-select";
 
 const AddProjectModal = () => {
-
-  const {
-    AsyncCreatableSelect,
-    AsyncSelect,
-    CreatableSelect,
-    Select,
-  } = require("chakra-react-select");
-
   const colors = [
-    // "red.100",
-    // "yellow.100",
     "berry red",
     "Red",
     "orange",
@@ -103,17 +87,28 @@ const AddProjectModal = () => {
               <Text fontWeight="bold" mb="4px">
                 Color
               </Text>
-              <Select size="sm">
+              <Select>
                 {colors.map((color) => (
-                  <option key={color} value={color} >
+                  <option key={color} value={color}>
                     <Flex>
                       <ColorDotIcon color={color} />
 
-                      <Text color={"red.100"} colorScheme={color}>{color}</Text>
+                      <Text color={"red.100"} colorScheme={color}>
+                        {color}
+                      </Text>
                     </Flex>
                   </option>
                 ))}
               </Select>
+
+              {/* <Select bg="black" color="white">
+  <option style={{ color: 'black' }} value="option1">
+    Option1
+  </option>
+  <option style={{ color: 'red' }} value="option2">
+    Option2
+  </option>
+</Select> */}
             </Flex>
             <Flex alignItems="center" mt="10px">
               <FormControl display="flex" alignItems="center">
