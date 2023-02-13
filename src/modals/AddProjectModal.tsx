@@ -21,19 +21,6 @@ import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import SmallPlusIcon from "../icons/SmallPlusIcon";
 
 const AddProjectModal = () => {
-  const colors = [
-    "berry red",
-    "Red",
-    "orange",
-    "yellow",
-    "green",
-    "blue",
-    "light blue",
-    "teal",
-    "purple",
-    "gray",
-  ];
-
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
 
@@ -69,7 +56,6 @@ const AddProjectModal = () => {
             >
               <ModalHeader>Add Project</ModalHeader>
             </Box>
-
             <Flex as="button" border="none" mr="10px">
               <QuestionMarkIcon color="black" />
             </Flex>
@@ -82,7 +68,6 @@ const AddProjectModal = () => {
               </Text>
               <Input size="sm" />
             </Flex>
-
             <Flex flexDir="column">
               <Text fontWeight="bold" mb="4px">
                 Color
@@ -96,7 +81,6 @@ const AddProjectModal = () => {
               </FormControl>
             </Flex>
           </ModalBody>
-
           <ModalFooter>
             <Button
               colorScheme="gray"
@@ -107,7 +91,6 @@ const AddProjectModal = () => {
             >
               Cancel
             </Button>
-
             <Button
               variant="ghost"
               backgroundColor="#f1b7b2"
