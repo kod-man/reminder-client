@@ -87,20 +87,6 @@ const AddProjectModal = () => {
               <Text fontWeight="bold" mb="4px">
                 Color
               </Text>
-
-              {/* <Select>
-                {colors.map((color) => (
-                  <option key={color} value={color}>
-                    <Flex alignItems="center">
-                       data-icon= <ColorDotIcon color={color} />
-                      <Text color="red.100" fontWeight="bold">
-                        {color}
-                      </Text>
-                    </Flex>
-                  </option>
-                ))}
-              </Select> */}
-
               <CustomSelects />
             </Flex>
             <Flex alignItems="center" mt="10px">

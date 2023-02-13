@@ -12,7 +12,7 @@ const colors = [
   "Teal",
   "Purple",
   "Gray",
-  ];
+];
 
 const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
   <Option {...props}>
