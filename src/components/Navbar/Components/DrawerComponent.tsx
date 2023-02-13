@@ -57,7 +57,6 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
         >
           <Text color="gray">Projects</Text>
           <Box ml="auto">
-            {/* <SmallPlusIcon /> */}
             <AddProjectModal />
           </Box>
         </Flex>
