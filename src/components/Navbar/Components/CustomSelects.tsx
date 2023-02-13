@@ -29,7 +29,19 @@ const CustomSelects = ({ ...props }) => {
   return (
     <Select
       components={{ Option: CustomOption }}
-      options={colors.map((color) => ({ value: color, label: color }))}
+      options={colors.map((color) => ({
+        value: color,
+        label: color,
+        key: color,
+      }))}
+      formatOptionLabel={(selectedOption) => (
+        <Flex alignItems="center">
+          <ColorDotIcon color={selectedOption.value} />
+          <Text color="gray.700" fontWeight="normal">
+            {selectedOption.label}
+          </Text>
+        </Flex>
+      )}
       {...props}
     />
   );

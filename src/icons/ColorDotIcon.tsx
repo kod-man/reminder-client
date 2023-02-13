@@ -14,5 +14,4 @@ const ColorDotIcon = ({ color }: { color: string }) => {
     />
   );
 };
-
 export default ColorDotIcon;
