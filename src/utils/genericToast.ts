@@ -7,8 +7,8 @@ export const defaultToastProps = {
 };
 
 export function genericErrorToast(
-  toast: (options?: UseToastOptions | undefined) => ToastId,
   error: any,
+  toast: (options?: UseToastOptions | undefined) => ToastId
 ) {
   if (error.response) {
     toast({

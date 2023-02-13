@@ -37,16 +37,12 @@ const ProfilMenuData = [
 ];
 const ProfileMenu = () => {
   const navigate = useNavigate();
-  const [render, setRender] = useState(false);
   const toast = useToast();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    if (render) {
-      navigate(PATHS.LOGIN);
-    }
     const userId = sessionStorage.getItem("userId");
     Axios.get(`${API.getUser}/${userId}`)
       .then((response) => {
@@ -60,18 +56,20 @@ const ProfileMenu = () => {
           console.log(err);
         }
       });
-  }, [render]);
+  });
+
   const nameInitials = name
     .split(" ")
     .map((n) => n[0])
     .join("")
     .toUpperCase();
+
   const onClickLogOut = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("userId");
-    setRender(true);
-    // window.location.reload(); // bad way
+    navigate(PATHS.LOGIN);
   };
+
   return (
     <Menu>
       <Flex
