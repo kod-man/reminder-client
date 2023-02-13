@@ -11,13 +11,12 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Select,
   Switch,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
-import ColorDotIcon from "../icons/ColorDotIcon";
+import CustomSelects from "../components/Navbar/Components/CustomSelects";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import SmallPlusIcon from "../icons/SmallPlusIcon";
 
@@ -34,6 +33,7 @@ const AddProjectModal = () => {
     "purple",
     "gray",
   ];
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
 
@@ -87,28 +87,21 @@ const AddProjectModal = () => {
               <Text fontWeight="bold" mb="4px">
                 Color
               </Text>
-              <Select>
+
+              {/* <Select>
                 {colors.map((color) => (
                   <option key={color} value={color}>
-                    <Flex>
-                      <ColorDotIcon color={color} />
-
-                      <Text color={"red.100"} colorScheme={color}>
+                    <Flex alignItems="center">
+                       data-icon= <ColorDotIcon color={color} />
+                      <Text color="red.100" fontWeight="bold">
                         {color}
                       </Text>
                     </Flex>
                   </option>
                 ))}
-              </Select>
+              </Select> */}
 
-              {/* <Select bg="black" color="white">
-  <option style={{ color: 'black' }} value="option1">
-    Option1
-  </option>
-  <option style={{ color: 'red' }} value="option2">
-    Option2
-  </option>
-</Select> */}
+              <CustomSelects />
             </Flex>
             <Flex alignItems="center" mt="10px">
               <FormControl display="flex" alignItems="center">
