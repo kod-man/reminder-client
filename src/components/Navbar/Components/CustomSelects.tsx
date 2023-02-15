@@ -60,4 +60,3 @@ const CustomSelects = ({ ...props }) => {
 };
 
 export default CustomSelects;
-

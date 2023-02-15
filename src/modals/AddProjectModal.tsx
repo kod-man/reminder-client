@@ -27,7 +27,6 @@ const AddProjectModal = () => {
 
   return (
     <>
-      {" "}
       <MyTooltip label="Add project">
         <Flex
           as={Button}
@@ -45,7 +44,7 @@ const AddProjectModal = () => {
       </MyTooltip>
       <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent w="450px" h="300px">
+        <ModalContent w="450px" h="330px">
           <Flex
             flexDirection="row"
             justifyContent="center"
@@ -58,7 +57,9 @@ const AddProjectModal = () => {
               overflow="hidden"
               whiteSpace="nowrap"
             >
-              <ModalHeader>Add Project</ModalHeader>
+              <ModalHeader fontWeight="bold" mt="10px" fontSize="20px">
+                Add Project
+              </ModalHeader>
             </Box>
             <Flex as="button" border="none" mr="10px">
               <QuestionMarkIcon color="black" />
