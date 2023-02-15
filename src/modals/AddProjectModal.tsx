@@ -25,6 +25,8 @@ const AddProjectModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
 
+  const [isChecked, setIsChecked] = React.useState(false);
+
   return (
     <>
       <MyTooltip label="Add project">
@@ -91,15 +93,24 @@ const AddProjectModal = () => {
               />
             </Flex>
             <Flex flexDir="column" mt="12px">
-              <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px" >
+              <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Color
               </Text>
               <CustomSelects />
             </Flex>
             <Flex alignItems="center" mt="10px">
               <FormControl display="flex" alignItems="center">
-                <Switch colorScheme="gray" m="10px 0 5px 0" />
-                <Text ml="10px">Add to favorites</Text>
+                <Flex justifyContent="center" alignItems="center">
+                  <Switch
+                    colorScheme={isChecked ? "green" : "gray"}
+                    m="10px 0 5px 0"
+                    isChecked={isChecked}
+                    onChange={(e) => setIsChecked(e.target.checked)}
+                  />
+                  <Text ml="10px" fontSize="14px">
+                    Add to favorites
+                  </Text>
+                </Flex>
               </FormControl>
             </Flex>
           </ModalBody>
