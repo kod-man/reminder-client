@@ -68,7 +68,7 @@ const AddProjectModal = () => {
           <Divider mt="10px" />
           <ModalBody>
             <Flex flexDir="column">
-              <Text fontWeight="bold" mb="4px">
+              <Text fontWeight="bold" m="8px 0 5px 0" >
                 Name
               </Text>
               <Input
@@ -91,14 +91,14 @@ const AddProjectModal = () => {
               />
             </Flex>
             <Flex flexDir="column" mt="12px">
-              <Text fontWeight="bold" mb="4px">
+              <Text fontWeight="bold" m="8px 0 5px 0" >
                 Color
               </Text>
               <CustomSelects />
             </Flex>
             <Flex alignItems="center" mt="10px">
               <FormControl display="flex" alignItems="center">
-                <Switch colorScheme="gray" />
+                <Switch colorScheme="gray" m="10px 0 5px 0" />
                 <Text ml="10px">Add to favorites</Text>
               </FormControl>
             </Flex>
