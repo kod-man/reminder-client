@@ -27,7 +27,21 @@ const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
 
 const CustomSelects = ({ ...props }) => {
   return (
-    <Select borderRadius="7px"
+    <Select
+   
+    styles={{
+      control: (base, state) => ({
+        ...base,
+        borderRadius: '7px',
+        borderColor: 'black',
+        '&:hover': {
+          borderColor: 'black',
+        },
+        boxShadow: state.isFocused ? 'none' : base.boxShadow,
+        outline: 'none',
+      }),
+    }}
+
       components={{ Option: CustomOption }}
       options={COLORS.map((color) => ({
         value: color,
@@ -35,7 +49,7 @@ const CustomSelects = ({ ...props }) => {
         key: color,
       }))}
       formatOptionLabel={(selectedOption) => (
-        <Flex alignItems="center" >
+        <Flex alignItems="center">
           <ColorDotIcon color={selectedOption.value} />
           <Text color="gray.700" fontWeight="normal">
             {selectedOption.label}
@@ -48,3 +62,6 @@ const CustomSelects = ({ ...props }) => {
 };
 
 export default CustomSelects;
+function chroma(color: any) {
+  throw new Error("Function not implemented.");
+}
