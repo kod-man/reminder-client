@@ -8,6 +8,7 @@ import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddProjectModal from "../../../modals/AddProjectModal";
 import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import DrawerCards from "./DrawerCards";
+import ToggleProjects from "./ToggleProjects";
 
 const DrawerData = [
   { Icon: InboxDrawerIcon, text: "Inbox", iconColor: "blue" },
@@ -44,7 +45,6 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
         <Flex
           _hover={{
             color: "black",
-            backgroundColor: "#eeeeee",
             borderRadius: "5px",
           }}
           px={2}
@@ -56,9 +56,10 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           cursor="pointer"
         >
           <Text color="gray">Projects</Text>
-          <Box ml="auto">
+          <Box ml="auto" flexDirection="row" >
             <AddProjectModal />
           </Box>
+          <ToggleProjects  />
         </Flex>
       </DrawerContent>
     </Drawer>

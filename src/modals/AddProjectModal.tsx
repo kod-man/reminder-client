@@ -66,13 +66,23 @@ const AddProjectModal = () => {
               <Text fontWeight="bold" mb="4px">
                 Name
               </Text>
-              <Input size="sm" />
+              <Input
+          size="sm"
+          borderRadius="7px"
+          border="1px"
+          borderColor="black"
+          outline="none"
+          _focus={{
+            borderColor: "black",
+            boxShadow: "none",
+          }}
+        />
             </Flex>
             <Flex flexDir="column">
               <Text fontWeight="bold" mb="4px">
                 Color
               </Text>
-              <CustomSelects />
+              <CustomSelects  />
             </Flex>
             <Flex alignItems="center" mt="10px">
               <FormControl display="flex" alignItems="center">

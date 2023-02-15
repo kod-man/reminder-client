@@ -3,7 +3,16 @@ import Select, { components, OptionProps } from "react-select";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 
 const { Option } = components;
-const COLORS = ["Red", "Orange", "Yellow", "Green", "Blue", "Teal", "Purple", "Gray"];
+const COLORS = [
+  "Red",
+  "Orange",
+  "Yellow",
+  "Green",
+  "Blue",
+  "Teal",
+  "Purple",
+  "Gray",
+];
 
 const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
   <Option {...props}>
@@ -18,7 +27,7 @@ const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
 
 const CustomSelects = ({ ...props }) => {
   return (
-    <Select
+    <Select borderRadius="7px"
       components={{ Option: CustomOption }}
       options={COLORS.map((color) => ({
         value: color,
@@ -26,7 +35,7 @@ const CustomSelects = ({ ...props }) => {
         key: color,
       }))}
       formatOptionLabel={(selectedOption) => (
-        <Flex alignItems="center">
+        <Flex alignItems="center" >
           <ColorDotIcon color={selectedOption.value} />
           <Text color="gray.700" fontWeight="normal">
             {selectedOption.label}
