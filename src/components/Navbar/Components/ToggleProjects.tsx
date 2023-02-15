@@ -9,10 +9,11 @@ import {
   Text,
 } from "@chakra-ui/react";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
+import MyTooltip from "./MyTooltip";
 
 const ToggleProjects = () => {
   return (
-    <div
+    <Flex
       style={{
         display: "flex",
         justifyContent: "flex-end",
@@ -22,14 +23,15 @@ const ToggleProjects = () => {
     >
       <Accordion allowMultiple>
         <AccordionItem border="none">
-          <AccordionButton
-            aria-expanded="true"
-            style={{ backgroundColor: "transparent" }}
-          >
-            <Box as="span" flex="1" textAlign="left"></Box>
-            <AccordionIcon />
-          </AccordionButton>
-
+          <MyTooltip label="Toggle list of Projects">
+            <AccordionButton
+              aria-expanded="true"
+              style={{ backgroundColor: "transparent" }}
+            >
+              <Box as="span" flex="1" textAlign="left"></Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </MyTooltip>
           <AccordionPanel pb={4}>
             <Flex justifyContent="center" alignItems="center">
               <ColorDotIcon color="gray" />
@@ -38,7 +40,7 @@ const ToggleProjects = () => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-    </div>
+    </Flex>
   );
 };
 

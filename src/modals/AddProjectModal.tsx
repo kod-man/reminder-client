@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import CustomSelects from "../components/Navbar/Components/CustomSelects";
+import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import SmallPlusIcon from "../icons/SmallPlusIcon";
 
@@ -26,19 +27,22 @@ const AddProjectModal = () => {
 
   return (
     <>
-      <Flex
-        as={Button}
-        onClick={onOpen}
-        style={{
-          backgroundColor: "#fafafa",
-          width: "16px",
-          height: "16px",
-          border: "none",
-          padding: "1px",
-        }}
-      >
-        <SmallPlusIcon />
-      </Flex>
+      {" "}
+      <MyTooltip label="Add project">
+        <Flex
+          as={Button}
+          onClick={onOpen}
+          style={{
+            backgroundColor: "#fafafa",
+            width: "16px",
+            height: "16px",
+            border: "none",
+            padding: "1px",
+          }}
+        >
+          <SmallPlusIcon />
+        </Flex>
+      </MyTooltip>
       <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent w="450px" h="300px">
@@ -67,18 +71,19 @@ const AddProjectModal = () => {
                 Name
               </Text>
               <Input
+                h="32px"
                 size="sm"
                 borderRadius="7px"
                 border="1px"
-                borderColor="black"
+                borderColor="gray"
                 outline="none"
                 _focus={{
-                  borderColor: "black",
+                  borderColor: "gray",
                   boxShadow: "none",
                   outline: "none",
                 }}
                 _hover={{
-                  borderColor: "black",
+                  borderColor: "gray",
                   boxShadow: "none",
                   outline: "none",
                 }}
