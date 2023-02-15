@@ -56,6 +56,14 @@ const CustomSelects = ({ ...props }) => {
           </Text>
         </Flex>
       )}
+      placeholder={
+        <Flex alignItems="center">
+          <ColorDotIcon color="gray" />
+          <Text color="gray.500" fontWeight="normal">
+            Gray
+          </Text>
+        </Flex>
+      }
       {...props}
     />
   );
