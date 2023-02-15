@@ -68,7 +68,7 @@ const AddProjectModal = () => {
           <Divider mt="10px" />
           <ModalBody>
             <Flex flexDir="column">
-              <Text fontWeight="bold" m="8px 0 5px 0" >
+              <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Name
               </Text>
               <Input
@@ -91,7 +91,7 @@ const AddProjectModal = () => {
               />
             </Flex>
             <Flex flexDir="column" mt="12px">
-              <Text fontWeight="bold" m="8px 0 5px 0" >
+              <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px" >
                 Color
               </Text>
               <CustomSelects />
