@@ -58,10 +58,10 @@ const AddProjectModal = () => {
               whiteSpace="nowrap"
             >
               <ModalHeader fontWeight="bold" mt="10px" fontSize="20px">
-                Add Project
+                Add project
               </ModalHeader>
             </Box>
-            <Flex as="button" border="none" mr="10px">
+            <Flex as="button" border="none" m="10px 10px 0 0">
               <QuestionMarkIcon color="black" />
             </Flex>
           </Flex>

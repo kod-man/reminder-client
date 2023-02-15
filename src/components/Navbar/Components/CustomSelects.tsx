@@ -27,10 +27,12 @@ const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
 
 const CustomSelects = ({ ...props }) => {
   return (
-    <Select
+    <Select 
       styles={{
         control: (base, state) => ({
           ...base,
+          height: "33px",
+          minHeight: "33px",
           borderRadius: "7px",
           borderColor: "gray",
           "&:hover": {

@@ -1,4 +1,4 @@
-import { Box, Drawer, DrawerContent, Flex, Text } from "@chakra-ui/react";
+import { Drawer, DrawerContent, Flex, Spacer, Text } from "@chakra-ui/react";
 import { FC } from "react";
 import { useDispatch } from "react-redux";
 import FilterIcon from "../../../icons/FilterIcon";
@@ -55,11 +55,14 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           height="32px"
           cursor="pointer"
         >
-          <Text color="gray">Projects</Text>
-          <Box ml="auto" flexDirection="row" >
-            <AddProjectModal />
-          </Box>
-          <ToggleProjects  />
+          <Flex alignItems="center" justifyContent="space-between">
+            <Text color="gray">Projects</Text>
+            <Spacer />
+            <Flex alignItems="center" ml="140px">
+              <AddProjectModal />
+              <ToggleProjects />
+            </Flex>
+          </Flex>
         </Flex>
       </DrawerContent>
     </Drawer>
