@@ -41,7 +41,7 @@ const AddProjectModal = () => {
       </Flex>
       <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent w="450px" h="275px">
+        <ModalContent w="450px" h="300px">
           <Flex
             flexDirection="row"
             justifyContent="center"
@@ -84,7 +84,7 @@ const AddProjectModal = () => {
                 }}
               />
             </Flex>
-            <Flex flexDir="column">
+            <Flex flexDir="column" mt="12px">
               <Text fontWeight="bold" mb="4px">
                 Color
               </Text>
@@ -97,6 +97,7 @@ const AddProjectModal = () => {
               </FormControl>
             </Flex>
           </ModalBody>
+          <Divider mt="5px" />
           <ModalFooter>
             <Button
               colorScheme="gray"
