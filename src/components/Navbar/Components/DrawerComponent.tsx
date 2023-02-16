@@ -10,6 +10,7 @@ import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddProjectModal from "../../../modals/AddProjectModal";
 import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import DrawerCards from "./DrawerCards";
+import MyTooltip from "./MyTooltip";
 
 const DrawerData = [
   { Icon: InboxDrawerIcon, text: "Inbox", iconColor: "blue" },
@@ -63,30 +64,32 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
             justifyContent="space-between"
             h="32px"
             borderRadius="5px"
-            p="1px"
             _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
           >
             <Text color="gray">Projects</Text>
             <Spacer />
             <Flex alignItems="center" ml="140px">
               <AddProjectModal />
-              <Flex ml="5px">
-                <PersonalIcon
-                  isOpen={isPersonalOpen}
-                  setIsOpen={setIsPersonalOpen}
-                />
-              </Flex>
+              <MyTooltip label="Add list of Projects">
+                <Flex ml="5px">
+                  <PersonalIcon
+                    isOpen={isPersonalOpen}
+                    setIsOpen={setIsPersonalOpen}
+                  />
+                </Flex>
+              </MyTooltip>
             </Flex>
           </Flex>
         </Flex>
 
         {isPersonalOpen && (
           <Flex
-            m="-5px 0 0 0 "
+            m="-5px 10px 0 25px "
             fontSize="sm"
-            justifyContent="center"
+            justifyContent="flex-start"
             alignItems="center"
             h="32px"
+            maxW="255px"
             borderRadius="5px"
             p="1px"
             _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}

@@ -40,6 +40,7 @@ const AddProjectModal = () => {
             border: "none",
             padding: "1px",
           }}
+          _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
         >
           <SmallPlusIcon />
         </Flex>
