@@ -1,6 +1,7 @@
 import { Flex } from "@chakra-ui/react";
 import LeftSideBar from "./Components/LeftNavBar";
 import RightNavBar from "./Components/RightNavBar";
+import ToggleProjects from "./Components/ToggleProjects";
 
 function Navbar() {
   return (

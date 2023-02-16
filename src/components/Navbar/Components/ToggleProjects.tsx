@@ -4,7 +4,6 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Box,
   Flex,
   Text,
 } from "@chakra-ui/react";
@@ -13,19 +12,18 @@ import MyTooltip from "./MyTooltip";
 
 const ToggleProjects = () => {
   return (
-    <Accordion allowMultiple>
+    <Accordion allowToggle border="1px solid red">
       <AccordionItem border="none">
         <MyTooltip label="Toggle list of Projects">
           <AccordionButton
             aria-expanded="true"
             style={{ backgroundColor: "transparent" }}
           >
-            <Box as="span" flex="1" textAlign="left"></Box>
             <AccordionIcon />
           </AccordionButton>
         </MyTooltip>
         <AccordionPanel pb={4}>
-          <Flex justifyContent="center" alignItems="center">
+          <Flex justifyContent="center" alignItems="center" flexDirection="row">
             <ColorDotIcon color="gray" />
             <Text>Personal 🙂 </Text>
           </Flex>
