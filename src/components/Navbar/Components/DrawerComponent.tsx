@@ -69,7 +69,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           >
             <Text color="gray">Projects</Text>
             <Spacer />
-            <Flex alignItems="center" ml="140px">
+            <Flex alignItems="center" ml="140px" >
               <AddProjectModal />
               <MyTooltip label="Add list of Projects">
                 <Flex ml="5px">
