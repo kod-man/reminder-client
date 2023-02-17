@@ -1,14 +1,16 @@
 import { Flex } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import { RootState } from "../..";
+import DropIcon from "../../icons/DropIcon";
+import MiniLabelIcon from "../../icons/MiniLabelIcon";
+import FiltersAndLabels from "./components/FiltersAndLabels";
 
-import Filters from "./components/Filters";
 import Header from "./components/Header";
-import Labels from "./components/Labels";
 
-function FiltersAndLabels() {
+function FiltersAndLabelsPage() {
   const isDrawerOpen = useSelector((state: RootState) => state.drawer.value);
-
+  const filtersList = ["Learn React", "Learn TypeScript"];
+  const labelsList = ["Read", "İmportant", "Bussiness"];
   return (
     <Flex
       flexDirection="column"
@@ -18,10 +20,10 @@ function FiltersAndLabels() {
       ml="auto"
     >
       <Header />
-      <Filters />
-      <Labels />
+      <FiltersAndLabels cardTitle="Filters" data={filtersList} Icon={DropIcon} />
+      <FiltersAndLabels cardTitle="Labels" data={labelsList} Icon={MiniLabelIcon} />
     </Flex>
   );
 }
 
-export default FiltersAndLabels;
+export default FiltersAndLabelsPage;
