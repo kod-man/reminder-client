@@ -1,5 +1,4 @@
 import { Drawer, DrawerContent, Flex, Spacer, Text } from "@chakra-ui/react";
-import { ThreeDRotation } from "@material-ui/icons";
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
@@ -98,8 +97,8 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           >
             <ColorDotIcon color={"gray"} />
             <Text fontSize="16px">Personal 🙂</Text>
-            <Flex ml="auto" >
-            <ThreeDotsIcon />
+            <Flex ml="auto">
+              <ThreeDotsIcon />
             </Flex>
           </Flex>
         )}
