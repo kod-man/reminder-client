@@ -18,7 +18,7 @@ const PersonalIcon = ({ isOpen, setIsOpen }: PersonalIconProps) => {
       cursor="pointer"
       onClick={handleClick}
     >
-      <Icon as={ToggleIcon} transform={isOpen ? "rotate(90deg)" : ""} />
+      <Icon  rotate="90deg" as={ToggleIcon} transform={isOpen ? "rotate(90deg)" : ""} />
     </Flex>
   );
 };
