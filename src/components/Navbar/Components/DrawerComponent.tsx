@@ -1,17 +1,16 @@
-import { Drawer, DrawerContent, Flex, Spacer, Text } from "@chakra-ui/react";
+import { Drawer, DrawerContent, Flex, Text } from "@chakra-ui/react";
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
-import ColorDotIcon from "../../../icons/ColorDotIcon";
 import FilterIcon from "../../../icons/FilterIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
-import PersonalIcon from "../../../icons/PersonalIcon";
-import ThreeDotsIcon from "../../../icons/ThreeDotsIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
+import ToggleIconDown from "../../../icons/ToggleIconDown";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddProjectModal from "../../../modals/AddProjectModal";
 import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import DrawerCards from "./DrawerCards";
 import MyTooltip from "./MyTooltip";
+import ProjectCardComponent from "./ProjectCardComponent";
 
 const DrawerData = [
   { Icon: InboxDrawerIcon, text: "Inbox", iconColor: "blue" },
@@ -26,7 +25,7 @@ type DrawerProps = {
 };
 
 const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
-  const [isPersonalOpen, setIsPersonalOpen] = useState(false);
+  const [isProjectListOpen, setIsProjectListOpen] = useState(false);
 
   const dispatch = useDispatch();
   return (
@@ -48,60 +47,30 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
         ))}
 
         <Flex
-          _hover={{
-            color: "black",
-            borderRadius: "5px",
-          }}
-          px={2}
-          w="100%"
+          w="90%"
+          justifyContent="space-between"
           alignItems="center"
-          m="20px"
-          width="275px"
-          height="32px"
-          cursor="pointer"
+          m={5}
+          paddingY={2}
+          borderRadius={5}
+          _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
         >
-          <Flex
-            alignItems="center"
-            justifyContent="space-between"
-            h="32px"
-            borderRadius="5px"
-            _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
-          >
-            <Text color="gray">Projects</Text>
-            <Spacer />
-            <Flex alignItems="center" ml="140px" >
-              <AddProjectModal />
-              <MyTooltip label="Add list of Projects">
-                <Flex ml="5px">
-                  <PersonalIcon
-                    isOpen={isPersonalOpen}
-                    setIsOpen={setIsPersonalOpen}
-                  />
-                </Flex>
-              </MyTooltip>
-            </Flex>
+          <Text color="gray">Projects</Text>
+          <Flex>
+            <AddProjectModal />
+            <MyTooltip label="Toggle list of Projects">
+              <Flex
+                transform={!isProjectListOpen ? "rotate(90deg)" : "rotate(0deg)"}
+                onClick={() => setIsProjectListOpen(!isProjectListOpen)}
+                ml={3}
+              >
+                <ToggleIconDown />
+              </Flex>
+            </MyTooltip>
           </Flex>
         </Flex>
 
-        {isPersonalOpen && (
-          <Flex
-            m="-5px 10px 0 25px "
-            fontSize="sm"
-            justifyContent="flex-start"
-            alignItems="center"
-            h="32px"
-            maxW="255px"
-            borderRadius="5px"
-            p="1px"
-            _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
-          >
-            <ColorDotIcon color={"gray"} />
-            <Text fontSize="16px">Personal 🙂</Text>
-            <Flex ml="auto">
-              <ThreeDotsIcon />
-            </Flex>
-          </Flex>
-        )}
+        {isProjectListOpen && <ProjectCardComponent name="deneme" color="gray" />}
       </DrawerContent>
     </Drawer>
   );

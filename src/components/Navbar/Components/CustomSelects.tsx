@@ -3,16 +3,7 @@ import Select, { components, OptionProps } from "react-select";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 
 const { Option } = components;
-const COLORS = [
-  "Red",
-  "Orange",
-  "Yellow",
-  "Green",
-  "Blue",
-  "Teal",
-  "Purple",
-  "Gray",
-];
+const COLORS = ["Red", "Orange", "Yellow", "Green", "Blue", "Teal", "Purple", "Gray"];
 
 const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
   <Option {...props}>
@@ -27,13 +18,13 @@ const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
 
 const CustomSelects = ({ ...props }) => {
   return (
-    <Select 
+    <Select
       styles={{
         control: (base, state) => ({
           ...base,
-          height: "33px",
-          minHeight: "33px",
+          height: "100%",
           borderRadius: "7px",
+          padding: "2px 0px",
           borderColor: "gray",
           "&:hover": {
             borderColor: "gray",

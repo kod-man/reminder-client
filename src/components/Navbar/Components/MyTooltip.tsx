@@ -5,17 +5,10 @@ interface MyTooltipProps {
   label: string;
 }
 
-function MyTooltip(props: PropsWithChildren<MyTooltipProps>) {
+function MyTooltip({ label, children }: PropsWithChildren<MyTooltipProps>) {
   return (
-    <Tooltip
-      hasArrow
-      label={props.label}
-      bg="black"
-      color="white"
-      borderRadius="5"
-      placement="top-start"
-    >
-      {props.children}
+    <Tooltip hasArrow label={label} bg="black" color="white" borderRadius="5" placement="top-start">
+      {children}
     </Tooltip>
   );
 }
