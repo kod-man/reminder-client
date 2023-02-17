@@ -23,7 +23,7 @@ const CustomSelects = ({ ...props }) => {
         control: (base, state) => ({
           ...base,
           height: "100%",
-          borderRadius: "7px",
+          borderRadius: "6px",
           padding: "2px 0px",
           borderColor: "gray",
           "&:hover": {
