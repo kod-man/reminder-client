@@ -3,9 +3,9 @@ import { FC } from "react";
 import { useDispatch } from "react-redux";
 import FilterIcon from "../../../icons/FilterIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
-import SmallPlusIcon from "../../../icons/SmallPlusIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
+import AddProjectModal from "../../../modals/AddProjectModal";
 import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import DrawerCards from "./DrawerCards";
 
@@ -57,7 +57,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
         >
           <Text color="gray">Projects</Text>
           <Box ml="auto">
-            <SmallPlusIcon />
+            <AddProjectModal />
           </Box>
         </Flex>
       </DrawerContent>
