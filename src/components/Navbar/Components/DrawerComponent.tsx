@@ -1,13 +1,16 @@
-import { Box, Drawer, DrawerContent, Flex, Text } from "@chakra-ui/react";
-import { FC } from "react";
+import { Drawer, DrawerContent, Flex, Text } from "@chakra-ui/react";
+import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import FilterIcon from "../../../icons/FilterIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
+import ToggleIcon from "../../../icons/ToggleIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddProjectModal from "../../../modals/AddProjectModal";
 import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import DrawerCards from "./DrawerCards";
+import MyTooltip from "./MyTooltip";
+import ProjectCardComponent from "./ProjectCardComponent";
 
 const DrawerData = [
   { Icon: InboxDrawerIcon, text: "Inbox", iconColor: "blue" },
@@ -22,6 +25,8 @@ type DrawerProps = {
 };
 
 const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
+  const [isProjectListOpen, setIsProjectListOpen] = useState(false);
+
   const dispatch = useDispatch();
   return (
     <Drawer
@@ -42,24 +47,30 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
         ))}
 
         <Flex
-          _hover={{
-            color: "black",
-            backgroundColor: "#eeeeee",
-            borderRadius: "5px",
-          }}
-          px={2}
-          w="100%"
+          w="90%"
+          justifyContent="space-between"
           alignItems="center"
-          m="20px"
-          width="275px"
-          height="32px"
-          cursor="pointer"
+          m={5}
+          paddingY={2}
+          borderRadius={5}
+          _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
         >
           <Text color="gray">Projects</Text>
-          <Box ml="auto">
+          <Flex>
             <AddProjectModal />
-          </Box>
+            <MyTooltip label="Toggle list of Projects">
+              <Flex
+                transform={!isProjectListOpen ? "rotate(90deg)" : "rotate(0deg)"}
+                onClick={() => setIsProjectListOpen(!isProjectListOpen)}
+                ml={3}
+              >
+                <ToggleIcon />
+              </Flex>
+            </MyTooltip>
+          </Flex>
         </Flex>
+
+        {isProjectListOpen && <ProjectCardComponent name="deneme" color="gray" />}
       </DrawerContent>
     </Drawer>
   );

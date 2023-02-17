@@ -1,9 +1,7 @@
 import {
-  Box,
   Button,
   Divider,
   Flex,
-  FormControl,
   Input,
   Modal,
   ModalBody,
@@ -17,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import CustomSelects from "../components/Navbar/Components/CustomSelects";
+import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import SmallPlusIcon from "../icons/SmallPlusIcon";
 
@@ -26,69 +25,64 @@ const AddProjectModal = () => {
 
   return (
     <>
-      <Flex
-        as={Button}
-        onClick={onOpen}
-        style={{
-          backgroundColor: "#fafafa",
-          width: "16px",
-          height: "16px",
-          border: "none",
-          padding: "1px",
-        }}
-      >
-        <SmallPlusIcon />
-      </Flex>
-      <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
+      <MyTooltip label="Add project">
+        <Flex>
+          <SmallPlusIcon onClick={onOpen} />
+        </Flex>
+      </MyTooltip>
+      <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose} size="md">
         <ModalOverlay />
-        <ModalContent w="450px" h="275px">
-          <Flex
-            flexDirection="row"
-            justifyContent="center"
-            alignItems="center"
-            h="32px"
-          >
-            <Box
-              width="100%"
-              textOverflow="ellipsis"
-              overflow="hidden"
-              whiteSpace="nowrap"
+        <ModalContent>
+          <ModalHeader position="relative" fontWeight="bold" fontSize="20px">
+            <Text> Add project</Text>
+            <Flex
+              position="absolute"
+              top="1px"
+              right="2px"
+              as="button"
+              border="none"
+              m="10px 10px 0 0"
             >
-              <ModalHeader>Add Project</ModalHeader>
-            </Box>
-            <Flex as="button" border="none" mr="10px">
               <QuestionMarkIcon color="black" />
             </Flex>
-          </Flex>
-          <Divider mt="10px" />
+          </ModalHeader>
+
+          <Divider />
           <ModalBody>
             <Flex flexDir="column">
-              <Text fontWeight="bold" mb="4px">
+              <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Name
               </Text>
-              <Input size="sm" />
+              <Input
+                borderRadius="7px"
+                border="1px"
+                borderColor="gray"
+                outline="none"
+                _focus={{
+                  borderColor: "gray",
+                  boxShadow: "none",
+                  outline: "none",
+                }}
+              />
             </Flex>
-            <Flex flexDir="column">
-              <Text fontWeight="bold" mb="4px">
+            <Flex flexDir="column" mt="12px">
+              <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Color
               </Text>
               <CustomSelects />
             </Flex>
-            <Flex alignItems="center" mt="10px">
-              <FormControl display="flex" alignItems="center">
-                <Switch colorScheme="gray" />
-                <Text ml="10px">Add to favorites</Text>
-              </FormControl>
+            <Flex alignItems="center" mt="15px">
+              <Flex justifyContent="center" alignItems="center">
+                <Switch colorScheme="teal" />
+                <Text ml="10px" fontSize="14px">
+                  Add to favorites
+                </Text>
+              </Flex>
             </Flex>
           </ModalBody>
+          <Divider mt="5px" />
           <ModalFooter>
-            <Button
-              colorScheme="gray"
-              mr={3}
-              onClick={onClose}
-              width="70px"
-              height="35px"
-            >
+            <Button colorScheme="gray" mr={3} onClick={onClose} width="70px" height="35px">
               Cancel
             </Button>
             <Button

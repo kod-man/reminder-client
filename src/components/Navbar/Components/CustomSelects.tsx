@@ -19,6 +19,20 @@ const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
 const CustomSelects = ({ ...props }) => {
   return (
     <Select
+      styles={{
+        control: (base, state) => ({
+          ...base,
+          height: "100%",
+          borderRadius: "6px",
+          padding: "2px 0px",
+          borderColor: "gray",
+          "&:hover": {
+            borderColor: "gray",
+          },
+          boxShadow: state.isFocused ? "none" : base.boxShadow,
+          outline: "none",
+        }),
+      }}
       components={{ Option: CustomOption }}
       options={COLORS.map((color) => ({
         value: color,
@@ -33,6 +47,14 @@ const CustomSelects = ({ ...props }) => {
           </Text>
         </Flex>
       )}
+      placeholder={
+        <Flex alignItems="center">
+          <ColorDotIcon color="gray" />
+          <Text color="gray.500" fontWeight="normal">
+            Gray
+          </Text>
+        </Flex>
+      }
       {...props}
     />
   );
