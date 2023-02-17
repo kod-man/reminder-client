@@ -1,6 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
-import ThreeDotsIcon from "../../../icons/ThreeDotsIcon";
 
 type ProjectCardComponentProps = {
   color: string;
@@ -21,9 +20,7 @@ function ProjectCardComponent({ name, color }: ProjectCardComponentProps) {
     >
       <ColorDotIcon color={color} />
       <Text fontSize="16px">{name}</Text>
-      <Flex ml="auto">
-        <ThreeDotsIcon />
-      </Flex>
+      <Flex ml="auto">...</Flex>
     </Flex>
   );
 }
