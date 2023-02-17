@@ -52,7 +52,7 @@ const AddProjectModal = () => {
             flexDirection="row"
             justifyContent="center"
             alignItems="center"
-            h="32px"
+            h="30px"
           >
             <Box
               width="100%"
