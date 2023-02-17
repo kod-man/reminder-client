@@ -1,10 +1,12 @@
 import { Drawer, DrawerContent, Flex, Spacer, Text } from "@chakra-ui/react";
+import { ThreeDRotation } from "@material-ui/icons";
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 import FilterIcon from "../../../icons/FilterIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
 import PersonalIcon from "../../../icons/PersonalIcon";
+import ThreeDotsIcon from "../../../icons/ThreeDotsIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddProjectModal from "../../../modals/AddProjectModal";
@@ -96,6 +98,9 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           >
             <ColorDotIcon color={"gray"} />
             <Text fontSize="16px">Personal 🙂</Text>
+            <Flex ml="auto" >
+            <ThreeDotsIcon />
+            </Flex>
           </Flex>
         )}
       </DrawerContent>
