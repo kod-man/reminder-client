@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import FilterIcon from "../../../icons/FilterIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
-import ToggleIconDown from "../../../icons/ToggleIconDown";
+import ToggleIcon from "../../../icons/ToggleIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddProjectModal from "../../../modals/AddProjectModal";
 import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
@@ -64,7 +64,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
                 onClick={() => setIsProjectListOpen(!isProjectListOpen)}
                 ml={3}
               >
-                <ToggleIconDown />
+                <ToggleIcon />
               </Flex>
             </MyTooltip>
           </Flex>

@@ -1,4 +1,4 @@
-const ToggleIconDown = (props: any) => {
+const ToggleIcon = (props: any) => {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" class="aqv2kvH" {...props}>
       <path
@@ -8,4 +8,4 @@ const ToggleIconDown = (props: any) => {
     </svg>
   );
 };
-export default ToggleIconDown;
+export default ToggleIcon;

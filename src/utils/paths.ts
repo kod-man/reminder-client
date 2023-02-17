@@ -4,4 +4,5 @@ export const PATHS = {
   NOT_FOUND: "/*",
   TODAY: "/today",
   ONBOARD: "/onboard",
+  FILTERSANDLABELS: "/filters-and-labels",
 };
