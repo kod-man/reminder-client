@@ -1,17 +1,18 @@
 import { VStack } from "@chakra-ui/react";
-import { FaApple, FaFacebook } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+import AppleIcon from "../../../icons/AppleIcon";
+import FacebookIcon from "../../../icons/FacebookIcon";
+import GoogleIcon from "../../../icons/GoogleIcon";
 import CardCW from "./CardCW";
 
 const dataBtn = [
   {
     text: "Google",
-    Icon: FcGoogle,
+    Icon: GoogleIcon,
   },
-  { text: "Facebook", Icon: FaFacebook },
+  { text: "Facebook", Icon: FacebookIcon },
   {
     text: "Apple",
-    Icon: FaApple,
+    Icon: AppleIcon,
   },
 ];
 
