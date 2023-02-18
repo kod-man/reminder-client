@@ -1,5 +1,5 @@
 import { Flex, Img, Link, Text } from "@chakra-ui/react";
-import { BsQuestionCircle } from "react-icons/bs";
+import QuestionMarkIcon from "../../../icons/QuestionMarkIcon";
 
 function Welcome() {
   return (
@@ -33,7 +33,7 @@ function Welcome() {
         h="80px"
         mt="10"
       >
-        <BsQuestionCircle color="red" cursor="pointer" />
+        <QuestionMarkIcon color="red" cursor="pointer" />
         <Text as="ins" ml="2" color="red">
           <Link>How do you plan your day?</Link>
         </Text>
