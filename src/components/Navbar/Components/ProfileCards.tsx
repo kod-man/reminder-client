@@ -1,9 +1,8 @@
-import { Flex, MenuItem, Text } from "@chakra-ui/react";
-import { FC } from "react";
-import { IconType } from "react-icons";
+import { Flex, MenuItem, Text, Icon } from "@chakra-ui/react";
+import { FC, ReactElement } from "react";
 
 type CardProps = {
-  Icon: IconType;
+  Icon: any;
   text: string;
 };
 
