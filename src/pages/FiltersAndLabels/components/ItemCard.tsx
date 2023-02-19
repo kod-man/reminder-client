@@ -1,14 +1,13 @@
-import { Flex, Spacer, Text } from "@chakra-ui/react";
-import { IconType } from "react-icons";
-import TreeDoteIcon from "../../../icons/TreeDoteIcon";
+import { IconType } from "@chakra-ui/icons";
+import { Flex, Icon, Spacer, Text } from "@chakra-ui/react";
 import IconsBar from "./IconsBars";
 
 type ItemCardProps = {
   text: string;
-  Icon: IconType;
+  icon: IconType;
 };
 
-const ItemCard: React.FC<ItemCardProps> = ({ text, Icon }) => {
+const ItemCard: React.FC<ItemCardProps> = ({ text, icon }) => {
   return (
     <Flex
       borderBottom="1px solid"
@@ -19,7 +18,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ text, Icon }) => {
       cursor="pointer"
       paddingY="10px"
     >
-      <Icon color="gray" />
+      <Icon as={icon} color="gray" />
       <Flex ml="2" color="#333" fontSize="14px">
         <Text>{text}</Text>
       </Flex>
@@ -36,7 +35,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ text, Icon }) => {
         borderRadius="20%"
         fontSize="2xl"
       >
-        <TreeDoteIcon color="gray" />
+        {/* <TreeDoteIcon color="gray" /> */}
       </Flex>
     </Flex>
   );
