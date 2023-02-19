@@ -1,10 +1,9 @@
-import { IconType } from "@chakra-ui/icons";
 import { Flex, Icon, Spacer, Text } from "@chakra-ui/react";
 import IconsBar from "./IconsBars";
 
 type ItemCardProps = {
   text: string;
-  icon: IconType;
+  icon: React.ComponentType<{ iconName: string }>;
 };
 
 const ItemCard: React.FC<ItemCardProps> = ({ text, icon }) => {
