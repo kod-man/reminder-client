@@ -4,7 +4,7 @@ import { FC, ReactElement } from "react";
 
 type CardProps = {
   text: string;
-  Icon: ReactElement;
+  Icon: any;
 };
 
 const CardCW: FC<CardProps> = ({ text, Icon }) => {
