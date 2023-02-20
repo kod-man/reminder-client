@@ -8,15 +8,36 @@ import ToggleIcon from "../../../icons/ToggleIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddProjectModal from "../../../modals/AddProjectModal";
 import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
+import { PATHS } from "../../../utils/paths";
 import DrawerCards from "./DrawerCards";
 import MyTooltip from "./MyTooltip";
 import ProjectCardComponent from "./ProjectCardComponent";
 
 const DrawerData = [
-  { Icon: InboxDrawerIcon, text: "Inbox", iconColor: "blue" },
-  { Icon: TodayDrawerIcon, text: "Today", iconColor: "green" },
-  { Icon: UpcomingTcon, text: "Upcoming", iconColor: "purple" },
-  { Icon: FilterIcon, text: "Filters & Labels", iconColor: "orange" },
+  {
+    Icon: InboxDrawerIcon,
+    text: "Inbox",
+    iconColor: "blue",
+    path: PATHS.INBOX,
+  },
+  {
+    Icon: TodayDrawerIcon,
+    text: "Today",
+    iconColor: "green",
+    path: PATHS.TODAY,
+  },
+  {
+    Icon: UpcomingTcon,
+    text: "Upcoming",
+    iconColor: "purple",
+    path: PATHS.UPCOMING,
+  },
+  {
+    Icon: FilterIcon,
+    text: "Filters & Labels",
+    iconColor: "orange",
+    path: PATHS.FILTERSANDLABELS,
+  },
 ];
 
 type DrawerProps = {
@@ -43,6 +64,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
             text={item.text}
             Icon={item.Icon}
             iconColor={item.iconColor}
+            path={item.path}
           />
         ))}
 
@@ -60,7 +82,9 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
             <AddProjectModal />
             <MyTooltip label="Toggle list of Projects">
               <Flex
-                transform={!isProjectListOpen ? "rotate(90deg)" : "rotate(0deg)"}
+                transform={
+                  !isProjectListOpen ? "rotate(90deg)" : "rotate(0deg)"
+                }
                 onClick={() => setIsProjectListOpen(!isProjectListOpen)}
                 ml={3}
               >
@@ -70,7 +94,9 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           </Flex>
         </Flex>
 
-        {isProjectListOpen && <ProjectCardComponent name="deneme" color="gray" />}
+        {isProjectListOpen && (
+          <ProjectCardComponent name="deneme" color="gray" />
+        )}
       </DrawerContent>
     </Drawer>
   );
