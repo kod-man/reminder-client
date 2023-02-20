@@ -17,7 +17,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ text, icon }) => {
       cursor="pointer"
       paddingY="10px"
     >
-      <Icon as={icon} color="gray" />
+      <Icon as={icon} color="gray" iconName={""} />
       <Flex ml="2" color="#333" fontSize="14px">
         <Text>{text}</Text>
       </Flex>
