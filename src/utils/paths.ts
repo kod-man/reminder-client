@@ -5,4 +5,6 @@ export const PATHS = {
   TODAY: "/today",
   ONBOARD: "/onboard",
   FILTERSANDLABELS: "/filters-and-labels",
+  INBOX: "/inbox",
+  UPCOMING: "/upcoming",
 };
