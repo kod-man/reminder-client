@@ -1,13 +1,17 @@
-import { Flex, List, Text, UnorderedList, Icon } from "@chakra-ui/react";
+import { Flex, List, Text, UnorderedList } from "@chakra-ui/react";
 import { FC } from "react";
 
 type CardProps = {
-  icon: any;
+  icon: FC<any>;
   text: string;
   iconColor: string;
 };
 
-const DrawerCards: FC<CardProps> = ({ icon, text, iconColor }) => {
+const DrawerCards: FC<CardProps> = ({
+  icon: IconComponent,
+  text,
+  iconColor,
+}) => {
   return (
     <List spacing="2px" mr="20px" cursor="pointer">
       <UnorderedList
@@ -34,7 +38,7 @@ const DrawerCards: FC<CardProps> = ({ icon, text, iconColor }) => {
             alignItems="center"
             textAlign="left"
           >
-            <Icon color={iconColor} />
+            <IconComponent color={iconColor} />
           </Flex>
           <Text fontSize="15px" py="1px" fontFamily="inherit">
             {text}
