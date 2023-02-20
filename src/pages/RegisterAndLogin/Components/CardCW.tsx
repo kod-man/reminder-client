@@ -1,6 +1,5 @@
-import { Button, Text,Icon } from "@chakra-ui/react";
-import { FC, ReactElement } from "react";
-
+import { Button, Text } from "@chakra-ui/react";
+import { FC } from "react";
 
 type CardProps = {
   text: string;

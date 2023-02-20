@@ -3,7 +3,7 @@ import IconsBar from "./IconsBars";
 
 type ItemCardProps = {
   text: string;
-  icon: React.ComponentType<{ iconName: string }>;
+  icon: any;
 };
 
 const ItemCard: React.FC<ItemCardProps> = ({ text, icon }) => {
