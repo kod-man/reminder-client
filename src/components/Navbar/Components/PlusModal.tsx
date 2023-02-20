@@ -29,8 +29,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
-import { BiGitCompare } from "react-icons/bi";
 import ClockIcon from "../../../icons/ClockIcon";
+import CompareIcon from "../../../icons/CompareIcon";
 import FlagIcon from "../../../icons/FlagIcon";
 import InboxIcon from "../../../icons/InboxIcon";
 import IntegrationIcon from "../../../icons/IntegrationIcon";
@@ -92,7 +92,12 @@ const PlusModal = () => {
         <PlusIcon color="white" />
       </Flex>
 
-      <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} size="md">
+      <Modal
+        closeOnOverlayClick={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        size="md"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalBody pb={3}>
@@ -172,7 +177,12 @@ const PlusModal = () => {
                   </MyTooltip>
                   <MenuList scale="sm">
                     <VStack align="stretch" as={MenuItem} background="white">
-                      <Stack bg="white" h={8} w="100%" backgroundColor="white !important">
+                      <Stack
+                        bg="white"
+                        h={8}
+                        w="100%"
+                        backgroundColor="white !important"
+                      >
                         <Input
                           onClick={(e) => e.stopPropagation()}
                           type="text"
@@ -268,7 +278,13 @@ const PlusModal = () => {
                       Reminders are only available on Pro and Business plans.
                     </Text>
                     <PopoverBody ml="auto" mt={5}>
-                      <Button size="sm" mr={2} mb="2" as={PopoverCloseButton} w="16">
+                      <Button
+                        size="sm"
+                        mr={2}
+                        mb="2"
+                        as={PopoverCloseButton}
+                        w="16"
+                      >
                         Cancel
                       </Button>
                       <Button
@@ -303,7 +319,7 @@ const PlusModal = () => {
                   <MenuList>
                     <Flex>
                       <Box mx="2">
-                        <BiGitCompare color="gray" />
+                        <CompareIcon color="gray" />
                       </Box>
                       <Text mx="3" fontSize="xs">
                         Add extenstion...
@@ -319,7 +335,13 @@ const PlusModal = () => {
             <Button onClick={onClose} size="sm">
               Cancel
             </Button>
-            <Button colorScheme="red" ml={2} size="sm" disabled={!title.trim()} onClick={showData}>
+            <Button
+              colorScheme="red"
+              ml={2}
+              size="sm"
+              disabled={!title.trim()}
+              onClick={showData}
+            >
               Add task
             </Button>
           </ModalFooter>
