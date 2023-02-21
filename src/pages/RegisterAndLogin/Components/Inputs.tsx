@@ -132,7 +132,7 @@ const Inputs = ({ page }: { page: string }) => {
             />
           </InputGroup>
           {formErrors.password ? (
-            <Text color="red" as="i" size="lg">
+            <Text color="red" as="i">
               {formErrors.password}
             </Text>
           ) : null}
