@@ -12,12 +12,15 @@ import {
   Switch,
   Text,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React from "react";
 import CustomSelects from "../components/Navbar/Components/CustomSelects";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import SmallPlusIcon from "../icons/SmallPlusIcon";
+import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
 
 const AddProjectModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,18 +29,67 @@ const AddProjectModal = () => {
   const [name, setName] = React.useState("");
   const isNameEmpty = name.trim() === "";
 
+  const [color, setColor] = React.useState("");
+  const [isFavorite, setIsFavorite] = React.useState(false);
+  const toast = useToast();
+
   const handleNameChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setName(event.target.value);
   };
 
+  const AddProjectData: {
+    name: string;
+    color: string;
+    userId: string | null;
+    isFavorite: boolean;
+  }[] = [
+    {
+      name: name,
+      color: color,
+      userId: sessionStorage.getItem("userId"),
+      isFavorite: isFavorite,
+    },
+  ];
+
   const handleAddButtonClick = () => {
-    if (!isNameEmpty) {
-      // make post request with name, color, userId, isFavorite data
-      onClose();
-      // show success toast message to user
+    if (!name) {
+      toast({
+        title: "Name is required.",
+        description: "Please enter a name for your project.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
     }
+
+    axios
+      .post("/project/add", {
+        name,
+        color,
+        userId: sessionStorage.getItem("userId"),
+        isFavorite,
+      })
+      .then((response) => {
+        console.log(response);
+        onClose();
+        //too see AddProjectData on console
+        console.log(AddProjectData);
+        toast({
+          ...defaultToastProps,
+          title: "Project added.",
+          description: "Your project has been added successfully.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        genericErrorToast(error, toast);
+      });
   };
 
   return (
@@ -93,11 +145,15 @@ const AddProjectModal = () => {
               <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Color
               </Text>
-              <CustomSelects />
+              <CustomSelects color={color} setColor={setColor} />
             </Flex>
             <Flex alignItems="center" mt="15px">
               <Flex justifyContent="center" alignItems="center">
-                <Switch colorScheme="teal" />
+                <Switch
+                  colorScheme="teal"
+                  isChecked={isFavorite}
+                  onChange={() => setIsFavorite(!isFavorite)}
+                />
                 <Text ml="10px" fontSize="14px">
                   Add to favorites
                 </Text>
