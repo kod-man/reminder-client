@@ -23,6 +23,23 @@ const AddProjectModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
 
+  const [name, setName] = React.useState("");
+  const isNameEmpty = name.trim() === "";
+
+  const handleNameChange = (event: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setName(event.target.value);
+  };
+
+  const handleAddButtonClick = () => {
+    if (!isNameEmpty) {
+      // make post request with name, color, userId, isFavorite data
+      onClose();
+      // show success toast message to user
+    }
+  };
+
   return (
     <>
       <MyTooltip label="Add project">
@@ -30,7 +47,12 @@ const AddProjectModal = () => {
           <SmallPlusIcon onClick={onOpen} />
         </Flex>
       </MyTooltip>
-      <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose} size="md">
+      <Modal
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+        size="md"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalHeader position="relative" fontWeight="bold" fontSize="20px">
@@ -63,6 +85,8 @@ const AddProjectModal = () => {
                   boxShadow: "none",
                   outline: "none",
                 }}
+                value={name}
+                onChange={handleNameChange}
               />
             </Flex>
             <Flex flexDir="column" mt="12px">
@@ -82,16 +106,33 @@ const AddProjectModal = () => {
           </ModalBody>
           <Divider mt="5px" />
           <ModalFooter>
-            <Button colorScheme="gray" mr={3} onClick={onClose} width="70px" height="35px">
+            <Button
+              colorScheme="gray"
+              mr={3}
+              onClick={onClose}
+              width="70px"
+              height="35px"
+            >
               Cancel
             </Button>
             <Button
               variant="ghost"
               backgroundColor="#f1b7b2"
-              style={{ cursor: "not-allowed", backgroundColor: "#f1b7b2" }}
               width="70px"
               height="35px"
               textColor="white"
+              disabled={isNameEmpty}
+              onClick={handleAddButtonClick}
+              _hover={{ backgroundColor: "#c0392b!important" }}
+              style={
+                isNameEmpty
+                  ? {
+                      cursor: "not-allowed",
+                      backgroundColor: "#f1b7b2",
+                      opacity: 0.5,
+                    }
+                  : { backgroundColor: "#e74c3c" }
+              }
             >
               Add
             </Button>
