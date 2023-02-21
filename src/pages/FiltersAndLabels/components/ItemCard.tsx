@@ -34,7 +34,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ text, icon }) => {
         borderRadius="20%"
         fontSize="2xl"
       >
-        {/* <TreeDoteIcon color="gray" /> */}
       </Flex>
     </Flex>
   );
