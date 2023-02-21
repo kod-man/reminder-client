@@ -100,7 +100,7 @@ const Inputs = ({ page }: { page: string }) => {
 
   return (
     <>
-      <FormControl>
+      <FormControl width="350px">
         <Stack width="100%" spacing={3}>
           <Input
             name="email"
@@ -132,7 +132,7 @@ const Inputs = ({ page }: { page: string }) => {
             />
           </InputGroup>
           {formErrors.password ? (
-            <Text color="red" as="i">
+            <Text color="red" as="i" size="lg">
               {formErrors.password}
             </Text>
           ) : null}
