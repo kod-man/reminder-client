@@ -12,7 +12,9 @@ import drawerReducers from "./store/Drawer/drawerSlice";
 import todoReducers from "./store/Todos/todoSlice";
 
 const container = document.getElementById("root");
-if (!container) throw new Error("Failed to find the root element");
+if (!container) {
+  throw new Error("Failed to find the root element");
+}
 const root = ReactDOM.createRoot(container);
 
 export const store = configureStore({
