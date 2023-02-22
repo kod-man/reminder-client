@@ -6,4 +6,5 @@ export const API = {
   allReminder: "/reminder/all",
   getUser: "user/me",
   deleteReminder: "reminder/delete",
+  getAllFilter: "filter/all",
 };
