@@ -100,7 +100,7 @@ const Inputs = ({ page }: { page: string }) => {
 
   return (
     <>
-      <FormControl>
+      <FormControl width="350px">
         <Stack width="100%" spacing={3}>
           <Input
             name="email"
