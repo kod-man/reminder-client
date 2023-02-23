@@ -1,8 +1,8 @@
-import { Flex, MenuItem, Text, Icon } from "@chakra-ui/react";
-import { FC, ReactElement } from "react";
+import { Flex, MenuItem, Text } from "@chakra-ui/react";
+import { FC } from "react";
 
 type CardProps = {
-  Icon: any;
+  Icon: FC<any>;
   text: string;
 };
 
@@ -24,16 +24,9 @@ const ProfileCards: FC<CardProps> = ({ Icon, text }) => {
         justifyContent="flex-start"
         alignItems="center"
         mb={1}
-        p="1"
+        p={1}
       >
-        <Flex
-          h={5}
-          w={6}
-          mr="1"
-          justifyContent="center"
-          alignItems="center"
-          textAlign="left"
-        >
+        <Flex h={5} w={6} mr="1" justifyContent="center" alignItems="center" textAlign="left">
           <Icon color="gray" />
         </Flex>
         <Text fontSize="13px" ml="2" mt={1}>

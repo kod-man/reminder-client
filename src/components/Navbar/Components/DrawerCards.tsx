@@ -3,18 +3,13 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 type CardProps = {
-  icon: FC<any>;
+  Icon: FC<any>;
   text: string;
   iconColor: string;
   path: string;
 };
 
-const DrawerCards: FC<CardProps> = ({
-  icon: IconComponent,
-  text,
-  iconColor,
-  path,
-}) => {
+const DrawerCards: FC<CardProps> = ({ Icon, text, iconColor, path }) => {
   const navigate = useNavigate();
   const onClickHandler = () => {
     navigate(path);
@@ -46,7 +41,7 @@ const DrawerCards: FC<CardProps> = ({
             alignItems="center"
             textAlign="left"
           >
-            <IconComponent color={iconColor} />
+            <Icon color={iconColor} />
           </Flex>
           <Text fontSize="15px" py="1px" fontFamily="inherit">
             {text}

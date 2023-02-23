@@ -5,11 +5,11 @@ import DropIcon from "../../icons/DropIcon";
 import MiniLabelIcon from "../../icons/MiniLabelIcon";
 import FiltersAndLabels from "./components/FiltersAndLabels";
 
-import Header from "./components/Header";
 import { useEffect, useState } from "react";
 import { Axios } from "../../utils/axios";
-import { API } from "../../utils/usedApi";
 import { genericErrorToast } from "../../utils/genericToast";
+import { API } from "../../utils/usedApi";
+import Header from "./components/Header";
 
 function FiltersAndLabelsPage() {
   const toast = useToast();
@@ -32,7 +32,7 @@ function FiltersAndLabelsPage() {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId]);
+  }, [userId, toast]);
   return (
     <Flex
       flexDirection="column"
@@ -42,16 +42,8 @@ function FiltersAndLabelsPage() {
       ml="auto"
     >
       <Header />
-      <FiltersAndLabels
-        cardTitle="Filters"
-        data={filtersData}
-        Icon={DropIcon}
-      />
-      <FiltersAndLabels
-        cardTitle="Labels"
-        data={labelsList}
-        Icon={MiniLabelIcon}
-      />
+      <FiltersAndLabels cardTitle="Filters" data={filtersData} Icon={DropIcon} />
+      <FiltersAndLabels cardTitle="Labels" data={labelsList} Icon={MiniLabelIcon} />
     </Flex>
   );
 }

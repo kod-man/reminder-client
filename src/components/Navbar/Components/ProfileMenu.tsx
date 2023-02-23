@@ -6,10 +6,10 @@ import {
   MenuButton,
   MenuList,
   Text,
-  VStack,
   useToast,
+  VStack,
 } from "@chakra-ui/react";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ActivityIcon from "../../../icons/ActivityIcon";
 import BusinessIcon from "../../../icons/BusinessIcon";
