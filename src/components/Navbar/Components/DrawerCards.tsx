@@ -1,17 +1,24 @@
 import { Flex, List, Text, UnorderedList } from "@chakra-ui/react";
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 type CardProps = {
   icon: FC<any>;
   text: string;
   iconColor: string;
+  path: string;
 };
 
 const DrawerCards: FC<CardProps> = ({
   icon: IconComponent,
   text,
   iconColor,
+  path,
 }) => {
+  const navigate = useNavigate();
+  const onClickHandler = () => {
+    navigate(path);
+  };
   return (
     <List spacing="2px" mr="20px" cursor="pointer">
       <UnorderedList
@@ -28,6 +35,7 @@ const DrawerCards: FC<CardProps> = ({
           w="100%"
           justifyContent="flex-start"
           alignItems="center"
+          onClick={onClickHandler}
         >
           <Flex
             px={1}
