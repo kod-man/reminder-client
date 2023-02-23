@@ -28,6 +28,7 @@ function Onboard() {
         genericErrorToast(err, toast);
         setLoading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, userName]);
   return (
     <>

@@ -3,7 +3,7 @@ import { FC } from "react";
 
 type CardProps = {
   text: string;
-  Icon: any;
+  Icon: FC<any>;
 };
 
 const CardCW: FC<CardProps> = ({ text, Icon }) => {

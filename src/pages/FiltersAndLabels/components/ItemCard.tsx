@@ -1,9 +1,10 @@
 import { Flex, Icon, Spacer, Text } from "@chakra-ui/react";
+import { FC } from "react";
 import IconsBar from "./IconsBars";
 
 type ItemCardProps = {
   text: string;
-  icon: any;
+  icon: FC<any>;
 };
 
 const ItemCard: React.FC<ItemCardProps> = ({ text, icon }) => {
@@ -33,8 +34,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ text, icon }) => {
         _hover={{ color: "#202020", bg: "#eee" }}
         borderRadius="20%"
         fontSize="2xl"
-      >
-      </Flex>
+      ></Flex>
     </Flex>
   );
 };
