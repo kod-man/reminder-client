@@ -1,6 +1,5 @@
 import { Flex, Text, useMediaQuery } from "@chakra-ui/react";
-import { useState } from "react";
-import { IconType } from "react-icons";
+import { FC, useState } from "react";
 import PlusIcon from "../../../icons/PlusIcon";
 import ToggleIcon from "../../../icons/ToggleIcon";
 import ItemCard from "./ItemCard";
@@ -8,7 +7,7 @@ import ItemCard from "./ItemCard";
 type FiltersAndLabelsProps = {
   data: string[];
   cardTitle: string;
-  Icon: IconType;
+  Icon: FC<any>;
 };
 
 function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
@@ -20,18 +19,11 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
     setIsToggleOn(!isToggleOn);
   };
 
-  const renderedItemList = data.map((item) => (
-    <ItemCard key={item} text={item} Icon={Icon} />
-  ));
+  const renderedItemList = data.map((item) => <ItemCard key={item} text={item} Icon={Icon} />);
 
   return (
     <Flex w={isLargerThan800 ? "55%" : "80%"} flexDirection="column" mb={12}>
-      <Flex
-        w="100%"
-        justifyContent="space-between"
-        borderBottom="1px solid"
-        borderColor="gray.200"
-      >
+      <Flex w="100%" justifyContent="space-between" borderBottom="1px solid" borderColor="gray.200">
         <Flex>
           <Flex
             ml="-25px"

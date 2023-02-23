@@ -9,8 +9,9 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import React from "react";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import InvisibleIcon from "../../../icons/InvisibleIcon";
+import VisibleIcon from "../../../icons/VisibleIcon";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
@@ -128,7 +129,7 @@ const Inputs = ({ page }: { page: string }) => {
             <InputRightElement
               cursor="pointer"
               onClick={toggleHandle}
-              children={open ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+              children={open ? <VisibleIcon /> : <InvisibleIcon />}
             />
           </InputGroup>
           {formErrors.password ? (

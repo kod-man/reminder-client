@@ -82,9 +82,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
             <AddProjectModal />
             <MyTooltip label="Toggle list of Projects">
               <Flex
-                transform={
-                  !isProjectListOpen ? "rotate(90deg)" : "rotate(0deg)"
-                }
+                transform={!isProjectListOpen ? "rotate(90deg)" : "rotate(0deg)"}
                 onClick={() => setIsProjectListOpen(!isProjectListOpen)}
                 ml={3}
               >
@@ -94,9 +92,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           </Flex>
         </Flex>
 
-        {isProjectListOpen && (
-          <ProjectCardComponent name="deneme" color="gray" />
-        )}
+        {isProjectListOpen && <ProjectCardComponent name="deneme" color="gray" />}
       </DrawerContent>
     </Drawer>
   );
