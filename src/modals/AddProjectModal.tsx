@@ -14,13 +14,14 @@ import {
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
-import axios from "axios";
 import React from "react";
 import CustomSelects from "../components/Navbar/Components/CustomSelects";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import SmallPlusIcon from "../icons/SmallPlusIcon";
+import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
+import { API } from "../utils/usedApi";
 
 const AddProjectModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,62 +34,44 @@ const AddProjectModal = () => {
   const [isFavorite, setIsFavorite] = React.useState(false);
   const toast = useToast();
 
+  const handleColorChange = (event: any) => {
+    console.log(event.target);
+    setColor(event.target.value);
+  };
+
   const handleNameChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setName(event.target.value);
   };
 
-  const AddProjectData: {
-    name: string;
-    color: string;
-    userId: string | null;
-    isFavorite: boolean;
-  }[] = [
-    {
-      name: name,
-      color: color,
-      userId: sessionStorage.getItem("userId"),
-      isFavorite: isFavorite,
-    },
-  ];
+  const AddProjectData = {
+    name,
+    color,
+    userId: sessionStorage.getItem("userId"),
+    isFavorite,
+  };
 
   const handleAddButtonClick = () => {
     if (!name) {
       toast({
         title: "Name is required.",
-        description: "Please enter a name for your project.",
         status: "error",
-        duration: 5000,
-        isClosable: true,
       });
       return;
     }
-
-    axios
-      .post("/project/add", {
-        name,
-        color,
-        userId: sessionStorage.getItem("userId"),
-        isFavorite,
-      })
-      .then((response) => {
-        console.log(response);
-        onClose();
-        //too see AddProjectData on console
+    Axios.post(API.addProject, AddProjectData)
+      .then((res) => {
+        console.log(res);
         console.log(AddProjectData);
         toast({
           ...defaultToastProps,
           title: "Project added.",
-          description: "Your project has been added successfully.",
           status: "success",
-          duration: 3000,
-          isClosable: true,
         });
       })
-      .catch((error) => {
-        console.error(error);
-        genericErrorToast(error, toast);
+      .catch((err) => {
+        genericErrorToast(err, toast);
       });
   };
 
@@ -145,7 +128,10 @@ const AddProjectModal = () => {
               <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Color
               </Text>
-              <CustomSelects color={color} setColor={setColor} />
+              <CustomSelects
+                color={color}
+                handleColorChange={handleColorChange}
+              />
             </Flex>
             <Flex alignItems="center" mt="15px">
               <Flex justifyContent="center" alignItems="center">

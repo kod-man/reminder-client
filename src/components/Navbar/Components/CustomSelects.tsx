@@ -3,7 +3,16 @@ import Select, { components, OptionProps } from "react-select";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 
 const { Option } = components;
-const COLORS = ["Red", "Orange", "Yellow", "Green", "Blue", "Teal", "Purple", "Gray"];
+const COLORS = [
+  "Red",
+  "Orange",
+  "Yellow",
+  "Green",
+  "Blue",
+  "Teal",
+  "Purple",
+  "Gray",
+];
 
 const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
   <Option {...props}>
@@ -17,6 +26,12 @@ const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
 );
 
 const CustomSelects = ({ ...props }) => {
+  console.log(props.handleColorChange);
+
+  const handleChange = (item:any) => {
+    console.log(item);
+  };
+
   return (
     <Select
       styles={{
@@ -39,6 +54,7 @@ const CustomSelects = ({ ...props }) => {
         label: color,
         key: color,
       }))}
+      onChange={handleChange}
       formatOptionLabel={(selectedOption) => (
         <Flex alignItems="center">
           <ColorDotIcon color={selectedOption.value} />
@@ -61,3 +77,10 @@ const CustomSelects = ({ ...props }) => {
 };
 
 export default CustomSelects;
+
+// Type '(item: {    value: string;    label: string;}) => void' is not assignable to type '(newValue: SingleValue<{ value: string; label: string; }> | MultiValue<{ value: string; label: string; }>, actionMeta: ActionMeta<{ value: string; label: string; }>) => void'.
+//   Types of parameters 'item' and 'newValue' are incompatible.
+//     Type 'SingleValue<{ value: string; label: string; }> | MultiValue<{ value: string; label: string; }>' is not assignable to type '{ value: string; label: string; }'.
+//       Type 'null' is not assignable to type '{ value: string; label: string; }'.
+
+      // (newValue: SingleValue<{ value: string; label: string; }> | MultiValue<{ value: string; label: string; }>, actionMeta: ActionMeta<{ value: string; label: string; }>)
