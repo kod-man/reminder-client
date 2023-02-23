@@ -12,13 +12,14 @@ type FiltersAndLabelsProps = {
 
 function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+
   const [isToggleOn, setIsToggleOn] = useState(true);
 
   const onClickHandler = () => {
     setIsToggleOn(!isToggleOn);
   };
 
-  const renderedFilterList = data.map((item) => <ItemCard key={item} text={item} icon={Icon} />);
+  const renderedItemList = data.map((item) => <ItemCard key={item} text={item} Icon={Icon} />);
 
   return (
     <Flex w={isLargerThan800 ? "55%" : "80%"} flexDirection="column" mb={12}>
@@ -47,7 +48,9 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
       </Flex>
       {isToggleOn && (
         <Flex flexDirection="column" w="100%">
-          {renderedFilterList}
+          {renderedItemList.length > 0
+            ? renderedItemList
+            : `Your list of ${cardTitle.toLowerCase()} will show up here.`}
         </Flex>
       )}
     </Flex>

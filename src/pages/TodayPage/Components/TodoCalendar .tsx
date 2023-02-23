@@ -34,73 +34,70 @@ function TodoCalendar() {
 
   return (
     <Flex
-      borderRadius='2px'
-      border='1px solid'
-      borderColor='gray.200'
-      direction='column'
-      ml='3'
-      w='280px'
-      bg='white'
+      borderRadius="2px"
+      border="1px solid"
+      borderColor="gray.200"
+      direction="column"
+      ml="3"
+      w="280px"
+      bg="white"
     >
-      <Flex p='2'>
+      <Flex p="2">
         <Input
           value={todays}
-          variant='unstyled'
-          placeholder='Type a due date'
+          variant="unstyled"
+          placeholder="Type a due date"
           onChange={onChangeHandler}
         />
-        <DeleteIcon
-          cursor='pointer'
-          visibility={!todays ? "visible" : "hidden"}
-        />
+        <DeleteIcon cursor="pointer" visibility={todays ? "hidden" : "visible"} />
       </Flex>
       <Divider />
-      <Flex direction='column'>
-        <Flex cursor='pointer' _hover={{ bg: "gray.200" }} p='2'>
-          <SunIcon color='orange' />
-          <Text as='b' ml='2'>
+      <Flex direction="column">
+        <Flex cursor="pointer" _hover={{ bg: "gray.200" }} p="2">
+          <SunIcon color="orange" />
+          <Text as="b" ml="2">
             Tomorrow
           </Text>
           <Spacer />
-          <Text color='gray'>{tomorrow}</Text>
+          <Text color="gray">{tomorrow}</Text>
         </Flex>
-        <Flex cursor='pointer' _hover={{ bg: "gray.200" }} p='2'>
-          <NewTodayIcon color='purple' />
-          <Text as='b' ml='2'>
+        <Flex cursor="pointer" _hover={{ bg: "gray.200" }} p="2">
+          <NewTodayIcon color="purple" />
+          <Text as="b" ml="2">
             Later this week
           </Text>
           <Spacer />
-          <Text color='gray'>{tomorrow}</Text>
+          <Text color="gray">{tomorrow}</Text>
         </Flex>
-        <Flex cursor='pointer' _hover={{ bg: "gray.200" }} p='2'>
-          <CouchIcon color='blue' />
-          <Text as='b' ml='2'>
+        <Flex cursor="pointer" _hover={{ bg: "gray.200" }} p="2">
+          <CouchIcon color="blue" />
+          <Text as="b" ml="2">
             This weekend
           </Text>
           <Spacer />
-          <Text color='gray'>{tomorrow}</Text>
+          <Text color="gray">{tomorrow}</Text>
         </Flex>
-        <Flex cursor='pointer' _hover={{ bg: "gray.200" }} p='2'>
-          <NextWeekIcon color='purple' />
-          <Text as='b' ml='2'>
+        <Flex cursor="pointer" _hover={{ bg: "gray.200" }} p="2">
+          <NextWeekIcon color="purple" />
+          <Text as="b" ml="2">
             Next week
           </Text>
           <Spacer />
-          <Text color='gray'>{nextWeek}</Text>
+          <Text color="gray">{nextWeek}</Text>
         </Flex>
-        <Flex cursor='pointer' _hover={{ bg: "gray.200" }} p='2'>
+        <Flex cursor="pointer" _hover={{ bg: "gray.200" }} p="2">
           <UpsentIcon />
-          <Text as='b' ml='2'>
+          <Text as="b" ml="2">
             No Date
           </Text>
         </Flex>
       </Flex>
       <Divider />
-      <Flex cursor='pointer' p='2'>
-        <Input type='date'></Input>
+      <Flex cursor="pointer" p="2">
+        <Input type="date"></Input>
       </Flex>
       <Divider />
-      <Text cursor='pointer' p='2' color='red'>
+      <Text cursor="pointer" p="2" color="red">
         + Add time
       </Text>
     </Flex>

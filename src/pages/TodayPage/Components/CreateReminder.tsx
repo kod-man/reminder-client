@@ -66,8 +66,7 @@ function CreateReminder() {
     Axios.get(`${API.allReminder}/${userId}`)
       .then((res) => {
         setLoading(false);
-        const data = res.data;
-        setReminders(data);
+        setReminders(res.data);
       })
       .catch((err) => {
         genericErrorToast(err, toast);
