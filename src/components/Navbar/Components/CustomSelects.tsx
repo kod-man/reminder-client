@@ -3,7 +3,7 @@ import Select, { components, OptionProps } from "react-select";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 
 const { Option } = components;
-const COLORS = ["Red", "Orange", "Yellow", "Green", "Blue", "Teal", "Purple", "Gray"];
+const COLORS = ["red", "orange", "yellow", "green", "blue", "teal", "purple", "gray"];
 
 const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
   <Option {...props}>
@@ -17,6 +17,10 @@ const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
 );
 
 const CustomSelects = ({ ...props }) => {
+  const handleChange = (item: any) => {
+    console.log(item);
+  };
+
   return (
     <Select
       styles={{
@@ -39,6 +43,7 @@ const CustomSelects = ({ ...props }) => {
         label: color,
         key: color,
       }))}
+      onChange={handleChange}
       formatOptionLabel={(selectedOption) => (
         <Flex alignItems="center">
           <ColorDotIcon color={selectedOption.value} />
