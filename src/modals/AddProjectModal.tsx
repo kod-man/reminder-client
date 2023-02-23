@@ -28,31 +28,27 @@ const AddProjectModal = () => {
   const finalRef = React.useRef(null);
 
   const [name, setName] = React.useState("");
-  const isNameEmpty = name.trim() === "";
 
-  const [color, setColor] = React.useState("");
+  const [color, setColor] = React.useState("gray");
   const [isFavorite, setIsFavorite] = React.useState(false);
   const toast = useToast();
 
   const handleColorChange = (event: any) => {
-    console.log(event.target);
     setColor(event.target.value);
   };
 
-  const handleNameChange = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
+  const handleNameChange = (event: { target: { value: React.SetStateAction<string> } }) => {
     setName(event.target.value);
   };
 
-  const AddProjectData = {
+  const ProjectData = {
     name,
     color,
     userId: sessionStorage.getItem("userId"),
     isFavorite,
   };
 
-  const handleAddButtonClick = () => {
+  const submitHandler = () => {
     if (!name) {
       toast({
         title: "Name is required.",
@@ -60,10 +56,8 @@ const AddProjectModal = () => {
       });
       return;
     }
-    Axios.post(API.addProject, AddProjectData)
-      .then((res) => {
-        console.log(res);
-        console.log(AddProjectData);
+    Axios.post(API.addProject, ProjectData)
+      .then(() => {
         toast({
           ...defaultToastProps,
           title: "Project added.",
@@ -82,16 +76,11 @@ const AddProjectModal = () => {
           <SmallPlusIcon onClick={onOpen} />
         </Flex>
       </MyTooltip>
-      <Modal
-        finalFocusRef={finalRef}
-        isOpen={isOpen}
-        onClose={onClose}
-        size="md"
-      >
+      <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose} size="md">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader position="relative" fontWeight="bold" fontSize="20px">
-            <Text> Add project</Text>
+            <Text>Add project</Text>
             <Flex
               position="absolute"
               top="1px"
@@ -124,37 +113,26 @@ const AddProjectModal = () => {
                 onChange={handleNameChange}
               />
             </Flex>
-            <Flex flexDir="column" mt="12px">
+            <Flex flexDirection="column" mt="12px">
               <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Color
               </Text>
-              <CustomSelects
-                color={color}
-                handleColorChange={handleColorChange}
-              />
+              <CustomSelects color={color} handleColorChange={handleColorChange} />
             </Flex>
             <Flex alignItems="center" mt="15px">
-              <Flex justifyContent="center" alignItems="center">
-                <Switch
-                  colorScheme="teal"
-                  isChecked={isFavorite}
-                  onChange={() => setIsFavorite(!isFavorite)}
-                />
-                <Text ml="10px" fontSize="14px">
-                  Add to favorites
-                </Text>
-              </Flex>
+              <Switch
+                colorScheme="teal"
+                isChecked={isFavorite}
+                onChange={() => setIsFavorite(!isFavorite)}
+              />
+              <Text ml="10px" fontSize="14px">
+                Add to favorites
+              </Text>
             </Flex>
           </ModalBody>
           <Divider mt="5px" />
           <ModalFooter>
-            <Button
-              colorScheme="gray"
-              mr={3}
-              onClick={onClose}
-              width="70px"
-              height="35px"
-            >
+            <Button colorScheme="gray" mr={3} onClick={onClose} width="70px" height="35px">
               Cancel
             </Button>
             <Button
@@ -163,11 +141,11 @@ const AddProjectModal = () => {
               width="70px"
               height="35px"
               textColor="white"
-              disabled={isNameEmpty}
-              onClick={handleAddButtonClick}
+              disabled={name.trim() === ""}
+              onClick={submitHandler}
               _hover={{ backgroundColor: "#c0392b!important" }}
               style={
-                isNameEmpty
+                name.trim() === ""
                   ? {
                       cursor: "not-allowed",
                       backgroundColor: "#f1b7b2",
