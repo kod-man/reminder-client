@@ -6,7 +6,7 @@ import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
 import ToggleIcon from "../../../icons/ToggleIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
-import AddProjectModal from "../../../modals/AddProjectModal";
+import AddItemModal from "../../../modals/AddItemModal";
 import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import { PATHS } from "../../../utils/paths";
 import DrawerCards from "./DrawerCards";
@@ -79,7 +79,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
         >
           <Text color="gray">Projects</Text>
           <Flex>
-            <AddProjectModal />
+            <AddItemModal tooltipLabel="Project" />
             <MyTooltip label="Toggle list of Projects">
               <Flex
                 transform={

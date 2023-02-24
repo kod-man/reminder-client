@@ -1,8 +1,8 @@
 import { Flex, Text, useMediaQuery } from "@chakra-ui/react";
 import { useState } from "react";
 import { IconType } from "react-icons";
-import PlusIcon from "../../../icons/PlusIcon";
 import ToggleIcon from "../../../icons/ToggleIcon";
+import AddItemModal from "../../../modals/AddItemModal";
 import ItemCard from "./ItemCard";
 
 type FiltersAndLabelsProps = {
@@ -16,7 +16,7 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
 
   const [isToggleOn, setIsToggleOn] = useState(true);
 
-  const onClickHandler = () => {
+  const onToggleHandler = () => {
     setIsToggleOn(!isToggleOn);
   };
 
@@ -31,6 +31,7 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
         justifyContent="space-between"
         borderBottom="1px solid"
         borderColor="gray.200"
+        paddingY="5px"
       >
         <Flex>
           <Flex
@@ -46,13 +47,27 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
             fontSize="2xl"
             transform={isToggleOn ? "rotate(0deg)" : "rotate(270deg)"}
           >
-            <ToggleIcon onClick={onClickHandler} color="gray" />
+            <ToggleIcon onClick={onToggleHandler} color="gray" />
           </Flex>
           <Text as="b" fontSize="14px" mr="2">
             {cardTitle}
           </Text>
         </Flex>
-        <PlusIcon color="gray" />
+        <Flex
+          ml="-25px"
+          mr="3px"
+          w="24px"
+          h="24px"
+          alignItems="center"
+          justifyContent="center"
+          color="gray"
+          _hover={{ color: "#202020", bg: "#eee" }}
+          borderRadius="20%"
+          fontSize="2xl"
+          cursor="pointer"
+        >
+          <AddItemModal tooltipLabel={cardTitle} />
+        </Flex>
       </Flex>
       {isToggleOn && (
         <Flex flexDirection="column" w="100%">
