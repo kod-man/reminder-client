@@ -5,11 +5,21 @@ import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
 
 import { configureStore } from "@reduxjs/toolkit";
+import { ErrorBoundary } from "react-error-boundary";
 import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 import drawerReducers from "./store/Drawer/drawerSlice";
 import todoReducers from "./store/Todos/todoSlice";
+
+function ErrorFallback({ error }: { error: any }) {
+  return (
+    <div role="alert">
+      <p>Something went wrong:</p>
+      <pre style={{ color: "red" }}>{error.message}</pre>
+    </div>
+  );
+}
 
 const container = document.getElementById("root");
 if (!container) {
@@ -35,7 +45,9 @@ root.render(
     <ChakraProvider theme={theme}>
       <Provider store={store}>
         <BrowserRouter>
-          <App />
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <App />
+          </ErrorBoundary>
         </BrowserRouter>
       </Provider>
     </ChakraProvider>
