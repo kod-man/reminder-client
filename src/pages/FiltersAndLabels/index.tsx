@@ -5,10 +5,8 @@ import DropIcon from "../../icons/DropIcon";
 import MiniLabelIcon from "../../icons/MiniLabelIcon";
 import FiltersAndLabels from "./components/FiltersAndLabels";
 
-import Header from "./components/Header";
 import { useEffect, useState } from "react";
 import { Axios } from "../../utils/axios";
-import { API } from "../../utils/usedApi";
 import { genericErrorToast } from "../../utils/genericToast";
 import Spinner from "../../components/Spinner";
 
@@ -33,6 +31,7 @@ function FiltersAndLabelsPage() {
         genericErrorToast(err, toast);
         setLoading(false);
       });
+  }, [userId, toast]);
   }, [userId, toast]);
   return (
     <Flex

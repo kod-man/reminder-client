@@ -24,7 +24,7 @@ const TodayDrawerIcon = (props: any) => {
           fontWeight="500"
         >
           <tspan x="8" y="15" textAnchor="middle">
-            21
+            20
           </tspan>
         </text>
       </g>

@@ -29,8 +29,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
-import { BiGitCompare } from "react-icons/bi";
 import ClockIcon from "../../../icons/ClockIcon";
+import CompareIcon from "../../../icons/CompareIcon";
 import FlagIcon from "../../../icons/FlagIcon";
 import InboxIcon from "../../../icons/InboxIcon";
 import IntegrationIcon from "../../../icons/IntegrationIcon";
@@ -268,7 +268,7 @@ const PlusModal = () => {
                       Reminders are only available on Pro and Business plans.
                     </Text>
                     <PopoverBody ml="auto" mt={5}>
-                      <Button size="sm" mr={2} mb="2" as={PopoverCloseButton} w="16">
+                      <Button size="sm" mr={2} mb={2} as={PopoverCloseButton} w="16">
                         Cancel
                       </Button>
                       <Button
@@ -303,7 +303,7 @@ const PlusModal = () => {
                   <MenuList>
                     <Flex>
                       <Box mx="2">
-                        <BiGitCompare color="gray" />
+                        <CompareIcon color="gray" />
                       </Box>
                       <Text mx="3" fontSize="xs">
                         Add extenstion...

@@ -8,7 +8,7 @@ import ItemCard from "./ItemCard";
 type FiltersAndLabelsProps = {
   data: string[];
   cardTitle: string;
-  Icon: IconType;
+  Icon: FC<any>;
 };
 
 function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {

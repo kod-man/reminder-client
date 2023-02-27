@@ -1,11 +1,10 @@
 import { Flex, Spacer, Text } from "@chakra-ui/react";
-import { IconType } from "react-icons";
-import TreeDoteIcon from "../../../icons/TreeDoteIcon";
+import { FC } from "react";
 import IconsBar from "./IconsBars";
 
 type ItemCardProps = {
   text: string;
-  Icon: IconType;
+  Icon: FC<any>;
 };
 
 const ItemCard: React.FC<ItemCardProps> = ({ text, Icon }) => {
@@ -35,9 +34,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ text, Icon }) => {
         _hover={{ color: "#202020", bg: "#eee" }}
         borderRadius="20%"
         fontSize="2xl"
-      >
-        <TreeDoteIcon color="gray" />
-      </Flex>
+      ></Flex>
     </Flex>
   );
 };

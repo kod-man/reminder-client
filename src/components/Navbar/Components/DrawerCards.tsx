@@ -1,10 +1,9 @@
 import { Flex, List, Text, UnorderedList } from "@chakra-ui/react";
 import { FC } from "react";
-import { IconType } from "react-icons";
 import { useNavigate } from "react-router-dom";
 
 type CardProps = {
-  Icon: IconType;
+  Icon: FC<any>;
   text: string;
   iconColor: string;
   path: string;

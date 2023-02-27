@@ -1,10 +1,9 @@
 import { Button, Text } from "@chakra-ui/react";
 import { FC } from "react";
-import { IconType } from "react-icons/lib";
 
 type CardProps = {
   text: string;
-  Icon: IconType;
+  Icon: FC<any>;
 };
 
 const CardCW: FC<CardProps> = ({ text, Icon }) => {
