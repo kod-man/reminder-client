@@ -35,13 +35,14 @@ const Notification = () => {
       <MenuList>
         <Tabs variant="soft-rounded" colorScheme="whiteAlpha">
           <Flex justifyContent="space-between" alignItems="center" p={2}>
-            <TabList backgroundColor="gray.400" borderRadius={20}>
+            <TabList backgroundColor="gray.50" borderRadius={20}>
               <Tab
                 style={{
                   fontSize: "14px",
                   padding: "5px",
                   margin: "5px",
                 }}
+                _selected={{ color: "gray", bg: "white" }}
               >
                 Notifications
               </Tab>
@@ -51,6 +52,7 @@ const Notification = () => {
                   padding: "5px",
                   margin: "5px",
                 }}
+                _selected={{ color: "gray", bg: "white" }}
               >
                 Unread
               </Tab>
