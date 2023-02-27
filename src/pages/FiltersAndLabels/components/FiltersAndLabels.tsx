@@ -1,6 +1,5 @@
 import { Flex, Text, useMediaQuery } from "@chakra-ui/react";
-import { useState } from "react";
-import { IconType } from "react-icons";
+import { FC, useState } from "react";
 import ToggleIcon from "../../../icons/ToggleIcon";
 import AddItemModal from "../../../modals/AddItemModal";
 import ItemCard from "./ItemCard";

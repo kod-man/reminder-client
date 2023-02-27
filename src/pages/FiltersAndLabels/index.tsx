@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import { Axios } from "../../utils/axios";
 import { genericErrorToast } from "../../utils/genericToast";
 import Spinner from "../../components/Spinner";
+import Header from "./components/Header";
+import { API } from "../../utils/usedApi";
 
 function FiltersAndLabelsPage() {
   const toast = useToast();
@@ -31,7 +33,6 @@ function FiltersAndLabelsPage() {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, toast]);
   }, [userId, toast]);
   return (
     <Flex
