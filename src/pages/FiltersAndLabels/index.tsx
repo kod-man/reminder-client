@@ -33,6 +33,7 @@ function FiltersAndLabelsPage() {
         setLoading(false);
       });
   }, [userId, toast]);
+
   return (
     <Flex
       flexDirection="column"
@@ -42,8 +43,16 @@ function FiltersAndLabelsPage() {
       ml="auto"
     >
       <Header />
-      <FiltersAndLabels cardTitle="Filters" data={filtersData} Icon={DropIcon} />
-      <FiltersAndLabels cardTitle="Labels" data={labelsList} Icon={MiniLabelIcon} />
+      <FiltersAndLabels
+        cardTitle="Filters"
+        data={filtersData}
+        Icon={DropIcon}
+      />
+      <FiltersAndLabels
+        cardTitle="Labels"
+        data={labelsList}
+        Icon={MiniLabelIcon}
+      />
     </Flex>
   );
 }
