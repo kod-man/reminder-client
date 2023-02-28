@@ -1,47 +1,17 @@
-import {
-  Button,
-  Flex,
-  FormLabel,
-  Image,
-  Input,
-  Text,
-  useToast,
-} from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Button, Flex, FormLabel, Image, Input, Text, useToast } from "@chakra-ui/react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
-import {
-  defaultToastProps,
-  genericErrorToast,
-} from "../../../utils/genericToast";
+import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import Header from "./Header";
 
 function OnboardingCard() {
   const [name, setName] = useState("");
-  const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState("");
   const toast = useToast();
   const navigate = useNavigate();
-  useEffect(() => {
-    if (!selectedFile) {
-      setPreview("");
-      return;
-    }
-    const objectUrl = URL.createObjectURL(selectedFile);
-    setPreview(objectUrl);
-
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [selectedFile]);
-
-  const onSelectFile = (e: any) => {
-    if (!e.target.files || e.target.files.length === 0) {
-      setSelectedFile(undefined);
-      return;
-    }
-    setSelectedFile(e.target.files[0]);
-  };
 
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
@@ -51,7 +21,6 @@ function OnboardingCard() {
       userName: name,
       imageSrc: preview,
     };
-    console.log(newUserData);
     Axios.put(API.username, newUserData)
       .then((res) => {
         console.log(res);
@@ -66,6 +35,25 @@ function OnboardingCard() {
       .catch((err) => {
         genericErrorToast(err, toast);
       });
+  };
+
+  const convertBase64 = (file: any) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleFileUpload = async (e: any) => {
+    const file = e.target.files[0];
+    const base64 = await convertBase64(file);
+    setPreview(base64 as string);
   };
 
   return (
@@ -104,13 +92,7 @@ function OnboardingCard() {
             cursor="pointer"
           >
             {preview ? (
-              <Image
-                w="180px"
-                h="180px"
-                objectFit="contain"
-                borderRadius="full"
-                src={preview}
-              />
+              <Image w="180px" h="180px" objectFit="contain" borderRadius="full" src={preview} />
             ) : (
               "N"
             )}
@@ -129,7 +111,7 @@ function OnboardingCard() {
               type="file"
               id="upload_image"
               accept="image/png, image/jpg, image/jpeg"
-              onChange={onSelectFile}
+              onChange={(e) => handleFileUpload(e)}
             />
 
             <Flex

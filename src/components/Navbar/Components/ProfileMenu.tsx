@@ -8,7 +8,6 @@ import {
   Text,
   useToast,
   VStack,
-  Image,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -25,6 +24,7 @@ import { Axios } from "../../../utils/axios";
 import { genericErrorToast } from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
+import ConditionallyImage from "./ConditionallyImage";
 import ProfileCards from "./ProfileCards";
 
 const ProfilMenuData = [
@@ -51,7 +51,10 @@ const ProfileMenu = () => {
         console.log(response.data);
         setName(response.data.user.userName);
         setEmail(response.data.user.email);
-        setProfileImg(response.data.user.imageSrc);
+        // convert base64 to image
+
+        const imageStr = response.data.user.imageSrc;
+        setProfileImg(imageStr);
       })
       .catch((err) => {
         if (err.response) {
@@ -60,7 +63,7 @@ const ProfileMenu = () => {
           console.log(err);
         }
       });
-  });
+  }, [toast]);
 
   const nameInitials = name
     .split(" ")
@@ -90,9 +93,7 @@ const ProfileMenu = () => {
         borderRadius="50%"
         fontWeight="bold"
       >
-        <Text as="b" fontSize="xs">
-          {nameInitials}
-        </Text>
+        <ConditionallyImage imageSrc={profileImg} initials={nameInitials} />
       </Flex>
       <MenuList>
         <Flex
@@ -101,7 +102,6 @@ const ProfileMenu = () => {
           mx="1"
           mb="2"
           borderRadius="5"
-          border="1px solid green"
         >
           <Box>
             <Flex>
@@ -109,7 +109,7 @@ const ProfileMenu = () => {
                 m={1}
                 w={12}
                 h={12}
-                border="3px solid #db4c3f"
+                border="1px solid #db4c3f"
                 fontSize="xl"
                 color="#db4c3f"
                 alignItems="center"
@@ -118,17 +118,7 @@ const ProfileMenu = () => {
                 borderRadius="50%"
                 p={1}
               >
-                {profileImg ? (
-                  <Image
-                    w="50"
-                    h="50"
-                    objectFit="contain"
-                    borderRadius="full"
-                    src={profileImg}
-                  />
-                ) : (
-                  <Text>{nameInitials}</Text>
-                )}
+                <ConditionallyImage imageSrc={profileImg} initials={nameInitials} />
               </Flex>
               <VStack>
                 <Flex flexDir="column" m={2}>
@@ -141,11 +131,9 @@ const ProfileMenu = () => {
                 </Flex>
               </VStack>
             </Flex>
-            <Flex alignItems="center" ml={2} mb="1">
-              <Box h={4} w={4} mr="1" justifyContent="flex-start">
-                <SettingsIcon color="#808080" />
-              </Box>
-              <Text fontSize="small" ml="2">
+            <Flex alignItems="center" justifyContent="flex-start" paddingLeft="10px">
+              <SettingsIcon color="#808080" />
+              <Text ml="12px" fontSize="small">
                 Settings
               </Text>
             </Flex>
