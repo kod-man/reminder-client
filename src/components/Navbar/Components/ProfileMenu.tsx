@@ -24,6 +24,7 @@ import { Axios } from "../../../utils/axios";
 import { genericErrorToast } from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
+import ConditionallyImage from "./ConditionallyImage";
 import ProfileCards from "./ProfileCards";
 
 const ProfilMenuData = [
@@ -41,13 +42,16 @@ const ProfileMenu = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [profileImg, setProfileImg] = useState("");
 
   useEffect(() => {
     const userId = sessionStorage.getItem("userId");
     Axios.get(`${API.getUser}/${userId}`)
       .then((response) => {
-        setName(response.data.user.userName);
-        setEmail(response.data.user.email);
+        const { userName, email, imageSrc } = response.data.user;
+        setName(userName);
+        setEmail(email);
+        setProfileImg(imageSrc);
       })
       .catch((err) => {
         if (err.response) {
@@ -56,7 +60,7 @@ const ProfileMenu = () => {
           console.log(err);
         }
       });
-  });
+  }, [toast]);
 
   const nameInitials = name
     .split(" ")
@@ -86,9 +90,7 @@ const ProfileMenu = () => {
         borderRadius="50%"
         fontWeight="bold"
       >
-        <Text as="b" fontSize="xs">
-          {nameInitials}
-        </Text>
+        <ConditionallyImage imageSrc={profileImg} initials={nameInitials} />
       </Flex>
       <MenuList>
         <Flex
@@ -104,7 +106,7 @@ const ProfileMenu = () => {
                 m={1}
                 w={12}
                 h={12}
-                border="3px solid #db4c3f"
+                border="1px solid #db4c3f"
                 fontSize="xl"
                 color="#db4c3f"
                 alignItems="center"
@@ -113,7 +115,10 @@ const ProfileMenu = () => {
                 borderRadius="50%"
                 p={1}
               >
-                {nameInitials}
+                <ConditionallyImage
+                  imageSrc={profileImg}
+                  initials={nameInitials}
+                />
               </Flex>
               <VStack>
                 <Flex flexDir="column" m={2}>
@@ -126,11 +131,13 @@ const ProfileMenu = () => {
                 </Flex>
               </VStack>
             </Flex>
-            <Flex alignItems="center" ml={2} mb="1">
-              <Box h={4} w={4} mr="1" justifyContent="flex-start">
-                <SettingsIcon color="#808080" />
-              </Box>
-              <Text fontSize="small" ml="2">
+            <Flex
+              alignItems="center"
+              justifyContent="flex-start"
+              paddingLeft="10px"
+            >
+              <SettingsIcon color="#808080" />
+              <Text ml="12px" fontSize="small">
                 Settings
               </Text>
             </Flex>
