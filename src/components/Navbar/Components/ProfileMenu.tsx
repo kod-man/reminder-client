@@ -48,13 +48,10 @@ const ProfileMenu = () => {
     const userId = sessionStorage.getItem("userId");
     Axios.get(`${API.getUser}/${userId}`)
       .then((response) => {
-        console.log(response.data);
-        setName(response.data.user.userName);
-        setEmail(response.data.user.email);
-        // convert base64 to image
-
-        const imageStr = response.data.user.imageSrc;
-        setProfileImg(imageStr);
+        const { userName, email, imageSrc } = response.data.user;
+        setName(userName);
+        setEmail(email);
+        setProfileImg(imageSrc);
       })
       .catch((err) => {
         if (err.response) {
@@ -118,7 +115,10 @@ const ProfileMenu = () => {
                 borderRadius="50%"
                 p={1}
               >
-                <ConditionallyImage imageSrc={profileImg} initials={nameInitials} />
+                <ConditionallyImage
+                  imageSrc={profileImg}
+                  initials={nameInitials}
+                />
               </Flex>
               <VStack>
                 <Flex flexDir="column" m={2}>
@@ -131,7 +131,11 @@ const ProfileMenu = () => {
                 </Flex>
               </VStack>
             </Flex>
-            <Flex alignItems="center" justifyContent="flex-start" paddingLeft="10px">
+            <Flex
+              alignItems="center"
+              justifyContent="flex-start"
+              paddingLeft="10px"
+            >
               <SettingsIcon color="#808080" />
               <Text ml="12px" fontSize="small">
                 Settings
