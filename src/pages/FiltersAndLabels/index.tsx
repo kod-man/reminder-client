@@ -33,7 +33,7 @@ function FiltersAndLabelsPage() {
         setLoading(false);
       });
   }, [userId, toast]);
-  throw new Error("ufuk malı götürüyor");
+
   return (
     <Flex
       flexDirection="column"
