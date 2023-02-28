@@ -8,6 +8,7 @@ import {
   Text,
   useToast,
   VStack,
+  Image,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -41,13 +42,16 @@ const ProfileMenu = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [profileImg, setProfileImg] = useState("");
 
   useEffect(() => {
     const userId = sessionStorage.getItem("userId");
     Axios.get(`${API.getUser}/${userId}`)
       .then((response) => {
+        console.log(response.data);
         setName(response.data.user.userName);
         setEmail(response.data.user.email);
+        setProfileImg(response.data.user.imageSrc);
       })
       .catch((err) => {
         if (err.response) {
@@ -97,6 +101,7 @@ const ProfileMenu = () => {
           mx="1"
           mb="2"
           borderRadius="5"
+          border="1px solid green"
         >
           <Box>
             <Flex>
@@ -113,7 +118,17 @@ const ProfileMenu = () => {
                 borderRadius="50%"
                 p={1}
               >
-                {nameInitials}
+                {profileImg ? (
+                  <Image
+                    w="50"
+                    h="50"
+                    objectFit="contain"
+                    borderRadius="full"
+                    src={profileImg}
+                  />
+                ) : (
+                  <Text>{nameInitials}</Text>
+                )}
               </Flex>
               <VStack>
                 <Flex flexDir="column" m={2}>

@@ -51,6 +51,7 @@ function OnboardingCard() {
       userName: name,
       imageSrc: preview,
     };
+    console.log(newUserData);
     Axios.put(API.username, newUserData)
       .then((res) => {
         console.log(res);
