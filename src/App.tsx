@@ -20,7 +20,10 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route path={PATHS.REGISTER} element={<RegisterAndLogin page="register" />} />
+      <Route
+        path={PATHS.REGISTER}
+        element={<RegisterAndLogin page="register" />}
+      />
       <Route path={PATHS.LOGIN} element={<RegisterAndLogin page="login" />} />
       {PROTECTED_ROUTES.map(({ path, page, hasNavbar }) => (
         <Route
@@ -30,7 +33,7 @@ export const App = () => {
             <ProtectedRoutes token={token}>
               <>
                 {hasNavbar && <Navbar />}
-                {page}
+                {token ? page : <RegisterAndLogin page="login" />}
               </>
             </ProtectedRoutes>
           }
