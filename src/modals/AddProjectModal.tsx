@@ -62,7 +62,7 @@ const AddProjectModal = () => {
       .then(() => {
         toast({
           ...defaultToastProps,
-          title: "Project added.",
+          title: "Project added successfully.",
           status: "success",
         });
       })

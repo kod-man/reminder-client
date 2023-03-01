@@ -34,6 +34,7 @@ function FiltersAndLabelsPage() {
         setLoading(false);
       });
   }, [userId, toast]);
+
   return (
     <Flex
       flexDirection="column"
