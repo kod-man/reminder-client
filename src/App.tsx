@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import ProtectedPages from "./components/ProtectedPages";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import FiltersAndLabels from "./pages/FiltersAndLabels";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
@@ -20,10 +20,7 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route
-        path={PATHS.REGISTER}
-        element={<RegisterAndLogin page="register" />}
-      />
+      <Route path={PATHS.REGISTER} element={<RegisterAndLogin page="register" />} />
       <Route path={PATHS.LOGIN} element={<RegisterAndLogin page="login" />} />
       {PROTECTED_ROUTES.map(({ path, page, hasNavbar }) => (
         <Route
@@ -31,10 +28,7 @@ export const App = () => {
           path={path}
           element={
             <ProtectedRoutes token={token}>
-              <>
-                {hasNavbar && <Navbar />}
-                {token ? page : <RegisterAndLogin page="login" />}
-              </>
+              <ProtectedPages hasNavbar={hasNavbar} token={token} page={page} />
             </ProtectedRoutes>
           }
         />
