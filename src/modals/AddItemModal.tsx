@@ -25,7 +25,7 @@ type AddItemModalProps = {
 
 const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
   const [nameValue, setNameValue] = useState<string>("");
-  const [colorValue, setColorValue] = useState<string>("Gray");
+  const [colorValue, setColorValue] = useState<string>("gray");
   const [addToFavorites, setAddToFavorites] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
@@ -41,7 +41,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
     setAddToFavorites(e.currentTarget.checked);
   };
 
-  const onclickHandler = () => {
+  const submitHandler = () => {
     console.log(nameValue, colorValue, addToFavorites);
   };
   return (
@@ -99,12 +99,10 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
               <CustomSelects onChange={onColorChangeHandler} />
             </Flex>
             <Flex alignItems="center" mt="15px">
-              <Flex justifyContent="center" alignItems="center">
-                <Switch colorScheme="teal" onChange={onToggleHandler} />
-                <Text ml="10px" fontSize="14px">
-                  Add to favorites
-                </Text>
-              </Flex>
+              <Switch colorScheme="teal" onChange={onToggleHandler} />
+              <Text ml="10px" fontSize="14px">
+                Add to favorites
+              </Text>
             </Flex>
           </ModalBody>
           <Divider mt="5px" />
@@ -119,8 +117,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
               Cancel
             </Button>
             <Button
-              onClick={onclickHandler}
-              ///////////////
+              onClick={submitHandler}
               variant="ghost"
               backgroundColor="#f1b7b2"
               width="70px"
