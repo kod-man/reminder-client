@@ -8,8 +8,9 @@ import FiltersAndLabels from "./components/FiltersAndLabels";
 import { useEffect, useState } from "react";
 import { Axios } from "../../utils/axios";
 import { genericErrorToast } from "../../utils/genericToast";
-import { API } from "../../utils/usedApi";
+import Spinner from "../../components/Spinner";
 import Header from "./components/Header";
+import { API } from "../../utils/usedApi";
 
 function FiltersAndLabelsPage() {
   const toast = useToast();
@@ -43,16 +44,22 @@ function FiltersAndLabelsPage() {
       ml="auto"
     >
       <Header />
-      <FiltersAndLabels
-        cardTitle="Filters"
-        data={filtersData}
-        Icon={DropIcon}
-      />
-      <FiltersAndLabels
-        cardTitle="Labels"
-        data={labelsList}
-        Icon={MiniLabelIcon}
-      />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <FiltersAndLabels
+            cardTitle="Filters"
+            data={filtersData}
+            Icon={DropIcon}
+          />
+          <FiltersAndLabels
+            cardTitle="Labels"
+            data={labelsList}
+            Icon={MiniLabelIcon}
+          />
+        </>
+      )}
     </Flex>
   );
 }
