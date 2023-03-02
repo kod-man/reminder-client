@@ -1,8 +1,8 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import ColorDotIcon from "../../../icons/ColorDotIcon";
 import { Axios } from "../../../utils/axios";
 import { API } from "../../../utils/usedApi";
+import ProjectItemCard from "./ProjectItemCard";
 
 type ProjectCardProps = {
   color: string;
@@ -47,9 +47,11 @@ function ProjectCard({ name, color }: ProjectCardProps) {
           p="1px"
           _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
         >
-          <ColorDotIcon color={project.color} />
-          <Text fontSize="16px">{project.name}</Text>
-          <Flex ml="auto">...</Flex>
+          <ProjectItemCard
+            id={project.id}
+            name={project.name}
+            color={project.color}
+          />
         </Flex>
       ))}
     </>
