@@ -1,4 +1,3 @@
-import { Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Axios } from "../../../utils/axios";
 import { API } from "../../../utils/usedApi";
@@ -36,13 +35,11 @@ function ProjectCard({ name, color }: ProjectCardProps) {
   return (
     <>
       {projects.map((project) => (
-       
-          <ProjectItemCard
-            id={project.id}
-            name={project.name}
-            color={project.color}
-          />
-        
+        <ProjectItemCard
+          id={project.id}
+          name={project.name}
+          color={project.color}
+        />
       ))}
     </>
   );
