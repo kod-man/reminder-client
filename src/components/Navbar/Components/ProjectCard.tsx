@@ -36,23 +36,13 @@ function ProjectCard({ name, color }: ProjectCardProps) {
   return (
     <>
       {projects.map((project) => (
-        <Flex
-          key={project.id}
-          m="-5px 10px 0 25px "
-          fontSize="sm"
-          justifyContent="flex-start"
-          alignItems="center"
-          h="32px"
-          borderRadius="5px"
-          p="1px"
-          _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
-        >
+       
           <ProjectItemCard
             id={project.id}
             name={project.name}
             color={project.color}
           />
-        </Flex>
+        
       ))}
     </>
   );
