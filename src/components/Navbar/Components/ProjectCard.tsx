@@ -4,7 +4,7 @@ import ColorDotIcon from "../../../icons/ColorDotIcon";
 import { Axios } from "../../../utils/axios";
 import { API } from "../../../utils/usedApi";
 
-type ProjectCardComponentProps = {
+type ProjectCardProps = {
   color: string;
   name: string;
 };
@@ -15,7 +15,7 @@ type Project = {
   color: string;
 };
 
-function ProjectCardComponent({ name, color }: ProjectCardComponentProps) {
+function ProjectCard({ name, color }: ProjectCardProps) {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
@@ -56,4 +56,4 @@ function ProjectCardComponent({ name, color }: ProjectCardComponentProps) {
   );
 }
 
-export default ProjectCardComponent;
+export default ProjectCard;
