@@ -1,5 +1,5 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 import { Axios } from "../../../utils/axios";
 import { API } from "../../../utils/usedApi";
@@ -9,35 +9,50 @@ type ProjectCardComponentProps = {
   name: string;
 };
 
+type Project = {
+  id: number;
+  name: string;
+  color: string;
+};
+
 function ProjectCardComponent({ name, color }: ProjectCardComponentProps) {
-  const userId = sessionStorage.getItem("userId");
-  // const [projects, setProjects] = useState({});
- 
+  const [projects, setProjects] = useState<Project[]>([]);
 
-  Axios.get(`${API.addProject}/${userId}`)
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  useEffect(() => {
+    const userId = sessionStorage.getItem("userId");
+    if (!userId) return;
 
-    
+    Axios.get(`${API.getProject}/${userId}`)
+      .then((response) => {
+        console.log(response.data);
+        setProjects(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setProjects([]);
+      });
+  }, []);
+
   return (
-    <Flex
-      m="-5px 10px 0 25px "
-      fontSize="sm"
-      justifyContent="flex-start"
-      alignItems="center"
-      h="32px"
-      borderRadius="5px"
-      p="1px"
-      _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
-    >
-      <ColorDotIcon color={color} />
-      <Text fontSize="16px">{name}</Text>
-      <Flex ml="auto">...</Flex>
-    </Flex>
+    <>
+      {projects.map((project) => (
+        <Flex
+          key={project.id}
+          m="-5px 10px 0 25px "
+          fontSize="sm"
+          justifyContent="flex-start"
+          alignItems="center"
+          h="32px"
+          borderRadius="5px"
+          p="1px"
+          _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
+        >
+          <ColorDotIcon color={project.color} />
+          <Text fontSize="16px">{project.name}</Text>
+          <Flex ml="auto">...</Flex>
+        </Flex>
+      ))}
+    </>
   );
 }
 
