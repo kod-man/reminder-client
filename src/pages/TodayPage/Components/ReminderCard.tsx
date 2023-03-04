@@ -7,9 +7,11 @@ import {
   useToast
 } from "@chakra-ui/react";
 import { RefObject, useRef } from "react";
+import { useDispatch } from "react-redux";
 
 import TreeDoteIcon from "../../../icons/TreeDoteIcon";
 import ConfirmModal from "../../../modals/ConfirmModal";
+import { deleteTodo } from "../../../store/Todos/todoSlice";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
@@ -36,18 +38,19 @@ function ReminderCard({
 }: ReminderCardProps) {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
   const cancelRef = useRef() as RefObject<HTMLButtonElement>;
   const toast = useToast();
   const deleteHandler = (e: any) => {
     e.preventDefault();
     Axios.delete(API.deleteReminder + "/" + id)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         toast({
           ...defaultToastProps,
           title: "Reminder removed succesfully.",
           status: "success"
         });
+        dispatch(deleteTodo(id));
       })
       .catch((err) => {
         genericErrorToast(err, toast);

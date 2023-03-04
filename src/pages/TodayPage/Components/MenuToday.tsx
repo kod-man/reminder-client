@@ -91,7 +91,7 @@ function MenuToday() {
         <MenuGroup title={today}>
           <MenuDivider />
           {menuItemsToday.map((item) => (
-            <MenuItem>
+            <MenuItem key={item.text1}>
               {item.icon}
               <Text ml="2">{item.text1}</Text>
               <Spacer />
