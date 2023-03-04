@@ -5,7 +5,7 @@ const MoonnyIcon = (props: any) => {
       fill="currentColor"
       strokeWidth="0"
       viewBox="0 0 512 512"
-      ariaHidden="true"
+      aria-hidden="true"
       focusable="false"
       height="18"
       width="18"

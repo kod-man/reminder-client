@@ -1,4 +1,3 @@
-import React from "react";
 import {} from "react-select";
 function XIcon(props: any) {
   return (
@@ -7,7 +6,7 @@ function XIcon(props: any) {
       height="22"
       viewBox="0 0 24 24"
       focusable="false"
-      class="chakra-icon css-1x7z2yw"
+      className="chakra-icon css-1x7z2yw"
       {...props}
     >
       <path

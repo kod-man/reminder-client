@@ -4,7 +4,7 @@ function NewTodayIcon(props: any) {
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      class="scheduler-suggestions-item-icon--later-this-week"
+      className="scheduler-suggestions-item-icon--later-this-week"
       aria-hidden="true"
       focusable="false"
       {...props}

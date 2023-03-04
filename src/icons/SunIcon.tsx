@@ -4,7 +4,7 @@ function SunIcon(props: any) {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      class="scheduler-suggestions-item-icon--tomorrow"
+      className="scheduler-suggestions-item-icon--tomorrow"
       aria-hidden="true"
       focusable="false"
       {...props}

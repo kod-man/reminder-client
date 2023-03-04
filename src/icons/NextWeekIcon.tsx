@@ -4,7 +4,7 @@ function NextWeekIcon(props: any) {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      class="scheduler-suggestions-item-icon--next-week"
+      className="scheduler-suggestions-item-icon--next-week"
       aria-hidden="true"
       focusable="false"
       {...props}
