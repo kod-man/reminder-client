@@ -7,7 +7,14 @@ interface MyTooltipProps {
 
 function MyTooltip({ label, children }: PropsWithChildren<MyTooltipProps>) {
   return (
-    <Tooltip hasArrow label={label} bg="black" color="white" borderRadius="5" placement="top-start">
+    <Tooltip
+      hasArrow
+      label={label}
+      bg="black"
+      color="white"
+      borderRadius="5"
+      placement="top-start"
+    >
       {children}
     </Tooltip>
   );

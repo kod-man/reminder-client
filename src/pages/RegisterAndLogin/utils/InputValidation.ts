@@ -1,7 +1,7 @@
 export const InputValidation = (name: string, value: string) => {
   const errors = {
     email: "",
-    password: "",
+    password: ""
   };
 
   if (name === "email") {

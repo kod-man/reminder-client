@@ -6,7 +6,12 @@ function NotFoundPage() {
   const navigate = useNavigate();
 
   return (
-    <Flex flexDirection="column" justifyContent="center" alignItems="center" h="100vh">
+    <Flex
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      h="100vh"
+    >
       <Text fontSize="2xl" color="teal.400">
         404
       </Text>

@@ -18,14 +18,14 @@ const DrawerCards: FC<CardProps> = ({ Icon, text, iconColor, path }) => {
     <List spacing="2px" mr="20px" cursor="pointer">
       <UnorderedList
         _hover={{
-          backgroundColor: "transparent",
+          backgroundColor: "transparent"
         }}
       >
         <Flex
           _hover={{
             color: "black",
             backgroundColor: "#eeeeee",
-            borderRadius: "5px",
+            borderRadius: "5px"
           }}
           w="100%"
           justifyContent="flex-start"

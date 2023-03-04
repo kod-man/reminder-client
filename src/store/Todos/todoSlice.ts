@@ -8,7 +8,7 @@ interface TodoState {
 
 // Define the initial state using that type
 const initialState: TodoState = {
-  value: [],
+  value: []
 };
 
 export const todoSlice = createSlice({
@@ -18,9 +18,9 @@ export const todoSlice = createSlice({
   reducers: {
     getTodoByUser: (state, action) => {
       state.value = action.payload;
-    },
+    }
     // Use the PayloadAction type to declare the contents of `action.payload`
-  },
+  }
 });
 
 export const { getTodoByUser } = todoSlice.actions;

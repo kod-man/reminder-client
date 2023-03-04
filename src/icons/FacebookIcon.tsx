@@ -1,4 +1,4 @@
-const FacebookIcon = (props:any) => {
+const FacebookIcon = (props: any) => {
   return (
     <svg
       width="16"

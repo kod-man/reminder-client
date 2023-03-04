@@ -1,4 +1,4 @@
-const SearchIcon = (props:any) => {
+const SearchIcon = (props: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

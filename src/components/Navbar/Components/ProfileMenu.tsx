@@ -7,7 +7,7 @@ import {
   MenuList,
   Text,
   useToast,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -34,7 +34,7 @@ const ProfilMenuData = [
   { Icon: IntegrationIcon, text: "Integrations" },
   { Icon: UpgradeIcon, text: "Upgrade to Pro" },
   { Icon: BusinessIcon, text: "Upgarde to Business" },
-  { Icon: DownloadIcon, text: "Download apps" },
+  { Icon: DownloadIcon, text: "Download apps" }
 ];
 const ProfileMenu = () => {
   const navigate = useNavigate();
@@ -115,7 +115,10 @@ const ProfileMenu = () => {
                 borderRadius="50%"
                 p={1}
               >
-                <ConditionallyImage imageSrc={profileImg} initials={nameInitials} />
+                <ConditionallyImage
+                  imageSrc={profileImg}
+                  initials={nameInitials}
+                />
               </Flex>
               <VStack>
                 <Flex flexDir="column" m={2}>
@@ -128,7 +131,11 @@ const ProfileMenu = () => {
                 </Flex>
               </VStack>
             </Flex>
-            <Flex alignItems="center" justifyContent="flex-start" paddingLeft="10px">
+            <Flex
+              alignItems="center"
+              justifyContent="flex-start"
+              paddingLeft="10px"
+            >
               <SettingsIcon color="#808080" />
               <Text ml="12px" fontSize="small">
                 Settings

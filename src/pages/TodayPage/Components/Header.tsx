@@ -6,7 +6,7 @@ function Header() {
   const options: Intl.DateTimeFormatOptions = {
     weekday: "short",
     day: "numeric",
-    month: "short",
+    month: "short"
   };
   const today = date.toLocaleDateString("en-US", options);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");

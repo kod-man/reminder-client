@@ -18,26 +18,26 @@ const DrawerData = [
     Icon: InboxDrawerIcon,
     text: "Inbox",
     iconColor: "blue",
-    path: PATHS.INBOX,
+    path: PATHS.INBOX
   },
   {
     Icon: TodayDrawerIcon,
     text: "Today",
     iconColor: "green",
-    path: PATHS.TODAY,
+    path: PATHS.TODAY
   },
   {
     Icon: UpcomingTcon,
     text: "Upcoming",
     iconColor: "purple",
-    path: PATHS.UPCOMING,
+    path: PATHS.UPCOMING
   },
   {
     Icon: FilterIcon,
     text: "Filters & Labels",
     iconColor: "orange",
-    path: PATHS.FILTERSANDLABELS,
-  },
+    path: PATHS.FILTERSANDLABELS
+  }
 ];
 
 type DrawerProps = {
@@ -82,7 +82,9 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
             <AddItemModal tooltipLabel="Project" />
             <MyTooltip label="Toggle list of Projects">
               <Flex
-                transform={!isProjectListOpen ? "rotate(90deg)" : "rotate(0deg)"}
+                transform={
+                  !isProjectListOpen ? "rotate(90deg)" : "rotate(0deg)"
+                }
                 onClick={() => setIsProjectListOpen(!isProjectListOpen)}
                 ml={3}
               >
@@ -92,7 +94,9 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           </Flex>
         </Flex>
 
-        {isProjectListOpen && <ProjectCardComponent name="deneme" color="gray" />}
+        {isProjectListOpen && (
+          <ProjectCardComponent name="deneme" color="gray" />
+        )}
       </DrawerContent>
     </Drawer>
   );
