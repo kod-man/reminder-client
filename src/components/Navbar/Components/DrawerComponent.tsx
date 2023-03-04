@@ -6,7 +6,7 @@ import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
 import ToggleIcon from "../../../icons/ToggleIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
-import AddProjectModal from "../../../modals/AddProjectModal";
+import AddItemModal from "../../../modals/AddItemModal";
 import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import { PATHS } from "../../../utils/paths";
 import DrawerCards from "./DrawerCards";
@@ -18,26 +18,26 @@ const DrawerData = [
     Icon: InboxDrawerIcon,
     text: "Inbox",
     iconColor: "blue",
-    path: PATHS.INBOX,
+    path: PATHS.INBOX
   },
   {
     Icon: TodayDrawerIcon,
     text: "Today",
     iconColor: "green",
-    path: PATHS.TODAY,
+    path: PATHS.TODAY
   },
   {
     Icon: UpcomingTcon,
     text: "Upcoming",
     iconColor: "purple",
-    path: PATHS.UPCOMING,
+    path: PATHS.UPCOMING
   },
   {
     Icon: FilterIcon,
     text: "Filters & Labels",
     iconColor: "orange",
-    path: PATHS.FILTERSANDLABELS,
-  },
+    path: PATHS.FILTERSANDLABELS
+  }
 ];
 
 type DrawerProps = {
@@ -79,7 +79,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
         >
           <Text color="gray">Projects</Text>
           <Flex>
-            <AddProjectModal />
+            <AddItemModal tooltipLabel="Project" />
             <MyTooltip label="Toggle list of Projects">
               <Flex
                 transform={
@@ -94,7 +94,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           </Flex>
         </Flex>
 
-        {isProjectListOpen && <ProjectCard  />}
+        {isProjectListOpen && <ProjectCard />}
       </DrawerContent>
     </Drawer>
   );

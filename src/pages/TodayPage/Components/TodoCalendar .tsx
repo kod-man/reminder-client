@@ -14,14 +14,14 @@ function TodoCalendar() {
   const formatNextWeekOptions: Intl.DateTimeFormatOptions = {
     weekday: "short",
     day: "numeric",
-    month: "short",
+    month: "short"
   };
   const formatTomorrowOptions: Intl.DateTimeFormatOptions = {
-    weekday: "short",
+    weekday: "short"
   };
   const formatTodayOptions: Intl.DateTimeFormatOptions = {
     month: "short",
-    day: "numeric",
+    day: "numeric"
   };
   const today = date.toLocaleDateString("en-US", formatTodayOptions);
   const tomorrow = weeksDate.toLocaleDateString("en-US", formatTomorrowOptions);
@@ -49,7 +49,10 @@ function TodoCalendar() {
           placeholder="Type a due date"
           onChange={onChangeHandler}
         />
-        <DeleteIcon cursor="pointer" visibility={todays ? "hidden" : "visible"} />
+        <DeleteIcon
+          cursor="pointer"
+          visibility={todays ? "hidden" : "visible"}
+        />
       </Flex>
       <Divider />
       <Flex direction="column">

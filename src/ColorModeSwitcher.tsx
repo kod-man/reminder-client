@@ -2,7 +2,7 @@ import {
   IconButton,
   IconButtonProps,
   useColorMode,
-  useColorModeValue,
+  useColorModeValue
 } from "@chakra-ui/react";
 import * as React from "react";
 import MoonyIcon from "./icons/MonnyIcon";

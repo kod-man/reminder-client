@@ -6,7 +6,7 @@ import {
   InputRightElement,
   Stack,
   Text,
-  useToast,
+  useToast
 } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ import VisibleIcon from "../../../icons/VisibleIcon";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
-  genericErrorToast,
+  genericErrorToast
 } from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
@@ -28,12 +28,12 @@ const Inputs = ({ page }: { page: string }) => {
 
   const [formData, setFormData] = React.useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   const [formErrors, setFormErros] = React.useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   // to make password visible or invisible
@@ -50,7 +50,7 @@ const Inputs = ({ page }: { page: string }) => {
     setFormErros((prev) => ({
       ...prev,
       email: errors.email,
-      password: errors.password,
+      password: errors.password
     }));
 
     //how to make  button default disabled
@@ -68,7 +68,7 @@ const Inputs = ({ page }: { page: string }) => {
             ...defaultToastProps,
             title: "Account created.",
             description: "We've created your account for you.",
-            status: "success",
+            status: "success"
           });
           navigate(PATHS.LOGIN);
         })
@@ -84,7 +84,7 @@ const Inputs = ({ page }: { page: string }) => {
             ...defaultToastProps,
             title: "Successfully logged in.",
             description: "You're logged in.",
-            status: "success",
+            status: "success"
           });
           sessionStorage.setItem("token", res.data.response.token);
           sessionStorage.setItem("userId", res.data.response.user.id);
@@ -104,6 +104,7 @@ const Inputs = ({ page }: { page: string }) => {
       <FormControl width="350px">
         <Stack width="100%" spacing={3}>
           <Input
+            id="email"
             name="email"
             size="lg"
             pr="4"
@@ -119,6 +120,7 @@ const Inputs = ({ page }: { page: string }) => {
           ) : null}
           <InputGroup size="lg">
             <Input
+              id="password"
               name="password"
               pr="4.5rem"
               type={open ? "text" : "password"}

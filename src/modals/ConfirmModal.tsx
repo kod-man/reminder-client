@@ -6,7 +6,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  Button,
+  Button
 } from "@chakra-ui/react";
 
 type ConfirmModalProps = {
@@ -28,7 +28,7 @@ function ConfirmModal({
   header,
   body,
   confirmButton,
-  cancelButton,
+  cancelButton
 }: ConfirmModalProps) {
   return (
     <AlertDialog

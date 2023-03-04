@@ -1,4 +1,10 @@
-import { ChakraProvider, ColorModeScript, theme } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  ColorModeScript,
+  Flex,
+  Text,
+  theme
+} from "@chakra-ui/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -11,13 +17,37 @@ import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 import drawerReducers from "./store/Drawer/drawerSlice";
 import todoReducers from "./store/Todos/todoSlice";
+import XIcon from "./icons/XIcon";
 
 function ErrorFallback({ error }: { error: any }) {
   return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre style={{ color: "red" }}>{error.message}</pre>
-    </div>
+    <Flex
+      w="100%"
+      h="100vh"
+      mt="8"
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="column"
+    >
+      <Flex
+        w="60px"
+        h="60px"
+        bg="red.500"
+        borderRadius="50%"
+        alignItems="center"
+        justifyContent="center"
+        color="white"
+      >
+        <XIcon />
+      </Flex>
+
+      <Text as="b" mt="3" fontSize="5xl">
+        Something went wrong
+      </Text>
+      <Text color="gray" fontSize="2xl" mt="2" style={{ color: "red" }}>
+        {error.message}
+      </Text>
+    </Flex>
   );
 }
 
@@ -30,8 +60,8 @@ const root = ReactDOM.createRoot(container);
 export const store = configureStore({
   reducer: {
     todos: todoReducers,
-    drawer: drawerReducers,
-  },
+    drawer: drawerReducers
+  }
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
@@ -51,7 +81,7 @@ root.render(
         </BrowserRouter>
       </Provider>
     </ChakraProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
 // If you want your app to work offline and load faster, you can change

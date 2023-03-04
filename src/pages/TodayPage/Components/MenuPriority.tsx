@@ -1,4 +1,12 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList, Text, Tooltip } from "@chakra-ui/react";
+import {
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
+  Tooltip
+} from "@chakra-ui/react";
 import ColorFlagIcon from "../../../icons/ColorFlagIcon";
 import SmallFlag from "../../../icons/SmallFlag";
 import TickIcon from "../../../icons/TickIcon";
@@ -7,21 +15,21 @@ import WhiteFlagIcon from "../../../icons/WhiteFlagIcon";
 const menuItemsPriority = [
   {
     icon: <ColorFlagIcon color="red" />,
-    text: "Priority 1",
+    text: "Priority 1"
   },
   {
     icon: <ColorFlagIcon color="orange" />,
-    text: "Priority 2",
+    text: "Priority 2"
   },
   {
     icon: <ColorFlagIcon color="blue" />,
-    text: "Priority 3",
+    text: "Priority 3"
   },
   {
     icon: <WhiteFlagIcon />,
     text: "Priority 4",
-    icon2: <TickIcon color="red" />,
-  },
+    icon2: <TickIcon color="red" />
+  }
 ];
 
 function MenuPriority() {

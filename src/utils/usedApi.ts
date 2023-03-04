@@ -3,10 +3,10 @@ export const API = {
   login: "/user/login",
   username: "/user/username",
   addReminder: "/reminder/add",
-  allReminder: "/reminder/all",
-  getUser: "user/me",
+  getAllReminders: "/reminder/all",
+  getUserDetails: "user/me",
   deleteReminder: "reminder/delete",
-  getAllFilter: "filter/all",
+  getAllFilters: "filter/all",
   addProject: "project/add",
-  getProject: "project/all",
+  getAllProjects: "project/all"
 };

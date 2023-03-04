@@ -2,7 +2,13 @@ import { Button, Flex } from "@chakra-ui/react";
 
 const QuestionIcon = (props: any) => {
   return (
-    <Flex as={Button} p="1" boxSize="30px" background="#db4c3f" _hover={{ bg: "#e27065" }}>
+    <Flex
+      as={Button}
+      p="1"
+      boxSize="30px"
+      background="#db4c3f"
+      _hover={{ bg: "#e27065" }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

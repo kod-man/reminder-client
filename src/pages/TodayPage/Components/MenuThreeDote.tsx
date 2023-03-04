@@ -6,7 +6,7 @@ import {
   MenuItem,
   MenuList,
   Spacer,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import ArrowIcon from "../../../icons/ArrowIcon";
 import JigsawIcon from "../../../icons/JigsawIcon";
@@ -17,19 +17,19 @@ const menuItemsThreeDote = [
     icon: <TicketIcon />,
     text: "Labels",
     sign: "@",
-    hasDivider: false,
+    hasDivider: false
   },
   {
     icon: <ArrowIcon />,
     text: "Move to project",
     sign: "#",
-    hasDivider: true,
+    hasDivider: true
   },
   {
     icon: <JigsawIcon />,
     text: "Add extension...",
-    hasDivider: true,
-  },
+    hasDivider: true
+  }
 ];
 
 function MenuThreeDote() {
@@ -48,7 +48,13 @@ function MenuThreeDote() {
         p="0"
         minWidth="32px"
       >
-        <Text display="flex" justifyContent="center" fontSize="2xl" mb="3" color="gray">
+        <Text
+          display="flex"
+          justifyContent="center"
+          fontSize="2xl"
+          mb="3"
+          color="gray"
+        >
           ...
         </Text>
       </MenuButton>

@@ -6,5 +6,5 @@ export const PATHS = {
   ONBOARD: "/onboard",
   FILTERSANDLABELS: "/filters-and-labels",
   INBOX: "/inbox",
-  UPCOMING: "/upcoming",
+  UPCOMING: "/upcoming"
 };

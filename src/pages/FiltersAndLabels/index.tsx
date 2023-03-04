@@ -6,6 +6,7 @@ import MiniLabelIcon from "../../icons/MiniLabelIcon";
 import FiltersAndLabels from "./components/FiltersAndLabels";
 
 import { useEffect, useState } from "react";
+import Spinner from "../../components/Spinner";
 import { Axios } from "../../utils/axios";
 import { genericErrorToast } from "../../utils/genericToast";
 import { API } from "../../utils/usedApi";
@@ -21,7 +22,7 @@ function FiltersAndLabelsPage() {
   const userId = sessionStorage.getItem("userId");
 
   useEffect(() => {
-    Axios.get(`${API.getAllFilter}/${userId}`)
+    Axios.get(`${API.getAllFilters}/${userId}`)
       .then((response) => {
         setLoading(false);
         if (response.data) {
@@ -33,6 +34,7 @@ function FiltersAndLabelsPage() {
         setLoading(false);
       });
   }, [userId, toast]);
+
   return (
     <Flex
       flexDirection="column"
@@ -42,8 +44,22 @@ function FiltersAndLabelsPage() {
       ml="auto"
     >
       <Header />
-      <FiltersAndLabels cardTitle="Filters" data={filtersData} Icon={DropIcon} />
-      <FiltersAndLabels cardTitle="Labels" data={labelsList} Icon={MiniLabelIcon} />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <FiltersAndLabels
+            cardTitle="Filters"
+            data={filtersData}
+            Icon={DropIcon}
+          />
+          <FiltersAndLabels
+            cardTitle="Labels"
+            data={labelsList}
+            Icon={MiniLabelIcon}
+          />
+        </>
+      )}
     </Flex>
   );
 }
