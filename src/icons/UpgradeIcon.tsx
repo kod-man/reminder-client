@@ -4,7 +4,7 @@ const UpgradeIcon = (props: any) => {
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      ariaHidden="true"
+      aria-hidden="true"
       {...props}
     >
       <g fill="none" fillRule="evenodd">

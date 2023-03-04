@@ -104,6 +104,7 @@ const Inputs = ({ page }: { page: string }) => {
       <FormControl width="350px">
         <Stack width="100%" spacing={3}>
           <Input
+            id="email"
             name="email"
             size="lg"
             pr="4"
@@ -119,6 +120,7 @@ const Inputs = ({ page }: { page: string }) => {
           ) : null}
           <InputGroup size="lg">
             <Input
+              id="password"
               name="password"
               pr="4.5rem"
               type={open ? "text" : "password"}

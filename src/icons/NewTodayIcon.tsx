@@ -5,7 +5,7 @@ function NewTodayIcon(props: any) {
       width="24"
       height="24"
       class="scheduler-suggestions-item-icon--later-this-week"
-      ariaHidden="true"
+      aria-hidden="true"
       focusable="false"
       {...props}
     >

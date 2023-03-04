@@ -1,6 +1,12 @@
 function DeleteIcon(props: any) {
   return (
-    <svg width="16" height="16" ariaHidden="true" viewBox="0 0 24 24" {...props}>
+    <svg
+      width="16"
+      height="16"
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      {...props}
+    >
       <path
         fill="gray"
         fillRule="evenodd"

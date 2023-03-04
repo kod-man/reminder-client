@@ -6,7 +6,7 @@ const GoogleIcon = (props: any) => {
       viewBox="0 0 18 18"
       xmlns="http://www.w3.org/2000/svg"
       className="MfSWZ05"
-      ariaHidden="true"
+      aria-hidden="true"
       {...props}
     >
       <g fill="none" fillRule="evenodd">
