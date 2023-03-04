@@ -8,7 +8,7 @@ interface DrawerState {
 
 // Define the initial state using that type
 const initialState: DrawerState = {
-  value: true,
+  value: true
 };
 
 export const drawerSlice = createSlice({
@@ -18,9 +18,9 @@ export const drawerSlice = createSlice({
   reducers: {
     toggleDrawer: (state, action) => {
       state.value = action.payload;
-    },
+    }
     // Use the PayloadAction type to declare the contents of `action.payload`
-  },
+  }
 });
 
 export const { toggleDrawer } = drawerSlice.actions;

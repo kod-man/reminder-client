@@ -1,4 +1,4 @@
-const GoogleIcon = (props:any) => {
+const GoogleIcon = (props: any) => {
   return (
     <svg
       width="15"

@@ -1,4 +1,4 @@
-const AppleIcon = (props:any) => {
+const AppleIcon = (props: any) => {
   return (
     <svg
       width="16"

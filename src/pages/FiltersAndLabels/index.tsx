@@ -48,8 +48,16 @@ function FiltersAndLabelsPage() {
         <Spinner />
       ) : (
         <>
-          <FiltersAndLabels cardTitle="Filters" data={filtersData} Icon={DropIcon} />
-          <FiltersAndLabels cardTitle="Labels" data={labelsList} Icon={MiniLabelIcon} />
+          <FiltersAndLabels
+            cardTitle="Filters"
+            data={filtersData}
+            Icon={DropIcon}
+          />
+          <FiltersAndLabels
+            cardTitle="Labels"
+            data={labelsList}
+            Icon={MiniLabelIcon}
+          />
         </>
       )}
     </Flex>
