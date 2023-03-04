@@ -36,6 +36,7 @@ function ProjectCard({ name, color }: ProjectCardProps) {
     <>
       {projects.map((project) => (
         <ProjectItemCard
+          key={project.id}
           id={project.id}
           name={project.name}
           color={project.color}

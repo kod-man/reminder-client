@@ -10,7 +10,6 @@ type ProjectItemCardProps = {
 const ProjectItemCard = ({ id, name, color }: ProjectItemCardProps) => {
   return (
     <Flex
-      key={id}
       m="-5px 10px 0 25px "
       fontSize="sm"
       justifyContent="flex-start"
