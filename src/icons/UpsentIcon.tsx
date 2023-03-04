@@ -1,13 +1,6 @@
 function UpsentIcon(props: any) {
   return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      focusable="false"
-      {...props}
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" ariaHidden="true" focusable="false" {...props}>
       <path
         fill="currentColor"
         fillRule="nonzero"

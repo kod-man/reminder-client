@@ -5,7 +5,7 @@ const SunnyIcon = (props: any) => {
       fill="currentColor"
       stroke-width="0"
       viewBox="0 0 512 512"
-      aria-hidden="true"
+      ariaHidden="true"
       focusable="false"
       height="18"
       width="18"

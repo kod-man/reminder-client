@@ -5,7 +5,7 @@ const DownloadIcon = (props: any) => {
       width="20"
       height="20"
       viewBox="0 0 20 20"
-      aria-hidden="true"
+      ariaHidden="true"
       {...props}
     >
       <path

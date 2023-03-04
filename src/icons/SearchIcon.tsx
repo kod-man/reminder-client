@@ -1,10 +1,10 @@
-const SearchIcon = (props:any) => {
+const SearchIcon = (props: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      aria-hidden="true"
+      ariaHidden="true"
       className="search_icon"
       {...props}
     >

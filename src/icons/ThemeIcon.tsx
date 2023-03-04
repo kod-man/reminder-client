@@ -1,6 +1,6 @@
 const ThemeIcon = (props: any) => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true" {...props}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" ariaHidden="true" {...props}>
       <g fill="currentColor" fillRule="evenodd">
         <path
           fillRule="nonzero"
