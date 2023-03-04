@@ -11,7 +11,7 @@ import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import { PATHS } from "../../../utils/paths";
 import DrawerCards from "./DrawerCards";
 import MyTooltip from "./MyTooltip";
-import ProjectCardComponent from "./ProjectCardComponent";
+import ProjectCard from "./ProjectCard";
 
 const DrawerData = [
   {
@@ -94,9 +94,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           </Flex>
         </Flex>
 
-        {isProjectListOpen && (
-          <ProjectCardComponent name="deneme" color="gray" />
-        )}
+        {isProjectListOpen && <ProjectCard />}
       </DrawerContent>
     </Drawer>
   );

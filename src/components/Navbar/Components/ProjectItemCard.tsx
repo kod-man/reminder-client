@@ -1,12 +1,12 @@
 import { Flex, Text } from "@chakra-ui/react";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 
-type ProjectCardComponentProps = {
-  color: string;
+type ProjectItemCardProps = {
   name: string;
+  color: string;
 };
 
-function ProjectCardComponent({ name, color }: ProjectCardComponentProps) {
+const ProjectItemCard = ({ name, color }: ProjectItemCardProps) => {
   return (
     <Flex
       m="-5px 10px 0 25px "
@@ -19,10 +19,10 @@ function ProjectCardComponent({ name, color }: ProjectCardComponentProps) {
       _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
     >
       <ColorDotIcon color={color} />
-      <Text fontSize="16px">{name}</Text>
+      <Text fontSize="16px">{name} </Text>
       <Flex ml="auto">...</Flex>
     </Flex>
   );
-}
+};
 
-export default ProjectCardComponent;
+export default ProjectItemCard;
