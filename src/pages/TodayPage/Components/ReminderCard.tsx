@@ -74,13 +74,19 @@ function ReminderCard({
             mt="1"
           />
           <Flex ml="2" direction="column">
-            <Input variant="unstyled" value={title} name="title" />
+            <Input
+              variant="unstyled"
+              value={title}
+              name="title"
+              onChange={() => console.log("fix here")}
+            />
             <Input
               variant="unstyled"
               color="gray"
               value={description}
               fontSize="xs"
               name="description"
+              onChange={() => console.log("fix here")}
             />
           </Flex>
         </Flex>

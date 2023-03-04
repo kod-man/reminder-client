@@ -22,7 +22,6 @@ function Onboard() {
           setUserName(response.data.user.userName);
           navigate(PATHS.TODAY);
         }
-        console.log(response);
       })
       .catch((err) => {
         genericErrorToast(err, toast);

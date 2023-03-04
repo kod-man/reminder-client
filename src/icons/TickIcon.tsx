@@ -6,7 +6,7 @@ function TickIcon(props: any) {
       width="12"
       height="12"
       aria-hidden="true"
-      class="dropdown_select_checkmark"
+      className="dropdown_select_checkmark"
       {...props}
     >
       <path

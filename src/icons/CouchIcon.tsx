@@ -5,7 +5,7 @@ function CouchIcon(props: any) {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      class="scheduler-suggestions-item-icon--weekend"
+      className="scheduler-suggestions-item-icon--weekend"
       aria-hidden="true"
       focusable="false"
       {...props}
