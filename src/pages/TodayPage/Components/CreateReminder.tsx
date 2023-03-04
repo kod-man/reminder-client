@@ -8,8 +8,11 @@ import {
   useToast
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../..";
 import Spinner from "../../../components/Spinner";
 import PlusIcon from "../../../icons/PlusIcon";
+import { addTodo, fetchTodos } from "../../../store/Todos/todoSlice";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
@@ -26,6 +29,8 @@ import Welcome from "./Welcome";
 
 function CreateReminder() {
   const toast = useToast();
+  const dispatch = useDispatch();
+  const reminders = useSelector((state: RootState) => state.todos);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [refreshGet, setRefreshGet] = useState(false);
@@ -37,7 +42,6 @@ function CreateReminder() {
     priority: "",
     label: ""
   });
-  const [reminders, setReminders] = useState([]);
   const [loading, setLoading] = useState(true);
   const userId = sessionStorage.getItem("userId");
   const newUserData = {
@@ -52,13 +56,13 @@ function CreateReminder() {
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     Axios.post(API.addReminder, newUserData)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         toast({
           ...defaultToastProps,
           title: "Reminder added succesfully.",
           status: "success"
         });
+        dispatch(addTodo(newUserData));
       })
       .catch((err) => {
         genericErrorToast(err, toast);
@@ -77,13 +81,13 @@ function CreateReminder() {
     Axios.get(`${API.getAllReminders}/${userId}`)
       .then((res) => {
         setLoading(false);
-        setReminders(res.data);
+        dispatch(fetchTodos(res.data));
       })
       .catch((err) => {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, refreshGet, toast]);
+  }, [userId, refreshGet, toast, dispatch]);
   return (
     <>
       {loading ? (
