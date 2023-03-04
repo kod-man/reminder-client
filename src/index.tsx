@@ -3,7 +3,7 @@ import {
   ColorModeScript,
   Flex,
   Text,
-  theme,
+  theme
 } from "@chakra-ui/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
@@ -60,8 +60,8 @@ const root = ReactDOM.createRoot(container);
 export const store = configureStore({
   reducer: {
     todos: todoReducers,
-    drawer: drawerReducers,
-  },
+    drawer: drawerReducers
+  }
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

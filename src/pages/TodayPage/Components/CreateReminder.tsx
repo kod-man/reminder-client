@@ -1,9 +1,20 @@
-import { Box, Button, Flex, Input, Text, useMediaQuery, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Input,
+  Text,
+  useMediaQuery,
+  useToast
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Spinner from "../../../components/Spinner";
 import PlusIcon from "../../../icons/PlusIcon";
 import { Axios } from "../../../utils/axios";
-import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
+import {
+  defaultToastProps,
+  genericErrorToast
+} from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
 import MenuPriority from "./MenuPriority";
 import MenuReminder from "./MenuReminder";
@@ -24,14 +35,14 @@ function CreateReminder() {
     description: "",
     date: "",
     priority: "",
-    label: "",
+    label: ""
   });
   const [reminders, setReminders] = useState([]);
   const [loading, setLoading] = useState(true);
   const userId = sessionStorage.getItem("userId");
   const newUserData = {
     userId,
-    ...toDoData,
+    ...toDoData
   };
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -46,7 +57,7 @@ function CreateReminder() {
         toast({
           ...defaultToastProps,
           title: "Reminder added succesfully.",
-          status: "success",
+          status: "success"
         });
       })
       .catch((err) => {
@@ -58,7 +69,7 @@ function CreateReminder() {
       description: "",
       date: "",
       priority: "",
-      label: "",
+      label: ""
     });
   };
 
@@ -149,7 +160,12 @@ function CreateReminder() {
           </Flex>
         </Flex>
       ) : (
-        <Flex w={isLargerThan800 ? "55%" : "80%"} mt="2" alignItems="center" cursor="pointer">
+        <Flex
+          w={isLargerThan800 ? "55%" : "80%"}
+          mt="2"
+          alignItems="center"
+          cursor="pointer"
+        >
           <Text
             _hover={{ bg: "red", color: "white" }}
             onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}

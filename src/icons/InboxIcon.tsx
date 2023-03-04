@@ -1,4 +1,4 @@
-const InboxIcon = (props:any) => {
+const InboxIcon = (props: any) => {
   return (
     <svg
       width="14"

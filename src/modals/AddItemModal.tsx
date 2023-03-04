@@ -11,7 +11,7 @@ import {
   ModalOverlay,
   Switch,
   Text,
-  useDisclosure,
+  useDisclosure
 } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
 import CustomSelects from "../components/CustomSelects";
@@ -88,7 +88,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
                 _focus={{
                   borderColor: "gray",
                   boxShadow: "none",
-                  outline: "none",
+                  outline: "none"
                 }}
               />
             </Flex>
@@ -130,7 +130,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
                   ? {
                       cursor: "not-allowed",
                       backgroundColor: "#f1b7b2",
-                      opacity: 0.5,
+                      opacity: 0.5
                     }
                   : { backgroundColor: "#e74c3c" }
               }

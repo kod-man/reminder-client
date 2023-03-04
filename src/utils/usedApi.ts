@@ -8,5 +8,5 @@ export const API = {
   deleteReminder: "reminder/delete",
   getAllFilters: "filter/all",
   addProject: "project/add",
-  getAllProjects: "project/all",
+  getAllProjects: "project/all"
 };
