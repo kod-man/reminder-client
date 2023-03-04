@@ -1,5 +1,7 @@
+import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Axios } from "../../../utils/axios";
+import { genericErrorToast } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
 import ProjectItemCard from "./ProjectItemCard";
 
@@ -12,9 +14,10 @@ type Project = {
 
 function ProjectCard( ) {
   const [projects, setProjects] = useState<Project[]>([]);
-
+  const toast = useToast();
+  const userId = sessionStorage.getItem("userId");
   useEffect(() => {
-    const userId = sessionStorage.getItem("userId");
+   
     if (!userId) return;
 
     Axios.get(`${API.getProject}/${userId}`)
@@ -22,9 +25,10 @@ function ProjectCard( ) {
         setProjects(response.data);
       })
       .catch((err) => {
-        setProjects([]);
+        genericErrorToast(err, toast);
       });
-  }, []);
+
+  }, [userId , toast]);
 
   return (
     <>
