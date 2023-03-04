@@ -23,7 +23,6 @@ function ProjectCard({ name, color }: ProjectCardProps) {
 
     Axios.get(`${API.getProject}/${userId}`)
       .then((response) => {
-        console.log(response.data);
         setProjects(response.data);
       })
       .catch((err) => {
