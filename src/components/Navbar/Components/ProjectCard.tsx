@@ -3,10 +3,6 @@ import { Axios } from "../../../utils/axios";
 import { API } from "../../../utils/usedApi";
 import ProjectItemCard from "./ProjectItemCard";
 
-type ProjectCardProps = {
-  color: string;
-  name: string;
-};
 
 type Project = {
   id: number;
@@ -14,7 +10,7 @@ type Project = {
   color: string;
 };
 
-function ProjectCard({ name, color }: ProjectCardProps) {
+function ProjectCard( ) {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {

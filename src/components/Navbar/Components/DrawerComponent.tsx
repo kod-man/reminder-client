@@ -94,7 +94,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           </Flex>
         </Flex>
 
-        {isProjectListOpen && <ProjectCard name="deneme" color="gray" />}
+        {isProjectListOpen && <ProjectCard  />}
       </DrawerContent>
     </Drawer>
   );
