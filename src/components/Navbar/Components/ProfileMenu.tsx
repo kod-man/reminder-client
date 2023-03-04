@@ -46,7 +46,7 @@ const ProfileMenu = () => {
 
   useEffect(() => {
     const userId = sessionStorage.getItem("userId");
-    Axios.get(`${API.getUser}/${userId}`)
+    Axios.get(`${API.getUserDetails}/${userId}`)
       .then((response) => {
         const { userName, email, imageSrc } = response.data.user;
         setName(userName);
@@ -115,10 +115,7 @@ const ProfileMenu = () => {
                 borderRadius="50%"
                 p={1}
               >
-                <ConditionallyImage
-                  imageSrc={profileImg}
-                  initials={nameInitials}
-                />
+                <ConditionallyImage imageSrc={profileImg} initials={nameInitials} />
               </Flex>
               <VStack>
                 <Flex flexDir="column" m={2}>
@@ -131,11 +128,7 @@ const ProfileMenu = () => {
                 </Flex>
               </VStack>
             </Flex>
-            <Flex
-              alignItems="center"
-              justifyContent="flex-start"
-              paddingLeft="10px"
-            >
+            <Flex alignItems="center" justifyContent="flex-start" paddingLeft="10px">
               <SettingsIcon color="#808080" />
               <Text ml="12px" fontSize="small">
                 Settings

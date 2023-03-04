@@ -63,7 +63,7 @@ function CreateReminder() {
   };
 
   useEffect(() => {
-    Axios.get(`${API.allReminder}/${userId}`)
+    Axios.get(`${API.getAllReminders}/${userId}`)
       .then((res) => {
         setLoading(false);
         setReminders(res.data);

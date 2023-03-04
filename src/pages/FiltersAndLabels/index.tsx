@@ -6,11 +6,11 @@ import MiniLabelIcon from "../../icons/MiniLabelIcon";
 import FiltersAndLabels from "./components/FiltersAndLabels";
 
 import { useEffect, useState } from "react";
+import Spinner from "../../components/Spinner";
 import { Axios } from "../../utils/axios";
 import { genericErrorToast } from "../../utils/genericToast";
-import Spinner from "../../components/Spinner";
-import Header from "./components/Header";
 import { API } from "../../utils/usedApi";
+import Header from "./components/Header";
 
 function FiltersAndLabelsPage() {
   const toast = useToast();
@@ -22,7 +22,7 @@ function FiltersAndLabelsPage() {
   const userId = sessionStorage.getItem("userId");
 
   useEffect(() => {
-    Axios.get(`${API.getAllFilter}/${userId}`)
+    Axios.get(`${API.getAllFilters}/${userId}`)
       .then((response) => {
         setLoading(false);
         if (response.data) {
@@ -48,16 +48,8 @@ function FiltersAndLabelsPage() {
         <Spinner />
       ) : (
         <>
-          <FiltersAndLabels
-            cardTitle="Filters"
-            data={filtersData}
-            Icon={DropIcon}
-          />
-          <FiltersAndLabels
-            cardTitle="Labels"
-            data={labelsList}
-            Icon={MiniLabelIcon}
-          />
+          <FiltersAndLabels cardTitle="Filters" data={filtersData} Icon={DropIcon} />
+          <FiltersAndLabels cardTitle="Labels" data={labelsList} Icon={MiniLabelIcon} />
         </>
       )}
     </Flex>

@@ -15,7 +15,7 @@ function Onboard() {
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState("");
   useEffect(() => {
-    Axios.get(`${API.getUser}/${userId}`)
+    Axios.get(`${API.getUserDetails}/${userId}`)
       .then((response) => {
         setLoading(false);
         if (response.data.user.userName) {
