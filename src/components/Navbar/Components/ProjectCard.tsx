@@ -20,7 +20,7 @@ function ProjectCard() {
       return;
     }
 
-    Axios.get(`${API.getProject}/${userId}`)
+    Axios.get(`${API.getAllProjects}/${userId}`)
       .then((response) => {
         setProjects(response.data);
       })
