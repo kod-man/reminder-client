@@ -1,5 +1,5 @@
 import {
-  Button,
+  Box,
   Divider,
   Menu,
   MenuButton,
@@ -36,7 +36,6 @@ function MenuThreeDote() {
   return (
     <Menu>
       <MenuButton
-        as={Button}
         bg="white"
         border="1px"
         borderColor="gray.300"
@@ -60,15 +59,15 @@ function MenuThreeDote() {
       </MenuButton>
       <MenuList>
         {menuItemsThreeDote.map((item) => (
-          <>
-            <MenuItem key={item.text}>
+          <Box key={item.text}>
+            <MenuItem>
               {item.icon}
               <Text ml="2">{item.text}</Text>
               <Spacer />
               {item.sign ? item.sign : null}
             </MenuItem>
             {item.hasDivider ? <Divider /> : null}
-          </>
+          </Box>
         ))}
         <MenuItem color="red">Edit task actions</MenuItem>
       </MenuList>
