@@ -2,12 +2,11 @@ import { Flex, Text } from "@chakra-ui/react";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 
 type ProjectItemCardProps = {
-  id: number;
   name: string;
   color: string;
 };
 
-const ProjectItemCard = ({ id, name, color }: ProjectItemCardProps) => {
+const ProjectItemCard = ({ name, color }: ProjectItemCardProps) => {
   return (
     <Flex
       m="-5px 10px 0 25px "
