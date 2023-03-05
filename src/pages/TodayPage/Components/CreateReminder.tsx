@@ -33,7 +33,6 @@ function CreateReminder() {
   const reminders = useSelector((state: RootState) => state.todos);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
-  const [refreshGet, setRefreshGet] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const [toDoData, setToDoData] = useState({
     title: "",
@@ -67,7 +66,6 @@ function CreateReminder() {
       .catch((err) => {
         genericErrorToast(err, toast);
       });
-    setRefreshGet(!refreshGet);
     setToDoData({
       title: "",
       description: "",
@@ -87,7 +85,7 @@ function CreateReminder() {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, refreshGet, toast, dispatch]);
+  }, [userId, toast, dispatch]);
   return (
     <>
       {loading ? (
@@ -99,8 +97,6 @@ function CreateReminder() {
             title={reminder.title}
             description={reminder.description}
             id={reminder._id}
-            refreshGet={refreshGet}
-            setRefreshGet={setRefreshGet}
           />
         ))
       )}

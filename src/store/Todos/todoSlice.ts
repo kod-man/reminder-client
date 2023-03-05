@@ -16,9 +16,11 @@ export const todoSlice = createSlice({
     },
     addTodo: (state, action) => {
       state = [...state, action.payload];
+      return state;
     },
     deleteTodo: (state, action) => {
       state = state.filter((todo) => todo._id !== action.payload);
+      return state;
     }
     // Use the PayloadAction type to declare the contents of `action.payload`
   }

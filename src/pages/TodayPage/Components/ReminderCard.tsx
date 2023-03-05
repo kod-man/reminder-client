@@ -25,17 +25,9 @@ type ReminderCardProps = {
   title: string;
   description: string;
   id: string;
-  setRefreshGet: React.Dispatch<React.SetStateAction<boolean>>;
-  refreshGet: Boolean;
 };
 
-function ReminderCard({
-  title,
-  description,
-  id,
-  setRefreshGet,
-  refreshGet
-}: ReminderCardProps) {
+function ReminderCard({ title, description, id }: ReminderCardProps) {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
@@ -55,7 +47,6 @@ function ReminderCard({
       .catch((err) => {
         genericErrorToast(err, toast);
       });
-    setRefreshGet(!refreshGet);
   };
 
   return (
