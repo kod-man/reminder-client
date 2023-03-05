@@ -7,11 +7,9 @@ import {
   useToast
 } from "@chakra-ui/react";
 import { RefObject, useRef } from "react";
-import { useDispatch } from "react-redux";
 
 import TreeDoteIcon from "../../../icons/TreeDoteIcon";
 import ConfirmModal from "../../../modals/ConfirmModal";
-import { deleteTodo } from "../../../store/Todos/todoSlice";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
@@ -25,12 +23,19 @@ type ReminderCardProps = {
   title: string;
   description: string;
   id: string;
+  setRefreshGet: React.Dispatch<React.SetStateAction<boolean>>;
+  refreshGet: Boolean;
 };
 
-function ReminderCard({ title, description, id }: ReminderCardProps) {
+function ReminderCard({
+  title,
+  description,
+  id,
+  refreshGet,
+  setRefreshGet
+}: ReminderCardProps) {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const dispatch = useDispatch();
   const cancelRef = useRef() as RefObject<HTMLButtonElement>;
   const toast = useToast();
   const deleteHandler = (e: any) => {
@@ -42,11 +47,11 @@ function ReminderCard({ title, description, id }: ReminderCardProps) {
           title: "Reminder removed succesfully.",
           status: "success"
         });
-        dispatch(deleteTodo(id));
       })
       .catch((err) => {
         genericErrorToast(err, toast);
       });
+    setRefreshGet(!refreshGet);
   };
 
   return (

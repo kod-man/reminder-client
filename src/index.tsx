@@ -13,11 +13,10 @@ import { App } from "./App";
 import { configureStore } from "@reduxjs/toolkit";
 import { ErrorBoundary } from "react-error-boundary";
 import { Provider } from "react-redux";
+import XIcon from "./icons/XIcon";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 import drawerReducers from "./store/Drawer/drawerSlice";
-import todoReducers from "./store/Todos/todoSlice";
-import XIcon from "./icons/XIcon";
 
 function ErrorFallback({ error }: { error: any }) {
   return (
@@ -59,7 +58,6 @@ const root = ReactDOM.createRoot(container);
 
 export const store = configureStore({
   reducer: {
-    todos: todoReducers,
     drawer: drawerReducers
   }
 });

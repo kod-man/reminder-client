@@ -8,11 +8,9 @@ import {
   useToast
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../..";
+import { useDispatch } from "react-redux";
 import Spinner from "../../../components/Spinner";
 import PlusIcon from "../../../icons/PlusIcon";
-import { addTodo, fetchTodos } from "../../../store/Todos/todoSlice";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
@@ -30,8 +28,9 @@ import Welcome from "./Welcome";
 function CreateReminder() {
   const toast = useToast();
   const dispatch = useDispatch();
-  const reminders = useSelector((state: RootState) => state.todos);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+  const [refreshGet, setRefreshGet] = useState(false);
+  const [reminders, setReminders] = useState<Reminder[]>([]);
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const [toDoData, setToDoData] = useState({
@@ -61,11 +60,12 @@ function CreateReminder() {
           title: "Reminder added succesfully.",
           status: "success"
         });
-        dispatch(addTodo(newUserData));
+        setRefreshGet(!refreshGet);
       })
       .catch((err) => {
         genericErrorToast(err, toast);
       });
+
     setToDoData({
       title: "",
       description: "",
@@ -79,13 +79,13 @@ function CreateReminder() {
     Axios.get(`${API.getAllReminders}/${userId}`)
       .then((res) => {
         setLoading(false);
-        dispatch(fetchTodos(res.data));
+        setReminders(res.data);
       })
       .catch((err) => {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, toast, dispatch]);
+  }, [userId, refreshGet, toast, dispatch]);
   return (
     <>
       {loading ? (
@@ -97,6 +97,8 @@ function CreateReminder() {
             title={reminder.title}
             description={reminder.description}
             id={reminder._id}
+            refreshGet={refreshGet}
+            setRefreshGet={setRefreshGet}
           />
         ))
       )}
