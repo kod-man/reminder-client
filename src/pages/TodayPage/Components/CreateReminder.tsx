@@ -8,9 +8,11 @@ import {
   useToast
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../..";
 import Spinner from "../../../components/Spinner";
 import PlusIcon from "../../../icons/PlusIcon";
+import { refreshTodos } from "../../../store/Reminder/ReminderSlice";
 import { Axios } from "../../../utils/axios";
 import {
   defaultToastProps,
@@ -28,8 +30,8 @@ import Welcome from "./Welcome";
 function CreateReminder() {
   const toast = useToast();
   const dispatch = useDispatch();
+  const refresh = useSelector((state: RootState) => state.reminder);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
-  const [refreshGet, setRefreshGet] = useState(false);
   const [reminders, setReminders] = useState<Reminder[]>([]);
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
@@ -60,7 +62,6 @@ function CreateReminder() {
           title: "Reminder added succesfully.",
           status: "success"
         });
-        setRefreshGet(!refreshGet);
       })
       .catch((err) => {
         genericErrorToast(err, toast);
@@ -80,12 +81,13 @@ function CreateReminder() {
       .then((res) => {
         setLoading(false);
         setReminders(res.data);
+        dispatch(refreshTodos());
       })
       .catch((err) => {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, refreshGet, toast, dispatch]);
+  }, [userId, refresh, toast, dispatch]);
   return (
     <>
       {loading ? (
@@ -97,8 +99,6 @@ function CreateReminder() {
             title={reminder.title}
             description={reminder.description}
             id={reminder._id}
-            refreshGet={refreshGet}
-            setRefreshGet={setRefreshGet}
           />
         ))
       )}
