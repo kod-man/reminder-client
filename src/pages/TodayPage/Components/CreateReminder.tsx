@@ -62,6 +62,7 @@ function CreateReminder() {
           title: "Reminder added succesfully.",
           status: "success"
         });
+        dispatch(refreshTodos());
       })
       .catch((err) => {
         genericErrorToast(err, toast);
@@ -81,7 +82,6 @@ function CreateReminder() {
       .then((res) => {
         setLoading(false);
         setReminders(res.data);
-        dispatch(refreshTodos());
       })
       .catch((err) => {
         genericErrorToast(err, toast);

@@ -14,6 +14,7 @@ function Onboard() {
   const userId = sessionStorage.getItem("userId");
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState("");
+
   useEffect(() => {
     Axios.get(`${API.getUserDetails}/${userId}`)
       .then((response) => {
