@@ -46,7 +46,7 @@ type DrawerProps = {
 };
 
 const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
-  const [isProjectListOpen, setIsProjectListOpen] = useState(false);
+  const [isProjectListOpen, setIsProjectListOpen] = useState(true);
 
   const dispatch = useDispatch();
   return (
