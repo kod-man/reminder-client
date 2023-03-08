@@ -53,3 +53,43 @@ const PassRqrmt = () => {
 };
 
 export default PassRqrmt;
+
+// import { Flex, Text } from "@chakra-ui/react";
+// interface Props {
+//   name: string;
+//   value: string;
+// }
+
+// const PassRqrmt = ({ name, value }: Props) => {
+//   if (name === "password") {
+//     return (
+//       <Flex wrap="wrap">
+//         {!value && <Text color="black">Password is required! </Text>}
+//         {value && value.length < 7 && (
+//           <Text color="black">Password needs to be 7 characters or more! </Text>
+//         )}
+//         {value && !/\d/.test(value) && (
+//           <Text color="black">Password must contain at least one number! </Text>
+//         )}
+//         {value && !/[A-Z]/.test(value) && (
+//           <Text color="black">
+//             Password must contain at least one upperCase!{" "}
+//           </Text>
+//         )}
+//         {value && !/[a-z]/.test(value) && (
+//           <Text color="black">
+//             Password must contain at least one lowerCase!{" "}
+//           </Text>
+//         )}
+//         {value && !/\W|_/g.test(value) && (
+//           <Text color="black">
+//             Password must contain at least one special character(symbol)!{" "}
+//           </Text>
+//         )}
+//       </Flex>
+//     );
+//   }
+
+// };
+
+// export default PassRqrmt;
