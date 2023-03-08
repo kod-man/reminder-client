@@ -41,9 +41,7 @@ function Onboard() {
           <Flex p="4" mt="13" ml="83" h={28}>
             <Todoist />
           </Flex>
-          <Flex flexDirection="column" justifyContent="center" mb="40">
-            <OnboardingCard />
-          </Flex>
+          <OnboardingCard />
         </>
       )}
     </>

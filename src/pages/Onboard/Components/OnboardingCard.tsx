@@ -23,18 +23,17 @@ function OnboardingCard() {
   const [preview, setPreview] = useState("");
   const toast = useToast();
   const navigate = useNavigate();
+  const userId = sessionStorage.getItem("userId");
 
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    const userId = sessionStorage.getItem("userId");
     const newUserData = {
       userId,
       userName: name,
       imageSrc: preview
     };
     Axios.put(API.username, newUserData)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         toast({
           ...defaultToastProps,
           title: "Your data has been saved.",
@@ -68,7 +67,7 @@ function OnboardingCard() {
   };
 
   return (
-    <>
+    <Flex flexDirection="column" justifyContent="center" mb="40">
       <Header />
       <Flex flexDirection="column" justifyContent="center" alignItems="center">
         <Flex
@@ -176,7 +175,7 @@ function OnboardingCard() {
           Start Todoist
         </Button>
       </Flex>
-    </>
+    </Flex>
   );
 }
 
