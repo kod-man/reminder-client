@@ -1,7 +1,14 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import RedTickIcon from "../../../icons/RedTickIcon";
 
-const PassRqrmt = () => {
+const PassRqrmt = ({
+  formErrors
+}: {
+  formErrors: {
+    email: string;
+    password: string;
+  };
+}) => {
   return (
     <Flex
       flexDirection="column"
@@ -15,37 +22,37 @@ const PassRqrmt = () => {
       <Flex flexDirection="row" alignItems="flex-start">
         <Icon as={RedTickIcon} color="green.500" />
         <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
-          Password is required!
+          Required!
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
         <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
-          Password needs to be 7 characters or more!
+          At least seven characters
+        </Text>
+      </Flex>
+      <Flex>
+        <Icon as={RedTickIcon} color="green.500" />
+        <Text fontSize="sm" fontWeight="bold" fontFamily="unset" color="green">
+          At least one number
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
         <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
-          Password must contain at least one number!
+          At least one upperCase!
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
         <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
-          Password must contain at least one upperCase!
+          At least one lowerCase!
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
         <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
-          Password must contain at least one lowerCase!
-        </Text>
-      </Flex>
-      <Flex>
-        <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
-          Password must contain at least one special character(symbol)!
+          At least one special character(symbol)!
         </Text>
       </Flex>
     </Flex>

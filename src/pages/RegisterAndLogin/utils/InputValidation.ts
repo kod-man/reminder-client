@@ -3,7 +3,6 @@ export const InputValidation = (name: string, value: string) => {
     email: "",
     password: ""
   };
-
   if (name === "email") {
     if (!value) {
       errors[name] = "Email is required";

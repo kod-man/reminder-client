@@ -20,7 +20,7 @@ import {
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import { InputValidation } from "../utils/InputValidation";
-import PassRqrmt from "./PassRqrmt";
+// import PassRqrmt from "./PassRqrmt";
 
 const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
@@ -47,6 +47,7 @@ const Inputs = ({ page }: { page: string }) => {
 
     // Error handling
     const errors = InputValidation(name, value);
+    alert(JSON.stringify(errors, null, 2));
 
     setFormErros((prev) => ({
       ...prev,
@@ -135,7 +136,7 @@ const Inputs = ({ page }: { page: string }) => {
               children={open ? <VisibleIcon /> : <InvisibleIcon />}
             />
           </InputGroup>
-          <PassRqrmt />
+          {/* <PassRqrmt /> */}
           {formErrors.password ? (
             <Text color="red" as="i">
               {formErrors.password}
