@@ -20,7 +20,7 @@ import {
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import { InputValidation } from "../utils/InputValidation";
-// import PassRqrmt from "./PassRqrmt";
+import PassRqrmt from "./PassRqrmt";
 
 const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
@@ -136,12 +136,7 @@ const Inputs = ({ page }: { page: string }) => {
               children={open ? <VisibleIcon /> : <InvisibleIcon />}
             />
           </InputGroup>
-          {/* <PassRqrmt /> */}
-          {formErrors.password ? (
-            <Text color="red" as="i">
-              {formErrors.password}
-            </Text>
-          ) : null}
+          <PassRqrmt formData={formData} />
         </Stack>
       </FormControl>
       <Button

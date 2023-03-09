@@ -2,13 +2,20 @@ import { Flex, Icon, Text } from "@chakra-ui/react";
 import RedTickIcon from "../../../icons/RedTickIcon";
 
 const PassRqrmt = ({
-  formErrors
+  formData
 }: {
-  formErrors: {
+  formData: {
     email: string;
     password: string;
   };
 }) => {
+  const { password } = formData;
+  const hasPsValue = password;
+  const hasPsassword7chars = password.length > 6;
+  const hasPsNumber = !/\d/.test(password);
+  const hasPsUpperCase = !/[A-Z]/.test(password);
+  const hasPsSmallCase = !/[a-z]/.test(password);
+  const hasPsSymbol = !/\W|_/g.test(password);
   return (
     <Flex
       flexDirection="column"
@@ -21,37 +28,41 @@ const PassRqrmt = ({
     >
       <Flex flexDirection="row" alignItems="flex-start">
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
+        <Text
+          fontSize="sm"
+          fontFamily="unset"
+          color={hasPsValue ? "green" : "gray"}
+        >
           Required!
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
+        <Text fontSize="sm" fontFamily="unset">
           At least seven characters
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontWeight="bold" fontFamily="unset" color="green">
+        <Text fontSize="sm" fontFamily="unset">
           At least one number
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
+        <Text fontSize="sm" fontFamily="unset">
           At least one upperCase!
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
+        <Text fontSize="sm" fontFamily="unset">
           At least one lowerCase!
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontWeight="bold" fontFamily="unset">
+        <Text fontSize="sm" fontFamily="unset">
           At least one special character(symbol)!
         </Text>
       </Flex>
