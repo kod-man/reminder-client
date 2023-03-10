@@ -13,7 +13,7 @@ import {
   TabPanels,
   Tabs,
   Text,
-  Tooltip,
+  Tooltip
 } from "@chakra-ui/react";
 import BellIcon from "../../../icons/BellIcon";
 import MarkIcon from "../../../icons/MarkIcon";
@@ -40,7 +40,7 @@ const Notification = () => {
                 style={{
                   fontSize: "14px",
                   padding: "5px",
-                  margin: "5px",
+                  margin: "5px"
                 }}
                 _selected={{ color: "gray", bg: "white" }}
               >
@@ -50,7 +50,7 @@ const Notification = () => {
                 style={{
                   fontSize: "14px",
                   padding: "5px",
-                  margin: "5px",
+                  margin: "5px"
                 }}
                 _selected={{ color: "gray", bg: "white" }}
               >

@@ -1,9 +1,23 @@
-import { Box, Button, Flex, Input, Text, useMediaQuery, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Input,
+  Text,
+  useMediaQuery,
+  useToast
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../..";
 import Spinner from "../../../components/Spinner";
 import PlusIcon from "../../../icons/PlusIcon";
+import { refreshTodos } from "../../../store/Reminder/ReminderSlice";
 import { Axios } from "../../../utils/axios";
-import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
+import {
+  defaultToastProps,
+  genericErrorToast
+} from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
 import MenuPriority from "./MenuPriority";
 import MenuReminder from "./MenuReminder";
@@ -15,23 +29,24 @@ import Welcome from "./Welcome";
 
 function CreateReminder() {
   const toast = useToast();
+  const dispatch = useDispatch();
+  const refresh = useSelector((state: RootState) => state.reminder);
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+  const [reminders, setReminders] = useState<Reminder[]>([]);
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
-  const [refreshGet, setRefreshGet] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const [toDoData, setToDoData] = useState({
     title: "",
     description: "",
     date: "",
     priority: "",
-    label: "",
+    label: ""
   });
-  const [reminders, setReminders] = useState([]);
   const [loading, setLoading] = useState(true);
   const userId = sessionStorage.getItem("userId");
   const newUserData = {
     userId,
-    ...toDoData,
+    ...toDoData
   };
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -41,38 +56,38 @@ function CreateReminder() {
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     Axios.post(API.addReminder, newUserData)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         toast({
           ...defaultToastProps,
           title: "Reminder added succesfully.",
-          status: "success",
+          status: "success"
         });
       })
       .catch((err) => {
         genericErrorToast(err, toast);
       });
-    setRefreshGet(!refreshGet);
+
     setToDoData({
       title: "",
       description: "",
       date: "",
       priority: "",
-      label: "",
+      label: ""
     });
   };
 
   useEffect(() => {
-    Axios.get(`${API.allReminder}/${userId}`)
+    Axios.get(`${API.getAllReminders}/${userId}`)
       .then((res) => {
         setLoading(false);
         setReminders(res.data);
+        dispatch(refreshTodos());
       })
       .catch((err) => {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, refreshGet, toast]);
+  }, [userId, refresh, toast, dispatch]);
   return (
     <>
       {loading ? (
@@ -84,8 +99,6 @@ function CreateReminder() {
             title={reminder.title}
             description={reminder.description}
             id={reminder._id}
-            refreshGet={refreshGet}
-            setRefreshGet={setRefreshGet}
           />
         ))
       )}
@@ -149,7 +162,12 @@ function CreateReminder() {
           </Flex>
         </Flex>
       ) : (
-        <Flex w={isLargerThan800 ? "55%" : "80%"} mt="2" alignItems="center" cursor="pointer">
+        <Flex
+          w={isLargerThan800 ? "55%" : "80%"}
+          mt="2"
+          alignItems="center"
+          cursor="pointer"
+        >
           <Text
             _hover={{ bg: "red", color: "white" }}
             onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}

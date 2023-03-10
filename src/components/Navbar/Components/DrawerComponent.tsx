@@ -11,33 +11,33 @@ import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import { PATHS } from "../../../utils/paths";
 import DrawerCards from "./DrawerCards";
 import MyTooltip from "./MyTooltip";
-import ProjectCardComponent from "./ProjectCardComponent";
+import ProjectCard from "./ProjectCard";
 
 const DrawerData = [
   {
     Icon: InboxDrawerIcon,
     text: "Inbox",
     iconColor: "blue",
-    path: PATHS.INBOX,
+    path: PATHS.INBOX
   },
   {
     Icon: TodayDrawerIcon,
     text: "Today",
     iconColor: "green",
-    path: PATHS.TODAY,
+    path: PATHS.TODAY
   },
   {
     Icon: UpcomingTcon,
     text: "Upcoming",
     iconColor: "purple",
-    path: PATHS.UPCOMING,
+    path: PATHS.UPCOMING
   },
   {
     Icon: FilterIcon,
     text: "Filters & Labels",
     iconColor: "orange",
-    path: PATHS.FILTERSANDLABELS,
-  },
+    path: PATHS.FILTERSANDLABELS
+  }
 ];
 
 type DrawerProps = {
@@ -46,7 +46,7 @@ type DrawerProps = {
 };
 
 const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
-  const [isProjectListOpen, setIsProjectListOpen] = useState(false);
+  const [isProjectListOpen, setIsProjectListOpen] = useState(true);
 
   const [refreshGet, setRefreshGet] = useState(false);
   const refreshPage = () => {
@@ -99,9 +99,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           </Flex>
         </Flex>
 
-        {isProjectListOpen && (
-          <ProjectCardComponent name="deneme" color="gray" />
-        )}
+        {isProjectListOpen && <ProjectCard />}
       </DrawerContent>
     </Drawer>
   );

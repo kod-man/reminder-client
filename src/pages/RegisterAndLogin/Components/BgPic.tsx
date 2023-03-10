@@ -5,23 +5,23 @@ const data = [
   {
     src: "https://d3ptyyxy2at9ui.cloudfront.net/assets/images/ae01c415678c90d0c606bc6917758502.jpg",
     text1: "30 million+",
-    text2: "app dowloads",
+    text2: "app dowloads"
   },
   {
     src: "https://d3ptyyxy2at9ui.cloudfront.net/assets/images/573fa908fbccdf1600f90f16a0c2e311.jpg",
     text1: "15 years+",
-    text2: "in business ",
+    text2: "in business "
   },
   {
     src: "https://d3ptyyxy2at9ui.cloudfront.net/assets/images/87ded242639ba32ef4d0e6c21c9f30aa.jpg",
     text1: "2 billion+",
-    text2: "tasks completed",
+    text2: "tasks completed"
   },
   {
     src: "https://d3ptyyxy2at9ui.cloudfront.net/assets/images/ba90575091d9eafd60f851f7297cb202.jpg",
     text1: "1 million+",
-    text2: "pro users ",
-  },
+    text2: "pro users "
+  }
 ];
 
 const BgPics = () => {
@@ -38,7 +38,12 @@ const BgPics = () => {
       >
         <>
           {data.map((item) => (
-            <Card key={item.src} src={item.src} text1={item.text1} text2={item.text2} />
+            <Card
+              key={item.src}
+              src={item.src}
+              text1={item.text1}
+              text2={item.text2}
+            />
           ))}
         </>
       </Grid>

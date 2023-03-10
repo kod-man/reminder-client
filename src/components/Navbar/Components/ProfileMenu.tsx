@@ -7,7 +7,7 @@ import {
   MenuList,
   Text,
   useToast,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -34,7 +34,7 @@ const ProfilMenuData = [
   { Icon: IntegrationIcon, text: "Integrations" },
   { Icon: UpgradeIcon, text: "Upgrade to Pro" },
   { Icon: BusinessIcon, text: "Upgarde to Business" },
-  { Icon: DownloadIcon, text: "Download apps" },
+  { Icon: DownloadIcon, text: "Download apps" }
 ];
 const ProfileMenu = () => {
   const navigate = useNavigate();
@@ -46,7 +46,7 @@ const ProfileMenu = () => {
 
   useEffect(() => {
     const userId = sessionStorage.getItem("userId");
-    Axios.get(`${API.getUser}/${userId}`)
+    Axios.get(`${API.getUserDetails}/${userId}`)
       .then((response) => {
         const { userName, email, imageSrc } = response.data.user;
         setName(userName);

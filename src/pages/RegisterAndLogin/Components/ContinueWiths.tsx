@@ -7,13 +7,13 @@ import CardCW from "./CardCW";
 const dataBtn = [
   {
     text: "Google",
-    Icon: GoogleIcon,
+    Icon: GoogleIcon
   },
   { text: "Facebook", Icon: FacebookIcon },
   {
     text: "Apple",
-    Icon: AppleIcon,
-  },
+    Icon: AppleIcon
+  }
 ];
 
 const ContinueWiths = () => {

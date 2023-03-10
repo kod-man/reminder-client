@@ -1,12 +1,12 @@
 import {
-  Button,
+  Box,
   Divider,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
   Spacer,
-  Text,
+  Text
 } from "@chakra-ui/react";
 import ArrowIcon from "../../../icons/ArrowIcon";
 import JigsawIcon from "../../../icons/JigsawIcon";
@@ -17,26 +17,25 @@ const menuItemsThreeDote = [
     icon: <TicketIcon />,
     text: "Labels",
     sign: "@",
-    hasDivider: false,
+    hasDivider: false
   },
   {
     icon: <ArrowIcon />,
     text: "Move to project",
     sign: "#",
-    hasDivider: true,
+    hasDivider: true
   },
   {
     icon: <JigsawIcon />,
     text: "Add extension...",
-    hasDivider: true,
-  },
+    hasDivider: true
+  }
 ];
 
 function MenuThreeDote() {
   return (
     <Menu>
       <MenuButton
-        as={Button}
         bg="white"
         border="1px"
         borderColor="gray.300"
@@ -48,21 +47,27 @@ function MenuThreeDote() {
         p="0"
         minWidth="32px"
       >
-        <Text display="flex" justifyContent="center" fontSize="2xl" mb="3" color="gray">
+        <Text
+          display="flex"
+          justifyContent="center"
+          fontSize="2xl"
+          mb="3"
+          color="gray"
+        >
           ...
         </Text>
       </MenuButton>
       <MenuList>
         {menuItemsThreeDote.map((item) => (
-          <>
-            <MenuItem key={item.text}>
+          <Box key={item.text}>
+            <MenuItem>
               {item.icon}
               <Text ml="2">{item.text}</Text>
               <Spacer />
               {item.sign ? item.sign : null}
             </MenuItem>
             {item.hasDivider ? <Divider /> : null}
-          </>
+          </Box>
         ))}
         <MenuItem color="red">Edit task actions</MenuItem>
       </MenuList>

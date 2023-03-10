@@ -11,7 +11,7 @@ const COLORS = [
   "blue",
   "teal",
   "purple",
-  "gray",
+  "gray"
 ];
 
 const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
@@ -36,17 +36,17 @@ const CustomSelects = ({ ...props }) => {
           padding: "2px 0px",
           borderColor: "gray",
           "&:hover": {
-            borderColor: "gray",
+            borderColor: "gray"
           },
           boxShadow: state.isFocused ? "none" : base.boxShadow,
-          outline: "none",
-        }),
+          outline: "none"
+        })
       }}
       components={{ Option: CustomOption }}
       options={COLORS.map((color) => ({
         value: color,
         label: color,
-        key: color,
+        key: color
       }))}
       formatOptionLabel={(selectedOption) => (
         <Flex alignItems="center">

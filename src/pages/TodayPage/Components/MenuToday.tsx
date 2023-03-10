@@ -9,7 +9,7 @@ import {
   MenuList,
   Spacer,
   Text,
-  Tooltip,
+  Tooltip
 } from "@chakra-ui/react";
 import CouchIcon from "../../../icons/CouchIcon";
 import DeleteIcon from "../../../icons/DeleteIcon";
@@ -24,14 +24,14 @@ function MenuToday() {
   const formatNextWeekOptions: Intl.DateTimeFormatOptions = {
     weekday: "short",
     day: "numeric",
-    month: "short",
+    month: "short"
   };
   const formatTomorrowOptions: Intl.DateTimeFormatOptions = {
-    weekday: "short",
+    weekday: "short"
   };
   const formatTodayOptions: Intl.DateTimeFormatOptions = {
     month: "short",
-    day: "numeric",
+    day: "numeric"
   };
   const today = date.toLocaleDateString("en-US", formatTodayOptions);
   const tomorrow = weeksDate.toLocaleDateString("en-US", formatTomorrowOptions);
@@ -41,17 +41,17 @@ function MenuToday() {
     {
       icon: <SunIcon color="orange" />,
       text1: "Tomorrow",
-      text2: tomorrow,
+      text2: tomorrow
     },
     {
       icon: <CouchIcon color="blue" />,
       text1: "Next weekend",
-      text2: nextWeek,
+      text2: nextWeek
     },
     {
       icon: <UpsentIcon />,
-      text1: "No date",
-    },
+      text1: "No date"
+    }
   ];
 
   return (
@@ -71,7 +71,12 @@ function MenuToday() {
           leftIcon={<TodayIcon />}
           rightIcon={
             <Tooltip hasArrow label="Remove due date" placement="top">
-              <Button p="0 1 0 0" size="xs" bg="gray.200" _hover={{ bg: "#DCDCDC" }}>
+              <Button
+                p="0 1 0 0"
+                size="xs"
+                bg="gray.200"
+                _hover={{ bg: "#DCDCDC" }}
+              >
                 <DeleteIcon />
               </Button>
             </Tooltip>
@@ -86,7 +91,7 @@ function MenuToday() {
         <MenuGroup title={today}>
           <MenuDivider />
           {menuItemsToday.map((item) => (
-            <MenuItem>
+            <MenuItem key={item.text1}>
               {item.icon}
               <Text ml="2">{item.text1}</Text>
               <Spacer />

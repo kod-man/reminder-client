@@ -12,7 +12,7 @@ import {
   Switch,
   Text,
   useDisclosure,
-  useToast,
+  useToast
 } from "@chakra-ui/react";
 import React from "react";
 import CustomSelects from "../components/CustomSelects";
@@ -47,14 +47,14 @@ const AddProjectModal = () => {
     name,
     color,
     userId: sessionStorage.getItem("userId"),
-    isFavorite,
+    isFavorite
   };
 
   const submitHandler = () => {
     if (!name) {
       toast({
         title: "Name is required.",
-        status: "error",
+        status: "error"
       });
       return;
     }
@@ -63,7 +63,7 @@ const AddProjectModal = () => {
         toast({
           ...defaultToastProps,
           title: "Project added successfully.",
-          status: "success",
+          status: "success"
         });
       })
       .catch((err) => {
@@ -114,7 +114,7 @@ const AddProjectModal = () => {
                 _focus={{
                   borderColor: "gray",
                   boxShadow: "none",
-                  outline: "none",
+                  outline: "none"
                 }}
                 value={name}
                 onChange={handleNameChange}
@@ -165,7 +165,7 @@ const AddProjectModal = () => {
                   ? {
                       cursor: "not-allowed",
                       backgroundColor: "#f1b7b2",
-                      opacity: 0.5,
+                      opacity: 0.5
                     }
                   : { backgroundColor: "#e74c3c" }
               }

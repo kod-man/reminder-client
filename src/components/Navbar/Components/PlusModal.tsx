@@ -26,7 +26,7 @@ import {
   Stack,
   Text,
   useDisclosure,
-  VStack,
+  VStack
 } from "@chakra-ui/react";
 import React from "react";
 import ClockIcon from "../../../icons/ClockIcon";
@@ -44,10 +44,10 @@ import MyTooltip from "./MyTooltip";
 const prioData = [
   {
     text: "Low",
-    color: "gray",
+    color: "gray"
   },
   { text: "Medium", color: "green" },
-  { text: "High", color: "red" },
+  { text: "High", color: "red" }
 ];
 
 const PlusModal = () => {
@@ -71,7 +71,7 @@ const PlusModal = () => {
     priority,
     description,
     date: "",
-    userId,
+    userId
   };
   const showData = () => {
     console.log(userData);
@@ -92,7 +92,12 @@ const PlusModal = () => {
         <PlusIcon color="white" />
       </Flex>
 
-      <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} size="md">
+      <Modal
+        closeOnOverlayClick={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        size="md"
+      >
         <ModalOverlay />
         <ModalContent>
           <ModalBody pb={3}>
@@ -172,7 +177,12 @@ const PlusModal = () => {
                   </MyTooltip>
                   <MenuList scale="sm">
                     <VStack align="stretch" as={MenuItem} background="white">
-                      <Stack bg="white" h={8} w="100%" backgroundColor="white !important">
+                      <Stack
+                        bg="white"
+                        h={8}
+                        w="100%"
+                        backgroundColor="white !important"
+                      >
                         <Input
                           onClick={(e) => e.stopPropagation()}
                           type="text"
@@ -268,7 +278,13 @@ const PlusModal = () => {
                       Reminders are only available on Pro and Business plans.
                     </Text>
                     <PopoverBody ml="auto" mt={5}>
-                      <Button size="sm" mr={2} mb={2} as={PopoverCloseButton} w="16">
+                      <Button
+                        size="sm"
+                        mr={2}
+                        mb={2}
+                        as={PopoverCloseButton}
+                        w="16"
+                      >
                         Cancel
                       </Button>
                       <Button
@@ -319,7 +335,13 @@ const PlusModal = () => {
             <Button onClick={onClose} size="sm">
               Cancel
             </Button>
-            <Button colorScheme="red" ml={2} size="sm" disabled={!title.trim()} onClick={showData}>
+            <Button
+              colorScheme="red"
+              ml={2}
+              size="sm"
+              disabled={!title.trim()}
+              onClick={showData}
+            >
               Add task
             </Button>
           </ModalFooter>

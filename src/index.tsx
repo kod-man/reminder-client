@@ -3,7 +3,7 @@ import {
   ColorModeScript,
   Flex,
   Text,
-  theme,
+  theme
 } from "@chakra-ui/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
@@ -13,11 +13,11 @@ import { App } from "./App";
 import { configureStore } from "@reduxjs/toolkit";
 import { ErrorBoundary } from "react-error-boundary";
 import { Provider } from "react-redux";
+import XIcon from "./icons/XIcon";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
-import drawerReducers from "./store/Drawer/drawerSlice";
-import todoReducers from "./store/Todos/todoSlice";
-import XIcon from "./icons/XIcon";
+import DrawerReducers from "./store/Drawer/drawerSlice";
+import ReminderReducers from "./store/Reminder/ReminderSlice";
 
 function ErrorFallback({ error }: { error: any }) {
   return (
@@ -59,9 +59,9 @@ const root = ReactDOM.createRoot(container);
 
 export const store = configureStore({
   reducer: {
-    todos: todoReducers,
-    drawer: drawerReducers,
-  },
+    reminder: ReminderReducers,
+    drawer: DrawerReducers
+  }
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

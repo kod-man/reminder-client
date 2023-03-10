@@ -1,8 +1,19 @@
-import { Button, Flex, FormLabel, Image, Input, Text, useToast } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  FormLabel,
+  Image,
+  Input,
+  Text,
+  useToast
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
-import { defaultToastProps, genericErrorToast } from "../../../utils/genericToast";
+import {
+  defaultToastProps,
+  genericErrorToast
+} from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import Header from "./Header";
@@ -19,7 +30,7 @@ function OnboardingCard() {
     const newUserData = {
       userId,
       userName: name,
-      imageSrc: preview,
+      imageSrc: preview
     };
     Axios.put(API.username, newUserData)
       .then((res) => {
@@ -28,7 +39,7 @@ function OnboardingCard() {
           ...defaultToastProps,
           title: "Your data has been saved.",
           description: "You're ready to go!",
-          status: "success",
+          status: "success"
         });
         navigate(PATHS.TODAY);
       })
@@ -92,7 +103,13 @@ function OnboardingCard() {
             cursor="pointer"
           >
             {preview ? (
-              <Image w="180px" h="180px" objectFit="contain" borderRadius="full" src={preview} />
+              <Image
+                w="180px"
+                h="180px"
+                objectFit="contain"
+                borderRadius="full"
+                src={preview}
+              />
             ) : (
               "N"
             )}
@@ -136,7 +153,7 @@ function OnboardingCard() {
               w="48"
               _placeholder={{
                 opacity: 1,
-                textAlign: "center",
+                textAlign: "center"
               }}
               type="text"
               placeholder="Add name"

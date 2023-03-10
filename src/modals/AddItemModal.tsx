@@ -12,7 +12,7 @@ import {
   Switch,
   Text,
   useDisclosure,
-  useToast,
+  useToast
 } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
 import CustomSelects from "../components/CustomSelects";
@@ -36,7 +36,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
     name: "",
     color: "",
     userId: sessionStorage.getItem("userId"),
-    isFavorite: false,
+    isFavorite: false
   });
 
   const onInputChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
@@ -66,7 +66,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
         toast({
           ...defaultToastProps,
           title: `${tooltipLabel} added successfully.`,
-          status: "success",
+          status: "success"
         });
       })
       .catch((err) => {
@@ -119,7 +119,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
                 _focus={{
                   borderColor: "gray",
                   boxShadow: "none",
-                  outline: "none",
+                  outline: "none"
                 }}
               />
             </Flex>
@@ -161,7 +161,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
                   ? {
                       cursor: "not-allowed",
                       backgroundColor: "#f1b7b2",
-                      opacity: 0.5,
+                      opacity: 0.5
                     }
                   : { backgroundColor: "#e74c3c" }
               }
