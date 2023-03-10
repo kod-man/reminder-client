@@ -48,6 +48,12 @@ type DrawerProps = {
 const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
   const [isProjectListOpen, setIsProjectListOpen] = useState(true);
 
+  const [refreshGet, setRefreshGet] = useState(false);
+
+  const refreshPage = () => {
+    setRefreshGet(!refreshGet);
+  };
+
   const dispatch = useDispatch();
   return (
     <Drawer
@@ -79,7 +85,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
         >
           <Text color="gray">Projects</Text>
           <Flex>
-            <AddItemModal tooltipLabel="Project" />
+            <AddItemModal tooltipLabel="Project" onRefresh={refreshPage} />
             <MyTooltip label="Toggle list of Projects">
               <Flex
                 transform={
@@ -94,7 +100,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           </Flex>
         </Flex>
 
-        {isProjectListOpen && <ProjectCard />}
+        {isProjectListOpen && <ProjectCard refreshGet={refreshGet} />}
       </DrawerContent>
     </Drawer>
   );
