@@ -7,6 +7,9 @@ export const API = {
   getUserDetails: "user/me",
   deleteReminder: "reminder/delete",
   getAllFilters: "filter/all",
+  getAllLabels: "label/all",
   addProject: "project/add",
+  addFilter: "filter/add",
+  addLabel: "label/add",
   getAllProjects: "project/all"
 };

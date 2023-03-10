@@ -11,38 +11,75 @@ import {
   ModalOverlay,
   Switch,
   Text,
-  useDisclosure
+  useDisclosure,
+  useToast
 } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
 import CustomSelects from "../components/CustomSelects";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import SmallPlusIcon from "../icons/SmallPlusIcon";
+import { Axios } from "../utils/axios";
+import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
+import { API } from "../utils/usedApi";
 
 type AddItemModalProps = {
   tooltipLabel: string;
+  onRefresh: () => void;
 };
 
-const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
-  const [nameValue, setNameValue] = useState<string>("");
-  const [colorValue, setColorValue] = useState<string>("gray");
-  const [addToFavorites, setAddToFavorites] = useState(false);
+const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
+  const toast = useToast();
+  const [itemData, setItemData] = useState({
+    name: "",
+    color: "",
+    userId: sessionStorage.getItem("userId"),
+    isFavorite: false
+  });
 
   const onInputChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    setNameValue(e.currentTarget.value);
+    setItemData({ ...itemData, name: e.currentTarget.value });
   };
+
   const onColorChangeHandler = (e: any) => {
-    setColorValue(e.value);
+    setItemData((prev) => ({ ...prev, color: e.value }));
   };
 
   const onToggleHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    setAddToFavorites(e.currentTarget.checked);
+    setItemData((prev) => ({ ...prev, isFavorite: e.currentTarget.checked }));
   };
 
+  const customAPI =
+    tooltipLabel === "Filters"
+      ? API.addFilter
+      : tooltipLabel === "Labels"
+      ? API.addLabel
+      : tooltipLabel === "Project"
+      ? API.addProject
+      : "";
+
   const submitHandler = () => {
-    console.log(nameValue, colorValue, addToFavorites);
+    Axios.post(customAPI, itemData)
+      .then(() => {
+        toast({
+          ...defaultToastProps,
+          title: `${tooltipLabel} added successfully.`,
+          status: "success"
+        });
+      })
+      .catch((err) => {
+        genericErrorToast(err, toast);
+      });
+    setItemData({
+      name: "",
+      color: "",
+      userId: sessionStorage.getItem("userId"),
+      isFavorite: false
+    });
+    onClose();
+    onRefresh();
   };
   return (
     <>
@@ -123,10 +160,10 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
               width="70px"
               height="35px"
               textColor="white"
-              isDisabled={nameValue.trim() === ""}
+              isDisabled={itemData.name.trim() === ""}
               _hover={{ backgroundColor: "#c0392b!important" }}
               style={
-                nameValue.trim() === ""
+                itemData.name.trim() === ""
                   ? {
                       cursor: "not-allowed",
                       backgroundColor: "#f1b7b2",
