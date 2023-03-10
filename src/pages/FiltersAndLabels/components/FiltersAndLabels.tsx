@@ -4,15 +4,28 @@ import ToggleIcon from "../../../icons/ToggleIcon";
 import AddItemModal from "../../../modals/AddItemModal";
 import ItemCard from "./ItemCard";
 
-type FiltersAndLabelsProps = {
-  data: string[];
-  cardTitle: string;
-  Icon: FC<any>;
+type ItemData = {
+  _id: string;
+  name: string;
+  color: string;
+  userId: string;
+  isFavorite: boolean;
 };
 
-function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+type FiltersAndLabelsProps = {
+  data: ItemData[];
+  cardTitle: string;
+  Icon: FC<any>;
+  onRefresh: () => void;
+};
 
+function FiltersAndLabels({
+  data,
+  cardTitle,
+  Icon,
+  onRefresh,
+}: FiltersAndLabelsProps) {
+  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [isToggleOn, setIsToggleOn] = useState(true);
 
   const onToggleHandler = () => {
@@ -20,7 +33,7 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
   };
 
   const renderedItemList = data.map((item) => (
-    <ItemCard key={item} text={item} Icon={Icon} />
+    <ItemCard key={item._id} text={item.name} Icon={Icon} />
   ));
 
   return (
@@ -65,7 +78,7 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
           fontSize="2xl"
           cursor="pointer"
         >
-          <AddItemModal tooltipLabel={cardTitle} />
+          <AddItemModal tooltipLabel={cardTitle} onRefresh={onRefresh} />
         </Flex>
       </Flex>
       {isToggleOn && (
