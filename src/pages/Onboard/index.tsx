@@ -14,19 +14,22 @@ function Onboard() {
   const userId = sessionStorage.getItem("userId");
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState("");
+
   useEffect(() => {
     Axios.get(`${API.getUserDetails}/${userId}`)
       .then((response) => {
-        setLoading(false);
         if (response.data.user.userName) {
           setUserName(response.data.user.userName);
           navigate(PATHS.TODAY);
+          setLoading(true);
+        } else {
+          setLoading(false);
         }
       })
       .catch((err) => {
         genericErrorToast(err, toast);
-        setLoading(false);
       });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, userName]);
   return (
@@ -34,16 +37,12 @@ function Onboard() {
       {loading ? (
         <Spinner />
       ) : (
-        !userName && (
-          <>
-            <Flex p="4" mt="13" ml="83" h={28}>
-              <Todoist />
-            </Flex>
-            <Flex flexDirection="column" justifyContent="center" mb="40">
-              <OnboardingCard />
-            </Flex>
-          </>
-        )
+        <>
+          <Flex p="4" mt="13" ml="83" h={28}>
+            <Todoist />
+          </Flex>
+          <OnboardingCard />
+        </>
       )}
     </>
   );

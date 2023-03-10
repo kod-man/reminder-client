@@ -23,7 +23,7 @@ function FiltersAndLabels({
   data,
   cardTitle,
   Icon,
-  onRefresh,
+  onRefresh
 }: FiltersAndLabelsProps) {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [isToggleOn, setIsToggleOn] = useState(true);
