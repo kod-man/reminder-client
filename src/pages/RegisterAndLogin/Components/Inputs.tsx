@@ -47,7 +47,6 @@ const Inputs = ({ page }: { page: string }) => {
 
     // Error handling
     const errors = InputValidation(name, value);
-    alert(JSON.stringify(errors, null, 2));
 
     setFormErros((prev) => ({
       ...prev,

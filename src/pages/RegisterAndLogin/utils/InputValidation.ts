@@ -26,5 +26,6 @@ export const InputValidation = (name: string, value: string) => {
         "Password must contain at least one special character(symbol)!";
     }
   }
+  console.log("222");
   return errors;
 };
