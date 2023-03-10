@@ -49,6 +49,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
   const [isProjectListOpen, setIsProjectListOpen] = useState(true);
 
   const [refreshGet, setRefreshGet] = useState(false);
+
   const refreshPage = () => {
     setRefreshGet(!refreshGet);
   };
@@ -99,7 +100,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           </Flex>
         </Flex>
 
-        {isProjectListOpen && <ProjectCard />}
+        {isProjectListOpen && <ProjectCard refreshGet={refreshGet} />}
       </DrawerContent>
     </Drawer>
   );

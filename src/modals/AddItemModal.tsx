@@ -72,6 +72,12 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
       .catch((err) => {
         genericErrorToast(err, toast);
       });
+    setItemData({
+      name: "",
+      color: "",
+      userId: sessionStorage.getItem("userId"),
+      isFavorite: false
+    });
     onClose();
     onRefresh();
   };
@@ -154,7 +160,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
               width="70px"
               height="35px"
               textColor="white"
-              disabled={itemData.name.trim() === ""}
+              isDisabled={itemData.name.trim() === ""}
               _hover={{ backgroundColor: "#c0392b!important" }}
               style={
                 itemData.name.trim() === ""

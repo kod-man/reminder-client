@@ -11,10 +11,11 @@ type Project = {
   color: string;
 };
 
-function ProjectCard() {
+function ProjectCard({ refreshGet }: { refreshGet: boolean }) {
   const [projects, setProjects] = useState<Project[]>([]);
   const toast = useToast();
   const userId = sessionStorage.getItem("userId");
+
   useEffect(() => {
     if (!userId) {
       return;
@@ -27,7 +28,7 @@ function ProjectCard() {
       .catch((err) => {
         genericErrorToast(err, toast);
       });
-  }, [userId, toast]);
+  }, [userId, toast, refreshGet]);
 
   return (
     <>
