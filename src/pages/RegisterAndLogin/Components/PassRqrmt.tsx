@@ -27,7 +27,7 @@ const PassRqrmt = ({
       bg="white"
     >
       <Flex flexDirection="row" alignItems="flex-start">
-        <Icon as={RedTickIcon} color="green.500" />
+        <Icon as={RedTickIcon} color={hasPsValue ? "green" : "#e53e3e"} />
         <Text
           fontSize="sm"
           fontFamily="unset"
@@ -37,7 +37,10 @@ const PassRqrmt = ({
         </Text>
       </Flex>
       <Flex>
-        <Icon as={RedTickIcon} color="green.500" />
+        <Icon
+          as={RedTickIcon}
+          color={hasPsassword7chars ? "green" : "#e53e3e"}
+        />
         <Text
           fontSize="sm"
           fontFamily="unset"
@@ -47,7 +50,7 @@ const PassRqrmt = ({
         </Text>
       </Flex>
       <Flex>
-        <Icon as={RedTickIcon} color="green.500" />
+        <Icon as={RedTickIcon} color={hasPsNumber ? "green" : "#e53e3e"} />
         <Text
           fontSize="sm"
           fontFamily="unset"
@@ -57,7 +60,7 @@ const PassRqrmt = ({
         </Text>
       </Flex>
       <Flex>
-        <Icon as={RedTickIcon} color="green.500" />
+        <Icon as={RedTickIcon} color={hasPsUpperCase ? "green" : "#e53e3e"} />
         <Text
           fontSize="sm"
           fontFamily="unset"
@@ -67,7 +70,7 @@ const PassRqrmt = ({
         </Text>
       </Flex>
       <Flex>
-        <Icon as={RedTickIcon} color="green.500" />
+        <Icon as={RedTickIcon} color={hasPsSmallCase ? "green" : "#E53E3E"} />
         <Text
           fontSize="sm"
           fontFamily="unset"
@@ -77,7 +80,7 @@ const PassRqrmt = ({
         </Text>
       </Flex>
       <Flex>
-        <Icon as={RedTickIcon} color="green.500" />
+        <Icon as={RedTickIcon} color={hasPsSymbol ? "green" : "#E53E3E"} />
         <Text
           fontSize="sm"
           fontFamily="unset"
@@ -88,47 +91,6 @@ const PassRqrmt = ({
       </Flex>
     </Flex>
   );
-  console.log("2");
 };
 
 export default PassRqrmt;
-
-// import { Flex, Text } from "@chakra-ui/react";
-// interface Props {
-//   name: string;
-//   value: string;
-// }
-
-// const PassRqrmt = ({ name, value }: Props) => {
-//   if (name === "password") {
-//     return (
-//       <Flex wrap="wrap">
-//         {!value && <Text color="black">Password is required! </Text>}
-//         {value && value.length < 7 && (
-//           <Text color="black">Password needs to be 7 characters or more! </Text>
-//         )}
-//         {value && !/\d/.test(value) && (
-//           <Text color="black">Password must contain at least one number! </Text>
-//         )}
-//         {value && !/[A-Z]/.test(value) && (
-//           <Text color="black">
-//             Password must contain at least one upperCase!{" "}
-//           </Text>
-//         )}
-//         {value && !/[a-z]/.test(value) && (
-//           <Text color="black">
-//             Password must contain at least one lowerCase!{" "}
-//           </Text>
-//         )}
-//         {value && !/\W|_/g.test(value) && (
-//           <Text color="black">
-//             Password must contain at least one special character(symbol)!{" "}
-//           </Text>
-//         )}
-//       </Flex>
-//     );
-//   }
-
-// };
-
-// export default PassRqrmt;
