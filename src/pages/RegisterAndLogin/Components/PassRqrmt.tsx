@@ -12,10 +12,10 @@ const PassRqrmt = ({
   const { password } = formData;
   const hasPsValue = password;
   const hasPsassword7chars = password.length > 6;
-  const hasPsNumber = !/\d/.test(password);
-  const hasPsUpperCase = !/[A-Z]/.test(password);
-  const hasPsSmallCase = !/[a-z]/.test(password);
-  const hasPsSymbol = !/\W|_/g.test(password);
+  const hasPsNumber = /\d/.test(password);
+  const hasPsUpperCase = /[A-Z]/.test(password);
+  const hasPsSmallCase = /[a-z]/.test(password);
+  const hasPsSymbol = /\W|_/g.test(password);
   return (
     <Flex
       flexDirection="column"
@@ -31,7 +31,7 @@ const PassRqrmt = ({
         <Text
           fontSize="sm"
           fontFamily="unset"
-          color={hasPsValue ? "green" : "gray"}
+          color={hasPsValue ? "green" : "#e53e3e"}
         >
           Required!
         </Text>
@@ -41,7 +41,7 @@ const PassRqrmt = ({
         <Text
           fontSize="sm"
           fontFamily="unset"
-          color={hasPsassword7chars ? "green" : "gray"}
+          color={hasPsassword7chars ? "green" : "#e53e3e"}
         >
           At least seven characters
         </Text>
@@ -51,7 +51,7 @@ const PassRqrmt = ({
         <Text
           fontSize="sm"
           fontFamily="unset"
-          color={hasPsNumber ? "green" : "gray"}
+          color={hasPsNumber ? "green" : "#e53e3e"}
         >
           At least one number
         </Text>
@@ -61,7 +61,7 @@ const PassRqrmt = ({
         <Text
           fontSize="sm"
           fontFamily="unset"
-          color={hasPsUpperCase ? "green" : "gray"}
+          color={hasPsUpperCase ? "green" : "#e53e3e"}
         >
           At least one upperCase!
         </Text>
@@ -71,7 +71,7 @@ const PassRqrmt = ({
         <Text
           fontSize="sm"
           fontFamily="unset"
-          color={hasPsSmallCase ? "green" : "gray"}
+          color={hasPsSmallCase ? "green" : "#E53E3E"}
         >
           At least one lowerCase!
         </Text>
@@ -81,7 +81,7 @@ const PassRqrmt = ({
         <Text
           fontSize="sm"
           fontFamily="unset"
-          color={hasPsSymbol ? "green" : "gray"}
+          color={hasPsSymbol ? "green" : "#E53E3E"}
         >
           At least one special character(symbol)!
         </Text>
