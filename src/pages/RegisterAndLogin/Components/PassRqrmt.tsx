@@ -38,36 +38,57 @@ const PassRqrmt = ({
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontFamily="unset">
+        <Text
+          fontSize="sm"
+          fontFamily="unset"
+          color={hasPsassword7chars ? "green" : "gray"}
+        >
           At least seven characters
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontFamily="unset">
+        <Text
+          fontSize="sm"
+          fontFamily="unset"
+          color={hasPsNumber ? "green" : "gray"}
+        >
           At least one number
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontFamily="unset">
+        <Text
+          fontSize="sm"
+          fontFamily="unset"
+          color={hasPsUpperCase ? "green" : "gray"}
+        >
           At least one upperCase!
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontFamily="unset">
+        <Text
+          fontSize="sm"
+          fontFamily="unset"
+          color={hasPsSmallCase ? "green" : "gray"}
+        >
           At least one lowerCase!
         </Text>
       </Flex>
       <Flex>
         <Icon as={RedTickIcon} color="green.500" />
-        <Text fontSize="sm" fontFamily="unset">
+        <Text
+          fontSize="sm"
+          fontFamily="unset"
+          color={hasPsSymbol ? "green" : "gray"}
+        >
           At least one special character(symbol)!
         </Text>
       </Flex>
     </Flex>
   );
+  console.log("2");
 };
 
 export default PassRqrmt;
