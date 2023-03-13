@@ -1,7 +1,7 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import RedTickIcon from "../../../icons/RedTickIcon";
 
-const PassRqrmt = ({
+const PassStandards = ({
   formData
 }: {
   formData: {
@@ -26,7 +26,7 @@ const PassRqrmt = ({
       rounded="md"
       bg="white"
     >
-      <Flex flexDirection="row" alignItems="flex-start">
+      <Flex>
         <Icon as={RedTickIcon} color={hasPsValue ? "green" : "#e53e3e"} />
         <Text
           fontSize="sm"
@@ -93,4 +93,4 @@ const PassRqrmt = ({
   );
 };
 
-export default PassRqrmt;
+export default PassStandards;
