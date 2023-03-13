@@ -33,7 +33,7 @@ const PassStandards = ({
           color={hasPsValue ? "green" : "#E53E3E"}
         />
         <Text
-          ml="10px"
+          ml="5px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsValue ? "green" : "#e53e3e"}
@@ -47,7 +47,7 @@ const PassStandards = ({
           color={hasPsassword7chars ? "green" : "#E53E3E"}
         />
         <Text
-          ml="10px"
+          ml="5px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsassword7chars ? "green" : "#e53e3e"}
@@ -61,7 +61,7 @@ const PassStandards = ({
           color={hasPsNumber ? "green" : "#E53E3E"}
         />
         <Text
-          ml="10px"
+          ml="5px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsNumber ? "green" : "#e53e3e"}
@@ -75,7 +75,7 @@ const PassStandards = ({
           color={hasPsUpperCase ? "green" : "#E53E3E"}
         />
         <Text
-          ml="10px"
+          ml="5px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsUpperCase ? "green" : "#e53e3e"}
@@ -89,7 +89,7 @@ const PassStandards = ({
           color={hasPsSmallCase ? "green" : "#E53E3E"}
         />
         <Text
-          ml="10px"
+          ml="5px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsSmallCase ? "green" : "#E53E3E"}
@@ -103,7 +103,7 @@ const PassStandards = ({
           color={hasPsSymbol ? "green" : "#E53E3E"}
         />
         <Text
-          ml="10px"
+          ml="5px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsSymbol ? "green" : "#E53E3E"}
