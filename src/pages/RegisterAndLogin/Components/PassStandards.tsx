@@ -1,4 +1,5 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
+import RedDotIcon from "../../../icons/RedDotIcon";
 import RedTickIcon from "../../../icons/RedTickIcon";
 
 const PassStandards = ({
@@ -20,15 +21,19 @@ const PassStandards = ({
     <Flex
       flexDirection="column"
       w="350px"
-      h="185px"
+      h="130px"
       boxShadow="xs"
       p="1px"
       rounded="md"
       bg="white"
     >
       <Flex>
-        <Icon as={RedTickIcon} color={hasPsValue ? "green" : "#e53e3e"} />
+        <Icon
+          as={hasPsValue ? RedTickIcon : RedDotIcon}
+          color={hasPsValue ? "green" : "#E53E3E"}
+        />
         <Text
+          ml="10px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsValue ? "green" : "#e53e3e"}
@@ -38,10 +43,11 @@ const PassStandards = ({
       </Flex>
       <Flex>
         <Icon
-          as={RedTickIcon}
-          color={hasPsassword7chars ? "green" : "#e53e3e"}
+          as={hasPsassword7chars ? RedTickIcon : RedDotIcon}
+          color={hasPsassword7chars ? "green" : "#E53E3E"}
         />
         <Text
+          ml="10px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsassword7chars ? "green" : "#e53e3e"}
@@ -50,8 +56,12 @@ const PassStandards = ({
         </Text>
       </Flex>
       <Flex>
-        <Icon as={RedTickIcon} color={hasPsNumber ? "green" : "#e53e3e"} />
+        <Icon
+          as={hasPsNumber ? RedTickIcon : RedDotIcon}
+          color={hasPsNumber ? "green" : "#E53E3E"}
+        />
         <Text
+          ml="10px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsNumber ? "green" : "#e53e3e"}
@@ -60,8 +70,12 @@ const PassStandards = ({
         </Text>
       </Flex>
       <Flex>
-        <Icon as={RedTickIcon} color={hasPsUpperCase ? "green" : "#e53e3e"} />
+        <Icon
+          as={hasPsUpperCase ? RedTickIcon : RedDotIcon}
+          color={hasPsUpperCase ? "green" : "#E53E3E"}
+        />
         <Text
+          ml="10px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsUpperCase ? "green" : "#e53e3e"}
@@ -70,8 +84,12 @@ const PassStandards = ({
         </Text>
       </Flex>
       <Flex>
-        <Icon as={RedTickIcon} color={hasPsSmallCase ? "green" : "#E53E3E"} />
+        <Icon
+          as={hasPsSmallCase ? RedTickIcon : RedDotIcon}
+          color={hasPsSmallCase ? "green" : "#E53E3E"}
+        />
         <Text
+          ml="10px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsSmallCase ? "green" : "#E53E3E"}
@@ -80,8 +98,12 @@ const PassStandards = ({
         </Text>
       </Flex>
       <Flex>
-        <Icon as={RedTickIcon} color={hasPsSymbol ? "green" : "#E53E3E"} />
+        <Icon
+          as={hasPsSymbol ? RedTickIcon : RedDotIcon}
+          color={hasPsSymbol ? "green" : "#E53E3E"}
+        />
         <Text
+          ml="10px"
           fontSize="sm"
           fontFamily="unset"
           color={hasPsSymbol ? "green" : "#E53E3E"}
