@@ -45,7 +45,6 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
 
   const onColorChangeHandler = (e: any) => {
     setItemData((prev) => ({ ...prev, color: e.value.toLowerCase() }));
-    console.log(e.value.toLowerCase());
   };
 
   const onToggleHandler = (e: React.FormEvent<HTMLInputElement>) => {
