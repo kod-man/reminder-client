@@ -26,7 +26,7 @@ const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
   const [disabled, setDisabled] = React.useState(true);
   const navigate = useNavigate();
-  const [passStandard, setPassStandard] = React.useState(page === "register");
+  const isRegisterPage = page === "register";
 
   const [formData, setFormData] = React.useState({
     email: "",
@@ -63,7 +63,6 @@ const Inputs = ({ page }: { page: string }) => {
 
   const submitHandler = () => {
     if (page === "register") {
-      setPassStandard(true);
       Axios.post(API.register, formData)
         .then((res) => {
           console.log(res);
@@ -137,7 +136,7 @@ const Inputs = ({ page }: { page: string }) => {
               children={open ? <VisibleIcon /> : <InvisibleIcon />}
             />
           </InputGroup>
-          {passStandard && <PassStandards formData={formData} />}
+          {isRegisterPage && <PassStandards formData={formData} />}
         </Stack>
       </FormControl>
       <Button
