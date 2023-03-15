@@ -1,7 +1,7 @@
 import { Flex } from "@chakra-ui/react";
-import PassSpecsCard from "./RequirementCard";
+import RequirementCard from "./RequirementCard";
 
-const PassStandards = ({
+const PasswordRequirement = ({
   formData
 }: {
   formData: {
@@ -22,26 +22,25 @@ const PassStandards = ({
       flexDirection="column"
       w="350px"
       h="130px"
-      boxShadow="xs"
       p="1px"
       rounded="md"
       bg="white"
     >
-      <PassSpecsCard text="Required!" hasPassed={hasPsValue} />
-      <PassSpecsCard
+      <RequirementCard text="Required!" hasPassed={hasPsValue} />
+      <RequirementCard
         text="At least seven characters"
         hasPassed={hasPsassword7chars}
       />
-      <PassSpecsCard text="At least one number" hasPassed={hasPsNumber} />
-      <PassSpecsCard
+      <RequirementCard text="At least one number" hasPassed={hasPsNumber} />
+      <RequirementCard
         text="At least one uppercase letter"
         hasPassed={hasPsUpperCase}
       />
-      <PassSpecsCard
+      <RequirementCard
         text="At least one lowercase letter"
         hasPassed={hasPsSmallCase}
       />
-      <PassSpecsCard
+      <RequirementCard
         text="At least one special character (symbol)"
         hasPassed={hasPsSymbol}
       />
@@ -49,4 +48,4 @@ const PassStandards = ({
   );
 };
 
-export default PassStandards;
+export default PasswordRequirement;

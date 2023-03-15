@@ -19,8 +19,8 @@ import {
 } from "../../../utils/genericToast";
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
-import { InputValidation } from "../utils/InputValidation";
-import PassStandards from "./PassStandards";
+import { EmailValidation } from "../utils/EmailValidation";
+import PassStandards from "./PasswordRequirement";
 
 const Inputs = ({ page }: { page: string }) => {
   const toast = useToast();
@@ -47,16 +47,15 @@ const Inputs = ({ page }: { page: string }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     // Error handling
-    const errors = InputValidation(name, value);
+    const errors = EmailValidation(value);
 
     setFormErros((prev) => ({
       ...prev,
-      email: errors.email,
-      password: errors.password
+      email: errors.email
     }));
 
     //how to make  button default disabled
-    const hasErrors = errors.password || errors.email;
+    const hasErrors = errors.email;
     const hasEmptyValues = !(formData.password && formData.email);
     setDisabled(Boolean(hasErrors) || Boolean(hasEmptyValues));
   };
