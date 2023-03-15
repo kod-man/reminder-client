@@ -8,7 +8,7 @@ type CardProps = {
   hasPassed: boolean;
 };
 
-const PassSpecsCard: FC<CardProps> = ({ text, hasPassed }) => {
+const RequirementCard: FC<CardProps> = ({ text, hasPassed }) => {
   const IconComponent = hasPassed ? RedTickIcon : RedDotIcon;
   return (
     <Flex>
@@ -25,4 +25,4 @@ const PassSpecsCard: FC<CardProps> = ({ text, hasPassed }) => {
   );
 };
 
-export default PassSpecsCard;
+export default RequirementCard;

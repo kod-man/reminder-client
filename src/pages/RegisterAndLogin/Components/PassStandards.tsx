@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import PassSpecsCard from "./PassSpecsCard";
+import PassSpecsCard from "./RequirementCard";
 
 const PassStandards = ({
   formData
