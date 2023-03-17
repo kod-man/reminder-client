@@ -14,7 +14,7 @@ import {
   useDisclosure,
   useToast
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef } from "react";
 import CustomSelects from "../components/CustomSelects";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
@@ -28,6 +28,7 @@ const AddProjectModal = () => {
   const finalRef = React.useRef(null);
 
   const [name, setName] = React.useState("");
+  const nameRef = useRef<HTMLInputElement>(null);
 
   const [color, setColor] = React.useState("gray");
   const [isFavorite, setIsFavorite] = React.useState(false);
@@ -44,14 +45,14 @@ const AddProjectModal = () => {
   };
 
   const ProjectData = {
-    name,
+    name: nameRef,
     color,
     userId: sessionStorage.getItem("userId"),
     isFavorite
   };
 
   const submitHandler = () => {
-    if (!name) {
+    if (!nameRef.current?.value) {
       toast({
         title: "Name is required.",
         status: "error"
@@ -116,7 +117,7 @@ const AddProjectModal = () => {
                   boxShadow: "none",
                   outline: "none"
                 }}
-                value={name}
+                value={nameRef.current?.value}
                 onChange={handleNameChange}
               />
             </Flex>
