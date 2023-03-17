@@ -24,7 +24,6 @@ function OnboardingCard() {
   const toast = useToast();
   const navigate = useNavigate();
   const userId = sessionStorage.getItem("userId");
-  console.log(nameRef.current?.value);
 
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();

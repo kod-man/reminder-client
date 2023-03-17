@@ -27,7 +27,6 @@ const AddProjectModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
 
-  const [name, setName] = React.useState("");
   const nameRef = useRef<HTMLInputElement>(null);
 
   const [color, setColor] = React.useState("gray");
@@ -38,14 +37,8 @@ const AddProjectModal = () => {
     setColor(event.target.value);
   };
 
-  const handleNameChange = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setName(event.target.value);
-  };
-
   const ProjectData = {
-    name: nameRef,
+    nameRef,
     color,
     userId: sessionStorage.getItem("userId"),
     isFavorite
@@ -108,6 +101,7 @@ const AddProjectModal = () => {
                 Name
               </Text>
               <Input
+                ref={nameRef}
                 borderRadius="7px"
                 border="1px"
                 borderColor="gray"
@@ -118,7 +112,9 @@ const AddProjectModal = () => {
                   outline: "none"
                 }}
                 value={nameRef.current?.value}
-                onChange={handleNameChange}
+                onChange={(event) => {
+                  nameRef.current!.value = event.target.value;
+                }}
               />
             </Flex>
             <Flex flexDirection="column" mt="12px">
@@ -158,11 +154,11 @@ const AddProjectModal = () => {
               width="70px"
               height="35px"
               textColor="white"
-              disabled={name.trim() === ""}
+              disabled={nameRef.current?.value.trim() === ""}
               onClick={submitHandler}
               _hover={{ backgroundColor: "#c0392b!important" }}
               style={
-                name.trim() === ""
+                nameRef.current?.value.trim() === ""
                   ? {
                       cursor: "not-allowed",
                       backgroundColor: "#f1b7b2",
