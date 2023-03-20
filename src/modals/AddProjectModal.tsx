@@ -38,7 +38,7 @@ const AddProjectModal = () => {
   };
 
   const ProjectData = {
-    nameRef,
+    name: nameRef,
     color,
     userId: sessionStorage.getItem("userId"),
     isFavorite

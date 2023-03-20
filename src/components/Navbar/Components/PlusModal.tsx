@@ -62,7 +62,7 @@ const PlusModal = () => {
   const userData = {
     title: titleRef,
     priority,
-    descriptionRef,
+    description: descriptionRef,
     date: "",
     userId
   };
