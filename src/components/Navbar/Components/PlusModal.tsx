@@ -54,13 +54,13 @@ const PlusModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const userId = sessionStorage.getItem("userId");
   const descriptionRef = useRef<HTMLInputElement>(null);
-  const titeleRef = useRef<HTMLInputElement>(null);
+  const titleRef = useRef<HTMLInputElement>(null);
   const [priority, setPriority] = React.useState("Low");
   const [iconColor, setIconColor] = React.useState(prioData[0].color);
   const [selectedPrio, setSelectedPrio] = React.useState(prioData[0]);
 
   const userData = {
-    titeleRef,
+    title: titleRef,
     priority,
     descriptionRef,
     date: "",
@@ -95,16 +95,13 @@ const PlusModal = () => {
         <ModalContent>
           <ModalBody pb={3}>
             <Input
-              ref={titeleRef}
+              ref={titleRef}
               placeholder="Task name"
               border="none"
               fontSize="20"
               fontFamily="inherit"
               textColor="#2b2b2b"
               variant="unstyled"
-              onChange={(event) => {
-                titeleRef.current!.value = event.target.value;
-              }}
             />
             <Input
               ref={descriptionRef}
@@ -112,9 +109,6 @@ const PlusModal = () => {
               border="none"
               fontSize="small"
               variant="unstyled"
-              onChange={(event) => {
-                descriptionRef.current!.value = event.target.value;
-              }}
             />
             <Flex mt={5}>
               <Button
@@ -338,7 +332,7 @@ const PlusModal = () => {
               colorScheme="red"
               ml={2}
               size="sm"
-              disabled={!titeleRef.current?.value.trim()}
+              disabled={!titleRef.current?.value.trim()}
               onClick={showData}
             >
               Add task
