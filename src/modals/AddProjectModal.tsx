@@ -38,7 +38,7 @@ const AddProjectModal = () => {
   };
 
   const ProjectData = {
-    name: nameRef,
+    name: nameRef.current?.value,
     color,
     userId: sessionStorage.getItem("userId"),
     isFavorite
@@ -111,7 +111,6 @@ const AddProjectModal = () => {
                   boxShadow: "none",
                   outline: "none"
                 }}
-                value={nameRef.current?.value}
                 onChange={(event) => {
                   nameRef.current!.value = event.target.value;
                 }}
