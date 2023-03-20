@@ -7,7 +7,7 @@ import {
   useMediaQuery,
   useToast
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../..";
 import Spinner from "../../../components/Spinner";
@@ -35,9 +35,13 @@ function CreateReminder() {
   const [reminders, setReminders] = useState<Reminder[]>([]);
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
+
+  const titleRef = useRef<HTMLInputElement>(null);
+  const descriptionRef = useRef<HTMLInputElement>(null);
+
   const [toDoData, setToDoData] = useState({
-    title: "",
-    description: "",
+    title: titleRef.current?.value,
+    description: descriptionRef.current?.value,
     date: "",
     priority: "",
     label: ""
@@ -47,10 +51,6 @@ function CreateReminder() {
   const newUserData = {
     userId,
     ...toDoData
-  };
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setToDoData((prev) => ({ ...prev, [name]: value }));
   };
 
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
@@ -69,8 +69,8 @@ function CreateReminder() {
       });
 
     setToDoData({
-      title: "",
-      description: "",
+      title: titleRef.current?.value,
+      description: descriptionRef.current?.value,
       date: "",
       priority: "",
       label: ""
@@ -115,8 +115,7 @@ function CreateReminder() {
           >
             <Box w="100%">
               <Input
-                value={toDoData.title}
-                onChange={handleOnChange}
+                ref={titleRef}
                 mt="3"
                 variant="unstyled"
                 placeholder="Task name"
@@ -124,13 +123,12 @@ function CreateReminder() {
                 name="title"
               />
               <Input
+                ref={descriptionRef}
                 name="description"
                 mt="2"
                 variant="unstyled"
                 placeholder="Description"
                 _placeholder={{ opacity: 1, color: "gray.500" }}
-                value={toDoData.description}
-                onChange={handleOnChange}
               />
             </Box>
             <Flex w="100%" my="3">
@@ -152,8 +150,8 @@ function CreateReminder() {
             </Button>
             <Button
               color="white"
-              bg={!toDoData.title.trim() ? "red.300" : "red.500"}
-              disabled={!toDoData.title.trim()}
+              bg={!toDoData.title?.trim() ? "red.300" : "red.500"}
+              disabled={!toDoData.title?.trim()}
               _hover={!toDoData.title ? { bg: "" } : { bg: "red.700" }}
               onClick={submitHandler}
             >
