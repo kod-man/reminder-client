@@ -14,7 +14,7 @@ import {
   useDisclosure,
   useToast
 } from "@chakra-ui/react";
-import React, { FC, useState } from "react";
+import React, { FC, useRef, useState } from "react";
 import CustomSelects from "../components/CustomSelects";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
@@ -32,16 +32,15 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
   const toast = useToast();
+
+  const itemRef = useRef<HTMLInputElement>(null);
+
   const [itemData, setItemData] = useState({
-    name: "",
+    name: itemRef.current?.value,
     color: "",
     userId: sessionStorage.getItem("userId"),
     isFavorite: false
   });
-
-  const onInputChangeHandler = (e: React.FormEvent<HTMLInputElement>) => {
-    setItemData({ ...itemData, name: e.currentTarget.value });
-  };
 
   const onColorChangeHandler = (e: any) => {
     setItemData((prev) => ({ ...prev, color: e.value.toLowerCase() }));
@@ -73,7 +72,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
         genericErrorToast(err, toast);
       });
     setItemData({
-      name: "",
+      name: itemRef.current?.value,
       color: "",
       userId: sessionStorage.getItem("userId"),
       isFavorite: false
@@ -117,11 +116,11 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
                 Name
               </Text>
               <Input
+                ref={itemRef}
                 borderRadius="7px"
                 border="1px"
                 borderColor="gray"
                 outline="none"
-                onChange={onInputChangeHandler}
                 _focus={{
                   borderColor: "gray",
                   boxShadow: "none",
@@ -160,10 +159,10 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
               width="70px"
               height="35px"
               textColor="white"
-              isDisabled={itemData.name.trim() === ""}
+              isDisabled={itemRef.current?.value.trim() === ""}
               _hover={{ backgroundColor: "#c0392b!important" }}
               style={
-                itemData.name.trim() === ""
+                itemRef.current?.value.trim() === ""
                   ? {
                       cursor: "not-allowed",
                       backgroundColor: "#f1b7b2",
