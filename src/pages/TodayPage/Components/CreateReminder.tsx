@@ -69,8 +69,8 @@ function CreateReminder() {
       });
 
     setToDoData({
-      title: titleRef.current?.value,
-      description: descriptionRef.current?.value,
+      title: "",
+      description: "",
       date: "",
       priority: "",
       label: ""
@@ -150,9 +150,9 @@ function CreateReminder() {
             </Button>
             <Button
               color="white"
-              bg={!toDoData.title?.trim() ? "red.300" : "red.500"}
-              disabled={!toDoData.title?.trim()}
-              _hover={!toDoData.title ? { bg: "" } : { bg: "red.700" }}
+              bg={!titleRef.current?.value ? "red.300" : "red.500"}
+              disabled={!titleRef.current?.value.trim()}
+              _hover={!titleRef.current?.value ? { bg: "" } : { bg: "red.700" }}
               onClick={submitHandler}
             >
               Add task
