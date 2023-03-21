@@ -34,7 +34,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
   const toast = useToast();
   const itemNameRef = useRef<HTMLInputElement>(null);
   const [itemData, setItemData] = useState({
-    name: itemNameRef.current?.value,
+    name: null,
     color: "",
     userId: sessionStorage.getItem("userId"),
     isFavorite: false

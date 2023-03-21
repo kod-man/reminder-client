@@ -111,9 +111,6 @@ const AddProjectModal = () => {
                   boxShadow: "none",
                   outline: "none"
                 }}
-                onChange={(event) => {
-                  nameRef.current!.value = event.target.value;
-                }}
               />
             </Flex>
             <Flex flexDirection="column" mt="12px">
