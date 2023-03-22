@@ -34,7 +34,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
   const toast = useToast();
   const itemNameRef = useRef<HTMLInputElement>(null);
   const [itemData, setItemData] = useState({
-    name: null,
+    name: "",
     color: "",
     userId: sessionStorage.getItem("userId"),
     isFavorite: false
@@ -58,8 +58,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
       : "";
 
   const submitHandler = () => {
-    const itemName = itemNameRef.current?.value;
-    Axios.post(customAPI, { ...itemData, name: itemName })
+    Axios.post(customAPI, { ...itemData, name: itemNameRef.current?.value })
       .then(() => {
         toast({
           ...defaultToastProps,
@@ -71,7 +70,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
         genericErrorToast(err, toast);
       });
     setItemData({
-      name: null,
+      name: "",
       color: "",
       userId: sessionStorage.getItem("userId"),
       isFavorite: false
