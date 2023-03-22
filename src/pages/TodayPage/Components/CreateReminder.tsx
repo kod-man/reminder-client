@@ -40,21 +40,25 @@ function CreateReminder() {
   const descriptionRef = useRef<HTMLInputElement>(null);
 
   const [toDoData, setToDoData] = useState({
-    title: titleRef.current?.value,
-    description: descriptionRef.current?.value,
+    title: "",
+    description: "",
     date: "",
     priority: "",
     label: ""
   });
   const [loading, setLoading] = useState(true);
   const userId = sessionStorage.getItem("userId");
-  const newUserData = {
-    userId,
-    ...toDoData
-  };
 
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
+
+    const newUserData = {
+      userId,
+      ...toDoData,
+      title: titleRef.current?.value,
+      description: descriptionRef.current?.value
+    };
+
     Axios.post(API.addReminder, newUserData)
       .then(() => {
         toast({
