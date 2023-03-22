@@ -28,7 +28,7 @@ import {
   useDisclosure,
   VStack
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef } from "react";
 import ClockIcon from "../../../icons/ClockIcon";
 import CompareIcon from "../../../icons/CompareIcon";
 import FlagIcon from "../../../icons/FlagIcon";
@@ -53,23 +53,16 @@ const prioData = [
 const PlusModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const userId = sessionStorage.getItem("userId");
-  const [title, setTitle] = React.useState("");
-  const [description, setDescription] = React.useState("");
+  const descriptionRef = useRef<HTMLInputElement>(null);
+  const titleRef = useRef<HTMLInputElement>(null);
   const [priority, setPriority] = React.useState("Low");
   const [iconColor, setIconColor] = React.useState(prioData[0].color);
   const [selectedPrio, setSelectedPrio] = React.useState(prioData[0]);
 
-  const onChangeTaskName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value.trim());
-  };
-  const onChangeDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDescription(e.target.value.trim());
-  };
-
   const userData = {
-    title,
+    title: "",
     priority,
-    description,
+    description:"" ,
     date: "",
     userId
   };
@@ -102,20 +95,20 @@ const PlusModal = () => {
         <ModalContent>
           <ModalBody pb={3}>
             <Input
+              ref={titleRef}
               placeholder="Task name"
               border="none"
               fontSize="20"
               fontFamily="inherit"
               textColor="#2b2b2b"
               variant="unstyled"
-              onChange={onChangeTaskName}
             />
             <Input
+              ref={descriptionRef}
               placeholder="Description"
               border="none"
               fontSize="small"
               variant="unstyled"
-              onChange={onChangeDescription}
             />
             <Flex mt={5}>
               <Button
@@ -339,7 +332,7 @@ const PlusModal = () => {
               colorScheme="red"
               ml={2}
               size="sm"
-              disabled={!title.trim()}
+              disabled={!titleRef.current?.value.trim()}
               onClick={showData}
             >
               Add task
