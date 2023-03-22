@@ -60,7 +60,7 @@ const PlusModal = () => {
   const [selectedPrio, setSelectedPrio] = React.useState(prioData[0]);
 
   const userData = {
-    title: titleRef.current?.value,
+    title: "",
     priority,
     description: descriptionRef.current?.value,
     date: "",
