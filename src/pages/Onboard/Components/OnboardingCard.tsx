@@ -7,7 +7,7 @@ import {
   Text,
   useToast
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Axios } from "../../../utils/axios";
 import {
@@ -19,7 +19,7 @@ import { API } from "../../../utils/usedApi";
 import Header from "./Header";
 
 function OnboardingCard() {
-  const [name, setName] = useState("");
+  const nameRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState("");
   const toast = useToast();
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ function OnboardingCard() {
     e.preventDefault();
     const newUserData = {
       userId,
-      userName: name,
+      userName: nameRef.current?.value,
       imageSrc: preview
     };
     Axios.put(API.username, newUserData)
@@ -146,8 +146,7 @@ function OnboardingCard() {
           </FormLabel>
           <Flex mt="6">
             <Input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              ref={nameRef}
               _focusVisible={{ boxShadow: "none", outline: "none" }}
               w="48"
               _placeholder={{
@@ -162,7 +161,7 @@ function OnboardingCard() {
         </Flex>
         <Button
           onClick={submitHandler}
-          disabled={!name.trim()}
+          disabled={!nameRef.current?.value.trim()}
           justifyContent="center"
           alignItems="center"
           height="36px"
