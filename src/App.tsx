@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Layout from "./components/Layout";
 import ProtectedPages from "./components/ProtectedPages";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import FiltersAndLabels from "./pages/FiltersAndLabels";
@@ -25,17 +26,19 @@ export const App = () => {
         element={<RegisterAndLogin page="register" />}
       />
       <Route path={PATHS.LOGIN} element={<RegisterAndLogin page="login" />} />
-      {PROTECTED_ROUTES.map(({ path, page, hasNavbar }) => (
-        <Route
-          key={path}
-          path={path}
-          element={
-            <ProtectedRoutes token={token}>
-              <ProtectedPages hasNavbar={hasNavbar} token={token} page={page} />
-            </ProtectedRoutes>
-          }
-        />
-      ))}
+      <Route element={<Layout />}>
+        {PROTECTED_ROUTES.map(({ path, page, hasNavbar }) => (
+          <Route
+            key={path}
+            path={path}
+            element={
+              <ProtectedRoutes token={token}>
+                <ProtectedPages token={token} page={page} />
+              </ProtectedRoutes>
+            }
+          />
+        ))}
+      </Route>
     </Routes>
   );
 };
