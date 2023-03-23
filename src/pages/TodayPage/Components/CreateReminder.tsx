@@ -155,7 +155,7 @@ function CreateReminder() {
             <Button
               color="white"
               bg={!titleRef.current?.value ? "red.300" : "red.500"}
-              disabled={!titleRef.current?.value.trim()}
+              isDisabled={!titleRef.current?.value.trim()}
               _hover={!titleRef.current?.value ? { bg: "" } : { bg: "red.700" }}
               onClick={submitHandler}
             >
