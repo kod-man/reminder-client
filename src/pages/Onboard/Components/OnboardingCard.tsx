@@ -161,7 +161,7 @@ function OnboardingCard() {
         </Flex>
         <Button
           onClick={submitHandler}
-          disabled={!nameRef.current?.value.trim()}
+          isDisabled={!nameRef.current?.value.trim()}
           justifyContent="center"
           alignItems="center"
           height="36px"

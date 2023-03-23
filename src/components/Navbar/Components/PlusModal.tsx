@@ -62,7 +62,7 @@ const PlusModal = () => {
   const userData = {
     title: "",
     priority,
-    description:"" ,
+    description: "",
     date: "",
     userId
   };
@@ -332,7 +332,7 @@ const PlusModal = () => {
               colorScheme="red"
               ml={2}
               size="sm"
-              disabled={!titleRef.current?.value.trim()}
+              isDisabled={!titleRef.current?.value.trim()}
               onClick={showData}
             >
               Add task

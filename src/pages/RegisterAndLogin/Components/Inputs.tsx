@@ -139,7 +139,7 @@ const Inputs = ({ page }: { page: string }) => {
         </Stack>
       </FormControl>
       <Button
-        disabled={disabled}
+        isDisabled={disabled}
         onClick={submitHandler}
         display="flex"
         justifyContent="center"
