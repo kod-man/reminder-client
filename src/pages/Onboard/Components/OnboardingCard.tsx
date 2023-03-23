@@ -27,6 +27,15 @@ function OnboardingCard() {
 
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
+    if (!nameRef.current?.value.trim()) {
+      toast({
+        ...defaultToastProps,
+        title: "Please enter name.",
+        status: "error"
+      });
+      return;
+    }
+
     const newUserData = {
       userId,
       userName: nameRef.current?.value,
@@ -161,7 +170,6 @@ function OnboardingCard() {
         </Flex>
         <Button
           onClick={submitHandler}
-          isDisabled={!nameRef.current?.value.trim()}
           justifyContent="center"
           alignItems="center"
           height="36px"
