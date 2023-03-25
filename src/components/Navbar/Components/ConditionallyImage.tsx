@@ -11,7 +11,7 @@ function ConditionallyImage({ imageSrc, initials }: Props) {
       <Image
         w="100%"
         h="100%"
-        objectFit="contain"
+        objectFit="cover"
         borderRadius="full"
         src={imageSrc}
       />
