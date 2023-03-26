@@ -9,9 +9,11 @@ function ConditionallyImage({ imageSrc, initials }: Props) {
   if (imageSrc) {
     return (
       <Image
-        w="50"
-        h="50"
-        objectFit="contain"
+        m={0}
+        p={0}
+        w="100%"
+        h="100%"
+        objectFit="fill"
         borderRadius="full"
         src={imageSrc}
       />
