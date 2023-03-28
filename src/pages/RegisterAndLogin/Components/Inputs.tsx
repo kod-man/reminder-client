@@ -42,7 +42,7 @@ const Inputs = ({ page }: { page: string }) => {
   const [open, setOpen] = React.useState(false);
   const toggleHandle = () => setOpen(!open);
 
-  const HandleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const HandleEmailOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
@@ -56,8 +56,16 @@ const Inputs = ({ page }: { page: string }) => {
 
     //how to make  button default disabled
     const hasErrors = errors.email;
-    const hasEmptyValues = !(formData.password && formData.email);
+    const hasEmptyValues = !formData.email;
     setDisabled(Boolean(hasErrors) || Boolean(hasEmptyValues));
+  };
+  const setPassValidity = (val: boolean) => {
+    setDisabled(!val);
+  };
+
+  const HandlePasswordOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const submitHandler = () => {
@@ -111,7 +119,7 @@ const Inputs = ({ page }: { page: string }) => {
             pr="4"
             type="email"
             placeholder="Enter your email..."
-            onChange={HandleOnChange}
+            onChange={HandleEmailOnChange}
             value={formData.email}
           />
           {formErrors.email ? (
@@ -126,7 +134,7 @@ const Inputs = ({ page }: { page: string }) => {
               pr="4.5rem"
               type={open ? "text" : "password"}
               placeholder="Enter your password..."
-              onChange={HandleOnChange}
+              onChange={HandlePasswordOnChange}
               value={formData.password}
             />
             <InputRightElement
@@ -135,11 +143,16 @@ const Inputs = ({ page }: { page: string }) => {
               children={open ? <VisibleIcon /> : <InvisibleIcon />}
             />
           </InputGroup>
-          {isRegisterPage && <PassStandards formData={formData} />}
+          {isRegisterPage && (
+            <PassStandards
+              setPassValidity={setPassValidity}
+              formData={formData}
+            />
+          )}
         </Stack>
       </FormControl>
       <Button
-        disabled={disabled}
+        isDisabled={disabled}
         onClick={submitHandler}
         display="flex"
         justifyContent="center"
