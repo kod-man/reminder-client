@@ -1,5 +1,6 @@
 import {
   Button,
+  Flex,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -9,12 +10,16 @@ import {
   ModalOverlay,
   useDisclosure
 } from "@chakra-ui/react";
+import { ReactNode } from "react";
 
-const ThreeDotComponent = () => {
+interface ThreeDotComponentProps {
+  children: ReactNode; // specify the type of children
+}
+
+const ThreeDotComponent = ({ children }: ThreeDotComponentProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
       <Modal
         isCentered
         onClose={onClose}
@@ -25,14 +30,7 @@ const ThreeDotComponent = () => {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            <text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Accusantium culpa praesentium expedita consequuntur dolor maiores
-              suscipit, illo ipsam mollitia quis eius fugit harum dignissimos
-              doloribus voluptatibus odio blanditiis! Nostrum, consequatur.
-            </text>
-          </ModalBody>
+          <ModalBody></ModalBody>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
@@ -41,6 +39,9 @@ const ThreeDotComponent = () => {
           </ModalFooter>
         </ModalContent>
       </Modal>
+      <Flex ml="auto" onClick={onOpen}>
+        {children}
+      </Flex>
     </>
   );
 };
