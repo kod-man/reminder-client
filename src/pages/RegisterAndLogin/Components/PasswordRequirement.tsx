@@ -6,9 +6,8 @@ type PassProps = {
     email: string;
     password: string;
   };
-  setPassValidity: (value: boolean) => void;
 };
-const PasswordRequirement = ({ formData, setPassValidity }: PassProps) => {
+const PasswordRequirement = ({ formData }: PassProps) => {
   const { password } = formData;
   const hasPsValue = password.trim() !== "";
   const hasPsassword7chars = password.length > 6;
@@ -17,15 +16,6 @@ const PasswordRequirement = ({ formData, setPassValidity }: PassProps) => {
   const hasPsSmallCase = /[a-z]/.test(password);
   const hasPsSymbol = /\W|_/g.test(password);
 
-  const isValid =
-    hasPsValue &&
-    hasPsNumber &&
-    hasPsUpperCase &&
-    hasPsSmallCase &&
-    hasPsSymbol &&
-    hasPsUpperCase;
-
-  setPassValidity(isValid);
   return (
     <Flex
       flexDirection="column"

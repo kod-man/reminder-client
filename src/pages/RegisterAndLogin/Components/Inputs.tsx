@@ -8,7 +8,7 @@ import {
   Text,
   useToast
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import InvisibleIcon from "../../../icons/InvisibleIcon";
 import VisibleIcon from "../../../icons/VisibleIcon";
@@ -20,6 +20,7 @@ import {
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import { EmailValidation } from "../utils/EmailValidation";
+import { PasswordValidation } from "../utils/PasswordValidation";
 import PassStandards from "./PasswordRequirement";
 
 const Inputs = ({ page }: { page: string }) => {
@@ -30,7 +31,7 @@ const Inputs = ({ page }: { page: string }) => {
 
   const [formData, setFormData] = React.useState({
     email: "",
-    password: ""
+    password: "password is required"
   });
 
   const [formErrors, setFormErros] = React.useState({
@@ -42,31 +43,45 @@ const Inputs = ({ page }: { page: string }) => {
   const [open, setOpen] = React.useState(false);
   const toggleHandle = () => setOpen(!open);
 
-  const HandleEmailOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const HandleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     // Error handling
-    const errors = EmailValidation(value);
+    if (name === "email") {
+      setFormErros((prev) => ({
+        ...prev,
+        email: EmailValidation(value)
+      }));
+    }
+    if (name === "password") {
+      setFormErros((prev) => ({
+        ...prev,
+        password: PasswordValidation(value)
+      }));
+    }
 
-    setFormErros((prev) => ({
-      ...prev,
-      email: errors.email
-    }));
+    console.log("emailerror", formErrors.email);
+    console.log("passworderror", formErrors.password);
 
     //how to make  button default disabled
-    const hasErrors = errors.email;
-    const hasEmptyValues = !formData.email;
-    setDisabled(Boolean(hasErrors) || Boolean(hasEmptyValues));
-  };
-  const setPassValidity = (val: boolean) => {
-    setDisabled(!val);
   };
 
-  const HandlePasswordOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  useEffect(() => {
+    const hasEmailErrors = formErrors.email;
+    const hasPasswordErrors = formErrors.password;
+    const hasEmptyValues = !formData.email && !formData.password;
+    setDisabled(
+      Boolean(hasEmailErrors) ||
+        Boolean(hasPasswordErrors) ||
+        Boolean(hasEmptyValues)
+    );
+  }, [
+    formErrors.email,
+    formErrors.password,
+    formData.email,
+    formData.password
+  ]);
 
   const submitHandler = () => {
     if (page === "register") {
@@ -119,7 +134,7 @@ const Inputs = ({ page }: { page: string }) => {
             pr="4"
             type="email"
             placeholder="Enter your email..."
-            onChange={HandleEmailOnChange}
+            onChange={HandleOnChange}
             value={formData.email}
           />
           {formErrors.email ? (
@@ -134,7 +149,7 @@ const Inputs = ({ page }: { page: string }) => {
               pr="4.5rem"
               type={open ? "text" : "password"}
               placeholder="Enter your password..."
-              onChange={HandlePasswordOnChange}
+              onChange={HandleOnChange}
               value={formData.password}
             />
             <InputRightElement
@@ -143,12 +158,7 @@ const Inputs = ({ page }: { page: string }) => {
               children={open ? <VisibleIcon /> : <InvisibleIcon />}
             />
           </InputGroup>
-          {isRegisterPage && (
-            <PassStandards
-              setPassValidity={setPassValidity}
-              formData={formData}
-            />
-          )}
+          {isRegisterPage && <PassStandards formData={formData} />}
         </Stack>
       </FormControl>
       <Button
