@@ -61,9 +61,6 @@ const Inputs = ({ page }: { page: string }) => {
       }));
     }
 
-    console.log("emailerror", formErrors.email);
-    console.log("passworderror", formErrors.password);
-
     //how to make  button default disabled
   };
 
