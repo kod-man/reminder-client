@@ -1,11 +1,4 @@
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  useDisclosure
-} from "@chakra-ui/react";
-import { ReactNode } from "react";
+import { Flex, Menu, MenuButton, MenuList, Text } from "@chakra-ui/react";
 import AboveIcon from "../../../icons/AboveIcon";
 import ArchiveIcon from "../../../icons/ArchiveIcon";
 import BelowIcon from "../../../icons/BelowIcon";
@@ -18,12 +11,8 @@ import FavoriteHeartIcon from "../../../icons/FavoriteHeartIcon";
 import ShareIcon from "../../../icons/ShareIcon";
 import ThreeDotsCard from "./ThreeDotsCard";
 
-interface ThreeDotComponentProps {
-  children: ReactNode; // specify the type of children
-}
-
-const ThreeDotComponent = ({ children }: ThreeDotComponentProps) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+// eslint-disable-next-line no-empty-pattern
+const ThreeDotComponent = () => {
   const ThreeDotData = [
     {
       Icon: AboveIcon,
@@ -70,9 +59,9 @@ const ThreeDotComponent = ({ children }: ThreeDotComponentProps) => {
   return (
     <>
       <Menu>
-        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-          Actions
-        </MenuButton>
+        <Flex as={MenuButton} ml="auto">
+          <Text>...</Text>
+        </Flex>
         <MenuList>
           {ThreeDotData.map(({ Icon, text }) => (
             <ThreeDotsCard key={text} Icon={Icon} text={text} />

@@ -5,18 +5,20 @@ type ThreeDotsCardProps = {
   text: string;
 };
 const ThreeDotsCard = ({ Icon, text }: ThreeDotsCardProps) => {
-  <Flex
-    fontSize="sm"
-    justifyContent="flex-start"
-    alignItems="center"
-    h="32px"
-    borderRadius="5px"
-    p="1px"
-    _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
-  >
-    <Icon Icon={Icon} />
-    <Text fontSize="16px">{text} </Text>
-  </Flex>;
+  return (
+    <Flex
+      fontSize="sm"
+      justifyContent="flex-start"
+      alignItems="center"
+      h="32px"
+      borderRadius="5px"
+      p="1px"
+      _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
+    >
+      <Icon Icon={Icon} color="gray" />
+      <Text fontSize="16px">{text} </Text>
+    </Flex>
+  );
 };
 
 export default ThreeDotsCard;

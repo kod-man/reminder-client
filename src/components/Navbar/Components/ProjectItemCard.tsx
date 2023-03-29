@@ -22,11 +22,9 @@ const ProjectItemCard = ({ name, color }: ProjectItemCardProps) => {
     >
       <ColorDotIcon color={color} />
       <Text fontSize="16px">{name} </Text>
-      <ThreeDotComponent>
-        <MyTooltip label={"More projects actions"}>
-          <Text>...</Text>
-        </MyTooltip>
-      </ThreeDotComponent>
+      <MyTooltip label={"More projects actions"}>
+        <ThreeDotComponent />
+      </MyTooltip>
     </Flex>
   );
 };
