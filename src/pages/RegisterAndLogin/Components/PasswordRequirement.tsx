@@ -1,14 +1,13 @@
 import { Flex } from "@chakra-ui/react";
 import RequirementCard from "./RequirementCard";
 
-const PasswordRequirement = ({
-  formData
-}: {
+type PassProps = {
   formData: {
     email: string;
     password: string;
   };
-}) => {
+};
+const PasswordRequirement = ({ formData }: PassProps) => {
   const { password } = formData;
   const hasPsValue = password.trim() !== "";
   const hasPsassword7chars = password.length > 6;

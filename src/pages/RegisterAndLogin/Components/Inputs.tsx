@@ -8,7 +8,7 @@ import {
   Text,
   useToast
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import InvisibleIcon from "../../../icons/InvisibleIcon";
 import VisibleIcon from "../../../icons/VisibleIcon";
@@ -20,6 +20,7 @@ import {
 import { PATHS } from "../../../utils/paths";
 import { API } from "../../../utils/usedApi";
 import { EmailValidation } from "../utils/EmailValidation";
+import { PasswordValidation } from "../utils/PasswordValidation";
 import PassStandards from "./PasswordRequirement";
 
 const Inputs = ({ page }: { page: string }) => {
@@ -35,7 +36,7 @@ const Inputs = ({ page }: { page: string }) => {
 
   const [formErrors, setFormErros] = React.useState({
     email: "",
-    password: ""
+    password: "password is required"
   });
 
   // to make password visible or invisible
@@ -47,18 +48,37 @@ const Inputs = ({ page }: { page: string }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
 
     // Error handling
-    const errors = EmailValidation(value);
-
-    setFormErros((prev) => ({
-      ...prev,
-      email: errors.email
-    }));
+    if (name === "email") {
+      setFormErros((prev) => ({
+        ...prev,
+        email: EmailValidation(value)
+      }));
+    }
+    if (name === "password") {
+      setFormErros((prev) => ({
+        ...prev,
+        password: PasswordValidation(value)
+      }));
+    }
 
     //how to make  button default disabled
-    const hasErrors = errors.email;
-    const hasEmptyValues = !(formData.password && formData.email);
-    setDisabled(Boolean(hasErrors) || Boolean(hasEmptyValues));
   };
+
+  useEffect(() => {
+    const hasEmailErrors = formErrors.email;
+    const hasPasswordErrors = formErrors.password;
+    const hasEmptyValues = !formData.email && !formData.password;
+    setDisabled(
+      Boolean(hasEmailErrors) ||
+        Boolean(hasPasswordErrors) ||
+        Boolean(hasEmptyValues)
+    );
+  }, [
+    formErrors.email,
+    formErrors.password,
+    formData.email,
+    formData.password
+  ]);
 
   const submitHandler = () => {
     if (page === "register") {
@@ -139,7 +159,7 @@ const Inputs = ({ page }: { page: string }) => {
         </Stack>
       </FormControl>
       <Button
-        disabled={disabled}
+        isDisabled={disabled}
         onClick={submitHandler}
         display="flex"
         justifyContent="center"
