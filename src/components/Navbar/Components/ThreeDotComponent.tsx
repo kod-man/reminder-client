@@ -1,13 +1,8 @@
 import {
   Button,
-  Flex,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
+  Menu,
+  MenuButton,
+  MenuList,
   useDisclosure
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
@@ -21,6 +16,7 @@ import EditIcon from "../../../icons/EditIcon";
 import EmailIcon from "../../../icons/EmailIcon";
 import FavoriteHeartIcon from "../../../icons/FavoriteHeartIcon";
 import ShareIcon from "../../../icons/ShareIcon";
+import ThreeDotsCard from "./ThreeDotsCard";
 
 interface ThreeDotComponentProps {
   children: ReactNode; // specify the type of children
@@ -73,25 +69,16 @@ const ThreeDotComponent = ({ children }: ThreeDotComponentProps) => {
 
   return (
     <>
-      <Modal
-        isCentered
-        onClose={onClose}
-        isOpen={isOpen}
-        motionPreset="slideInBottom"
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody></ModalBody>
-          <ModalFooter>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-      <Flex ml="auto" onClick={onOpen}>
-        {children}
-      </Flex>
+      <Menu>
+        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+          Actions
+        </MenuButton>
+        <MenuList>
+          {ThreeDotData.map(({ Icon, text }) => (
+            <ThreeDotsCard key={text} Icon={Icon} text={text} />
+          ))}
+        </MenuList>
+      </Menu>
     </>
   );
 };
