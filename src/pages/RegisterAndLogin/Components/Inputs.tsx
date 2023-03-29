@@ -31,12 +31,12 @@ const Inputs = ({ page }: { page: string }) => {
 
   const [formData, setFormData] = React.useState({
     email: "",
-    password: "password is required"
+    password: ""
   });
 
   const [formErrors, setFormErros] = React.useState({
     email: "",
-    password: ""
+    password: "password is required"
   });
 
   // to make password visible or invisible
