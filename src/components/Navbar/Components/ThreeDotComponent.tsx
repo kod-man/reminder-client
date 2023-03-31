@@ -1,4 +1,11 @@
-import { Flex, Menu, MenuButton, MenuList, Text } from "@chakra-ui/react";
+import {
+  Divider,
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  Text
+} from "@chakra-ui/react";
 import AboveIcon from "../../../icons/AboveIcon";
 import ArchiveIcon from "../../../icons/ArchiveIcon";
 import BelowIcon from "../../../icons/BelowIcon";
@@ -13,7 +20,7 @@ import ThreeDotsCard from "./ThreeDotsCard";
 
 // eslint-disable-next-line no-empty-pattern
 const ThreeDotComponent = () => {
-  const ThreeDotData = [
+  const ThreeDotData1 = [
     {
       Icon: AboveIcon,
       text: "Add project above"
@@ -21,7 +28,10 @@ const ThreeDotComponent = () => {
     {
       Icon: BelowIcon,
       text: "Add project below"
-    },
+    }
+  ];
+
+  const ThreeDotData2 = [
     {
       Icon: EditIcon,
       text: "Edit project"
@@ -33,7 +43,9 @@ const ThreeDotComponent = () => {
     {
       Icon: FavoriteHeartIcon,
       text: "Add to favorites"
-    },
+    }
+  ];
+  const ThreeDotData3 = [
     {
       Icon: DuplicateIcon,
       text: "Duplicate project"
@@ -45,7 +57,9 @@ const ThreeDotComponent = () => {
     {
       Icon: CalendarIcon,
       text: "Project calendar feed"
-    },
+    }
+  ];
+  const ThreeDotData4 = [
     {
       Icon: ArchiveIcon,
       text: "Archive project"
@@ -63,7 +77,19 @@ const ThreeDotComponent = () => {
           <Text>...</Text>
         </Flex>
         <MenuList>
-          {ThreeDotData.map(({ Icon, text }) => (
+          {ThreeDotData1.map(({ Icon, text }) => (
+            <ThreeDotsCard key={text} Icon={Icon} text={text} />
+          ))}
+          <Divider />
+          {ThreeDotData2.map(({ Icon, text }) => (
+            <ThreeDotsCard key={text} Icon={Icon} text={text} />
+          ))}
+          <Divider />
+          {ThreeDotData3.map(({ Icon, text }) => (
+            <ThreeDotsCard key={text} Icon={Icon} text={text} />
+          ))}
+          <Divider />
+          {ThreeDotData4.map(({ Icon, text }) => (
             <ThreeDotsCard key={text} Icon={Icon} text={text} />
           ))}
         </MenuList>
