@@ -14,11 +14,11 @@ const ThreeDotsCard = ({ Icon, text }: ThreeDotsCardProps) => {
       h="32px"
       borderRadius="5px"
       p="1px"
-      ml="5px"
+      mx="5px"
       _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
     >
       {Icon && <Icon as={Icon} color="gray" />}
-      <Text fontSize="16px" ml="15px">
+      <Text fontSize="14px" ml="15px">
         {text}
       </Text>
     </Flex>
