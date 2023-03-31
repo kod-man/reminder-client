@@ -17,7 +17,7 @@ const ThreeDotsCard = ({ Icon, text }: ThreeDotsCardProps) => {
       mx="5px"
       _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
     >
-      {Icon && <Icon as={Icon} color="gray" />}
+      {<Icon Icon={Icon} color="gray" />}
       <Text fontSize="14px" ml="15px">
         {text}
       </Text>

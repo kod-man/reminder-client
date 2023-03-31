@@ -18,9 +18,8 @@ import FavoriteHeartIcon from "../../../icons/FavoriteHeartIcon";
 import ShareIcon from "../../../icons/ShareIcon";
 import ThreeDotsCard from "./ThreeDotsCard";
 
-// eslint-disable-next-line no-empty-pattern
 const ThreeDotComponent = () => {
-  const ThreeDotData1 = [
+  const ThreeDotDataA = [
     {
       Icon: AboveIcon,
       text: "Add project above"
@@ -31,7 +30,7 @@ const ThreeDotComponent = () => {
     }
   ];
 
-  const ThreeDotData2 = [
+  const ThreeDotDataB = [
     {
       Icon: EditIcon,
       text: "Edit project"
@@ -45,7 +44,7 @@ const ThreeDotComponent = () => {
       text: "Add to favorites"
     }
   ];
-  const ThreeDotData3 = [
+  const ThreeDotDataC = [
     {
       Icon: DuplicateIcon,
       text: "Duplicate project"
@@ -59,7 +58,7 @@ const ThreeDotComponent = () => {
       text: "Project calendar feed"
     }
   ];
-  const ThreeDotData4 = [
+  const ThreeDotDataD = [
     {
       Icon: ArchiveIcon,
       text: "Archive project"
@@ -77,19 +76,19 @@ const ThreeDotComponent = () => {
           <Text>...</Text>
         </Flex>
         <MenuList>
-          {ThreeDotData1.map(({ Icon, text }) => (
+          {ThreeDotDataA.map(({ Icon, text }) => (
             <ThreeDotsCard key={text} Icon={Icon} text={text} />
           ))}
           <Divider />
-          {ThreeDotData2.map(({ Icon, text }) => (
+          {ThreeDotDataB.map(({ Icon, text }) => (
             <ThreeDotsCard key={text} Icon={Icon} text={text} />
           ))}
           <Divider />
-          {ThreeDotData3.map(({ Icon, text }) => (
+          {ThreeDotDataC.map(({ Icon, text }) => (
             <ThreeDotsCard key={text} Icon={Icon} text={text} />
           ))}
           <Divider />
-          {ThreeDotData4.map(({ Icon, text }) => (
+          {ThreeDotDataD.map(({ Icon, text }) => (
             <ThreeDotsCard key={text} Icon={Icon} text={text} />
           ))}
         </MenuList>
