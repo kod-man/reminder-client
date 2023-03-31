@@ -3,7 +3,7 @@ import AboveIcon from "../../../icons/AboveIcon";
 import ArchiveIcon from "../../../icons/ArchiveIcon";
 import BelowIcon from "../../../icons/BelowIcon";
 import CalendarIcon from "../../../icons/CalendarIcon";
-import DeleteIcon from "../../../icons/DeleteIcon";
+import { DeletProjectIcon } from "../../../icons/DeletProjectIcon";
 import DuplicateIcon from "../../../icons/DuplicateIcon";
 import EditIcon from "../../../icons/EditIcon";
 import EmailIcon from "../../../icons/EmailIcon";
@@ -51,7 +51,7 @@ const ThreeDotComponent = () => {
       text: "Archive project"
     },
     {
-      Icon: DeleteIcon,
+      Icon: DeletProjectIcon,
       text: "Delete project"
     }
   ];
