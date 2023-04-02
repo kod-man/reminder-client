@@ -1,5 +1,7 @@
 import { Flex, Text } from "@chakra-ui/react";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
+import MyTooltip from "./MyTooltip";
+import ThreeDotComponent from "./ThreeDotComponent";
 
 type ProjectItemCardProps = {
   name: string;
@@ -20,7 +22,9 @@ const ProjectItemCard = ({ name, color }: ProjectItemCardProps) => {
     >
       <ColorDotIcon color={color} />
       <Text fontSize="16px">{name} </Text>
-      <Flex ml="auto">...</Flex>
+      <MyTooltip label={"More projects actions"}>
+        <ThreeDotComponent />
+      </MyTooltip>
     </Flex>
   );
 };
