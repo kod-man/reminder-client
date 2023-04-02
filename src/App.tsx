@@ -31,7 +31,7 @@ export const App = () => {
           path={path}
           element={
             <ProtectedRoutes token={token}>
-              <ProtectedPages hasNavbar={hasNavbar} token={token} page={page} />
+              <ProtectedPages hasNavbar={hasNavbar} page={page} />
             </ProtectedRoutes>
           }
         />
