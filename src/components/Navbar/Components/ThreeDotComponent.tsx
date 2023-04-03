@@ -73,6 +73,7 @@ const ThreeDotComponent = () => {
     <>
       <Menu>
         <Flex as={MenuButton} ml="auto">
+          {/* we will work here and add on click */}
           <Text>...</Text>
         </Flex>
         <MenuList>
