@@ -81,7 +81,6 @@ const ProfileMenu = () => {
         cursor="pointer"
         h="7"
         w="7"
-        border="1px solid white"
         fontSize="xs"
         color="#db4c3f"
         alignItems="center"
