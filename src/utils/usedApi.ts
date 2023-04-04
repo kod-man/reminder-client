@@ -10,6 +10,9 @@ export const API = {
   getAllLabels: "label/all",
   addProject: "project/add",
   addFilter: "filter/add",
+  deleteFilter: "filter/delete",
+  deleteLabel: "label/delete",
+  deleteProject: "project/delete",
   addLabel: "label/add",
   getAllProjects: "project/all"
 };

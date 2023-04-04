@@ -33,7 +33,14 @@ function FiltersAndLabels({
   };
 
   const renderedItemList = data.map((item) => (
-    <ItemCard key={item._id} text={item.name} Icon={Icon} />
+    <ItemCard
+      key={item._id}
+      id={item._id}
+      text={item.name}
+      Icon={Icon}
+      tooltipLabel={cardTitle}
+      onRefresh={onRefresh}
+    />
   ));
 
   return (
