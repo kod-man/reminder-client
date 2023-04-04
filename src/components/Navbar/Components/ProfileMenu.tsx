@@ -81,14 +81,16 @@ const ProfileMenu = () => {
         cursor="pointer"
         h="7"
         w="7"
-        border="1px solid white"
         fontSize="xs"
         color="#db4c3f"
         alignItems="center"
         justifyContent="center"
         backgroundColor="white"
-        borderRadius="50%"
+        backgroundImage={profileImg}
+        borderRadius="100%"
         fontWeight="bold"
+        m="0"
+        p="0"
       >
         <ConditionallyImage imageSrc={profileImg} initials={nameInitials} />
       </Flex>
@@ -113,7 +115,6 @@ const ProfileMenu = () => {
                 justifyContent="center"
                 backgroundColor="white"
                 borderRadius="50%"
-                p={1}
               >
                 <ConditionallyImage
                   imageSrc={profileImg}
