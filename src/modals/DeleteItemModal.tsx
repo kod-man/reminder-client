@@ -11,7 +11,7 @@ import {
   useDisclosure,
   useToast
 } from "@chakra-ui/react";
-import React, { FC, useRef, useState } from "react";
+import React, { FC } from "react";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import TrashIcon from "../icons/TrashIcon";
