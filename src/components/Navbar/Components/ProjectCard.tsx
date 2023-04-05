@@ -1,5 +1,7 @@
 import { useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../..";
 import { Axios } from "../../../utils/axios";
 import { genericErrorToast } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
@@ -11,8 +13,9 @@ type Project = {
   color: string;
 };
 
-function ProjectCard({ refreshGet }: { refreshGet: boolean }) {
+function ProjectCard() {
   const [projects, setProjects] = useState<Project[]>([]);
+  const isPageRefreshed = useSelector((state: RootState) => state.refresh);
   const toast = useToast();
   const userId = sessionStorage.getItem("userId");
 
@@ -28,7 +31,7 @@ function ProjectCard({ refreshGet }: { refreshGet: boolean }) {
       .catch((err) => {
         genericErrorToast(err, toast);
       });
-  }, [userId, toast, refreshGet]);
+  }, [userId, toast, isPageRefreshed]);
 
   return (
     <>

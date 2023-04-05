@@ -12,29 +12,30 @@ import {
   useToast
 } from "@chakra-ui/react";
 import React, { FC } from "react";
+import { useDispatch } from "react-redux";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
-import QuestionMarkIcon from "../icons/QuestionMarkIcon";
+import ExclamationMarkIcon from "../icons/ExclamationMarkIcon";
 import TrashIcon from "../icons/TrashIcon";
+import { refreshPage } from "../store/Refresh/RefreshSlice";
 import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
 import { API } from "../utils/usedApi";
 
 type DeleteItemModalProps = {
   tooltipLabel: string;
-  onRefresh: () => void;
   text: string;
   id: string;
 };
 
 const DeleteItemModal: FC<DeleteItemModalProps> = ({
   tooltipLabel,
-  onRefresh,
   text,
   id
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
   const toast = useToast();
+  const dispatch = useDispatch();
 
   const customAPI =
     tooltipLabel === "Filters"
@@ -44,13 +45,15 @@ const DeleteItemModal: FC<DeleteItemModalProps> = ({
       : tooltipLabel === "Project"
       ? API.deleteProject
       : "";
-
+  const title =
+    tooltipLabel.slice(0, tooltipLabel.length - 1) +
+    tooltipLabel.slice(tooltipLabel.length, tooltipLabel.length);
   const submitHandler = () => {
     Axios.delete(`${customAPI}/${id}`)
       .then(() => {
         toast({
           ...defaultToastProps,
-          title: `${tooltipLabel} deleted successfully.`,
+          title: `${title} deleted successfully.`,
           status: "success"
         });
       })
@@ -58,11 +61,11 @@ const DeleteItemModal: FC<DeleteItemModalProps> = ({
         genericErrorToast(err, toast);
       });
     onClose();
-    onRefresh();
+    dispatch(refreshPage());
   };
   return (
     <>
-      <MyTooltip label={`Delete ${tooltipLabel.toLowerCase()}`}>
+      <MyTooltip label={`Delete ${title.toLowerCase()}`}>
         <Flex>
           <TrashIcon onClick={onOpen} />
         </Flex>
@@ -75,22 +78,22 @@ const DeleteItemModal: FC<DeleteItemModalProps> = ({
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader position="relative" fontWeight="bold" fontSize="20px">
-            <Text> Delete {tooltipLabel}</Text>
+          <ModalHeader marginLeft="-4px" fontWeight="bold" fontSize="20px">
             <Flex
-              position="absolute"
               top="1px"
               right="2px"
               as="button"
               border="none"
               m="10px 10px 0 0"
             >
-              <QuestionMarkIcon color="black" />
+              <ExclamationMarkIcon color="black" />
             </Flex>
           </ModalHeader>
 
           <ModalBody>
-            <Text>{`Are you sure you want to delete ${text}?`}</Text>
+            <Text>
+              Are you sure you want to delete {<strong>{text}</strong>} ?
+            </Text>
           </ModalBody>
 
           <ModalFooter>

@@ -8,15 +8,13 @@ type ItemCardProps = {
   text: string;
   Icon: FC<any>;
   tooltipLabel: string;
-  onRefresh: () => void;
 };
 
 const ItemCard: React.FC<ItemCardProps> = ({
   id,
   text,
   Icon,
-  tooltipLabel,
-  onRefresh
+  tooltipLabel
 }) => {
   return (
     <Flex
@@ -46,12 +44,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
         borderRadius="20%"
         fontSize="2xl"
       >
-        <DeleteItemModal
-          tooltipLabel={tooltipLabel}
-          onRefresh={onRefresh}
-          text={text}
-          id={id}
-        />
+        <DeleteItemModal tooltipLabel={tooltipLabel} text={text} id={id} />
       </Flex>
     </Flex>
   );

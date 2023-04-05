@@ -16,15 +16,9 @@ type FiltersAndLabelsProps = {
   data: ItemData[];
   cardTitle: string;
   Icon: FC<any>;
-  onRefresh: () => void;
 };
 
-function FiltersAndLabels({
-  data,
-  cardTitle,
-  Icon,
-  onRefresh
-}: FiltersAndLabelsProps) {
+function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [isToggleOn, setIsToggleOn] = useState(true);
 
@@ -39,7 +33,6 @@ function FiltersAndLabels({
       text={item.name}
       Icon={Icon}
       tooltipLabel={cardTitle}
-      onRefresh={onRefresh}
     />
   ));
 
@@ -85,7 +78,7 @@ function FiltersAndLabels({
           fontSize="2xl"
           cursor="pointer"
         >
-          <AddItemModal tooltipLabel={cardTitle} onRefresh={onRefresh} />
+          <AddItemModal tooltipLabel={cardTitle} />
         </Flex>
       </Flex>
       {isToggleOn && (
