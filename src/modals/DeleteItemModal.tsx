@@ -45,9 +45,7 @@ const DeleteItemModal: FC<DeleteItemModalProps> = ({
       : tooltipLabel === "Project"
       ? API.deleteProject
       : "";
-  const title =
-    tooltipLabel.slice(0, tooltipLabel.length - 1) +
-    tooltipLabel.slice(tooltipLabel.length, tooltipLabel.length);
+  const title = tooltipLabel.slice(0, -1);
   const submitHandler = () => {
     Axios.delete(`${customAPI}/${id}`)
       .then(() => {
@@ -92,7 +90,7 @@ const DeleteItemModal: FC<DeleteItemModalProps> = ({
 
           <ModalBody>
             <Text>
-              Are you sure you want to delete {<strong>{text}</strong>} ?
+              Are you sure you want to delete <strong>{text}</strong> ?
             </Text>
           </ModalBody>
 

@@ -19,14 +19,25 @@ export const refreshSlice = createSlice({
   initialState,
   reducers: {
     refreshPage: (state, action) => {
-      if (action.payload === "Filters") {
-        state.filter = !state.filter;
-      }
-      if (action.payload === "Labels") {
-        state.label = !state.label;
-      }
-      if (action.payload === "Project") {
-        state.project = !state.project;
+      switch (action.payload) {
+        case "Filters": {
+          return {
+            ...state,
+            filter: !state.filter
+          };
+        }
+        case "Labels": {
+          return {
+            ...state,
+            label: !state.label
+          };
+        }
+        case "Project": {
+          return {
+            ...state,
+            project: !state.project
+          };
+        }
       }
     }
   }

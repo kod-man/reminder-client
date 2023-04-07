@@ -58,9 +58,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
       : tooltipLabel === "Project"
       ? API.addProject
       : "";
-  const title =
-    tooltipLabel.slice(0, tooltipLabel.length - 1) +
-    tooltipLabel.slice(tooltipLabel.length, tooltipLabel.length);
+  const title = tooltipLabel.slice(0, -1);
 
   const submitHandler = () => {
     Axios.post(customAPI, { ...itemData, name: itemNameRef.current?.value })
