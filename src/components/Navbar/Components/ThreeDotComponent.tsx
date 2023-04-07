@@ -21,6 +21,7 @@ import ThreeDotsCard from "./ThreeDotsCard";
 const ThreeDotComponent = () => {
   const handleDelete = () => {
     // implement the delete action here
+    alert("deleted");
     console.log("delete");
   };
 
