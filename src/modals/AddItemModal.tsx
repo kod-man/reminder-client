@@ -84,7 +84,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
       isFavorite: false
     });
     onClose();
-    dispatch(refreshPage());
+    dispatch(refreshPage(tooltipLabel));
   };
   return (
     <>

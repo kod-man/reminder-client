@@ -61,7 +61,7 @@ const DeleteItemModal: FC<DeleteItemModalProps> = ({
         genericErrorToast(err, toast);
       });
     onClose();
-    dispatch(refreshPage());
+    dispatch(refreshPage(tooltipLabel));
   };
   return (
     <>

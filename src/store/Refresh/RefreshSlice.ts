@@ -2,14 +2,32 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../index";
 
 // Define the initial state using that type
-const initialState = false;
+interface InitialState {
+  filter: boolean;
+  label: boolean;
+  project: boolean;
+}
+
+const initialState: InitialState = {
+  filter: false,
+  label: false,
+  project: false
+};
 
 export const refreshSlice = createSlice({
   name: "refresh",
   initialState,
   reducers: {
-    refreshPage: (state) => {
-      return !state;
+    refreshPage: (state, action) => {
+      if (action.payload === "Filters") {
+        state.filter = !state.filter;
+      }
+      if (action.payload === "Labels") {
+        state.label = !state.label;
+      }
+      if (action.payload === "Project") {
+        state.project = !state.project;
+      }
     }
   }
 });
