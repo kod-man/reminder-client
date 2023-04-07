@@ -55,7 +55,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
       ? API.addFilter
       : tooltipLabel === "Labels"
       ? API.addLabel
-      : tooltipLabel === "Project"
+      : tooltipLabel === "Projects"
       ? API.addProject
       : "";
   const title = tooltipLabel.slice(0, -1);
@@ -65,10 +65,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
       .then(() => {
         toast({
           ...defaultToastProps,
-          title:
-            tooltipLabel === "Project"
-              ? `${tooltipLabel} added successfully.`
-              : `${title} added successfully.`,
+          title: `${title} added successfully.`,
           status: "success"
         });
       })
@@ -86,13 +83,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
   };
   return (
     <>
-      <MyTooltip
-        label={
-          tooltipLabel === "Project"
-            ? `Add ${tooltipLabel.toLowerCase()}`
-            : `Add new ${title.toLowerCase()}`
-        }
-      >
+      <MyTooltip label={`Add new ${title.toLowerCase()}`}>
         <Flex>
           <SmallPlusIcon onClick={onOpen} />
         </Flex>
@@ -106,7 +97,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader position="relative" fontWeight="bold" fontSize="20px">
-            <Text> Add {tooltipLabel}</Text>
+            <Text> Add {title.toLowerCase()}</Text>
             <Flex
               position="absolute"
               top="1px"

@@ -79,7 +79,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
         >
           <Text color="gray">Projects</Text>
           <Flex>
-            <AddItemModal tooltipLabel="Project" />
+            <AddItemModal tooltipLabel="Projects" />
             <MyTooltip label="Toggle list of Projects">
               <Flex
                 transform={

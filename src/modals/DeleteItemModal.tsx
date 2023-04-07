@@ -42,7 +42,7 @@ const DeleteItemModal: FC<DeleteItemModalProps> = ({
       ? API.deleteFilter
       : tooltipLabel === "Labels"
       ? API.deleteLabel
-      : tooltipLabel === "Project"
+      : tooltipLabel === "Projects"
       ? API.deleteProject
       : "";
   const title = tooltipLabel.slice(0, -1);
