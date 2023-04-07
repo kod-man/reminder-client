@@ -33,7 +33,7 @@ function FiltersAndLabelsPage() {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, toast, isPageRefreshed]);
+  }, [userId, toast, isPageRefreshed.filter]);
 
   useEffect(() => {
     Axios.get(`${API.getAllLabels}/${userId}`)
@@ -47,7 +47,7 @@ function FiltersAndLabelsPage() {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, toast, isPageRefreshed]);
+  }, [userId, toast, isPageRefreshed.label]);
   return (
     <Flex
       flexDirection="column"

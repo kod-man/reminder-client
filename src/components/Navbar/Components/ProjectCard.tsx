@@ -31,7 +31,7 @@ function ProjectCard() {
       .catch((err) => {
         genericErrorToast(err, toast);
       });
-  }, [userId, toast, isPageRefreshed]);
+  }, [userId, toast, isPageRefreshed.project]);
 
   return (
     <>
