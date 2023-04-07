@@ -3,9 +3,10 @@ import { Flex, Text } from "@chakra-ui/react";
 type ThreeDotsCardProps = {
   Icon: any;
   text: string;
+  onClick?: () => void;
 };
 
-const ThreeDotsCard = ({ Icon, text }: ThreeDotsCardProps) => {
+const ThreeDotsCard = ({ Icon, text, onClick }: ThreeDotsCardProps) => {
   return (
     <Flex
       fontSize="sm"
@@ -16,6 +17,7 @@ const ThreeDotsCard = ({ Icon, text }: ThreeDotsCardProps) => {
       p="1px"
       mx="5px"
       _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
+      onClick={onClick}
     >
       {<Icon Icon={Icon} color="gray" />}
       <Text fontSize="14px" ml="15px">
