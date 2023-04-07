@@ -1,13 +1,21 @@
 import { Flex, Spacer, Text } from "@chakra-ui/react";
 import { FC } from "react";
+import DeleteItemModal from "../../../modals/DeleteItemModal";
 import IconsBar from "./IconsBars";
 
 type ItemCardProps = {
+  id: string;
   text: string;
   Icon: FC<any>;
+  tooltipLabel: string;
 };
 
-const ItemCard: React.FC<ItemCardProps> = ({ text, Icon }) => {
+const ItemCard: React.FC<ItemCardProps> = ({
+  id,
+  text,
+  Icon,
+  tooltipLabel
+}) => {
   return (
     <Flex
       borderBottom="1px solid"
@@ -24,6 +32,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ text, Icon }) => {
       </Flex>
       <Spacer />
       <IconsBar />
+
       <Flex
         w="24px"
         h="24px"
@@ -34,7 +43,9 @@ const ItemCard: React.FC<ItemCardProps> = ({ text, Icon }) => {
         _hover={{ color: "#202020", bg: "#eee" }}
         borderRadius="20%"
         fontSize="2xl"
-      ></Flex>
+      >
+        <DeleteItemModal tooltipLabel={tooltipLabel} text={text} id={id} />
+      </Flex>
     </Flex>
   );
 };

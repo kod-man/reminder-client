@@ -15,24 +15,26 @@ import {
   useToast
 } from "@chakra-ui/react";
 import React, { FC, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import CustomSelects from "../components/CustomSelects";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import SmallPlusIcon from "../icons/SmallPlusIcon";
+import { refreshPage } from "../store/Refresh/RefreshSlice";
 import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
 import { API } from "../utils/usedApi";
 
 type AddItemModalProps = {
   tooltipLabel: string;
-  onRefresh: () => void;
 };
 
-const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
+const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
   const toast = useToast();
   const itemNameRef = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
   const [itemData, setItemData] = useState({
     name: "",
     color: "",
@@ -53,16 +55,17 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
       ? API.addFilter
       : tooltipLabel === "Labels"
       ? API.addLabel
-      : tooltipLabel === "Project"
+      : tooltipLabel === "Projects"
       ? API.addProject
       : "";
+  const title = tooltipLabel.slice(0, -1);
 
   const submitHandler = () => {
     Axios.post(customAPI, { ...itemData, name: itemNameRef.current?.value })
       .then(() => {
         toast({
           ...defaultToastProps,
-          title: `${tooltipLabel} added successfully.`,
+          title: `${title} added successfully.`,
           status: "success"
         });
       })
@@ -76,11 +79,11 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
       isFavorite: false
     });
     onClose();
-    onRefresh();
+    dispatch(refreshPage(tooltipLabel));
   };
   return (
     <>
-      <MyTooltip label={`Add ${tooltipLabel.toLowerCase()}`}>
+      <MyTooltip label={`Add new ${title.toLowerCase()}`}>
         <Flex>
           <SmallPlusIcon onClick={onOpen} />
         </Flex>
@@ -94,7 +97,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel, onRefresh }) => {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader position="relative" fontWeight="bold" fontSize="20px">
-            <Text> Add {tooltipLabel}</Text>
+            <Text> Add {title.toLowerCase()}</Text>
             <Flex
               position="absolute"
               top="1px"

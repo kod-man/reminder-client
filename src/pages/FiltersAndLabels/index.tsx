@@ -15,15 +15,11 @@ import Header from "./components/Header";
 function FiltersAndLabelsPage() {
   const toast = useToast();
   const isDrawerOpen = useSelector((state: RootState) => state.drawer.value);
+  const isPageRefreshed = useSelector((state: RootState) => state.refresh);
   const [filtersData, setFiltersData] = useState([]);
   const [labelsData, setLabelsData] = useState([]);
-  const [refreshGet, setRefreshGet] = useState(false);
   const [loading, setLoading] = useState(true);
   const userId = sessionStorage.getItem("userId");
-
-  const refreshPage = () => {
-    setRefreshGet(!refreshGet);
-  };
 
   useEffect(() => {
     Axios.get(`${API.getAllFilters}/${userId}`)
@@ -37,7 +33,7 @@ function FiltersAndLabelsPage() {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, toast, refreshGet]);
+  }, [userId, toast, isPageRefreshed.filter]);
 
   useEffect(() => {
     Axios.get(`${API.getAllLabels}/${userId}`)
@@ -51,7 +47,7 @@ function FiltersAndLabelsPage() {
         genericErrorToast(err, toast);
         setLoading(false);
       });
-  }, [userId, toast, refreshGet]);
+  }, [userId, toast, isPageRefreshed.label]);
   return (
     <Flex
       flexDirection="column"
@@ -69,14 +65,12 @@ function FiltersAndLabelsPage() {
             cardTitle="Filters"
             data={filtersData}
             Icon={DropIcon}
-            onRefresh={refreshPage}
           />
           {
             <FiltersAndLabels
               cardTitle="Labels"
               data={labelsData}
               Icon={MiniLabelIcon}
-              onRefresh={refreshPage}
             />
           }
         </>
