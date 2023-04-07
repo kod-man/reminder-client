@@ -19,6 +19,11 @@ import ShareIcon from "../../../icons/ShareIcon";
 import ThreeDotsCard from "./ThreeDotsCard";
 
 const ThreeDotComponent = () => {
+  const handleDelete = () => {
+    // implement the delete action here
+    console.log("delete");
+  };
+
   const ThreeDotDataA = [
     {
       Icon: AboveIcon,
@@ -65,7 +70,8 @@ const ThreeDotComponent = () => {
     },
     {
       Icon: DeletProjectIcon,
-      text: "Delete project"
+      text: "Delete project",
+      action: handleDelete
     }
   ];
 
@@ -89,8 +95,13 @@ const ThreeDotComponent = () => {
             <ThreeDotsCard key={text} Icon={Icon} text={text} />
           ))}
           <Divider />
-          {ThreeDotDataD.map(({ Icon, text }) => (
-            <ThreeDotsCard key={text} Icon={Icon} text={text} />
+          {ThreeDotDataD.map(({ Icon, text, action }) => (
+            <ThreeDotsCard
+              key={text}
+              Icon={Icon}
+              text={text}
+              onClick={action}
+            />
           ))}
         </MenuList>
       </Menu>
