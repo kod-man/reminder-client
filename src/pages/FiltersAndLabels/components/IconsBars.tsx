@@ -1,6 +1,5 @@
 import { Flex } from "@chakra-ui/react";
 import AddToFavoritesIcon from "../../../icons/AddToFavoritesIcon";
-
 import PenIcon from "../../../icons/PenIcon";
 
 const icons = [<AddToFavoritesIcon />, <PenIcon />];
