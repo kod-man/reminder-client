@@ -18,6 +18,7 @@ import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 import DrawerReducers from "./store/Drawer/drawerSlice";
 import ReminderReducers from "./store/Reminder/ReminderSlice";
+import RefreshReducers from "./store/Refresh/RefreshSlice";
 
 function ErrorFallback({ error }: { error: any }) {
   return (
@@ -60,7 +61,8 @@ const root = ReactDOM.createRoot(container);
 export const store = configureStore({
   reducer: {
     reminder: ReminderReducers,
-    drawer: DrawerReducers
+    drawer: DrawerReducers,
+    refresh: RefreshReducers
   }
 });
 
