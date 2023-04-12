@@ -11,76 +11,76 @@ import FavoriteHeartIcon from "../../../icons/FavoriteHeartIcon";
 import ShareIcon from "../../../icons/ShareIcon";
 import ThreeDotsCard from "./ThreeDotsCard";
 
-const ThreeDotData = [
-  {
-    Icon: AboveIcon,
-    text: "Add project above",
-    hasDivider: false,
-    onClick: () => console.log("above")
-  },
-  {
-    Icon: BelowIcon,
-    text: "Add project below",
-    hasDivider: true,
-    onClick: () => console.log("below")
-  },
-  {
-    Icon: EditIcon,
-    text: "Edit project",
-    hasDivider: false,
-    onClick: () => console.log("edit")
-  },
-  {
-    Icon: ShareIcon,
-    text: "Share project",
-    hasDivider: false,
-    onClick: () => console.log("share")
-  },
-  {
-    Icon: FavoriteHeartIcon,
-    text: "Add to favorites",
-    hasDivider: true,
-    onClick: () => console.log("addfav.")
-  },
-  {
-    Icon: DuplicateIcon,
-    text: "Duplicate project",
-    hasDivider: false,
-    onClick: () => console.log("duplicate")
-  },
-  {
-    Icon: EmailIcon,
-    text: "Email tasks to this project",
-    hasDivider: false,
-    onClick: () => console.log("email")
-  },
-  {
-    Icon: CalendarIcon,
-    text: "Project calendar feed",
-    hasDivider: true,
-    onClick: () => console.log("calendar")
-  },
-  {
-    Icon: ArchiveIcon,
-    text: "Archive project",
-    hasDivider: false,
-    onClick: () => console.log("Archive")
-  },
-
-  {
-    Icon: DeleteProjectIcon,
-    text: "Delete project",
-    hasDivider: true,
-    onClick: () => console.log("Delete")
-  }
-];
-
 const ThreeDotComponent = () => {
-  // const handleDelete = () => {
-  //   // implement the delete action here
-  //   alert("deleted");
-  //   console.log("delete");
-  // };
+  const handleDelete = () => {
+    // implement the delete action here
+    alert("deleted");
+    console.log("delete");
+  };
+
+  const ThreeDotData = [
+    {
+      Icon: AboveIcon,
+      text: "Add project above",
+      hasDivider: false,
+      onClick: () => console.log("above")
+    },
+    {
+      Icon: BelowIcon,
+      text: "Add project below",
+      hasDivider: true,
+      onClick: () => console.log("below")
+    },
+    {
+      Icon: EditIcon,
+      text: "Edit project",
+      hasDivider: false,
+      onClick: () => console.log("edit")
+    },
+    {
+      Icon: ShareIcon,
+      text: "Share project",
+      hasDivider: false,
+      onClick: () => console.log("share")
+    },
+    {
+      Icon: FavoriteHeartIcon,
+      text: "Add to favorites",
+      hasDivider: true,
+      onClick: () => console.log("addfav.")
+    },
+    {
+      Icon: DuplicateIcon,
+      text: "Duplicate project",
+      hasDivider: false,
+      onClick: () => console.log("duplicate")
+    },
+    {
+      Icon: EmailIcon,
+      text: "Email tasks to this project",
+      hasDivider: false,
+      onClick: () => console.log("email")
+    },
+    {
+      Icon: CalendarIcon,
+      text: "Project calendar feed",
+      hasDivider: true,
+      onClick: () => console.log("calendar")
+    },
+    {
+      Icon: ArchiveIcon,
+      text: "Archive project",
+      hasDivider: false,
+      onClick: () => console.log("Archive")
+    },
+
+    {
+      Icon: DeleteProjectIcon,
+      text: "Delete project",
+      hasDivider: true,
+      onClick: () => handleDelete()
+    }
+  ];
 
   return (
     <>
@@ -90,11 +90,6 @@ const ThreeDotComponent = () => {
           <Text>...</Text>
         </Flex>
         <MenuList>
-          {/* {ThreeDotDataA.map(({ Icon, text }) => (
-            <ThreeDotsCard key={text} Icon={Icon} text={text} />
-          ))}
-          <Divider /> */}
-
           {ThreeDotData.map((item) => (
             <ThreeDotsCard
               key={item?.text}
