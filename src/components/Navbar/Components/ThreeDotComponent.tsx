@@ -17,9 +17,12 @@ const ThreeDotComponent = () => {
   const [showDeleteModal, setShowDeleteModal] = React.useState(false);
   const [itemIdToDelete, setItemIdToDelete] = React.useState(null);
 
+  const userId: string = sessionStorage.getItem("userId");
+
   const handleDelete = (id: string) => {
     // implement the delete action here
-    setItemIdToDelete(id);
+
+    setItemIdToDelete(string);
     setShowDeleteModal(true);
     alert("deleted");
     console.log("delete");
