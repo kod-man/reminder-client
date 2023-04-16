@@ -1,5 +1,5 @@
 import { Flex, Menu, MenuButton, MenuList, Text } from "@chakra-ui/react";
-import React from "react";
+import { useState } from "react";
 import AboveIcon from "../../../icons/AboveIcon";
 import ArchiveIcon from "../../../icons/ArchiveIcon";
 import BelowIcon from "../../../icons/BelowIcon";
@@ -13,19 +13,16 @@ import ShareIcon from "../../../icons/ShareIcon";
 import DeleteItemModal from "../../../modals/DeleteItemModal";
 import ThreeDotsCard from "./ThreeDotsCard";
 
-const ThreeDotComponent = () => {
-  const [showDeleteModal, setShowDeleteModal] = React.useState(false);
-  const [itemIdToDelete, setItemIdToDelete] = React.useState(null);
+type ThreeDotComponentProps = {
+  name: string;
+  id: string;
+};
 
-  const userId: string = sessionStorage.getItem("userId");
+const ThreeDotComponent = ({ name, id }: ThreeDotComponentProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleDelete = (id: string) => {
-    // implement the delete action here
-
-    setItemIdToDelete(string);
-    setShowDeleteModal(true);
-    alert("deleted");
-    console.log("delete");
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
   };
 
   const ThreeDotData = [
@@ -88,7 +85,7 @@ const ThreeDotComponent = () => {
       Icon: DeleteProjectIcon,
       text: "Delete project",
       hasDivider: true,
-      onClick: () => handleDelete()
+      onClick: () => handleModalOpen()
     }
   ];
 
@@ -111,15 +108,10 @@ const ThreeDotComponent = () => {
           ))}
         </MenuList>
       </Menu>
+      {isModalOpen ? (
+        <DeleteItemModal tooltipLabel={"Projects"} text={name} id={id} />
+      ) : null}
       {/* Some code here */}
-      {showDeleteModal && (
-        <DeleteItemModal
-          id={itemIdToDelete}
-          onClose={() => setShowDeleteModal(false)}
-          tooltipLabel="Items" // Change this to the correct label for your use case
-          text="Some item" // Change this to the correct text for your use case
-        />
-      )}
     </>
   );
 };

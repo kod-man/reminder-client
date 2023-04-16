@@ -6,9 +6,10 @@ import ThreeDotComponent from "./ThreeDotComponent";
 type ProjectItemCardProps = {
   name: string;
   color: string;
+  id: string;
 };
 
-const ProjectItemCard = ({ name, color }: ProjectItemCardProps) => {
+const ProjectItemCard = ({ name, color, id }: ProjectItemCardProps) => {
   return (
     <Flex
       m="-5px 10px 0 25px "
@@ -23,7 +24,7 @@ const ProjectItemCard = ({ name, color }: ProjectItemCardProps) => {
       <ColorDotIcon color={color} />
       <Text fontSize="16px">{name} </Text>
       <MyTooltip label={"More projects actions"}>
-        <ThreeDotComponent />
+        <ThreeDotComponent id={id} name={name} />
       </MyTooltip>
     </Flex>
   );
