@@ -8,7 +8,7 @@ import { API } from "../../../utils/usedApi";
 import ProjectItemCard from "./ProjectItemCard";
 
 type Project = {
-  id: number;
+  _id: string;
   name: string;
   color: string;
 };
@@ -35,8 +35,8 @@ function ProjectCard() {
 
   return (
     <>
-      {projects.map(({ id, name, color }) => (
-        <ProjectItemCard key={id} name={name} color={color} />
+      {projects.map(({ _id, name, color }) => (
+        <ProjectItemCard key={_id} name={name} color={color} id={_id} />
       ))}
     </>
   );
