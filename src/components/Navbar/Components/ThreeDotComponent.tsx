@@ -93,7 +93,6 @@ const ThreeDotComponent = ({ name, id }: ThreeDotComponentProps) => {
     <>
       <Menu>
         <Flex as={MenuButton} ml="auto">
-          {/* we will work here and add on click */}
           <Text>...</Text>
         </Flex>
         <MenuList>
@@ -109,9 +108,8 @@ const ThreeDotComponent = ({ name, id }: ThreeDotComponentProps) => {
         </MenuList>
       </Menu>
       {isModalOpen ? (
-        <DeleteItemModal tooltipLabel={"Projects"} text={name} id={id} />
+        <DeleteItemModal tooltipLabel="Projects" text={name} id={id} />
       ) : null}
-      {/* Some code here */}
     </>
   );
 };

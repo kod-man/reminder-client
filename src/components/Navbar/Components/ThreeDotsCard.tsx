@@ -23,7 +23,6 @@ const ThreeDotsCard = ({
         borderRadius="5px"
         p="1px"
         mx="5px"
-        // border="1px solid red"
         _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
         onClick={() => onClick()}
       >
