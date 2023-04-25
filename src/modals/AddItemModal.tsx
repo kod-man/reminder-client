@@ -37,7 +37,7 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
   const dispatch = useDispatch();
   const [itemData, setItemData] = useState({
     name: "",
-    color: "",
+    color: "gray",
     userId: sessionStorage.getItem("userId"),
     isFavorite: false
   });
