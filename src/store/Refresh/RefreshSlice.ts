@@ -32,7 +32,7 @@ export const refreshSlice = createSlice({
             label: !state.label
           };
         }
-        case "Project": {
+        case "Projects": {
           return {
             ...state,
             project: !state.project
