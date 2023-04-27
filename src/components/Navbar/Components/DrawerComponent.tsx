@@ -1,6 +1,7 @@
 import { Drawer, DrawerContent, Flex, Text } from "@chakra-ui/react";
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import FilterIcon from "../../../icons/FilterIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
@@ -49,6 +50,7 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
   const [isProjectListOpen, setIsProjectListOpen] = useState(true);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <Drawer
       isOpen={isOpen}
@@ -77,7 +79,9 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
           borderRadius={5}
           _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
         >
-          <Text color="gray">Projects</Text>
+          <Text w="100%" onClick={() => navigate(PATHS.PROJECTS)} color="gray">
+            Projects
+          </Text>
           <Flex>
             <AddItemModal tooltipLabel="Projects" />
             <MyTooltip label="Toggle list of Projects">
