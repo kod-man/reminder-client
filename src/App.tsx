@@ -4,7 +4,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import FiltersAndLabels from "./pages/FiltersAndLabels";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Onboard from "./pages/Onboard";
-import Projects from "./pages/Projects";
+import ProjectsPage from "./pages/Projects";
 import RegisterAndLogin from "./pages/RegisterAndLogin";
 import TodayPage from "./pages/TodayPage";
 import { PATHS } from "./utils/paths";
@@ -17,7 +17,7 @@ const PROTECTED_ROUTES = [
     page: <FiltersAndLabels />,
     hasNavbarAndDrawer: true
   },
-  { path: PATHS.PROJECTS, page: <Projects />, hasNavbarAndDrawer: true }
+  { path: PATHS.PROJECTS, page: <ProjectsPage />, hasNavbarAndDrawer: true }
 ];
 
 export const App = () => {
