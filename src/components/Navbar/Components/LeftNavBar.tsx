@@ -3,34 +3,26 @@ import {
   HStack,
   Input,
   InputGroup,
-  InputLeftElement,
-  useDisclosure
+  InputLeftElement
 } from "@chakra-ui/react";
-import { RefObject, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { RefObject, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { RootState } from "../../..";
 import HamburgerIcon from "../../../icons/HamburgerIcon";
 import HomeIcon from "../../../icons/HomeIcon";
 import SearchIcon from "../../../icons/SearchIcon";
 import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import { PATHS } from "../../../utils/paths";
-import DrawerComponent from "./DrawerComponent";
 
 function LeftNavBar() {
   const navigate = useNavigate();
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef() as RefObject<HTMLDivElement>;
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // run this function on page load and only once
-    onOpen();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const isDrawerOpen = useSelector((state: RootState) => state.drawer.value);
 
   const onClickHandler = () => {
-    onOpen();
-    dispatch(toggleDrawer(true));
+    dispatch(toggleDrawer(!isDrawerOpen));
   };
 
   return (
@@ -85,7 +77,6 @@ function LeftNavBar() {
           _focusVisible={{ outline: "none" }}
         />
       </InputGroup>
-      <DrawerComponent isOpen={isOpen} onClose={onClose} />
     </HStack>
   );
 }

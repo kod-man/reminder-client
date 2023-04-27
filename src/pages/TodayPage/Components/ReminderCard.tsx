@@ -1,11 +1,4 @@
-import {
-  Flex,
-  Input,
-  Spacer,
-  useDisclosure,
-  useMediaQuery,
-  useToast
-} from "@chakra-ui/react";
+import { Flex, Input, Spacer, useDisclosure, useToast } from "@chakra-ui/react";
 import { RefObject, useRef } from "react";
 import { useDispatch } from "react-redux";
 
@@ -28,7 +21,6 @@ type ReminderCardProps = {
 };
 
 function ReminderCard({ title, description, id }: ReminderCardProps) {
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef() as RefObject<HTMLButtonElement>;
   const toast = useToast();
@@ -54,7 +46,7 @@ function ReminderCard({ title, description, id }: ReminderCardProps) {
     <Flex
       borderBottom="1px solid"
       borderColor="gray.200"
-      w={isLargerThan800 ? "55%" : "80%"}
+      w="100%"
       justifyContent="center"
       mb="4"
     >

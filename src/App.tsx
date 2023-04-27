@@ -4,16 +4,20 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import FiltersAndLabels from "./pages/FiltersAndLabels";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Onboard from "./pages/Onboard";
+import Projects from "./pages/Projects";
 import RegisterAndLogin from "./pages/RegisterAndLogin";
 import TodayPage from "./pages/TodayPage";
-import Projects from "./pages/Projects";
 import { PATHS } from "./utils/paths";
 const PROTECTED_ROUTES = [
-  { path: PATHS.NOT_FOUND, page: <NotFoundPage />, hasNavbar: false },
-  { path: PATHS.ONBOARD, page: <Onboard />, hasNavbar: false },
-  { path: PATHS.TODAY, page: <TodayPage />, hasNavbar: true },
-  { path: PATHS.FILTERSANDLABELS, page: <FiltersAndLabels />, hasNavbar: true },
-  { path: PATHS.PROJECTS, page: <Projects />, hasNavbar: true }
+  { path: PATHS.NOT_FOUND, page: <NotFoundPage />, hasNavbarAndDrawer: false },
+  { path: PATHS.ONBOARD, page: <Onboard />, hasNavbarAndDrawer: false },
+  { path: PATHS.TODAY, page: <TodayPage />, hasNavbarAndDrawer: true },
+  {
+    path: PATHS.FILTERSANDLABELS,
+    page: <FiltersAndLabels />,
+    hasNavbarAndDrawer: true
+  },
+  { path: PATHS.PROJECTS, page: <Projects />, hasNavbarAndDrawer: true }
 ];
 
 export const App = () => {
@@ -26,13 +30,16 @@ export const App = () => {
         element={<RegisterAndLogin page="register" />}
       />
       <Route path={PATHS.LOGIN} element={<RegisterAndLogin page="login" />} />
-      {PROTECTED_ROUTES.map(({ path, page, hasNavbar }) => (
+      {PROTECTED_ROUTES.map(({ path, page, hasNavbarAndDrawer }) => (
         <Route
           key={path}
           path={path}
           element={
             <ProtectedRoutes token={token}>
-              <ProtectedPages hasNavbar={hasNavbar} page={page} />
+              <ProtectedPages
+                hasNavbarAndDrawer={hasNavbarAndDrawer}
+                page={page}
+              />
             </ProtectedRoutes>
           }
         />

@@ -14,7 +14,6 @@ import Header from "./components/Header";
 
 function FiltersAndLabelsPage() {
   const toast = useToast();
-  const isDrawerOpen = useSelector((state: RootState) => state.drawer.value);
   const isPageRefreshed = useSelector((state: RootState) => state.refresh);
   const [filtersData, setFiltersData] = useState([]);
   const [labelsData, setLabelsData] = useState([]);
@@ -52,9 +51,9 @@ function FiltersAndLabelsPage() {
     <Flex
       flexDirection="column"
       alignItems="center"
-      justifyContent="center"
-      w={isDrawerOpen ? "calc(100% - 20rem)" : "100%"}
-      ml="auto"
+      justifyContent="start"
+      w="100%"
+      h="100%"
     >
       <Header />
       {loading ? (
