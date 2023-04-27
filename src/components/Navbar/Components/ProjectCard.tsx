@@ -32,7 +32,6 @@ function ProjectCard() {
         genericErrorToast(err, toast);
       });
   }, [userId, toast, isPageRefreshed.project]);
-
   return (
     <>
       {projects.map(({ _id, name, color }) => (
