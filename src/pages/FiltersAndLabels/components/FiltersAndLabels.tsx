@@ -33,9 +33,9 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
       text={item.name}
       Icon={Icon}
       tooltipLabel={cardTitle}
+      color={item.color}
     />
   ));
-
   return (
     <Flex w={isLargerThan800 ? "55%" : "80%"} flexDirection="column" mb={12}>
       <Flex

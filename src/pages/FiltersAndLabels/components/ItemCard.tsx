@@ -8,13 +8,15 @@ type ItemCardProps = {
   text: string;
   Icon: FC<any>;
   tooltipLabel: string;
+  color: string;
 };
 
 const ItemCard: React.FC<ItemCardProps> = ({
   id,
   text,
   Icon,
-  tooltipLabel
+  tooltipLabel,
+  color
 }) => {
   return (
     <Flex
@@ -26,7 +28,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
       cursor="pointer"
       paddingY="10px"
     >
-      <Icon color="gray" />
+      <Icon color={color} />
       <Flex ml="2" color="#333" fontSize="14px">
         <Text>{text}</Text>
       </Flex>
