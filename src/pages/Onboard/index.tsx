@@ -37,12 +37,12 @@ function Onboard() {
       {loading ? (
         <Spinner />
       ) : (
-        <>
+        <Flex flexDirection="column" w="100%">
           <Flex p="4" mt="13" ml="83" h={28}>
             <Todoist />
           </Flex>
           <OnboardingCard />
-        </>
+        </Flex>
       )}
     </>
   );

@@ -1,6 +1,4 @@
-import { Divider, Flex, Text, useMediaQuery } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
-import { RootState } from "../..";
+import { Divider, Flex, Text } from "@chakra-ui/react";
 import ProjectCard from "../../components/Navbar/Components/ProjectCard";
 import SmallPlusIcon from "../../icons/SmallPlusIcon";
 import AddItemModal from "../../modals/AddItemModal";
@@ -9,30 +7,20 @@ import ProjectStatus from "./components/ProjectStatus";
 
 const ModalOpen = () => {
   return (
-    <Flex border="1px solid red">
+    <Flex alignItems="center" justifyContent="center">
       <SmallPlusIcon />
-      <Text fontSize="13px">Add Project</Text>
+      <Text ml="5px" fontSize="13px">
+        Add Project
+      </Text>
     </Flex>
   );
 };
 
 function ProjectsPage() {
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
-  const isDrawerOpen = useSelector((state: RootState) => state.drawer.value);
   return (
-    <Flex
-      flexDirection="column"
-      alignItems="center"
-      justifyContent="center"
-      w={isDrawerOpen ? "calc(100% - 20rem)" : "100%"}
-      ml="auto"
-    >
+    <Flex flexDirection="column" alignItems="center" w="100%" h="90vh">
       <ProjectsHeader />
-      <Flex
-        w={isLargerThan800 ? "50%" : "80%"}
-        mt="5"
-        justifyContent="space-between"
-      >
+      <Flex w="100%" mt="5" justifyContent="space-between">
         <ProjectStatus />
         <Flex
           _hover={{ cursor: "pointer", bgColor: "#ececec" }}
@@ -52,15 +40,10 @@ function ProjectsPage() {
           </Flex>
         </Flex>
       </Flex>
-      <Flex w={isLargerThan800 ? "50%" : "80%"} mt="15px">
+      <Flex w="100%" mt="15px">
         <Divider />
       </Flex>
-      <Flex
-        flexDirection="column"
-        w={isLargerThan800 ? "50%" : "80%"}
-        mt="15px"
-        gap="15px"
-      >
+      <Flex flexDirection="column" w="100%" mt="15px" gap="15px">
         <ProjectCard />
       </Flex>
     </Flex>

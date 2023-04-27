@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Input,
-  Text,
-  useMediaQuery,
-  useToast
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Input, Text, useToast } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../..";
@@ -31,7 +23,6 @@ function CreateReminder() {
   const toast = useToast();
   const dispatch = useDispatch();
   const refresh = useSelector((state: RootState) => state.reminder);
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [reminders, setReminders] = useState<Reminder[]>([]);
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
@@ -108,7 +99,7 @@ function CreateReminder() {
       )}
 
       {isAddTaskOpen ? (
-        <Flex direction="column" w={isLargerThan800 ? "55%" : "80%"} mt="4">
+        <Flex direction="column" w="100%" mt="4">
           <Flex
             pl={3}
             alignItems="center"
@@ -164,12 +155,7 @@ function CreateReminder() {
           </Flex>
         </Flex>
       ) : (
-        <Flex
-          w={isLargerThan800 ? "55%" : "80%"}
-          mt="2"
-          alignItems="center"
-          cursor="pointer"
-        >
+        <Flex w="100%" mt="2" alignItems="center" cursor="pointer">
           <Text
             _hover={{ bg: "red", color: "white" }}
             onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}

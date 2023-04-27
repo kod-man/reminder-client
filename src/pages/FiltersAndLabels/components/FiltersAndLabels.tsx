@@ -1,4 +1,4 @@
-import { Flex, Text, useMediaQuery } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { FC, useState } from "react";
 import SmallPlusIcon from "../../../icons/SmallPlusIcon";
 import ToggleIcon from "../../../icons/ToggleIcon";
@@ -20,7 +20,6 @@ type FiltersAndLabelsProps = {
 };
 
 function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const [isToggleOn, setIsToggleOn] = useState(true);
 
   const onToggleHandler = () => {
@@ -38,7 +37,7 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
   ));
 
   return (
-    <Flex w={isLargerThan800 ? "55%" : "80%"} flexDirection="column" mb={12}>
+    <Flex w="100%" flexDirection="column" mb={12}>
       <Flex
         w="100%"
         justifyContent="space-between"

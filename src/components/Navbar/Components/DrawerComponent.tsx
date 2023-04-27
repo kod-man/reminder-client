@@ -1,6 +1,5 @@
-import { Drawer, DrawerContent, Flex, Text } from "@chakra-ui/react";
-import { FC, useState } from "react";
-import { useDispatch } from "react-redux";
+import { Flex, Text } from "@chakra-ui/react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FilterIcon from "../../../icons/FilterIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
@@ -9,7 +8,6 @@ import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
 import ToggleIcon from "../../../icons/ToggleIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddItemModal from "../../../modals/AddItemModal";
-import { toggleDrawer } from "../../../store/Drawer/drawerSlice";
 import { PATHS } from "../../../utils/paths";
 import DrawerCards from "./DrawerCards";
 import MyTooltip from "./MyTooltip";
@@ -42,25 +40,12 @@ const DrawerData = [
   }
 ];
 
-type DrawerProps = {
-  isOpen: boolean;
-  onClose: () => void;
-};
-
-const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
+const DrawerComponent = () => {
   const [isProjectListOpen, setIsProjectListOpen] = useState(true);
-
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
-    <Drawer
-      isOpen={isOpen}
-      onClose={onClose}
-      placement="left"
-      size="xs"
-      onCloseComplete={() => dispatch(toggleDrawer(false))}
-    >
-      <DrawerContent bg="#fafafa" mt="44px" paddingTop="30px">
+    <Flex minW="300px" height="90vh">
+      <Flex flexDirection="column" bg="#fafafa" width="100%" paddingTop="40px">
         {DrawerData.map((item) => (
           <DrawerCards
             key={item.text}
@@ -103,8 +88,8 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
         </Flex>
 
         {isProjectListOpen && <ProjectCard />}
-      </DrawerContent>
-    </Drawer>
+      </Flex>
+    </Flex>
   );
 };
 

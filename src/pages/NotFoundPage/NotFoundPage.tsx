@@ -8,8 +8,9 @@ function NotFoundPage() {
   return (
     <Flex
       flexDirection="column"
-      justifyContent="center"
       alignItems="center"
+      justifyContent="center"
+      w="100%"
       h="100vh"
     >
       <Text fontSize="2xl" color="teal.400">

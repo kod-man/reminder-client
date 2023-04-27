@@ -1,15 +1,9 @@
-import { Flex, Text, useMediaQuery } from "@chakra-ui/react";
-import React from "react";
+import { Flex, Text } from "@chakra-ui/react";
 import SettingsIcon from "../../../icons/SettingsIcon";
 
 function ProjectsHeader() {
-  const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   return (
-    <Flex
-      w={isLargerThan800 ? "50%" : "80%"}
-      mt="14"
-      justifyContent="space-between"
-    >
+    <Flex w="100%" mt="14" justifyContent="space-between">
       <Flex alignItems="center">
         <Text as="b" fontSize="20px">
           Projects
