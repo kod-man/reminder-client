@@ -1,10 +1,21 @@
 import { Divider, Flex, Text, useMediaQuery } from "@chakra-ui/react";
-import AddItemModal from "../../modals/AddItemModal";
-import ProjectCard from "../../components/Navbar/Components/ProjectCard";
 import { useSelector } from "react-redux";
 import { RootState } from "../..";
-import ProjectStatus from "./components/ProjectStatus";
+import ProjectCard from "../../components/Navbar/Components/ProjectCard";
+import SmallPlusIcon from "../../icons/SmallPlusIcon";
+import AddItemModal from "../../modals/AddItemModal";
 import ProjectsHeader from "./components/ProjectsHeader";
+import ProjectStatus from "./components/ProjectStatus";
+
+const ModalOpen = () => {
+  return (
+    <Flex border="1px solid red">
+      <SmallPlusIcon />
+      <Text fontSize="13px">Add Project</Text>
+    </Flex>
+  );
+};
+
 function ProjectsPage() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   const isDrawerOpen = useSelector((state: RootState) => state.drawer.value);
@@ -34,10 +45,11 @@ function ProjectsPage() {
           fontWeight="500"
         >
           <Flex mr="15px">
-            <AddItemModal tooltipLabel="Projects" />
+            <AddItemModal
+              ModalOpenComponent={ModalOpen}
+              tooltipLabel="Projects"
+            />
           </Flex>
-
-          <Text fontSize="13px">Add Project</Text>
         </Flex>
       </Flex>
       <Flex w={isLargerThan800 ? "50%" : "80%"} mt="15px">

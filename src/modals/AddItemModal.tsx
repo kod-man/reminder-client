@@ -19,7 +19,6 @@ import { useDispatch } from "react-redux";
 import CustomSelects from "../components/CustomSelects";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
-import SmallPlusIcon from "../icons/SmallPlusIcon";
 import { refreshPage } from "../store/Refresh/RefreshSlice";
 import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
@@ -27,9 +26,13 @@ import { API } from "../utils/usedApi";
 
 type AddItemModalProps = {
   tooltipLabel: string;
+  ModalOpenComponent: React.ElementType;
 };
 
-const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
+const AddItemModal: FC<AddItemModalProps> = ({
+  tooltipLabel,
+  ModalOpenComponent
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
   const toast = useToast();
@@ -84,8 +87,8 @@ const AddItemModal: FC<AddItemModalProps> = ({ tooltipLabel }) => {
   return (
     <>
       <MyTooltip label={`Add new ${title.toLowerCase()}`}>
-        <Flex>
-          <SmallPlusIcon onClick={onOpen} />
+        <Flex onClick={() => onOpen()}>
+          <ModalOpenComponent />
         </Flex>
       </MyTooltip>
       <Modal
