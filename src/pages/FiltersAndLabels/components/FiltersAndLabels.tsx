@@ -1,5 +1,6 @@
 import { Flex, Text, useMediaQuery } from "@chakra-ui/react";
 import { FC, useState } from "react";
+import SmallPlusIcon from "../../../icons/SmallPlusIcon";
 import ToggleIcon from "../../../icons/ToggleIcon";
 import AddItemModal from "../../../modals/AddItemModal";
 import ItemCard from "./ItemCard";
@@ -78,7 +79,10 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
           fontSize="2xl"
           cursor="pointer"
         >
-          <AddItemModal tooltipLabel={cardTitle} />
+          <AddItemModal
+            ModalOpenComponent={SmallPlusIcon}
+            tooltipLabel={cardTitle}
+          />
         </Flex>
       </Flex>
       {isToggleOn && (

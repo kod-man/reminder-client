@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FilterIcon from "../../../icons/FilterIcon";
 import InboxDrawerIcon from "../../../icons/InboxDrawerIcon";
+import SmallPlusIcon from "../../../icons/SmallPlusIcon";
 import TodayDrawerIcon from "../../../icons/TodayDrawerIcon";
 import ToggleIcon from "../../../icons/ToggleIcon";
 import UpcomingTcon from "../../../icons/UpcomingTcon";
@@ -83,7 +84,10 @@ const DrawerComponent: FC<DrawerProps> = ({ isOpen, onClose }) => {
             Projects
           </Text>
           <Flex>
-            <AddItemModal tooltipLabel="Projects" />
+            <AddItemModal
+              ModalOpenComponent={SmallPlusIcon}
+              tooltipLabel="Projects"
+            />
             <MyTooltip label="Toggle list of Projects">
               <Flex
                 transform={
