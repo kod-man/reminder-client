@@ -7,7 +7,7 @@ function FavoriteDotComponenet({ id }: FavoriteDotComponentProps) {
   return (
     <Menu>
       <Flex as={MenuButton}>
-        <Text>...</Text>
+        <Text mb="10px">...</Text>
       </Flex>
       <MenuList>
         <Flex
