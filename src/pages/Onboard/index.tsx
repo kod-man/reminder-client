@@ -29,8 +29,6 @@ function Onboard() {
       .catch((err) => {
         genericErrorToast(err, toast);
       });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, userName]);
   return (
     <>
