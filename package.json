@@ -37,11 +37,15 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,md}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.{js,jsx,ts,tsx}": "eslint --cache --fix"
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint -- --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
