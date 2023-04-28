@@ -15,6 +15,9 @@ function Onboard() {
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState("");
 
+  const ufuj = "sd";
+  console.log(ufuj);
+
   useEffect(() => {
     Axios.get(`${API.getUserDetails}/${userId}`)
       .then((response) => {
@@ -29,8 +32,6 @@ function Onboard() {
       .catch((err) => {
         genericErrorToast(err, toast);
       });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId, userName]);
   return (
     <>
