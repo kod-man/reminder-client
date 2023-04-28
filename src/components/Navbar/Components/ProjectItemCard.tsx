@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 import MyTooltip from "./MyTooltip";
 import ThreeDotComponent from "./ThreeDotComponent";
@@ -14,17 +14,21 @@ const ProjectItemCard = ({ name, color, id }: ProjectItemCardProps) => {
     <Flex
       m="-5px 10px 0 25px "
       fontSize="sm"
-      justifyContent="flex-start"
+      justifyContent="space-between"
       alignItems="center"
       h="32px"
       borderRadius="5px"
       p="1px"
       _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
     >
-      <ColorDotIcon color={color} />
-      <Text fontSize="16px">{name} </Text>
+      <Flex alignItems="center">
+        <ColorDotIcon color={color} />
+        <Text fontSize="16px">{name} </Text>
+      </Flex>
       <MyTooltip label="More projects actions">
-        <ThreeDotComponent id={id} name={name} />
+        <Box>
+          <ThreeDotComponent id={id} name={name} />
+        </Box>
       </MyTooltip>
     </Flex>
   );
