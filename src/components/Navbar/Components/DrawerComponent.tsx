@@ -10,6 +10,7 @@ import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddItemModal from "../../../modals/AddItemModal";
 import { PATHS } from "../../../utils/paths";
 import DrawerCards from "./DrawerCards";
+import Favorite from "./Favorite";
 import MyTooltip from "./MyTooltip";
 import ProjectCard from "./ProjectCard";
 
@@ -36,7 +37,7 @@ const DrawerData = [
     Icon: FilterIcon,
     text: "Filters & Labels",
     iconColor: "orange",
-    path: PATHS.FILTERSANDLABELS
+    path: PATHS.FILTERS_AND_LABELS
   }
 ];
 
@@ -55,7 +56,7 @@ const DrawerComponent = () => {
             path={item.path}
           />
         ))}
-
+        <Favorite />
         <Flex
           w="90%"
           justifyContent="space-between"

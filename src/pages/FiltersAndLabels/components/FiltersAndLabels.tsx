@@ -5,7 +5,7 @@ import ToggleIcon from "../../../icons/ToggleIcon";
 import AddItemModal from "../../../modals/AddItemModal";
 import ItemCard from "./ItemCard";
 
-type ItemData = {
+export type ItemData = {
   _id: string;
   name: string;
   color: string;

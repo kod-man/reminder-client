@@ -16,12 +16,14 @@ import {
 } from "@chakra-ui/react";
 import React, { FC, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import CustomSelects from "../components/CustomSelects";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import QuestionMarkIcon from "../icons/QuestionMarkIcon";
 import { refreshPage } from "../store/Refresh/RefreshSlice";
 import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
+import { PATHS } from "../utils/paths";
 import { API } from "../utils/usedApi";
 
 type AddItemModalProps = {
@@ -45,6 +47,8 @@ const AddItemModal: FC<AddItemModalProps> = ({
     isFavorite: false
   });
 
+  const navigate = useNavigate();
+
   const onColorChangeHandler = (e: any) => {
     setItemData((prev) => ({ ...prev, color: e.value.toLowerCase() }));
   };
@@ -65,12 +69,16 @@ const AddItemModal: FC<AddItemModalProps> = ({
 
   const submitHandler = () => {
     Axios.post(customAPI, { ...itemData, name: itemNameRef.current?.value })
-      .then(() => {
+      .then((res) => {
         toast({
           ...defaultToastProps,
           title: `${title} added successfully.`,
           status: "success"
         });
+
+        if (tooltipLabel === "Labels") {
+          navigate(PATHS.FILTERS_AND_LABELS + "/" + res.data.labelId);
+        }
       })
       .catch((err) => {
         genericErrorToast(err, toast);
@@ -156,6 +164,7 @@ const AddItemModal: FC<AddItemModalProps> = ({
             >
               Cancel
             </Button>
+
             <Button
               onClick={submitHandler}
               variant="ghost"

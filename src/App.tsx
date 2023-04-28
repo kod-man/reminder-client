@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import ProtectedPages from "./components/ProtectedPages";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import FiltersAndLabels from "./pages/FiltersAndLabels";
+import LabelFavorite from "./pages/LabelFavorites";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Onboard from "./pages/Onboard";
 import ProjectsPage from "./pages/Projects";
@@ -13,16 +14,16 @@ const PROTECTED_ROUTES = [
   { path: PATHS.ONBOARD, page: <Onboard />, hasNavbarAndDrawer: false },
   { path: PATHS.TODAY, page: <TodayPage />, hasNavbarAndDrawer: true },
   {
-    path: PATHS.FILTERSANDLABELS,
+    path: PATHS.FILTERS_AND_LABELS,
     page: <FiltersAndLabels />,
     hasNavbarAndDrawer: true
   },
-  { path: PATHS.PROJECTS, page: <ProjectsPage />, hasNavbarAndDrawer: true }
+  { path: PATHS.PROJECTS, page: <ProjectsPage />, hasNavbarAndDrawer: true },
+  { path: PATHS.ITEM_DETAIL, page: <LabelFavorite />, hasNavbarAndDrawer: true }
 ];
 
 export const App = () => {
   const token = sessionStorage.getItem("token");
-
   return (
     <Routes>
       <Route

@@ -4,8 +4,9 @@ export const PATHS = {
   NOT_FOUND: "/*",
   TODAY: "/today",
   ONBOARD: "/onboard",
-  FILTERSANDLABELS: "/filters-and-labels",
+  FILTERS_AND_LABELS: "/filters-and-labels",
   INBOX: "/inbox",
   UPCOMING: "/upcoming",
-  PROJECTS: "/projects"
+  PROJECTS: "/projects",
+  ITEM_DETAIL: "filters-and-labels/:itemId"
 };
