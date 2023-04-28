@@ -83,8 +83,7 @@ const Inputs = ({ page }: { page: string }) => {
   const submitHandler = () => {
     if (page === "register") {
       Axios.post(API.register, formData)
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           toast({
             ...defaultToastProps,
             title: "Account created.",

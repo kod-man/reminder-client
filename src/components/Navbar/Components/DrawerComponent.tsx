@@ -10,6 +10,7 @@ import UpcomingTcon from "../../../icons/UpcomingTcon";
 import AddItemModal from "../../../modals/AddItemModal";
 import { PATHS } from "../../../utils/paths";
 import DrawerCards from "./DrawerCards";
+import FavoriteLabelSection from "./FavoriteLabelSection";
 import MyTooltip from "./MyTooltip";
 import ProjectCard from "./ProjectCard";
 
@@ -36,7 +37,7 @@ const DrawerData = [
     Icon: FilterIcon,
     text: "Filters & Labels",
     iconColor: "orange",
-    path: PATHS.FILTERSANDLABELS
+    path: PATHS.FILTERS_AND_LABELS
   }
 ];
 
@@ -55,7 +56,7 @@ const DrawerComponent = () => {
             path={item.path}
           />
         ))}
-
+        <FavoriteLabelSection />
         <Flex
           w="90%"
           justifyContent="space-between"
@@ -73,7 +74,7 @@ const DrawerComponent = () => {
               ModalOpenComponent={SmallPlusIcon}
               tooltipLabel="Projects"
             />
-            <MyTooltip label="Toggle list of Projects">
+            <MyTooltip label="Toggle list of projects">
               <Flex
                 transform={
                   !isProjectListOpen ? "rotate(90deg)" : "rotate(0deg)"

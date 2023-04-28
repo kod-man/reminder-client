@@ -1,14 +1,14 @@
-import { Divider, Flex, Text } from "@chakra-ui/react";
+import { Divider, Flex, Icon, Text } from "@chakra-ui/react";
 
 type ThreeDotsCardProps = {
-  Icon: any;
+  icon: any;
   text: string;
   hasDivider: boolean;
   onClick: () => void;
 };
 
 const ThreeDotsCard = ({
-  Icon,
+  icon,
   text,
   hasDivider,
   onClick
@@ -26,7 +26,7 @@ const ThreeDotsCard = ({
         _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
         onClick={() => onClick()}
       >
-        <Icon Icon={Icon} color="gray" />
+        <Icon as={icon} color="gray" />
         <Text fontSize="14px" ml="15px">
           {text}
         </Text>
