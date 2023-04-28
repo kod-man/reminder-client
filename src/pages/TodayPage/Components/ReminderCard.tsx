@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Flex, Input, Spacer, useDisclosure, useToast } from "@chakra-ui/react";
 import { RefObject, useRef } from "react";
 import { useDispatch } from "react-redux";
