@@ -54,11 +54,7 @@ const ProfileMenu = () => {
         setProfileImg(imageSrc);
       })
       .catch((err) => {
-        if (err.response) {
-          genericErrorToast(err, toast);
-        } else {
-          console.log(err);
-        }
+        genericErrorToast(err, toast);
       });
   }, [toast]);
 
