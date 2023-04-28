@@ -20,6 +20,7 @@ module.exports = {
     "@typescript-eslint/promise-function-async": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "no-console": "warn",
-    "no-alert": "error"
+    "no-alert": "error",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 };
