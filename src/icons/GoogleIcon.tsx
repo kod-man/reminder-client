@@ -1,4 +1,6 @@
-const GoogleIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const GoogleIcon = (props: IconProps) => {
   return (
     <svg
       width="15"

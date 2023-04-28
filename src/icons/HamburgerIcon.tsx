@@ -1,4 +1,6 @@
-const HamburgerIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const HamburgerIcon = (props: IconProps) => {
   return (
     <svg className="menu_icon" width="24" height="24" viewBox="0 0 24 24">
       <path

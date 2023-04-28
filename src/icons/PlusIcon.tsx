@@ -1,4 +1,6 @@
-const PlusIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const PlusIcon = (props: IconProps) => {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
       <g fill="none" fillRule="evenodd" transform="translate(4 3)">

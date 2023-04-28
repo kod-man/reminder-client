@@ -1,4 +1,6 @@
-const MiniFlagIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const MiniFlagIcon = (props: IconProps) => {
   return (
     <svg
       width="24"

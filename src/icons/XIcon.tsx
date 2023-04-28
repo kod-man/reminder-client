@@ -1,5 +1,7 @@
 import {} from "react-select";
-function XIcon(props: any) {
+import { IconProps } from "./types";
+
+function XIcon(props: IconProps) {
   return (
     <svg
       width="22"

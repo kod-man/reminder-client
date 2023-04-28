@@ -1,4 +1,5 @@
-function JigsawIcon(props: any) {
+import { IconProps } from "./types";
+function JigsawIcon(props: IconProps) {
   return (
     <svg
       width="24"

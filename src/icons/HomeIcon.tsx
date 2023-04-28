@@ -1,4 +1,6 @@
-const HomeIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const HomeIcon = (props: IconProps) => {
   return (
     <svg
       width="24"

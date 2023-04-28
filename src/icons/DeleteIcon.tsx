@@ -1,4 +1,6 @@
-function DeleteIcon(props: any) {
+import { IconProps } from "./types";
+
+function DeleteIcon(props: IconProps) {
   return (
     <svg
       width="16"

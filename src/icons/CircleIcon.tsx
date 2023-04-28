@@ -1,6 +1,6 @@
-import React from "react";
+import { IconProps } from "./types";
 
-function CircleIcon(props: any) {
+function CircleIcon(props: IconProps) {
   return (
     <svg width="16px" height="16px" {...props}>
       <path

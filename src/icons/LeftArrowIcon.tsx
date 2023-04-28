@@ -1,4 +1,6 @@
-function LeftArrowIcon(props: any) {
+import { IconProps } from "./types";
+
+function LeftArrowIcon(props: IconProps) {
   return (
     <div>
       <svg

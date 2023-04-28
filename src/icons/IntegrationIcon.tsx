@@ -1,4 +1,6 @@
-const IntegrationIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const IntegrationIcon = (props: IconProps) => {
   return (
     <svg
       width="24"

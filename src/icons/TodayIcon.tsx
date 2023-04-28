@@ -1,4 +1,6 @@
-const TodayIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const TodayIcon = (props: IconProps) => {
   return (
     <svg
       data-svgs-path="sm1/calendar_small.svg"

@@ -1,4 +1,6 @@
-function AddToFavoritesIcon(props: any) {
+import { IconProps } from "./types";
+
+function AddToFavoritesIcon(props: IconProps) {
   return (
     <svg
       width="24"

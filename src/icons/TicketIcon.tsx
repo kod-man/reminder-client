@@ -1,6 +1,6 @@
-import React from "react";
+import { IconProps } from "./types";
 
-function TicketIcon(props: any) {
+function TicketIcon(props: IconProps) {
   return (
     <svg
       data-svgs-path="sm1/label_outline.svg"

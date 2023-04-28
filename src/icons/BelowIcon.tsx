@@ -1,4 +1,6 @@
-const BelowIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const BelowIcon = (props: IconProps) => {
   return (
     <svg width="24" height="24" {...props}>
       <path

@@ -1,4 +1,6 @@
-const ThemeIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const ThemeIcon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

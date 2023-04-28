@@ -1,4 +1,6 @@
-const FacebookIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const FacebookIcon = (props: IconProps) => {
   return (
     <svg
       width="16"

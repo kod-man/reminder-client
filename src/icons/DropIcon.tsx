@@ -1,4 +1,6 @@
-function DropIcon(props: any) {
+import { IconProps } from "./types";
+
+function DropIcon(props: IconProps) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" color="gray">
       <path

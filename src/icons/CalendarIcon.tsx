@@ -1,4 +1,6 @@
-const CalendarIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const CalendarIcon = (props: IconProps) => {
   return (
     <svg width="24" height="24" {...props}>
       <path

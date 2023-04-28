@@ -1,4 +1,6 @@
-const SmallPlusIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const SmallPlusIcon = (props: IconProps) => {
   return (
     <svg width="13" height="13" {...props}>
       <path

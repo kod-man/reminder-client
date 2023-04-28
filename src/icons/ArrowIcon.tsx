@@ -1,6 +1,6 @@
-import React from "react";
+import { IconProps } from "./types";
 
-function ArrowIcon(props: any) {
+function ArrowIcon(props: IconProps) {
   return (
     <svg width="24" height="24" {...props}>
       <g fill="none" transform="translate(4 4)">

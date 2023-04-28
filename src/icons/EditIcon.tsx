@@ -1,4 +1,6 @@
-const EditIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const EditIcon = (props: IconProps) => {
   return (
     <svg width="24" height="24" {...props}>
       <g fill="none" fillRule="evenodd">

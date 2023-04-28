@@ -1,4 +1,6 @@
-const ShareIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const ShareIcon = (props: IconProps) => {
   return (
     <svg
       width="24"
