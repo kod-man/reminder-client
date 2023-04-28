@@ -1,4 +1,6 @@
-const MoonnyIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const MoonnyIcon = (props: IconProps) => {
   return (
     <svg
       stroke="currentColor"

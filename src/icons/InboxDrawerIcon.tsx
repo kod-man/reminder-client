@@ -1,4 +1,6 @@
-const InboxDrawerIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const InboxDrawerIcon = (props: IconProps) => {
   return (
     <svg
       width="24"

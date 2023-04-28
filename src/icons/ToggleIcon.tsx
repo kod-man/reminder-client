@@ -1,4 +1,6 @@
-const ToggleIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const ToggleIcon = (props: IconProps) => {
   return (
     <svg
       width="16"

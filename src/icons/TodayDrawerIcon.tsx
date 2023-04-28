@@ -1,4 +1,5 @@
-const TodayDrawerIcon = (props: any) => {
+import { IconProps } from "./types";
+const TodayDrawerIcon = (props: IconProps) => {
   return (
     <svg
       width="24"

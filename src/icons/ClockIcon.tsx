@@ -1,4 +1,6 @@
-const ClockIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const ClockIcon = (props: IconProps) => {
   return (
     <svg
       data-svgs-path="sm1/reminder.svg"

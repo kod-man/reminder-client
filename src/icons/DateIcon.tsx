@@ -1,4 +1,6 @@
-function DateIcon(props: any) {
+import { IconProps } from "./types";
+
+function DateIcon(props: IconProps) {
   return (
     <svg
       width="24"

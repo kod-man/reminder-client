@@ -1,4 +1,6 @@
-const MarkIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const MarkIcon = (props: IconProps) => {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
       <path

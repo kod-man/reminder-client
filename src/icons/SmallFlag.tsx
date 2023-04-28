@@ -1,4 +1,6 @@
-function SmallFlag(props: any) {
+import { IconProps } from "./types";
+
+function SmallFlag(props: IconProps) {
   return (
     <svg
       width="16"

@@ -1,4 +1,6 @@
-const DuplicateIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const DuplicateIcon = (props: IconProps) => {
   return (
     <svg
       width="24"

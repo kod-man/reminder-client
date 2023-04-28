@@ -1,4 +1,6 @@
-const PrintIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const PrintIcon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

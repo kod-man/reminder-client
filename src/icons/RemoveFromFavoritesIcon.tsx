@@ -1,4 +1,6 @@
-function RemoveFromFavoritesIcon(props: any) {
+import { IconProps } from "./types";
+
+function RemoveFromFavoritesIcon(props: IconProps) {
   return (
     <svg
       width="24"

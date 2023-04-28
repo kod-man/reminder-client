@@ -1,6 +1,6 @@
-import React from "react";
+import { IconProps } from "./types";
 
-function FolderIcon(props: any) {
+function FolderIcon(props: IconProps) {
   return (
     <svg
       width="12"

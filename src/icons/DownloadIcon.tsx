@@ -1,4 +1,6 @@
-const DownloadIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const DownloadIcon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

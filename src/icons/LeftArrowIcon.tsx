@@ -1,4 +1,6 @@
-function LeftArrowIcon(props: any) {
+import { IconProps } from "./types";
+
+function LeftArrowIcon(props: IconProps) {
   return (
     <div>
       <svg
@@ -7,6 +9,7 @@ function LeftArrowIcon(props: any) {
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        {...props}
       >
         <path
           fillRule="evenodd"

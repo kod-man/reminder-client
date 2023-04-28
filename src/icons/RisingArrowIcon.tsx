@@ -1,6 +1,7 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
+import { IconProps } from "./types";
 
-const RisingArrowIcon = (props: any) => {
+const RisingArrowIcon = (props: IconProps) => {
   return (
     <Flex
       as={Button}

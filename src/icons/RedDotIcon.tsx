@@ -1,6 +1,7 @@
 import { Flex } from "@chakra-ui/react";
+import { IconProps } from "./types";
 
-const RedDotIcon = (props: any) => {
+const RedDotIcon = (props: IconProps) => {
   return (
     <Flex w="20px" h="20px">
       <svg

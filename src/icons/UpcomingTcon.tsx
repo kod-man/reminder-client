@@ -1,4 +1,6 @@
-const UpcomingTcon = (props: any) => {
+import { IconProps } from "./types";
+
+const UpcomingTcon = (props: IconProps) => {
   return (
     <svg
       width="24"

@@ -1,4 +1,6 @@
-const ActivityIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const ActivityIcon = (props: IconProps) => {
   return (
     <svg
       width="24"

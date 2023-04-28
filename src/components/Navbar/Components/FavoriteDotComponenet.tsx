@@ -5,7 +5,7 @@ type FavoriteDotComponentProps = {
 };
 function FavoriteDotComponenet({ id }: FavoriteDotComponentProps) {
   return (
-    <Menu>
+    <Menu id={id}>
       <Flex as={MenuButton}>
         <Text>...</Text>
       </Flex>

@@ -1,4 +1,6 @@
-const FlagIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const FlagIcon = (props: IconProps) => {
   return (
     <svg
       width="20"
