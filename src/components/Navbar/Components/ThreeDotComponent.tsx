@@ -27,62 +27,62 @@ const ThreeDotComponent = ({ name, id }: ThreeDotComponentProps) => {
 
   const ThreeDotData = [
     {
-      Icon: AboveIcon,
+      icon: AboveIcon,
       text: "Add project above",
       hasDivider: false,
       onClick: () => console.log("above")
     },
     {
-      Icon: BelowIcon,
+      icon: BelowIcon,
       text: "Add project below",
       hasDivider: true,
       onClick: () => console.log("below")
     },
     {
-      Icon: EditIcon,
+      icon: EditIcon,
       text: "Edit project",
       hasDivider: false,
       onClick: () => console.log("edit")
     },
     {
-      Icon: ShareIcon,
+      icon: ShareIcon,
       text: "Share project",
       hasDivider: false,
       onClick: () => console.log("share")
     },
     {
-      Icon: FavoriteHeartIcon,
+      icon: FavoriteHeartIcon,
       text: "Add to favorites",
       hasDivider: true,
       onClick: () => console.log("addfav.")
     },
     {
-      Icon: DuplicateIcon,
+      icon: DuplicateIcon,
       text: "Duplicate project",
       hasDivider: false,
       onClick: () => console.log("duplicate")
     },
     {
-      Icon: EmailIcon,
+      icon: EmailIcon,
       text: "Email tasks to this project",
       hasDivider: false,
       onClick: () => console.log("email")
     },
     {
-      Icon: CalendarIcon,
+      icon: CalendarIcon,
       text: "Project calendar feed",
       hasDivider: true,
       onClick: () => console.log("calendar")
     },
     {
-      Icon: ArchiveIcon,
+      icon: ArchiveIcon,
       text: "Archive project",
       hasDivider: false,
       onClick: () => console.log("Archive")
     },
 
     {
-      Icon: DeleteProjectIcon,
+      icon: DeleteProjectIcon,
       text: "Delete project",
       hasDivider: true,
       onClick: () => handleModalOpen()
@@ -99,7 +99,7 @@ const ThreeDotComponent = ({ name, id }: ThreeDotComponentProps) => {
           {ThreeDotData.map((item) => (
             <ThreeDotsCard
               key={item?.text}
-              Icon={item?.Icon}
+              icon={item?.icon}
               text={item?.text}
               hasDivider={item?.hasDivider}
               onClick={item.onClick}

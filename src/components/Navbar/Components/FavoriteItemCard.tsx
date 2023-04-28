@@ -1,5 +1,4 @@
 import { Flex, Text } from "@chakra-ui/react";
-import React from "react";
 import MiniLabelIcon from "../../../icons/MiniLabelIcon";
 import FavoriteDotComponenet from "./FavoriteDotComponenet";
 import MyTooltip from "./MyTooltip";
@@ -7,14 +6,8 @@ type ProjectItemCardProps = {
   name: string;
   color: string;
   id: string;
-  isFavorite: boolean;
 };
-function FavoriteItemCard({
-  name,
-  color,
-  id,
-  isFavorite
-}: ProjectItemCardProps) {
+function FavoriteItemCard({ name, color, id }: ProjectItemCardProps) {
   return (
     <div>
       <Flex
@@ -32,12 +25,8 @@ function FavoriteItemCard({
           <Text fontSize="16px">{name} </Text>
         </Flex>
         <Flex>
-          <MyTooltip label={"More projects actions"}>
-            <FavoriteDotComponenet
-              id={id}
-              name={name}
-              isFavorite={isFavorite}
-            />
+          <MyTooltip label="More label actions">
+            <FavoriteDotComponenet id={id} />
           </MyTooltip>
         </Flex>
       </Flex>

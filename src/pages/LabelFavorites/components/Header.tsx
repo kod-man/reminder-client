@@ -5,17 +5,15 @@ import ViewIcon from "../../../icons/ViewIcon";
 function Header() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
   return (
-    <Flex w="60%" mb="2">
-      <Flex mt="12" alignItems="center">
+    <Flex py="20px" w="100%" mb="2">
+      <Flex alignItems="center">
         <LeftArrowIcon />
-        <Flex>
-          <Text as="b" fontSize="xl" mr="2">
-            (Favorites)
-          </Text>
-        </Flex>
+        <Text as="b" fontSize="xl" mr="2">
+          (Favorites)
+        </Text>
       </Flex>
       <Spacer />
-      <Flex mt="12" alignItems="center">
+      <Flex alignItems="center">
         <Flex _hover={{ bg: "gray.100" }} cursor="pointer">
           <ViewIcon color="gray" />
           {isLargerThan800 ? (

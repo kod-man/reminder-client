@@ -1,11 +1,10 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import React from "react";
 import ToggleIcon from "../../../icons/ToggleIcon";
-import MyTooltip from "./MyTooltip";
 import FavoriteCard from "./FavoriteCard";
+import MyTooltip from "./MyTooltip";
 
-function Favorite() {
+function FavoriteLabelSection() {
   const [isFavoriteListOpen, setIsFavoriteListOpen] = useState(true);
   return (
     <div>
@@ -22,7 +21,7 @@ function Favorite() {
           Favorite
         </Text>
         <Flex>
-          <MyTooltip label="Toggle list of Favorite">
+          <MyTooltip label="Toggle list of favorite Labels">
             <Flex
               transform={!isFavoriteListOpen ? "rotate(90deg)" : "rotate(0deg)"}
               onClick={() => setIsFavoriteListOpen(!isFavoriteListOpen)}
@@ -38,4 +37,4 @@ function Favorite() {
   );
 }
 
-export default Favorite;
+export default FavoriteLabelSection;

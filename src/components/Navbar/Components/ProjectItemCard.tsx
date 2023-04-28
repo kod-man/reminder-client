@@ -23,7 +23,7 @@ const ProjectItemCard = ({ name, color, id }: ProjectItemCardProps) => {
     >
       <ColorDotIcon color={color} />
       <Text fontSize="16px">{name} </Text>
-      <MyTooltip label={"Remove favorite actions"}>
+      <MyTooltip label="More projects actions">
         <ThreeDotComponent id={id} name={name} />
       </MyTooltip>
     </Flex>

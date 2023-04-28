@@ -1,5 +1,4 @@
 import { Divider, Flex, Img, Link, Text } from "@chakra-ui/react";
-import React from "react";
 import PlusIcon from "../../icons/PlusIcon";
 import QuestionMarkIcon from "../../icons/QuestionMarkIcon";
 import Header from "./components/Header";
@@ -14,9 +13,8 @@ function LabelFavorite() {
       h="100%"
     >
       <Header />
-
-      <Divider w="60%" />
-      <Flex w="60%" flexDirection="column">
+      <Divider w="100%" />
+      <Flex w="100%" flexDirection="column">
         <Flex w="100%" mt="2" alignItems="center" cursor="pointer">
           <Text
             _hover={{ bg: "red", color: "white" }}
@@ -25,9 +23,9 @@ function LabelFavorite() {
           >
             <PlusIcon />
           </Text>
-          <Flex color="gray" ml="2" _hover={{ color: "red" }}>
-            Add task
-          </Flex>
+          <Text color="gray" ml="2" _hover={{ color: "red" }}>
+            New task
+          </Text>
         </Flex>
         <Flex
           mt="4"
@@ -35,17 +33,11 @@ function LabelFavorite() {
           alignItems="center"
           justifyContent="center"
           h="100%"
-          direction="column"
+          flexDirection="column"
         >
-          <Flex
-            direction="column"
-            h="432px"
-            flexDirection="column"
-            alignItems="center"
-            w="380px"
-          >
+          <Flex h="432px" flexDirection="column" alignItems="center" w="380px">
             <Img src="https://d3ptyyxy2at9ui.cloudfront.net/assets/images/5912cb674b44ab3d789ea98c95d1cfe3.jpg" />
-            <Text fontSize="lg" mb="2">
+            <Text fontSize="lg" mb="2" textAlign="center">
               (Favorites), try adding this label to some tasks…
             </Text>
             <Text color="gray">Click the + to add a task and it’ll </Text>

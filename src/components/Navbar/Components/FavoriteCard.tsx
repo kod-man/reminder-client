@@ -1,5 +1,5 @@
 import { useToast } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../..";
 import { ItemData } from "../../../pages/FiltersAndLabels/components/FiltersAndLabels";
@@ -12,7 +12,6 @@ function FavoriteCard() {
   const [loading, setLoading] = useState(true);
   const userId = sessionStorage.getItem("userId");
   const [labelsData, setLabelsData] = useState([]);
-  console.log(labelsData, "label");
   const toast = useToast();
   useEffect(() => {
     Axios.get(`${API.getAllLabels}/${userId}`)
@@ -31,17 +30,12 @@ function FavoriteCard() {
       });
   }, [userId, toast, isPageRefreshed.label]);
   return (
-    <div>
-      {labelsData.map(({ _id, name, color, isFavorite }) => (
-        <FavoriteItemCard
-          key={_id}
-          name={name}
-          color={color}
-          id={_id}
-          isFavorite={isFavorite}
-        />
-      ))}
-    </div>
+    <>
+      {!loading &&
+        labelsData.map(({ _id, name, color }) => (
+          <FavoriteItemCard key={_id} name={name} color={color} id={_id} />
+        ))}
+    </>
   );
 }
 
