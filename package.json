@@ -34,11 +34,15 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "lint-staged": {
+    "*.js": "eslint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "lint-staged && pretty-quick --staged"
     }
   },
   "eslintConfig": {
@@ -64,6 +68,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.4",
+    "pretty-quick": "^3.1.3"
   }
 }

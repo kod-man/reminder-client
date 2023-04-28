@@ -25,6 +25,7 @@ const PROTECTED_ROUTES = [
 export const App = () => {
   const token = sessionStorage.getItem("token");
   alert(token);
+  alert(PROTECTED_ROUTES);
   return (
     <Routes>
       <Route
