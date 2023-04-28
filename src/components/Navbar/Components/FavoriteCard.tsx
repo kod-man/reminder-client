@@ -6,7 +6,7 @@ import { ItemData } from "../../../pages/FiltersAndLabels/components/FiltersAndL
 import { Axios } from "../../../utils/axios";
 import { genericErrorToast } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
-
+import FavoriteItemCard from "./FavoriteItemCard";
 function FavoriteCard() {
   const isPageRefreshed = useSelector((state: RootState) => state.refresh);
   const [loading, setLoading] = useState(true);
@@ -30,7 +30,19 @@ function FavoriteCard() {
         setLoading(false);
       });
   }, [userId, toast, isPageRefreshed.label]);
-  return <div>FavoriteCard</div>;
+  return (
+    <div>
+      {labelsData.map(({ _id, name, color, isFavorite }) => (
+        <FavoriteItemCard
+          key={_id}
+          name={name}
+          color={color}
+          id={_id}
+          isFavorite={isFavorite}
+        />
+      ))}
+    </div>
+  );
 }
 
 export default FavoriteCard;
