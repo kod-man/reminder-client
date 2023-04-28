@@ -40,7 +40,8 @@
     "*.{js,jsx,ts,tsx,json,md}": [
       "prettier --write",
       "eslint --fix"
-    ]
+    ],
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
