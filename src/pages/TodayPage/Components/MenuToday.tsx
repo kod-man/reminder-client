@@ -100,7 +100,7 @@ function MenuToday() {
           ))}
           <MenuDivider />
           <MenuItem>
-            <Input type="date"></Input>
+            <Input type="date" />
           </MenuItem>
           <MenuItem>
             <Text color="red">+ Add time</Text>

@@ -4,7 +4,7 @@ module.exports = {
     node: true
   },
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "prettier"],
+  plugins: ["@typescript-eslint", "prettier", "react"],
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -21,6 +21,13 @@ module.exports = {
     "@typescript-eslint/no-misused-promises": "off",
     "no-console": "warn",
     "no-alert": "error",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "react/self-closing-comp": [
+      "error",
+      {
+        component: true,
+        html: true
+      }
+    ]
   }
 };

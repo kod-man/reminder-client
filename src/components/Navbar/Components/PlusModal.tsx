@@ -200,7 +200,7 @@ const PlusModal = () => {
                         <Text mx={2} color="black">
                           read
                         </Text>
-                        <Checkbox color="gray" ml="10"></Checkbox>
+                        <Checkbox color="gray" ml="10" />
                       </Flex>
                     </VStack>
                   </MenuList>
@@ -259,7 +259,7 @@ const PlusModal = () => {
                           bg="#edf2f7"
                           icon={<ClockIcon color="gray" />}
                           variant="Flushed"
-                        ></Button>
+                        />
                       </PopoverTrigger>
                     </Box>
                   </MyTooltip>
