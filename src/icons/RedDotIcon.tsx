@@ -11,7 +11,7 @@ const RedDotIcon = (props: IconProps) => {
         className="project_icon"
         {...props}
       >
-        <path d="M12 7a5 5 0 110 10 5 5 0 010-10z" fill="currentColor"></path>
+        <path d="M12 7a5 5 0 110 10 5 5 0 010-10z" fill="currentColor" />
       </svg>
     </Flex>
   );

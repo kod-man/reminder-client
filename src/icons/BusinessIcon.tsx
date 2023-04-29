@@ -16,7 +16,7 @@ const BusinessIcon = (props: IconProps) => {
         transform="translate(1 5)"
         fillRule="nonzero"
         fill="currentColor"
-      ></path>
+      />
     </svg>
   );
 };

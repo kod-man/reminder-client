@@ -97,7 +97,7 @@ function TodoCalendar() {
       </Flex>
       <Divider />
       <Flex cursor="pointer" p="2">
-        <Input type="date"></Input>
+        <Input type="date" />
       </Flex>
       <Divider />
       <Text cursor="pointer" p="2" color="red">
