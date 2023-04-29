@@ -10,7 +10,7 @@ type ProjectItemCardProps = {
 function FavoriteItemCard({ name, color, id }: ProjectItemCardProps) {
   return (
     <Flex
-      m="-5px 10px 0 25px "
+      m="0px 10px 0 25px "
       fontSize="sm"
       justifyContent="space-between"
       alignItems="center"
