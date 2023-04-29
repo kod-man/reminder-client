@@ -93,8 +93,8 @@ const ThreeDotComponent = ({ name, id }: ThreeDotComponentProps) => {
   return (
     <>
       <Menu>
-        <Flex as={MenuButton} ml="auto">
-          <Text mb="10px">...</Text>
+        <Flex h="32px" alignItems="flex-start" as={MenuButton}>
+          <Text h="50%">...</Text>
         </Flex>
         <MenuList>
           {ThreeDotData.map((item) => (
