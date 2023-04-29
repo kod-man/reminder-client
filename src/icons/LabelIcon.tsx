@@ -1,4 +1,6 @@
-const LabelIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const LabelIcon = (props: IconProps) => {
   return (
     <svg
       data-svgs-path="sm1/label_outline.svg"

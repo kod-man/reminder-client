@@ -1,4 +1,6 @@
-const InvisibleIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const InvisibleIcon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

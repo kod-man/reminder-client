@@ -1,4 +1,6 @@
-const AboveIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const AboveIcon = (props: IconProps) => {
   return (
     <svg width="24" height="24" {...props}>
       <path

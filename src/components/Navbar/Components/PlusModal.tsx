@@ -57,6 +57,7 @@ const PlusModal = () => {
   const titleRef = useRef<HTMLInputElement>(null);
   const [priority, setPriority] = React.useState("Low");
   const [iconColor, setIconColor] = React.useState(prioData[0].color);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedPrio, setSelectedPrio] = React.useState(prioData[0]);
 
   const userData = {
@@ -67,6 +68,7 @@ const PlusModal = () => {
     userId
   };
   const showData = () => {
+    // eslint-disable-next-line no-console
     console.log(userData);
   };
 

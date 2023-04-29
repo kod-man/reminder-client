@@ -33,10 +33,16 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "check-types": "tsc --noemit",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src && npm run check-types",
+    "lint:fix": "eslint --fix .",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write",
+      "npx eslint --fix"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,9 +60,13 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.37.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.1.2",
-    "prettier": "2.8.4"
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.4"
   }
 }

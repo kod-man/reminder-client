@@ -1,4 +1,6 @@
-function AlarmIcon(props: any) {
+import { IconProps } from "./types";
+
+function AlarmIcon(props: IconProps) {
   return (
     <svg
       data-svgs-path="sm1/reminder.svg"

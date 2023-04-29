@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Flex, Menu, MenuButton, MenuList, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import AboveIcon from "../../../icons/AboveIcon";

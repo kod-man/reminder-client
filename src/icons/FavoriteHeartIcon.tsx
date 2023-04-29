@@ -1,4 +1,6 @@
-const FavoriteHeartIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const FavoriteHeartIcon = (props: IconProps) => {
   return (
     <svg
       width="24"

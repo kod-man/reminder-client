@@ -1,4 +1,6 @@
-const SettingsIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const SettingsIcon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

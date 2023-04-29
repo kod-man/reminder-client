@@ -1,4 +1,6 @@
-function UpsentIcon(props: any) {
+import { IconProps } from "./types";
+
+function UpsentIcon(props: IconProps) {
   return (
     <svg
       width="24"

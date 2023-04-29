@@ -1,4 +1,6 @@
-function ColorFlagIcon(props: any) {
+import { IconProps } from "./types";
+
+function ColorFlagIcon(props: IconProps) {
   return (
     <svg
       width="24"

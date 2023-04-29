@@ -1,4 +1,6 @@
-const AppleIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const AppleIcon = (props: IconProps) => {
   return (
     <svg
       width="16"

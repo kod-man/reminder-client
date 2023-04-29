@@ -1,4 +1,6 @@
-function NextWeekIcon(props: any) {
+import { IconProps } from "./types";
+
+function NextWeekIcon(props: IconProps) {
   return (
     <svg
       width="24"

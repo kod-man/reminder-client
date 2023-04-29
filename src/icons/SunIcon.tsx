@@ -1,4 +1,6 @@
-function SunIcon(props: any) {
+import { IconProps } from "./types";
+
+function SunIcon(props: IconProps) {
   return (
     <svg
       width="24"

@@ -1,4 +1,6 @@
-const CompareIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const CompareIcon = (props: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

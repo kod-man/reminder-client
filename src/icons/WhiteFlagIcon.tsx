@@ -1,4 +1,6 @@
-function WhiteFlagIcon(props: any) {
+import { IconProps } from "./types";
+
+function WhiteFlagIcon(props: IconProps) {
   return (
     <svg
       width="24"

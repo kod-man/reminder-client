@@ -1,4 +1,6 @@
-const SunnyIcon = (props: any) => {
+import { IconProps } from "./types";
+
+const SunnyIcon = (props: IconProps) => {
   return (
     <svg
       stroke="currentColor"

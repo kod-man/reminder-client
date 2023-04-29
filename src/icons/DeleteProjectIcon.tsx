@@ -1,4 +1,6 @@
-export const DeleteProjectIcon = (props: any) => {
+import { IconProps } from "./types";
+
+export const DeleteProjectIcon = (props: IconProps) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" {...props}>
       <g fill="none" fillRule="evenodd">
