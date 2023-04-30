@@ -18,21 +18,11 @@ import {
 import { API } from "../../../utils/usedApi";
 import Spinner from "../../Spinner";
 
-type NewTaskProps = {
-  loading: boolean;
-  reminders: Reminder[];
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setReminders: React.Dispatch<React.SetStateAction<Reminder[]>>;
-  setShowWelcome: React.Dispatch<React.SetStateAction<boolean>>;
-};
+function NewTask() {
+  const [reminders, setReminders] = useState<Reminder[]>([]);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-function NewTask({
-  loading,
-  reminders,
-  setLoading,
-  setReminders,
-  setShowWelcome
-}: NewTaskProps) {
   const toast = useToast();
   const dispatch = useDispatch();
   const refresh = useSelector((state: RootState) => state.reminder);
@@ -94,19 +84,6 @@ function NewTask({
   }, [userId, refresh, toast, dispatch]);
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        reminders.map((reminder: Reminder) => (
-          <ReminderCard
-            key={reminder._id}
-            title={reminder.title}
-            description={reminder.description}
-            id={reminder._id}
-          />
-        ))
-      )}
-
       {isAddTaskOpen ? (
         <Flex direction="column" w="100%" mt="4">
           <Flex
@@ -185,6 +162,18 @@ function NewTask({
             New task
           </Flex>
         </Flex>
+      )}
+      {loading ? (
+        <Spinner />
+      ) : (
+        reminders.map((reminder: Reminder) => (
+          <ReminderCard
+            key={reminder._id}
+            title={reminder.title}
+            description={reminder.description}
+            id={reminder._id}
+          />
+        ))
       )}
     </>
   );
