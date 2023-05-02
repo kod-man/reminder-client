@@ -1,5 +1,5 @@
 import { Divider, Flex, Img, Link, Text } from "@chakra-ui/react";
-import PlusIcon from "../../icons/PlusIcon";
+import CreateNewTask from "../../components/CreateNewTask";
 import QuestionMarkIcon from "../../icons/QuestionMarkIcon";
 import Header from "./components/Header";
 
@@ -15,18 +15,7 @@ function LabelFavorite() {
       <Header />
       <Divider w="100%" />
       <Flex w="100%" flexDirection="column">
-        <Flex w="100%" mt="2" alignItems="center" cursor="pointer">
-          <Text
-            _hover={{ bg: "red", color: "white" }}
-            borderRadius="100%"
-            color="red"
-          >
-            <PlusIcon />
-          </Text>
-          <Text color="gray" ml="2" _hover={{ color: "red" }}>
-            New task
-          </Text>
-        </Flex>
+        <CreateNewTask />
         <Flex
           mt="4"
           w="100%"
