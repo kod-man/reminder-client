@@ -1,5 +1,7 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router";
 import MiniLabelIcon from "../../../icons/MiniLabelIcon";
+import { PATHS } from "../../../utils/paths";
 import FavoriteDotComponenet from "./FavoriteDotComponenet";
 import MyTooltip from "./MyTooltip";
 type ProjectItemCardProps = {
@@ -8,6 +10,7 @@ type ProjectItemCardProps = {
   id: string;
 };
 function FavoriteItemCard({ name, color, id }: ProjectItemCardProps) {
+  const navigate = useNavigate();
   return (
     <Flex
       m="0px 10px 0 25px "
@@ -18,6 +21,7 @@ function FavoriteItemCard({ name, color, id }: ProjectItemCardProps) {
       borderRadius="5px"
       p="1px"
       _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
+      onClick={() => navigate(PATHS.FILTERS_AND_LABELS + "/" + id)}
     >
       <Flex>
         <MiniLabelIcon color={color} />
