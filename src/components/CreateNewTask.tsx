@@ -1,35 +1,21 @@
 import { Box, Button, Flex, Input, Text, useToast } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../..";
-import Spinner from "../../../components/Spinner";
-import PlusIcon from "../../../icons/PlusIcon";
-import { refreshTodos } from "../../../store/Reminder/ReminderSlice";
-import { Axios } from "../../../utils/axios";
-import {
-  defaultToastProps,
-  genericErrorToast
-} from "../../../utils/genericToast";
-import { API } from "../../../utils/usedApi";
-import MenuPriority from "./MenuPriority";
-import MenuReminder from "./MenuReminder";
-import MenuThreeDote from "./MenuThreeDote";
-import MenuToday from "./MenuToday";
-import ReminderCard from "./ReminderCard";
-import { Reminder } from "./types";
-import Welcome from "./Welcome";
+import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import PlusIcon from "../icons/PlusIcon";
+import MenuPriority from "../pages/TodayPage/Components/MenuPriority";
+import MenuReminder from "../pages/TodayPage/Components/MenuReminder";
+import MenuThreeDote from "../pages/TodayPage/Components/MenuThreeDote";
+import MenuToday from "../pages/TodayPage/Components/MenuToday";
+import { refreshTodos } from "../store/Reminder/ReminderSlice";
+import { Axios } from "../utils/axios";
+import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
+import { API } from "../utils/usedApi";
 
-function CreateReminder() {
-  const toast = useToast();
-  const dispatch = useDispatch();
-  const refresh = useSelector((state: RootState) => state.reminder);
-  const [reminders, setReminders] = useState<Reminder[]>([]);
+function CreateNewTask() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
-  const [showWelcome, setShowWelcome] = useState(true);
-
+  const userId = sessionStorage.getItem("userId");
   const titleRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLInputElement>(null);
-
   const [toDoData, setToDoData] = useState({
     title: "",
     description: "",
@@ -37,9 +23,8 @@ function CreateReminder() {
     priority: "",
     label: ""
   });
-  const [loading, setLoading] = useState(true);
-  const userId = sessionStorage.getItem("userId");
-
+  const toast = useToast();
+  const dispatch = useDispatch();
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
 
@@ -72,32 +57,8 @@ function CreateReminder() {
     });
   };
 
-  useEffect(() => {
-    Axios.get(`${API.getAllReminders}/${userId}`)
-      .then((res) => {
-        setLoading(false);
-        setReminders(res.data);
-      })
-      .catch((err) => {
-        genericErrorToast(err, toast);
-        setLoading(false);
-      });
-  }, [userId, refresh, toast, dispatch]);
   return (
     <>
-      {loading ? (
-        <Spinner />
-      ) : (
-        reminders.map((reminder: Reminder) => (
-          <ReminderCard
-            key={reminder._id}
-            title={reminder.title}
-            description={reminder.description}
-            id={reminder._id}
-          />
-        ))
-      )}
-
       {isAddTaskOpen ? (
         <Flex direction="column" w="100%" mt="4">
           <Flex
@@ -138,7 +99,6 @@ function CreateReminder() {
               mr="4"
               onClick={() => {
                 setIsAddTaskOpen(!isAddTaskOpen);
-                setShowWelcome(true);
               }}
             >
               Cancel
@@ -146,7 +106,6 @@ function CreateReminder() {
             <Button
               color="white"
               bg={!titleRef.current?.value ? "red.300" : "red.500"}
-              isDisabled={!titleRef.current?.value.trim()}
               _hover={!titleRef.current?.value ? { bg: "" } : { bg: "red.700" }}
               onClick={submitHandler}
             >
@@ -170,16 +129,14 @@ function CreateReminder() {
             _hover={{ color: "red" }}
             onClick={() => {
               setIsAddTaskOpen(true);
-              setShowWelcome(false);
             }}
           >
             New task
           </Flex>
         </Flex>
       )}
-      {!loading && reminders.length === 0 && showWelcome && <Welcome />}
     </>
   );
 }
 
-export default CreateReminder;
+export default CreateNewTask;
