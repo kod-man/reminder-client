@@ -34,27 +34,33 @@ function CreateNewTask() {
       title: titleRef.current?.value,
       description: descriptionRef.current?.value
     };
-
-    Axios.post(API.addReminder, newUserData)
-      .then(() => {
-        toast({
-          ...defaultToastProps,
-          title: "Reminder added succesfully.",
-          status: "success"
+    if (titleRef.current?.value) {
+      Axios.post(API.addReminder, newUserData)
+        .then(() => {
+          toast({
+            ...defaultToastProps,
+            title: "Reminder added succesfully.",
+            status: "success"
+          });
+          dispatch(refreshTodos());
+        })
+        .catch((err) => {
+          genericErrorToast(err, toast);
         });
-        dispatch(refreshTodos());
-      })
-      .catch((err) => {
-        genericErrorToast(err, toast);
+      setToDoData({
+        title: "",
+        description: "",
+        date: "",
+        priority: "",
+        label: ""
       });
-
-    setToDoData({
-      title: "",
-      description: "",
-      date: "",
-      priority: "",
-      label: ""
-    });
+    } else {
+      toast({
+        ...defaultToastProps,
+        title: "Title is required",
+        status: "error"
+      });
+    }
   };
 
   return (
