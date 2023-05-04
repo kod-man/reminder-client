@@ -34,7 +34,7 @@ function CreateNewTask() {
       title: titleRef.current?.value,
       description: descriptionRef.current?.value
     };
-    if (newUserData.title) {
+    if (titleRef.current?.value) {
       Axios.post(API.addReminder, newUserData)
         .then(() => {
           toast({
@@ -47,7 +47,6 @@ function CreateNewTask() {
         .catch((err) => {
           genericErrorToast(err, toast);
         });
-
       setToDoData({
         title: "",
         description: "",
@@ -56,14 +55,11 @@ function CreateNewTask() {
         label: ""
       });
     } else {
-      {
-        toast({
-          ...defaultToastProps,
-          title: "Empty Task name !",
-          description: "Add Task name",
-          status: "warning"
-        });
-      }
+      toast({
+        ...defaultToastProps,
+        title: "Title is required",
+        status: "error"
+      });
     }
   };
 
