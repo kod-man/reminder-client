@@ -16,7 +16,8 @@ function FiltersAndLabelsPage() {
   const toast = useToast();
   const isPageRefreshed = useSelector((state: RootState) => state.refresh);
   const [filtersData, setFiltersData] = useState([]);
-  const [labelsData, setLabelsData] = useState([]);
+
+  const labelsData = useSelector((state: RootState) => state.labels.labels);
   const [loading, setLoading] = useState(true);
   const userId = sessionStorage.getItem("userId");
 
@@ -34,19 +35,6 @@ function FiltersAndLabelsPage() {
       });
   }, [userId, toast, isPageRefreshed.filter]);
 
-  useEffect(() => {
-    Axios.get(`${API.getAllLabels}/${userId}`)
-      .then((response) => {
-        setLoading(false);
-        if (response.data) {
-          setLabelsData(response.data);
-        }
-      })
-      .catch((err) => {
-        genericErrorToast(err, toast);
-        setLoading(false);
-      });
-  }, [userId, toast, isPageRefreshed.label]);
   return (
     <Flex
       flexDirection="column"
