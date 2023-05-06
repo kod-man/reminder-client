@@ -18,7 +18,7 @@ import { refreshTodos } from "../store/Reminder/ReminderSlice";
 import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
 import { API } from "../utils/usedApi";
-import InboxComp from "./Navbar/Components/InboxComp";
+import InboxDropdown from "./Navbar/Components/InboxDropdown";
 
 function CreateNewTask() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
@@ -111,7 +111,7 @@ function CreateNewTask() {
           </Flex>
           <Divider />
           <Flex justifyContent="space-between" alignItems="center" m="7px">
-            <InboxComp />
+            <InboxDropdown />
             <Flex>
               <Button
                 mr="4"

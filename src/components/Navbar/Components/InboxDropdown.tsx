@@ -8,7 +8,6 @@ import {
   Text,
   Tooltip
 } from "@chakra-ui/react";
-import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../..";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
@@ -16,9 +15,8 @@ import ColorDotIcon from "../../../icons/ColorDotIcon";
 import InboxIcon from "../../../icons/InboxIcon";
 import TickIcon from "../../../icons/TickIcon";
 
-function InboxComp() {
+function InboxDropdown() {
   const projects = useSelector((state: RootState) => state.projects.projects);
-  const [checked, setChecked] = useState(false);
 
   return (
     <Menu>
@@ -49,7 +47,7 @@ function InboxComp() {
                 <ColorDotIcon color={item.color} />
                 <Text fontSize="16px">{item.name} </Text>
               </Flex>
-              {checked ? <TickIcon /> : ""}
+              <TickIcon />
             </Flex>
           </MenuItem>
         ))}
@@ -58,4 +56,4 @@ function InboxComp() {
   );
 }
 
-export default InboxComp;
+export default InboxDropdown;
