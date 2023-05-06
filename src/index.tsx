@@ -17,8 +17,10 @@ import XIcon from "./icons/XIcon";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 import DrawerReducers from "./store/Drawer/drawerSlice";
+
 import ReminderReducers from "./store/Reminder/ReminderSlice";
 import RefreshReducers from "./store/Refresh/RefreshSlice";
+import ProjectsSlice from "./store/Projects/ProjectsSlice";
 
 function ErrorFallback({ error }: { error: any }) {
   return (
@@ -60,6 +62,8 @@ const root = ReactDOM.createRoot(container);
 
 export const store = configureStore({
   reducer: {
+    projects: ProjectsSlice,
+
     reminder: ReminderReducers,
     drawer: DrawerReducers,
     refresh: RefreshReducers

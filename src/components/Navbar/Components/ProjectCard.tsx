@@ -1,20 +1,18 @@
 import { useToast } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../..";
+import { allProjects } from "../../../store/Projects/ProjectsSlice";
 import { Axios } from "../../../utils/axios";
 import { genericErrorToast } from "../../../utils/genericToast";
 import { API } from "../../../utils/usedApi";
 import ProjectItemCard from "./ProjectItemCard";
 
-type Project = {
-  _id: string;
-  name: string;
-  color: string;
-};
-
 function ProjectCard() {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const projects = useSelector((state: RootState) => state.projects.projects);
+
+  const dispatch = useDispatch();
+
   const isPageRefreshed = useSelector((state: RootState) => state.refresh);
   const toast = useToast();
   const userId = sessionStorage.getItem("userId");
@@ -26,12 +24,13 @@ function ProjectCard() {
 
     Axios.get(`${API.getAllProjects}/${userId}`)
       .then((response) => {
-        setProjects(response.data);
+        dispatch(allProjects(response.data));
       })
       .catch((err) => {
         genericErrorToast(err, toast);
       });
   }, [userId, toast, isPageRefreshed.project]);
+
   return (
     <>
       {projects.map(({ _id, name, color }) => (
