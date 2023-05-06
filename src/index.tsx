@@ -17,9 +17,9 @@ import XIcon from "./icons/XIcon";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 import DrawerReducers from "./store/Drawer/drawerSlice";
+import LabelsReducers from "./store/Label/LabelsSlice";
 import ReminderReducers from "./store/Reminder/ReminderSlice";
 import RefreshReducers from "./store/Refresh/RefreshSlice";
-import LabelsReducers from "./store/Label/LabelsSlice";
 import ProjectsReducers from "./store/Projects/ProjectsSlice";
 
 function ErrorFallback({ error }: { error: any }) {
