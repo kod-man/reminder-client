@@ -1,4 +1,12 @@
-import { Box, Button, Flex, Input, Text, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Input,
+  Text,
+  useToast
+} from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import PlusIcon from "../icons/PlusIcon";
@@ -10,6 +18,7 @@ import { refreshTodos } from "../store/Reminder/ReminderSlice";
 import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
 import { API } from "../utils/usedApi";
+import InboxDropdown from "./Navbar/Components/InboxDropdown";
 
 function CreateNewTask() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
@@ -66,15 +75,15 @@ function CreateNewTask() {
   return (
     <>
       {isAddTaskOpen ? (
-        <Flex direction="column" w="100%" mt="4">
-          <Flex
-            pl={3}
-            alignItems="center"
-            direction="column"
-            border="1px solid"
-            borderColor="gray.300"
-            borderRadius={10}
-          >
+        <Flex
+          direction="column"
+          w="100%"
+          mt="4"
+          border="1px solid"
+          borderColor="gray.300"
+          borderRadius={10}
+        >
+          <Flex pl={3} alignItems="center" direction="column">
             <Box w="100%">
               <Input
                 ref={titleRef}
@@ -100,23 +109,29 @@ function CreateNewTask() {
               <MenuThreeDote />
             </Flex>
           </Flex>
-          <Flex justifyContent="flex-end" mt="3">
-            <Button
-              mr="4"
-              onClick={() => {
-                setIsAddTaskOpen(!isAddTaskOpen);
-              }}
-            >
-              Cancel
-            </Button>
-            <Button
-              color="white"
-              bg={!titleRef.current?.value ? "red.300" : "red.500"}
-              _hover={!titleRef.current?.value ? { bg: "" } : { bg: "red.700" }}
-              onClick={submitHandler}
-            >
-              Add task
-            </Button>
+          <Divider />
+          <Flex justifyContent="space-between" alignItems="center" m="7px">
+            <InboxDropdown />
+            <Flex>
+              <Button
+                mr="4"
+                onClick={() => {
+                  setIsAddTaskOpen(!isAddTaskOpen);
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                color="white"
+                bg={!titleRef.current?.value ? "red.300" : "red.500"}
+                _hover={
+                  !titleRef.current?.value ? { bg: "" } : { bg: "red.700" }
+                }
+                onClick={submitHandler}
+              >
+                Add task
+              </Button>
+            </Flex>
           </Flex>
         </Flex>
       ) : (

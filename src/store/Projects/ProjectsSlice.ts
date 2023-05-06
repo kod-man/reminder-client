@@ -3,23 +3,23 @@ import { ItemData } from "../../pages/FiltersAndLabels/components/FiltersAndLabe
 
 // Define the initial state using that type
 interface InitialState {
-  labels: ItemData[];
+  projects: ItemData[];
 }
 
 const initialState: InitialState = {
-  labels: []
+  projects: []
 };
 
-export const labelsSlice = createSlice({
-  name: "labels",
+export const ProjectsSlice = createSlice({
+  name: "projects",
   initialState,
   reducers: {
-    allLabels: (state, action) => {
-      state.labels = action.payload;
+    allProjects: (state, action) => {
+      state.projects = action.payload;
     }
   }
 });
 
-export const { allLabels } = labelsSlice.actions;
+export const { allProjects } = ProjectsSlice.actions;
 
-export default labelsSlice.reducer;
+export default ProjectsSlice.reducer;

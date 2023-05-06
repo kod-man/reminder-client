@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../index";
 
 // Define the initial state using that type
 interface InitialState {
@@ -44,8 +43,5 @@ export const refreshSlice = createSlice({
 });
 
 export const { refreshPage } = refreshSlice.actions;
-
-// Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.refresh;
 
 export default refreshSlice.reducer;

@@ -20,6 +20,7 @@ import DrawerReducers from "./store/Drawer/drawerSlice";
 import LabelsReducers from "./store/Label/LabelsSlice";
 import ReminderReducers from "./store/Reminder/ReminderSlice";
 import RefreshReducers from "./store/Refresh/RefreshSlice";
+import ProjectsReducers from "./store/Projects/ProjectsSlice";
 
 function ErrorFallback({ error }: { error: any }) {
   return (
@@ -61,6 +62,7 @@ const root = ReactDOM.createRoot(container);
 
 export const store = configureStore({
   reducer: {
+    projects: ProjectsReducers,
     labels: LabelsReducers,
     reminder: ReminderReducers,
     drawer: DrawerReducers,
