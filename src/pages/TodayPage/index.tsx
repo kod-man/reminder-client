@@ -40,24 +40,24 @@ function TodayPage() {
       w="100%"
       h="100%"
     >
-      <Header />
-      <>
-        {loading ? (
-          <Spinner />
-        ) : (
-          reminders.map((reminder: Reminder) => (
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          <Header />
+          {reminders.map((reminder: Reminder) => (
             <ReminderCard
               key={reminder._id}
               title={reminder.title}
               description={reminder.description}
               id={reminder._id}
             />
-          ))
-        )}
+          ))}
+          <CreateNewTask />
+        </>
+      )}
 
-        <CreateNewTask />
-        {!loading && reminders.length === 0 && <Welcome />}
-      </>
+      {!loading && reminders.length === 0 && <Welcome />}
     </Flex>
   );
 }
