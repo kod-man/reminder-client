@@ -10,15 +10,16 @@ import Header from "./components/Header";
 function LabelFavorite() {
   const [loading, setLoading] = useState(true);
   const userId = sessionStorage.getItem("userId");
-
+  // will change later
   useEffect(() => {
     Axios.get(`${API.getAllReminders}/${userId}`)
       .then(() => {
-        setLoading(false);
+        console.log("");
       })
       .catch(() => {
-        setLoading(false);
+        console.log("");
       });
+    setLoading(false);
   }, [userId]);
   return (
     <>
