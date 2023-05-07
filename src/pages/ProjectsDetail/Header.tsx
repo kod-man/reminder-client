@@ -6,14 +6,13 @@ import {
   Tooltip,
   useMediaQuery
 } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { RootState } from "../..";
+import { useLocation } from "react-router-dom";
 import MessageIcon from "../../icons/MessageIcon";
 import ShareIcon from "../../icons/ShareIcon";
 import ThreeCircleIcon from "../../icons/ThreeCircleIcon";
 import ViewIcon from "../../icons/ViewIcon";
-const CONNECTIONS = [
+
+const ProjectFeatures = [
   {
     icon: <ShareIcon />,
     article: "Share",
@@ -35,28 +34,26 @@ const CONNECTIONS = [
     label: "Open more project actions"
   }
 ];
-function Header() {
+function ProjectDetailHeader() {
   const [isLargerThan1060] = useMediaQuery("(min-width: 1060px)");
-  const projects = useSelector((state: RootState) => state.projects.projects);
-  const { projectId } = useParams();
+  const location = useLocation();
+
   return (
     <Flex mt="30px" w="100%" mb="15px">
       <Flex alignItems="center" mr="2">
-        {projects.map((item) => (
-          <Text as="b" fontSize="xl">
-            {item._id === projectId ? item.name : ""}
-          </Text>
-        ))}
+        <Text as="b" fontSize="xl">
+          {location.state.name}
+        </Text>
       </Flex>
       <Spacer />
-      {CONNECTIONS.map((connection) => (
-        <Flex key={connection.article} alignItems="center" mx="10px">
-          <Tooltip label={connection.label} placement="top">
+      {ProjectFeatures.map((feature) => (
+        <Flex key={feature.article} alignItems="center" mx="10px">
+          <Tooltip label={feature.label} placement="top">
             <Flex _hover={{ bg: "gray.100" }} cursor="pointer">
-              <Box color="gray">{connection.icon}</Box>
+              <Box color="gray">{feature.icon}</Box>
               {isLargerThan1060 ? (
                 <Text fontSize="sm" ml="1" color="gray">
-                  {connection.article}
+                  {feature.article}
                 </Text>
               ) : null}
             </Flex>
@@ -67,4 +64,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default ProjectDetailHeader;

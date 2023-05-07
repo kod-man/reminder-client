@@ -23,7 +23,9 @@ const ProjectItemCard = ({ name, color, id }: ProjectItemCardProps) => {
       borderRadius="5px"
       p="1px"
       _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
-      onClick={() => navigate(PATHS.PROJECTS + "/" + id)}
+      onClick={() =>
+        navigate(PATHS.PROJECTS + "/" + id, { state: { name: name } })
+      }
     >
       <Flex alignItems="center">
         <ColorDotIcon color={color} />

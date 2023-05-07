@@ -9,5 +9,5 @@ export const PATHS = {
   UPCOMING: "/upcoming",
   PROJECTS: "/projects",
   ITEM_DETAIL: "/filters-and-labels/:itemId",
-  PROJECTS_DETAIL: "/projects/:projectId"
+  PROJECT_DETAIL: "/projects/:projectId"
 };
