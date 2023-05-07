@@ -43,11 +43,11 @@ function FiltersAndLabelsPage() {
       w="100%"
       h="100%"
     >
-      <Header />
       {loading ? (
         <Spinner />
       ) : (
         <>
+          <Header />
           <FiltersAndLabels
             cardTitle="Filters"
             data={filtersData}
