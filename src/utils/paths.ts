@@ -8,5 +8,6 @@ export const PATHS = {
   INBOX: "/inbox",
   UPCOMING: "/upcoming",
   PROJECTS: "/projects",
-  ITEM_DETAIL: "filters-and-labels/:itemId"
+  ITEM_DETAIL: "/filters-and-labels/:itemId",
+  PROJECT_DETAIL: "/projects/:projectId"
 };

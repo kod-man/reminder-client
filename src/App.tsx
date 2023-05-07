@@ -6,9 +6,11 @@ import LabelFavorite from "./pages/LabelFavorites";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Onboard from "./pages/Onboard";
 import ProjectsPage from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectsDetail/ProjectsDetail";
 import RegisterAndLogin from "./pages/RegisterAndLogin";
 import TodayPage from "./pages/TodayPage";
 import { PATHS } from "./utils/paths";
+
 const PROTECTED_ROUTES = [
   { path: PATHS.NOT_FOUND, page: <NotFoundPage />, hasNavbarAndDrawer: false },
   { path: PATHS.ONBOARD, page: <Onboard />, hasNavbarAndDrawer: false },
@@ -19,7 +21,16 @@ const PROTECTED_ROUTES = [
     hasNavbarAndDrawer: true
   },
   { path: PATHS.PROJECTS, page: <ProjectsPage />, hasNavbarAndDrawer: true },
-  { path: PATHS.ITEM_DETAIL, page: <LabelFavorite />, hasNavbarAndDrawer: true }
+  {
+    path: PATHS.ITEM_DETAIL,
+    page: <LabelFavorite />,
+    hasNavbarAndDrawer: true
+  },
+  {
+    path: PATHS.PROJECT_DETAIL,
+    page: <ProjectDetail />,
+    hasNavbarAndDrawer: true
+  }
 ];
 
 export const App = () => {
