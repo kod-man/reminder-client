@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Input,
   Menu,
@@ -16,7 +17,6 @@ import DeleteIcon from "../../../icons/DeleteIcon";
 import SunIcon from "../../../icons/SunIcon";
 import TodayIcon from "../../../icons/TodayIcon";
 import UpsentIcon from "../../../icons/UpsentIcon";
-
 function MenuToday() {
   const date = new Date(Date.now());
   const weeksDate = new Date(Date.now() + 3600 * 1000 * 24);
@@ -44,7 +44,7 @@ function MenuToday() {
       text2: tomorrow
     },
     {
-      icon: <CouchIcon color="blue" />,
+      icon: <CouchIcon color="#246fe0" />,
       text1: "Next weekend",
       text2: nextWeek
     },
@@ -58,31 +58,29 @@ function MenuToday() {
     <Menu>
       <Tooltip hasArrow label="Set due date" placement="top">
         <MenuButton
-          p="0 0 0 1"
           as={Button}
           bg="white"
-          border="1px"
-          borderColor="gray.300"
+          border="1px solid #ddd"
           borderRadius="md"
-          cursor="pointer"
           h="32px"
-          mr="2"
-          color="#07c138"
+          mr="8px"
+          px="4px"
+          color="#058527"
+          _hover={{ bg: "#eee" }}
           leftIcon={<TodayIcon />}
           rightIcon={
             <Tooltip hasArrow label="Remove due date" placement="top">
-              <Button
-                p="0 1 0 0"
-                size="xs"
-                bg="gray.200"
-                _hover={{ bg: "#DCDCDC" }}
+              <Box
+                bg="transparent"
+                _hover={{ bg: "#d3d3d3" }}
+                borderRadius="5px"
               >
                 <DeleteIcon />
-              </Button>
+              </Box>
             </Tooltip>
           }
         >
-          <Text fontSize="sm" fontFamily="inherit">
+          <Text fontSize="13px" fontFamily="inherit" fontWeight="400">
             Today
           </Text>
         </MenuButton>
@@ -91,19 +89,23 @@ function MenuToday() {
         <MenuGroup title={today}>
           <MenuDivider />
           {menuItemsToday.map((item) => (
-            <MenuItem key={item.text1}>
+            <MenuItem fontSize="13px" fontWeight="500" key={item.text1}>
               {item.icon}
               <Text ml="2">{item.text1}</Text>
               <Spacer />
-              <Text color="gray">{item.text2}</Text>
+              <Text color="#808080" fontWeight="400">
+                {item.text2}
+              </Text>
             </MenuItem>
           ))}
           <MenuDivider />
           <MenuItem>
-            <Input type="date" />
+            <Input fontSize="15px" type="date" />
           </MenuItem>
           <MenuItem>
-            <Text color="red">+ Add time</Text>
+            <Text color=" #d1453b" fontWeight="600" fontSize="13px">
+              + Add time
+            </Text>
           </MenuItem>
         </MenuGroup>
       </MenuList>

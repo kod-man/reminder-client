@@ -102,7 +102,7 @@ function CreateNewTask() {
                 _placeholder={{ opacity: 1, color: "gray.500" }}
               />
             </Box>
-            <Flex w="100%" my="3">
+            <Flex w="100%" my="3" flexWrap="wrap">
               <MenuToday />
               <MenuPriority />
               <MenuReminder />
