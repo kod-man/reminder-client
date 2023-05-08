@@ -3,8 +3,8 @@ import { IconProps } from "./types";
 function DeleteIcon(props: IconProps) {
   return (
     <svg
-      width="16"
-      height="16"
+      width="15"
+      height="15"
       aria-hidden="true"
       viewBox="0 0 24 24"
       {...props}
