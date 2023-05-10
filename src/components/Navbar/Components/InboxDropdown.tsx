@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Flex,
   Input,
@@ -9,7 +10,7 @@ import {
   Text,
   Tooltip
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../..";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
@@ -36,8 +37,13 @@ function InboxDropdown({
 }: SELECTED_PROPS) {
   const projects = useSelector((state: RootState) => state.projects.projects);
   const [searchTerm, setSearchTerm] = useState("");
-  const Inbox = "Inbox";
-
+  const inputReference = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (!searchTerm) {
+      inputReference.current?.focus();
+    }
+  }, [searchTerm]);
+  console.log(searchTerm);
   return (
     <Menu>
       <Tooltip hasArrow label="Select a project #" placement="top">
@@ -56,51 +62,49 @@ function InboxDropdown({
         </MenuButton>
       </Tooltip>
       <MenuList p="0" minWidth="250px">
-        <Input
-          type="text"
-          px="8px"
-          fontSize="13px"
-          placeholder="Type a project"
-          focusBorderColor="#eee"
-          borderRadius="none"
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-          }}
-        />
-        <MenuItem
-          onClick={() =>
-            setSelectedProject({
-              name: "Inbox",
-              icon: <InboxIcon fontSize="sm" color="#246fe0" />
-            })
-          }
-        >
-          <Flex justifyContent="space-between" alignItems="center" w="100%">
-            <Flex alignItems="center">
-              {Inbox.toLowerCase().includes(searchTerm.toLowerCase()) ? (
+        <Box>
+          <Input
+            type="text"
+            ref={inputReference}
+            px="8px"
+            fontSize="13px"
+            placeholder="Type a project"
+            focusBorderColor="#eee"
+            borderRadius="none"
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
+        </Box>
+
+        {searchTerm == "" ||
+        "Inbox".toLowerCase().includes(searchTerm.toLowerCase()) ? (
+          <MenuItem
+            onClick={() =>
+              setSelectedProject({
+                name: "Inbox",
+                icon: <InboxIcon fontSize="sm" color="#246fe0" />
+              })
+            }
+          >
+            <Flex justifyContent="space-between" alignItems="center" w="100%">
+              <Flex alignItems="center">
                 <InboxIcon fontSize="sm" color="#246fe0" />
-              ) : (
-                ""
-              )}
-              <Text ml="16px" fontSize="16px">
-                {searchTerm == ""
-                  ? Inbox
-                  : Inbox.toLowerCase().includes(searchTerm.toLowerCase())
-                  ? Inbox
-                  : ""}
-              </Text>
+
+                <Text ml="16px" fontSize="16px">
+                  Inbox
+                </Text>
+              </Flex>
+              {selectedProject.name === "Inbox" && <TickIcon />}
             </Flex>
-            {selectedProject.name === "Inbox" &&
-              Inbox.toLowerCase().includes(searchTerm.toLowerCase()) && (
-                <TickIcon />
-              )}
-          </Flex>
-        </MenuItem>
+          </MenuItem>
+        ) : (
+          false
+        )}
         {projects
           .filter((val) => {
-            if (searchTerm == "") {
-              return val;
-            } else if (
+            if (
+              searchTerm == "" ||
               val.name.toLowerCase().includes(searchTerm.toLowerCase())
             ) {
               return val;
