@@ -1,9 +1,8 @@
 import { Flex } from "@chakra-ui/react";
 import AddToFavoritesIcon from "../../../icons/AddToFavoritesIcon";
 import PenIcon from "../../../icons/PenIcon";
-import ThreeCircleIcon from "../../../icons/ThreeCircleIcon";
 
-const icons = [<AddToFavoritesIcon />, <PenIcon />, <ThreeCircleIcon />];
+const icons = [<AddToFavoritesIcon />, <PenIcon />];
 function IconsBar() {
   return (
     <Flex justifyContent="center" alignItems="center">
