@@ -29,7 +29,9 @@ const ProjectItemCard = ({ name, color, id }: ProjectItemCardProps) => {
     >
       <Flex alignItems="center">
         <ColorDotIcon color={color} />
-        <Text fontSize="16px">{name} </Text>
+        <Text fontSize="16px" ml="8px">
+          {name}
+        </Text>
       </Flex>
       <MyTooltip label="More projects actions">
         <Box>

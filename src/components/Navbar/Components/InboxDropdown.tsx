@@ -12,9 +12,9 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../..";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
-
 import InboxIcon from "../../../icons/InboxIcon";
 import TickIcon from "../../../icons/TickIcon";
+import TypeProjectIcon from "../../../icons/TypeProjectIcon";
 
 type SELECTED_PROPS = {
   selectedProject: {
@@ -44,31 +44,34 @@ function InboxDropdown({
           border="1px solid gray.300"
           borderRadius="md"
           h="32px"
-          mr="2"
+          px="1"
           color="gray"
-          pl="1"
           leftIcon={selectedProject.icon}
+          rightIcon={<TypeProjectIcon />}
         >
-          <Text mr="2" fontSize="sm">
-            {selectedProject.name}
-          </Text>
+          <Text fontSize="sm">{selectedProject.name}</Text>
         </MenuButton>
       </Tooltip>
       <MenuList p="0" minWidth="250px">
         <Input
+          px="8px"
+          fontSize="13px"
           placeholder="Type a project"
           focusBorderColor="#eee"
           borderRadius="none"
         />
         <MenuItem
           onClick={() =>
-            setSelectedProject({ name: "Inbox", icon: <InboxIcon /> })
+            setSelectedProject({
+              name: "Inbox",
+              icon: <InboxIcon fontSize="sm" color="#246fe0" />
+            })
           }
         >
           <Flex justifyContent="space-between" alignItems="center" w="100%">
             <Flex alignItems="center">
               <InboxIcon fontSize="sm" color="#246fe0" />
-              <Text ml="8px" fontSize="16px">
+              <Text ml="16px" fontSize="16px">
                 Inbox
               </Text>
             </Flex>
@@ -77,6 +80,7 @@ function InboxDropdown({
         </MenuItem>
         {projects.map((item) => (
           <MenuItem
+            pl="16px"
             value={item.name}
             key={item._id}
             onClick={() =>
@@ -89,7 +93,7 @@ function InboxDropdown({
             <Flex justifyContent="space-between" alignItems="center" w="100%">
               <Flex alignItems="center">
                 <ColorDotIcon color={item.color} />
-                <Text fontSize="16px" ml="3px">
+                <Text fontSize="16px" ml="16px">
                   {item.name}
                 </Text>
               </Flex>
