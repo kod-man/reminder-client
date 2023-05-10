@@ -21,11 +21,15 @@ function FavoriteItemCard({ name, color, id }: ProjectItemCardProps) {
       borderRadius="5px"
       p="1px"
       _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
-      onClick={() =>
-        navigate(PATHS.FILTERS_AND_LABELS + "/" + id, { state: { name: name } })
-      }
     >
-      <Flex>
+      <Flex
+        onClick={() =>
+          navigate(PATHS.FILTERS_AND_LABELS + "/" + id, {
+            state: { name: name }
+          })
+        }
+        w="100%"
+      >
         <MiniLabelIcon color={color} />
         <Text fontSize="16px">{name} </Text>
       </Flex>
