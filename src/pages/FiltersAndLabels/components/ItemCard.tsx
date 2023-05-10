@@ -23,7 +23,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
   const navigate = useNavigate();
 
   const handleItemClick = () => {
-    navigate(PATHS.PROJECTS + "/" + id, { state: { name: name } });
+    navigate(PATHS.FILTERS_AND_LABELS + "/" + id, { state: { name: name } });
   };
 
   return (
