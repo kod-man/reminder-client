@@ -16,17 +16,10 @@ export const labelsSlice = createSlice({
   reducers: {
     allLabels: (state, action) => {
       state.labels = action.payload;
-    },
-    removeFavorite: (state, action) => {
-      state.labels.map((label) => {
-        if (label._id === action.payload.id) {
-          label.isFavorite = false;
-        }
-      });
     }
   }
 });
 
-export const { allLabels, removeFavorite } = labelsSlice.actions;
+export const { allLabels } = labelsSlice.actions;
 
 export default labelsSlice.reducer;

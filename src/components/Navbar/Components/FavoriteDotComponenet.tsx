@@ -1,13 +1,13 @@
 import { Flex, Menu, MenuButton, MenuList, Text } from "@chakra-ui/react";
-import { useDispatch } from "react-redux";
 import RemoveFromFavoritesIcon from "../../../icons/RemoveFromFavoritesIcon";
-import { removeFavorite } from "../../../store/Label/LabelsSlice";
 type FavoriteDotComponentProps = {
   id: string;
+  removeHandler: (e: any) => void;
 };
-function FavoriteDotComponenet({ id }: FavoriteDotComponentProps) {
-  const dispatch = useDispatch();
-
+function FavoriteDotComponenet({
+  id,
+  removeHandler
+}: FavoriteDotComponentProps) {
   return (
     <Menu id={id}>
       <Flex h="32px" alignItems="flex-start" as={MenuButton}>
@@ -23,9 +23,7 @@ function FavoriteDotComponenet({ id }: FavoriteDotComponentProps) {
           p="1px"
           mx="5px"
           _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
-          onClick={() => {
-            dispatch(removeFavorite({ id: id }));
-          }}
+          onClick={removeHandler}
         >
           <RemoveFromFavoritesIcon color="gray" />
           <Text fontSize="14px" ml="15px">
