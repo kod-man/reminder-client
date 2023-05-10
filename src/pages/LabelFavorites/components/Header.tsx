@@ -1,15 +1,18 @@
 import { Flex, Spacer, Text, useMediaQuery } from "@chakra-ui/react";
+import { useLocation } from "react-router-dom";
 import LeftArrowIcon from "../../../icons/LeftArrowIcon";
 import ViewIcon from "../../../icons/ViewIcon";
 
 function Header() {
   const [isLargerThan800] = useMediaQuery("(min-width: 800px)");
+  const location = useLocation();
+  const name = location.state ? location.state.name : "";
   return (
     <Flex py="20px" w="100%" mb="2">
       <Flex alignItems="center">
         <LeftArrowIcon />
         <Text as="b" fontSize="xl" mr="2">
-          (Favorites)
+          {name}
         </Text>
       </Flex>
       <Spacer />
