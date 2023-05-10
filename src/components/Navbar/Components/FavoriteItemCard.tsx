@@ -67,7 +67,7 @@ function FavoriteItemCard({ name, color, id }: ProjectItemCardProps) {
 
       <MyTooltip label="More label actions">
         <Box>
-          <FavoriteDotComponenet id={id} removeHandler={removeHandler} />
+          <FavoriteDotComponenet removeHandler={removeHandler} />
         </Box>
       </MyTooltip>
     </Flex>

@@ -1,15 +1,11 @@
 import { Flex, Menu, MenuButton, MenuList, Text } from "@chakra-ui/react";
 import RemoveFromFavoritesIcon from "../../../icons/RemoveFromFavoritesIcon";
 type FavoriteDotComponentProps = {
-  id: string;
   removeHandler: (e: any) => void;
 };
-function FavoriteDotComponenet({
-  id,
-  removeHandler
-}: FavoriteDotComponentProps) {
+function FavoriteDotComponenet({ removeHandler }: FavoriteDotComponentProps) {
   return (
-    <Menu id={id}>
+    <Menu>
       <Flex h="32px" alignItems="flex-start" as={MenuButton}>
         <Text h="50%">...</Text>
       </Flex>
