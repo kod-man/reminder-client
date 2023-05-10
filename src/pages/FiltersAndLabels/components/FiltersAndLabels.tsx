@@ -34,6 +34,7 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
       Icon={Icon}
       tooltipLabel={cardTitle}
       color={item.color}
+      isFavorite={item.isFavorite}
     />
   ));
   return (

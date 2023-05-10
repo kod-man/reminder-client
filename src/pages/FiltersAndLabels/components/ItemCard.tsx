@@ -1,5 +1,7 @@
 import { Flex, Spacer, Text } from "@chakra-ui/react";
 import { FC } from "react";
+import AddToFavoritesIcon from "../../../icons/AddToFavoritesIcon";
+import PenIcon from "../../../icons/PenIcon";
 import DeleteItemModal from "../../../modals/DeleteItemModal";
 import IconsBar from "./IconsBars";
 
@@ -9,6 +11,7 @@ type ItemCardProps = {
   Icon: FC<any>;
   tooltipLabel: string;
   color: string;
+  isFavorite?: boolean;
 };
 
 const ItemCard: React.FC<ItemCardProps> = ({
@@ -16,7 +19,8 @@ const ItemCard: React.FC<ItemCardProps> = ({
   text,
   Icon,
   tooltipLabel,
-  color
+  color,
+  isFavorite = false
 }) => {
   return (
     <Flex
@@ -33,6 +37,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
         <Text>{text}</Text>
       </Flex>
       <Spacer />
+      {isFavorite ? <AddToFavoritesIcon /> : <PenIcon />}
       <IconsBar />
 
       <Flex
