@@ -28,7 +28,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ id, text, Icon, color }) => {
       padding={1}
       cursor="pointer"
       paddingY="10px"
-      onClick={handleItemClick}
+      onClick={()=>handleItemClick()}
     >
       <Icon color={color} />
       <Flex ml="2" color="#333" fontSize="14px">
