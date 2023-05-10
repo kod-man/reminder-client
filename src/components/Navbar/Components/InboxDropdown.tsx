@@ -9,6 +9,7 @@ import {
   Text,
   Tooltip
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../..";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
@@ -34,6 +35,8 @@ function InboxDropdown({
   setSelectedProject
 }: SELECTED_PROPS) {
   const projects = useSelector((state: RootState) => state.projects.projects);
+  const [searchTerm, setSearchTerm] = useState("");
+  const Inbox = "Inbox";
 
   return (
     <Menu>
@@ -54,11 +57,15 @@ function InboxDropdown({
       </Tooltip>
       <MenuList p="0" minWidth="250px">
         <Input
+          type="text"
           px="8px"
           fontSize="13px"
           placeholder="Type a project"
           focusBorderColor="#eee"
           borderRadius="none"
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
         />
         <MenuItem
           onClick={() =>
@@ -70,37 +77,58 @@ function InboxDropdown({
         >
           <Flex justifyContent="space-between" alignItems="center" w="100%">
             <Flex alignItems="center">
-              <InboxIcon fontSize="sm" color="#246fe0" />
+              {Inbox.toLowerCase().includes(searchTerm.toLowerCase()) ? (
+                <InboxIcon fontSize="sm" color="#246fe0" />
+              ) : (
+                ""
+              )}
               <Text ml="16px" fontSize="16px">
-                Inbox
+                {searchTerm == ""
+                  ? Inbox
+                  : Inbox.toLowerCase().includes(searchTerm.toLowerCase())
+                  ? Inbox
+                  : ""}
               </Text>
             </Flex>
-            {selectedProject.name === "Inbox" && <TickIcon />}
+            {selectedProject.name === "Inbox" &&
+              Inbox.toLowerCase().includes(searchTerm.toLowerCase()) && (
+                <TickIcon />
+              )}
           </Flex>
         </MenuItem>
-        {projects.map((item) => (
-          <MenuItem
-            pl="16px"
-            value={item.name}
-            key={item._id}
-            onClick={() =>
-              setSelectedProject({
-                name: item.name,
-                icon: <ColorDotIcon color={item.color} />
-              })
+        {projects
+          .filter((val) => {
+            if (searchTerm == "") {
+              return val;
+            } else if (
+              val.name.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              return val;
             }
-          >
-            <Flex justifyContent="space-between" alignItems="center" w="100%">
-              <Flex alignItems="center">
-                <ColorDotIcon color={item.color} />
-                <Text fontSize="16px" ml="16px">
-                  {item.name}
-                </Text>
+          })
+          .map((item) => (
+            <MenuItem
+              pl="16px"
+              value={item.name}
+              key={item._id}
+              onClick={() =>
+                setSelectedProject({
+                  name: item.name,
+                  icon: <ColorDotIcon color={item.color} />
+                })
+              }
+            >
+              <Flex justifyContent="space-between" alignItems="center" w="100%">
+                <Flex alignItems="center">
+                  <ColorDotIcon color={item.color} />
+                  <Text fontSize="16px" ml="16px">
+                    {item.name}
+                  </Text>
+                </Flex>
+                {selectedProject.name === item.name && <TickIcon />}
               </Flex>
-              {selectedProject.name === item.name && <TickIcon />}
-            </Flex>
-          </MenuItem>
-        ))}
+            </MenuItem>
+          ))}
       </MenuList>
     </Menu>
   );
