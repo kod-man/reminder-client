@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
+import InboxIcon from "../icons/InboxIcon";
 import PlusIcon from "../icons/PlusIcon";
 import MenuPriority from "../pages/TodayPage/Components/MenuPriority";
 import MenuReminder from "../pages/TodayPage/Components/MenuReminder";
@@ -31,6 +32,10 @@ function CreateNewTask() {
     date: "",
     priority: "",
     label: ""
+  });
+  const [selectedProject, setSelectedProject] = useState({
+    name: "Inbox",
+    icon: <InboxIcon fontSize="sm" color="#246fe0" />
   });
   const toast = useToast();
   const dispatch = useDispatch();
@@ -111,7 +116,10 @@ function CreateNewTask() {
           </Flex>
           <Divider />
           <Flex justifyContent="space-between" alignItems="center" m="7px">
-            <InboxDropdown />
+            <InboxDropdown
+              selectedProject={selectedProject}
+              setSelectedProject={setSelectedProject}
+            />
             <Flex>
               <Button
                 mr="4"

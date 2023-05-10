@@ -8,7 +8,6 @@ const ColorDotIcon = ({ color }: { color: string }) => {
       height="10px"
       borderRadius="50%"
       display="block"
-      marginRight="8px"
       opacity="0.7"
     />
   );

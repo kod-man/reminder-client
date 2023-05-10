@@ -1,6 +1,7 @@
 import {
   Button,
   Flex,
+  Input,
   Menu,
   MenuButton,
   MenuItem,
@@ -11,11 +12,27 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../..";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
-
 import InboxIcon from "../../../icons/InboxIcon";
 import TickIcon from "../../../icons/TickIcon";
+import TypeProjectIcon from "../../../icons/TypeProjectIcon";
 
-function InboxDropdown() {
+type SELECTED_PROPS = {
+  selectedProject: {
+    name: string;
+    icon: JSX.Element;
+  };
+  setSelectedProject: React.Dispatch<
+    React.SetStateAction<{
+      name: string;
+      icon: JSX.Element;
+    }>
+  >;
+};
+
+function InboxDropdown({
+  selectedProject,
+  setSelectedProject
+}: SELECTED_PROPS) {
   const projects = useSelector((state: RootState) => state.projects.projects);
 
   return (
@@ -24,30 +41,63 @@ function InboxDropdown() {
         <MenuButton
           as={Button}
           bg="white"
-          border="1px"
-          borderColor="gray.300"
+          border="1px solid gray.300"
           borderRadius="md"
-          cursor="pointer"
           h="32px"
-          mr="2"
+          px="1"
           color="gray"
-          p="0 0 0 1"
-          leftIcon={<InboxIcon fontSize="sm" color="#246fe0" />}
+          leftIcon={selectedProject.icon}
+          rightIcon={<TypeProjectIcon />}
         >
-          <Text mr="2" fontSize="sm">
-            Inbox
-          </Text>
+          <Text fontSize="sm">{selectedProject.name}</Text>
         </MenuButton>
       </Tooltip>
-      <MenuList p="0" minWidth="150px" overflowY="scroll">
+      <MenuList p="0" minWidth="250px">
+        <Input
+          px="8px"
+          fontSize="13px"
+          placeholder="Type a project"
+          focusBorderColor="#eee"
+          borderRadius="none"
+        />
+        <MenuItem
+          onClick={() =>
+            setSelectedProject({
+              name: "Inbox",
+              icon: <InboxIcon fontSize="sm" color="#246fe0" />
+            })
+          }
+        >
+          <Flex justifyContent="space-between" alignItems="center" w="100%">
+            <Flex alignItems="center">
+              <InboxIcon fontSize="sm" color="#246fe0" />
+              <Text ml="16px" fontSize="16px">
+                Inbox
+              </Text>
+            </Flex>
+            {selectedProject.name === "Inbox" && <TickIcon />}
+          </Flex>
+        </MenuItem>
         {projects.map((item) => (
-          <MenuItem key={item._id}>
-            <Flex justifyContent="space-between" alignItems="center" w="250px">
+          <MenuItem
+            pl="16px"
+            value={item.name}
+            key={item._id}
+            onClick={() =>
+              setSelectedProject({
+                name: item.name,
+                icon: <ColorDotIcon color={item.color} />
+              })
+            }
+          >
+            <Flex justifyContent="space-between" alignItems="center" w="100%">
               <Flex alignItems="center">
                 <ColorDotIcon color={item.color} />
-                <Text fontSize="16px">{item.name} </Text>
+                <Text fontSize="16px" ml="16px">
+                  {item.name}
+                </Text>
               </Flex>
-              <TickIcon />
+              {selectedProject.name === item.name && <TickIcon />}
             </Flex>
           </MenuItem>
         ))}
