@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProps } from "./types";
 
-const UnFavoriteIcon = (props: IconProps) => {
+const NotFavoriteIcon = (props: IconProps) => {
   return (
     <svg
       width="24"
@@ -21,4 +21,4 @@ const UnFavoriteIcon = (props: IconProps) => {
   );
 };
 
-export default UnFavoriteIcon;
+export default NotFavoriteIcon;
