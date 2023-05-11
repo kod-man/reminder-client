@@ -14,5 +14,6 @@ export const API = {
   deleteLabel: "label/delete",
   deleteProject: "project/delete",
   addLabel: "label/add",
-  getAllProjects: "project/all"
+  getAllProjects: "project/all",
+  updateLabel: "/label/update"
 };
