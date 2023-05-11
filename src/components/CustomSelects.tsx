@@ -18,7 +18,7 @@ const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
   <Option {...props}>
     <Flex alignItems="center">
       <ColorDotIcon color={props.data.value} />
-      <Text color="gray.700" fontWeight="normal">
+      <Text ml="2" color="gray.700" fontWeight="normal">
         {props.data.label}
       </Text>
     </Flex>
@@ -59,7 +59,7 @@ const CustomSelects = ({ ...props }) => {
       placeholder={
         <Flex alignItems="center">
           <ColorDotIcon color="gray" />
-          <Text color="gray.500" fontWeight="normal">
+          <Text ml="2" color="gray.500" fontWeight="normal">
             Gray
           </Text>
         </Flex>
