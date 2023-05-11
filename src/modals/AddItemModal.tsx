@@ -140,7 +140,7 @@ const AddItemModal: FC<AddItemModalProps> = ({
                 }}
               />
             </Flex>
-            <Flex border="1px solid red" flexDir="column" mt="12px">
+            <Flex flexDir="column" mt="12px">
               <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Color
               </Text>
