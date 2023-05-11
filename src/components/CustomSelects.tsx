@@ -51,7 +51,7 @@ const CustomSelects = ({ ...props }) => {
       formatOptionLabel={(selectedOption) => (
         <Flex alignItems="center">
           <ColorDotIcon color={selectedOption.value} />
-          <Text color="gray.700" fontWeight="normal">
+          <Text ml="2" color="gray.700" fontWeight="normal">
             {selectedOption.label}
           </Text>
         </Flex>
