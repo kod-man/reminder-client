@@ -1,9 +1,11 @@
 import { FC } from "react";
-import { Flex, Spacer, Text } from "@chakra-ui/react";
+import AddToFavoritesIcon from "../../../icons/AddToFavoritesIcon";
+import PenIcon from "../../../icons/PenIcon";
+import DeleteItemModal from "../../../modals/DeleteItemModal";
+import { Flex, Spacer, Text, Tooltip } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../../utils/paths";
-import IconsBar from "./IconsBars";
-import DeleteItemModal from "../../../modals/DeleteItemModal";
+import NotFavoriteIcon from "../../../icons/NotFavoriteIcon";
 
 type ItemCardProps = {
   id: string;
@@ -11,14 +13,16 @@ type ItemCardProps = {
   Icon: FC<any>;
   tooltipLabel: string;
   color: string;
+  isFavorite: boolean;
 };
 
 const ItemCard: React.FC<ItemCardProps> = ({
   id,
   text,
   Icon,
+  tooltipLabel,
   color,
-  tooltipLabel
+  isFavorite
 }) => {
   const navigate = useNavigate();
 
@@ -42,13 +46,25 @@ const ItemCard: React.FC<ItemCardProps> = ({
         <Text>{text}</Text>
       </Flex>
       <Spacer />
-      <IconsBar />
+      <Tooltip
+        label={isFavorite ? "Remove From Favorites" : "Add to Favorites"}
+        placement="top"
+      >
+        <Flex color="gray">
+          {isFavorite ? <AddToFavoritesIcon /> : <NotFavoriteIcon />}
+        </Flex>
+      </Tooltip>
+      <Tooltip label="Edit Label" placement="top">
+        <Text color="gray" mx="1">
+          <PenIcon />
+        </Text>
+      </Tooltip>
+
       <Flex
         w="24px"
         h="24px"
         alignItems="center"
         justifyContent="center"
-        ml="1"
         color="gray"
         _hover={{ color: "#202020", bg: "#eee" }}
         borderRadius="20%"
