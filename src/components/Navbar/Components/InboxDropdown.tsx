@@ -54,11 +54,11 @@ function InboxDropdown({
       inputReference.current?.focus();
     }
   }, [searchTerm]);
+  const doesInclude = (value: string) => {
+    return value.toLowerCase().includes(searchTerm.toLowerCase());
+  };
   const filterProjects = projects.filter((val) => {
-    if (
-      searchTerm == "" ||
-      val.name.toLowerCase().includes(searchTerm.toLowerCase())
-    ) {
+    if (searchTerm == "" || doesInclude(val.name)) {
       return val;
     }
   });
@@ -100,8 +100,7 @@ function InboxDropdown({
           />
         </Box>
 
-        {searchTerm == "" ||
-        "Inbox".toLowerCase().includes(searchTerm.toLowerCase()) ? (
+        {searchTerm == "" || doesInclude("Inbox") ? (
           <MenuItem
             onClick={() =>
               setSelectedProject({
@@ -148,7 +147,7 @@ function InboxDropdown({
           </MenuItem>
         ))}
         {filterProjects.length == 0 &&
-        !"Inbox".toLowerCase().includes(searchTerm.toLowerCase()) &&
+        !doesInclude("Inbox") &&
         searchTerm.length != 0 ? (
           <Box fontSize="13px">
             <Text p="7px 0" m="0 8px" color="#555">
@@ -162,10 +161,9 @@ function InboxDropdown({
               alignItems="center"
               fontWeight="600"
             >
-              {" "}
               <Box display="inline-block" mr="10px">
                 <PlusIcon />
-              </Box>{" "}
+              </Box>
               Create "{searchTerm}"
             </Text>
           </Box>
