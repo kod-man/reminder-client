@@ -11,12 +11,16 @@ import {
   Tooltip
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../..";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 import InboxIcon from "../../../icons/InboxIcon";
 import TickIcon from "../../../icons/TickIcon";
 import TypeProjectIcon from "../../../icons/TypeProjectIcon";
+import PlusIcon from "../../../icons/PlusIcon";
+import { API } from "../../../utils/usedApi";
+import { Axios } from "../../../utils/axios";
+import { refreshPage } from "../../../store/Refresh/RefreshSlice";
 
 type SELECTED_PROPS = {
   selectedProject: {
@@ -35,15 +39,34 @@ function InboxDropdown({
   selectedProject,
   setSelectedProject
 }: SELECTED_PROPS) {
+  const projectData = {
+    name: "",
+    color: "gray",
+    userId: sessionStorage.getItem("userId"),
+    isFavorite: false
+  };
   const projects = useSelector((state: RootState) => state.projects.projects);
   const [searchTerm, setSearchTerm] = useState("");
+  const dispatch = useDispatch();
   const inputReference = useRef<HTMLInputElement>(null);
   useEffect(() => {
     if (!searchTerm) {
       inputReference.current?.focus();
     }
   }, [searchTerm]);
-  console.log(searchTerm);
+  const filterProjects = projects.filter((val) => {
+    if (
+      searchTerm == "" ||
+      val.name.toLowerCase().includes(searchTerm.toLowerCase())
+    ) {
+      return val;
+    }
+  });
+  const submitHandler = () => {
+    Axios.post(API.addProject, { ...projectData, name: searchTerm });
+
+    dispatch(refreshPage("Projects"));
+  };
   return (
     <Menu>
       <Tooltip hasArrow label="Select a project #" placement="top">
@@ -101,38 +124,52 @@ function InboxDropdown({
         ) : (
           false
         )}
-        {projects
-          .filter((val) => {
-            if (
-              searchTerm == "" ||
-              val.name.toLowerCase().includes(searchTerm.toLowerCase())
-            ) {
-              return val;
+        {filterProjects.map((item) => (
+          <MenuItem
+            pl="16px"
+            value={item.name}
+            key={item._id}
+            onClick={() =>
+              setSelectedProject({
+                name: item.name,
+                icon: <ColorDotIcon color={item.color} />
+              })
             }
-          })
-          .map((item) => (
-            <MenuItem
-              pl="16px"
-              value={item.name}
-              key={item._id}
-              onClick={() =>
-                setSelectedProject({
-                  name: item.name,
-                  icon: <ColorDotIcon color={item.color} />
-                })
-              }
-            >
-              <Flex justifyContent="space-between" alignItems="center" w="100%">
-                <Flex alignItems="center">
-                  <ColorDotIcon color={item.color} />
-                  <Text fontSize="16px" ml="16px">
-                    {item.name}
-                  </Text>
-                </Flex>
-                {selectedProject.name === item.name && <TickIcon />}
+          >
+            <Flex justifyContent="space-between" alignItems="center" w="100%">
+              <Flex alignItems="center">
+                <ColorDotIcon color={item.color} />
+                <Text fontSize="16px" ml="16px">
+                  {item.name}
+                </Text>
               </Flex>
-            </MenuItem>
-          ))}
+              {selectedProject.name === item.name && <TickIcon />}
+            </Flex>
+          </MenuItem>
+        ))}
+        {filterProjects.length == 0 &&
+        !"Inbox".toLowerCase().includes(searchTerm.toLowerCase()) &&
+        searchTerm.length != 0 ? (
+          <Box fontSize="13px">
+            <Text p="7px 0" m="0 8px" color="#555">
+              Project not found
+            </Text>
+            <Text
+              onClick={() => submitHandler()}
+              _hover={{ cursor: "pointer" }}
+              p="4px 8px"
+              display="flex"
+              alignItems="center"
+              fontWeight="600"
+            >
+              {" "}
+              <Box display="inline-block" mr="10px">
+                <PlusIcon />
+              </Box>{" "}
+              Create "{searchTerm}"
+            </Text>
+          </Box>
+        ) : null}
       </MenuList>
     </Menu>
   );
