@@ -10,7 +10,7 @@ import {
   Text,
   Tooltip
 } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../..";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
@@ -49,11 +49,6 @@ function InboxDropdown({
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
   const inputReference = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    if (!searchTerm) {
-      inputReference.current?.focus();
-    }
-  }, [searchTerm]);
   const doesInclude = (value: string) => {
     return value.toLowerCase().includes(searchTerm.toLowerCase());
   };
