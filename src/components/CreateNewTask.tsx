@@ -131,10 +131,8 @@ function CreateNewTask() {
               </Button>
               <Button
                 color="white"
-                bg={!titleRef.current?.value ? "red.300" : "red.500"}
-                _hover={
-                  !titleRef.current?.value ? { bg: "" } : { bg: "red.700" }
-                }
+                bg="red.500"
+                _hover={{ bg: "red.700" }}
                 onClick={submitHandler}
               >
                 Add task
