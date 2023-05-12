@@ -68,29 +68,37 @@ const AddItemModal: FC<AddItemModalProps> = ({
   const title = tooltipLabel.slice(0, -1);
 
   const submitHandler = () => {
-    Axios.post(customAPI, { ...itemData, name: itemNameRef.current?.value })
-      .then((res) => {
-        toast({
-          ...defaultToastProps,
-          title: `${title} added successfully.`,
-          status: "success"
-        });
+    if (itemNameRef.current?.value) {
+      Axios.post(customAPI, { ...itemData, name: itemNameRef.current?.value })
+        .then((res) => {
+          toast({
+            ...defaultToastProps,
+            title: `${title} added successfully.`,
+            status: "success"
+          });
 
-        if (tooltipLabel === "Labels") {
-          navigate(PATHS.FILTERS_AND_LABELS + "/" + res.data.labelId);
-        }
-      })
-      .catch((err) => {
-        genericErrorToast(err, toast);
+          if (tooltipLabel === "Labels") {
+            navigate(PATHS.FILTERS_AND_LABELS + "/" + res.data.labelId);
+          }
+        })
+        .catch((err) => {
+          genericErrorToast(err, toast);
+        });
+      setItemData({
+        name: "",
+        color: "",
+        userId: sessionStorage.getItem("userId"),
+        isFavorite: false
       });
-    setItemData({
-      name: "",
-      color: "",
-      userId: sessionStorage.getItem("userId"),
-      isFavorite: false
-    });
-    onClose();
-    dispatch(refreshPage(tooltipLabel));
+      onClose();
+      dispatch(refreshPage(tooltipLabel));
+    } else {
+      toast({
+        ...defaultToastProps,
+        title: "Name is required",
+        status: "error"
+      });
+    }
   };
   return (
     <>
@@ -168,21 +176,11 @@ const AddItemModal: FC<AddItemModalProps> = ({
             <Button
               onClick={submitHandler}
               variant="ghost"
-              backgroundColor="#f1b7b2"
+              backgroundColor="red.500"
               width="70px"
               height="35px"
               textColor="white"
-              isDisabled={itemNameRef.current?.value.trim() === ""}
-              _hover={{ backgroundColor: "#c0392b!important" }}
-              style={
-                itemNameRef.current?.value.trim() === ""
-                  ? {
-                      cursor: "not-allowed",
-                      backgroundColor: "#f1b7b2",
-                      opacity: 0.5
-                    }
-                  : { backgroundColor: "#e74c3c" }
-              }
+              _hover={{ backgroundColor: "red.700" }}
             >
               Add
             </Button>
