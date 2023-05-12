@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Flex,
   Input,
@@ -9,12 +10,17 @@ import {
   Text,
   Tooltip
 } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../..";
 import ColorDotIcon from "../../../icons/ColorDotIcon";
 import InboxIcon from "../../../icons/InboxIcon";
 import TickIcon from "../../../icons/TickIcon";
 import TypeProjectIcon from "../../../icons/TypeProjectIcon";
+import PlusIcon from "../../../icons/PlusIcon";
+import { API } from "../../../utils/usedApi";
+import { Axios } from "../../../utils/axios";
+import { refreshPage } from "../../../store/Refresh/RefreshSlice";
 
 type SELECTED_PROPS = {
   selectedProject: {
@@ -33,8 +39,28 @@ function InboxDropdown({
   selectedProject,
   setSelectedProject
 }: SELECTED_PROPS) {
+  const projectData = {
+    name: "",
+    color: "gray",
+    userId: sessionStorage.getItem("userId"),
+    isFavorite: false
+  };
   const projects = useSelector((state: RootState) => state.projects.projects);
+  const [searchTerm, setSearchTerm] = useState("");
+  const dispatch = useDispatch();
+  const doesInclude = (value: string) => {
+    return value.toLowerCase().includes(searchTerm.toLowerCase());
+  };
+  const filterProjects = projects.filter((val) => {
+    if (searchTerm == "" || doesInclude(val.name)) {
+      return val;
+    }
+  });
+  const submitHandler = () => {
+    Axios.post(API.addProject, { ...projectData, name: searchTerm });
 
+    dispatch(refreshPage("Projects"));
+  };
   return (
     <Menu>
       <Tooltip hasArrow label="Select a project #" placement="top">
@@ -53,32 +79,44 @@ function InboxDropdown({
         </MenuButton>
       </Tooltip>
       <MenuList p="0" minWidth="250px">
-        <Input
-          px="8px"
-          fontSize="13px"
-          placeholder="Type a project"
-          focusBorderColor="#eee"
-          borderRadius="none"
-        />
-        <MenuItem
-          onClick={() =>
-            setSelectedProject({
-              name: "Inbox",
-              icon: <InboxIcon fontSize="sm" color="#246fe0" />
-            })
-          }
-        >
-          <Flex justifyContent="space-between" alignItems="center" w="100%">
-            <Flex alignItems="center">
-              <InboxIcon fontSize="sm" color="#246fe0" />
-              <Text ml="16px" fontSize="16px">
-                Inbox
-              </Text>
+        <Box>
+          <Input
+            type="text"
+            px="8px"
+            fontSize="13px"
+            placeholder="Type a project"
+            focusBorderColor="#eee"
+            borderRadius="none"
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
+        </Box>
+
+        {searchTerm == "" || doesInclude("Inbox") ? (
+          <MenuItem
+            onClick={() =>
+              setSelectedProject({
+                name: "Inbox",
+                icon: <InboxIcon fontSize="sm" color="#246fe0" />
+              })
+            }
+          >
+            <Flex justifyContent="space-between" alignItems="center" w="100%">
+              <Flex alignItems="center">
+                <InboxIcon fontSize="sm" color="#246fe0" />
+
+                <Text ml="16px" fontSize="16px">
+                  Inbox
+                </Text>
+              </Flex>
+              {selectedProject.name === "Inbox" && <TickIcon />}
             </Flex>
-            {selectedProject.name === "Inbox" && <TickIcon />}
-          </Flex>
-        </MenuItem>
-        {projects.map((item) => (
+          </MenuItem>
+        ) : (
+          false
+        )}
+        {filterProjects.map((item) => (
           <MenuItem
             pl="16px"
             value={item.name}
@@ -101,6 +139,28 @@ function InboxDropdown({
             </Flex>
           </MenuItem>
         ))}
+        {filterProjects.length == 0 &&
+        !doesInclude("Inbox") &&
+        searchTerm.length != 0 ? (
+          <Box fontSize="13px">
+            <Text p="7px 0" m="0 8px" color="#555">
+              Project not found
+            </Text>
+            <Text
+              onClick={() => submitHandler()}
+              _hover={{ cursor: "pointer" }}
+              p="4px 8px"
+              display="flex"
+              alignItems="center"
+              fontWeight="600"
+            >
+              <Box display="inline-block" mr="10px">
+                <PlusIcon />
+              </Box>
+              Create "{searchTerm}"
+            </Text>
+          </Box>
+        ) : null}
       </MenuList>
     </Menu>
   );
