@@ -2,10 +2,18 @@ import { FC } from "react";
 import AddToFavoritesIcon from "../../../icons/AddToFavoritesIcon";
 import PenIcon from "../../../icons/PenIcon";
 import DeleteItemModal from "../../../modals/DeleteItemModal";
-import { Flex, Spacer, Text, Tooltip } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Spacer,
+  Text,
+  Tooltip,
+  useDisclosure
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../../utils/paths";
 import NotFavoriteIcon from "../../../icons/NotFavoriteIcon";
+import TrashIcon from "../../../icons/TrashIcon";
 
 type ItemCardProps = {
   id: string;
@@ -24,6 +32,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
   color,
   isFavorite
 }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
 
   const handleItemClick = () => {
@@ -70,7 +79,21 @@ const ItemCard: React.FC<ItemCardProps> = ({
         borderRadius="20%"
         fontSize="2xl"
       >
-        <DeleteItemModal tooltipLabel={tooltipLabel} text={text} id={id} />
+        <Box
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpen();
+          }}
+        >
+          <TrashIcon />
+        </Box>
+        <DeleteItemModal
+          tooltipLabel={tooltipLabel}
+          text={text}
+          id={id}
+          isOpen={isOpen}
+          onClose={onClose}
+        />
       </Flex>
     </Flex>
   );

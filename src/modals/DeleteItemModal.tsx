@@ -8,14 +8,11 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  useDisclosure,
   useToast
 } from "@chakra-ui/react";
 import React, { FC } from "react";
 import { useDispatch } from "react-redux";
-import MyTooltip from "../components/Navbar/Components/MyTooltip";
 import ExclamationMarkIcon from "../icons/ExclamationMarkIcon";
-import TrashIcon from "../icons/TrashIcon";
 import { refreshPage } from "../store/Refresh/RefreshSlice";
 import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
@@ -25,14 +22,17 @@ type DeleteItemModalProps = {
   tooltipLabel: string;
   text: string;
   id: string;
+  isOpen: boolean;
+  onClose: () => void;
 };
 
 const DeleteItemModal: FC<DeleteItemModalProps> = ({
   tooltipLabel,
   text,
-  id
+  id,
+  isOpen,
+  onClose
 }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
   const toast = useToast();
   const dispatch = useDispatch();
@@ -63,11 +63,6 @@ const DeleteItemModal: FC<DeleteItemModalProps> = ({
   };
   return (
     <>
-      <MyTooltip label={`Delete ${title.toLowerCase()}`}>
-        <Flex>
-          <TrashIcon onClick={onOpen} />
-        </Flex>
-      </MyTooltip>
       <Modal
         finalFocusRef={finalRef}
         isOpen={isOpen}

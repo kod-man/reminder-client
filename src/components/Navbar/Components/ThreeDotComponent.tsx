@@ -1,6 +1,12 @@
 /* eslint-disable no-console */
-import { Flex, Menu, MenuButton, MenuList, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import {
+  Flex,
+  Menu,
+  MenuButton,
+  MenuList,
+  Text,
+  useDisclosure
+} from "@chakra-ui/react";
 import AboveIcon from "../../../icons/AboveIcon";
 import ArchiveIcon from "../../../icons/ArchiveIcon";
 import BelowIcon from "../../../icons/BelowIcon";
@@ -20,12 +26,7 @@ type ThreeDotComponentProps = {
 };
 
 const ThreeDotComponent = ({ name, id }: ThreeDotComponentProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const ThreeDotData = [
     {
       icon: AboveIcon,
@@ -86,14 +87,19 @@ const ThreeDotComponent = ({ name, id }: ThreeDotComponentProps) => {
       icon: DeleteProjectIcon,
       text: "Delete project",
       hasDivider: true,
-      onClick: () => handleModalOpen()
+      onClick: () => onOpen()
     }
   ];
 
   return (
     <>
       <Menu>
-        <Flex h="32px" alignItems="flex-start" as={MenuButton}>
+        <Flex
+          h="32px"
+          alignItems="flex-start"
+          as={MenuButton}
+          onClick={(e) => e.stopPropagation()}
+        >
           <Text h="50%">...</Text>
         </Flex>
         <MenuList>
@@ -108,9 +114,14 @@ const ThreeDotComponent = ({ name, id }: ThreeDotComponentProps) => {
           ))}
         </MenuList>
       </Menu>
-      {isModalOpen ? (
-        <DeleteItemModal tooltipLabel="Projects" text={name} id={id} />
-      ) : null}
+
+      <DeleteItemModal
+        tooltipLabel="Projects"
+        text={name}
+        id={id}
+        isOpen={isOpen}
+        onClose={onClose}
+      />
     </>
   );
 };
