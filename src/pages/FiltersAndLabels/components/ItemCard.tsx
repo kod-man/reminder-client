@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../../utils/paths";
 import NotFavoriteIcon from "../../../icons/NotFavoriteIcon";
 import TrashIcon from "../../../icons/TrashIcon";
+import AddItemModal from "../../../modals/AddItemModal";
 
 type ItemCardProps = {
   id: string;
@@ -37,6 +38,13 @@ const ItemCard: React.FC<ItemCardProps> = ({
 
   const handleItemClick = () => {
     navigate(PATHS.FILTERS_AND_LABELS + "/" + id, { state: { name: name } });
+  };
+  const iconPen = () => {
+    return (
+      <Text color="gray" mx="1">
+        <PenIcon />
+      </Text>
+    );
   };
 
   return (
@@ -63,11 +71,14 @@ const ItemCard: React.FC<ItemCardProps> = ({
           {isFavorite ? <AddToFavoritesIcon /> : <NotFavoriteIcon />}
         </Flex>
       </Tooltip>
-      <Tooltip label="Edit Label" placement="top">
-        <Text color="gray" mx="1">
-          <PenIcon />
-        </Text>
-      </Tooltip>
+      <AddItemModal
+        ModalOpenComponent={iconPen}
+        tooltipLabel={tooltipLabel}
+        action="Edit"
+        name={text}
+        color={color}
+        isFavorite={isFavorite}
+      />
 
       <Flex
         w="24px"
