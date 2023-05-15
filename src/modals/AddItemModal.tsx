@@ -107,7 +107,6 @@ const AddItemModal: FC<AddItemModalProps> = ({
       });
     }
   };
-
   return (
     <>
       <MyTooltip label={`${action} ${title.toLowerCase()}`}>
@@ -170,7 +169,7 @@ const AddItemModal: FC<AddItemModalProps> = ({
               <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Color
               </Text>
-              <CustomSelects onChange={onColorChangeHandler} />
+              <CustomSelects onChange={onColorChangeHandler} color={color} />
             </Flex>
             <Flex alignItems="center" mt="15px">
               <Switch
