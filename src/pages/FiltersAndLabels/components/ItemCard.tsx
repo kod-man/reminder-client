@@ -78,6 +78,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
         name={text}
         color={color}
         isFavorite={isFavorite}
+        id={id}
       />
 
       <Flex

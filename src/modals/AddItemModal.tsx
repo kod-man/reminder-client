@@ -33,6 +33,7 @@ type AddItemModalProps = {
   name?: string;
   color?: string;
   isFavorite?: boolean;
+  id?: string;
 };
 
 const AddItemModal: FC<AddItemModalProps> = ({
@@ -41,7 +42,8 @@ const AddItemModal: FC<AddItemModalProps> = ({
   action,
   name,
   color,
-  isFavorite
+  isFavorite,
+  id
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
@@ -76,27 +78,31 @@ const AddItemModal: FC<AddItemModalProps> = ({
 
   const submitHandler = () => {
     if (itemData.name) {
-      Axios.post(customAPI, { ...itemData, name: itemData.name })
-        .then((res) => {
-          toast({
-            ...defaultToastProps,
-            title: `${title} added successfully.`,
-            status: "success"
-          });
+      if (action === "Edit") {
+        Axios.put(API.updateLabel + "/" + id, itemData);
+      } else {
+        Axios.post(customAPI, { ...itemData, name: itemData.name })
+          .then((res) => {
+            toast({
+              ...defaultToastProps,
+              title: `${title} added successfully.`,
+              status: "success"
+            });
 
-          if (tooltipLabel === "Labels") {
-            navigate(PATHS.FILTERS_AND_LABELS + "/" + res.data.labelId);
-          }
-        })
-        .catch((err) => {
-          genericErrorToast(err, toast);
+            if (tooltipLabel === "Labels") {
+              navigate(PATHS.FILTERS_AND_LABELS + "/" + res.data.labelId);
+            }
+          })
+          .catch((err) => {
+            genericErrorToast(err, toast);
+          });
+        setItemData({
+          name: "",
+          color: "",
+          userId: sessionStorage.getItem("userId"),
+          isFavorite: false
         });
-      setItemData({
-        name: "",
-        color: "",
-        userId: sessionStorage.getItem("userId"),
-        isFavorite: false
-      });
+      }
       onClose();
       dispatch(refreshPage(tooltipLabel));
     } else {
