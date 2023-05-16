@@ -73,6 +73,7 @@ const DrawerComponent = () => {
             <AddItemModal
               ModalOpenComponent={SmallPlusIcon}
               tooltipLabel="Projects"
+              action="Add"
             />
             <MyTooltip label="Toggle list of projects">
               <Flex

@@ -26,8 +26,11 @@ const CustomOption = (props: OptionProps<{ value: string; label: string }>) => (
 );
 
 const CustomSelects = ({ ...props }) => {
+  const capitalizedColor =
+    props.color.charAt(0).toUpperCase() + props.color.slice(1);
   return (
     <Select
+      defaultValue={{ value: capitalizedColor, label: capitalizedColor }}
       styles={{
         control: (base, state) => ({
           ...base,

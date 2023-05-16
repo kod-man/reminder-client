@@ -14,7 +14,7 @@ import {
   useDisclosure,
   useToast
 } from "@chakra-ui/react";
-import React, { FC, useRef, useState } from "react";
+import React, { FC, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CustomSelects from "../components/CustomSelects";
@@ -29,22 +29,31 @@ import { API } from "../utils/usedApi";
 type AddItemModalProps = {
   tooltipLabel: string;
   ModalOpenComponent: React.ElementType;
+  action: string;
+  name?: string;
+  color?: string;
+  isFavorite?: boolean;
+  id?: string;
 };
 
 const AddItemModal: FC<AddItemModalProps> = ({
   tooltipLabel,
-  ModalOpenComponent
+  ModalOpenComponent,
+  action,
+  name,
+  color,
+  isFavorite,
+  id
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = React.useRef(null);
   const toast = useToast();
-  const itemNameRef = useRef<HTMLInputElement>(null);
   const dispatch = useDispatch();
   const [itemData, setItemData] = useState({
-    name: "",
-    color: "gray",
+    name: name,
+    color: action === "Edit" ? color : "gray",
     userId: sessionStorage.getItem("userId"),
-    isFavorite: false
+    isFavorite: action === "Edit" ? isFavorite : false
   });
 
   const navigate = useNavigate();
@@ -68,28 +77,32 @@ const AddItemModal: FC<AddItemModalProps> = ({
   const title = tooltipLabel.slice(0, -1);
 
   const submitHandler = () => {
-    if (itemNameRef.current?.value) {
-      Axios.post(customAPI, { ...itemData, name: itemNameRef.current?.value })
-        .then((res) => {
-          toast({
-            ...defaultToastProps,
-            title: `${title} added successfully.`,
-            status: "success"
-          });
+    if (itemData.name) {
+      if (action === "Edit") {
+        Axios.put(API.updateLabel + "/" + id, itemData);
+      } else {
+        Axios.post(customAPI, { ...itemData, name: itemData.name })
+          .then((res) => {
+            toast({
+              ...defaultToastProps,
+              title: `${title} added successfully.`,
+              status: "success"
+            });
 
-          if (tooltipLabel === "Labels") {
-            navigate(PATHS.FILTERS_AND_LABELS + "/" + res.data.labelId);
-          }
-        })
-        .catch((err) => {
-          genericErrorToast(err, toast);
+            if (tooltipLabel === "Labels") {
+              navigate(PATHS.FILTERS_AND_LABELS + "/" + res.data.labelId);
+            }
+          })
+          .catch((err) => {
+            genericErrorToast(err, toast);
+          });
+        setItemData({
+          name: "",
+          color: "",
+          userId: sessionStorage.getItem("userId"),
+          isFavorite: false
         });
-      setItemData({
-        name: "",
-        color: "",
-        userId: sessionStorage.getItem("userId"),
-        isFavorite: false
-      });
+      }
       onClose();
       dispatch(refreshPage(tooltipLabel));
     } else {
@@ -102,8 +115,12 @@ const AddItemModal: FC<AddItemModalProps> = ({
   };
   return (
     <>
-      <MyTooltip label={`Add new ${title.toLowerCase()}`}>
-        <Flex onClick={() => onOpen()}>
+      <MyTooltip label={`${action} ${title.toLowerCase()}`}>
+        <Flex
+          onClick={(e) => {
+            e.stopPropagation(), onOpen();
+          }}
+        >
           <ModalOpenComponent />
         </Flex>
       </MyTooltip>
@@ -116,7 +133,9 @@ const AddItemModal: FC<AddItemModalProps> = ({
         <ModalOverlay />
         <ModalContent>
           <ModalHeader position="relative" fontWeight="bold" fontSize="20px">
-            <Text> Add {title.toLowerCase()}</Text>
+            <Text>
+              {action} {title.toLowerCase()}
+            </Text>
             <Flex
               position="absolute"
               top="1px"
@@ -136,11 +155,14 @@ const AddItemModal: FC<AddItemModalProps> = ({
                 Name
               </Text>
               <Input
-                ref={itemNameRef}
+                onChange={(e) =>
+                  setItemData({ ...itemData, name: e.target.value })
+                }
                 borderRadius="7px"
                 border="1px"
                 borderColor="gray"
                 outline="none"
+                value={itemData.name}
                 _focus={{
                   borderColor: "gray",
                   boxShadow: "none",
@@ -152,10 +174,17 @@ const AddItemModal: FC<AddItemModalProps> = ({
               <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Color
               </Text>
-              <CustomSelects onChange={onColorChangeHandler} />
+              <CustomSelects
+                onChange={onColorChangeHandler}
+                color={itemData.color}
+              />
             </Flex>
             <Flex alignItems="center" mt="15px">
-              <Switch colorScheme="teal" onChange={onToggleHandler} />
+              <Switch
+                colorScheme="teal"
+                onChange={onToggleHandler}
+                defaultChecked={itemData.isFavorite}
+              />
               <Text ml="10px" fontSize="14px">
                 Add to favorites
               </Text>

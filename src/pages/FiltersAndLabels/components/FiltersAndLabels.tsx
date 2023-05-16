@@ -82,6 +82,7 @@ function FiltersAndLabels({ data, cardTitle, Icon }: FiltersAndLabelsProps) {
           <AddItemModal
             ModalOpenComponent={SmallPlusIcon}
             tooltipLabel={cardTitle}
+            action="Add"
           />
         </Flex>
       </Flex>

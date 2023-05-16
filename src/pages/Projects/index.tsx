@@ -36,6 +36,7 @@ function ProjectsPage() {
             <AddItemModal
               ModalOpenComponent={ModalOpen}
               tooltipLabel="Projects"
+              action="Add"
             />
           </Flex>
         </Flex>
