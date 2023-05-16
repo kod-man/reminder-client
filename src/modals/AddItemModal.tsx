@@ -134,7 +134,6 @@ const AddItemModal: FC<AddItemModalProps> = ({
         <ModalContent>
           <ModalHeader position="relative" fontWeight="bold" fontSize="20px">
             <Text>
-              {" "}
               {action} {title.toLowerCase()}
             </Text>
             <Flex
