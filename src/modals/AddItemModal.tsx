@@ -174,7 +174,10 @@ const AddItemModal: FC<AddItemModalProps> = ({
               <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
                 Color
               </Text>
-              <CustomSelects onChange={onColorChangeHandler} color={color} />
+              <CustomSelects
+                onChange={onColorChangeHandler}
+                color={itemData.color}
+              />
             </Flex>
             <Flex alignItems="center" mt="15px">
               <Switch
