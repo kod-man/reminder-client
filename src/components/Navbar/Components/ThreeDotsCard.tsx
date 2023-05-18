@@ -26,7 +26,7 @@ const ThreeDotsCard = ({
         _hover={{ backgroundColor: "#eeeeee", cursor: "pointer" }}
         onClick={() => onClick()}
       >
-        <Icon as={icon} color="gray" />
+        <Icon as={icon} color="gray" boxSize="6" />
         <Text fontSize="14px" ml="15px">
           {text}
         </Text>
