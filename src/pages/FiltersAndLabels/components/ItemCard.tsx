@@ -8,13 +8,19 @@ import {
   Spacer,
   Text,
   Tooltip,
-  useDisclosure
+  useDisclosure,
+  useToast
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "../../../utils/paths";
 import NotFavoriteIcon from "../../../icons/NotFavoriteIcon";
 import TrashIcon from "../../../icons/TrashIcon";
 import AddItemModal from "../../../modals/AddItemModal";
+import { Axios } from "../../../utils/axios";
+import { API } from "../../../utils/usedApi";
+import { useDispatch } from "react-redux";
+import { refreshPage } from "../../../store/Refresh/RefreshSlice";
+import { genericErrorToast } from "../../../utils/genericToast";
 
 type ItemCardProps = {
   id: string;
@@ -35,6 +41,8 @@ const ItemCard: React.FC<ItemCardProps> = ({
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const toast = useToast();
 
   const handleItemClick = () => {
     navigate(PATHS.FILTERS_AND_LABELS + "/" + id, { state: { name: name } });
@@ -46,7 +54,21 @@ const ItemCard: React.FC<ItemCardProps> = ({
       </Text>
     );
   };
+  const favoriteData = {
+    name: text,
+    color,
+    isFavorite: !isFavorite
+  };
 
+  const favoriteHandler = () => {
+    Axios.put(API.updateLabel + "/" + id, favoriteData)
+      .then(() => {
+        dispatch(refreshPage("Labels"));
+      })
+      .catch((err) => {
+        genericErrorToast(err, toast);
+      });
+  };
   return (
     <Flex
       borderBottom="1px solid"
@@ -67,7 +89,13 @@ const ItemCard: React.FC<ItemCardProps> = ({
         label={isFavorite ? "Remove From Favorites" : "Add to Favorites"}
         placement="top"
       >
-        <Flex color="gray">
+        <Flex
+          color="gray"
+          onClick={(e) => {
+            e.stopPropagation();
+            favoriteHandler();
+          }}
+        >
           {isFavorite ? <AddToFavoritesIcon /> : <NotFavoriteIcon />}
         </Flex>
       </Tooltip>
