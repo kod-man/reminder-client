@@ -107,7 +107,6 @@ function MenuPriority() {
         >
           <WhiteFlagIcon />
           <Text ml="2" mr="2">
-            {" "}
             Priority 4
           </Text>
           {selectedPriority.number === "" && <TickIcon color="red" />}
