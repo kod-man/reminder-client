@@ -37,6 +37,10 @@ function CreateNewTask() {
     name: "Inbox",
     icon: <InboxIcon fontSize="sm" color="#246fe0" />
   });
+  const [selectedPriority, setSelectedPriority] = useState({
+    prio: "",
+    color: ""
+  });
   const toast = useToast();
   const dispatch = useDispatch();
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
@@ -45,6 +49,7 @@ function CreateNewTask() {
     const newUserData = {
       userId,
       ...toDoData,
+      priority: selectedPriority.prio,
       title: titleRef.current?.value,
       description: descriptionRef.current?.value
     };
@@ -109,7 +114,10 @@ function CreateNewTask() {
             </Box>
             <Flex w="100%" my="3" flexWrap="wrap">
               <MenuToday />
-              <MenuPriority />
+              <MenuPriority
+                selectedPriority={selectedPriority}
+                setSelectedPriority={setSelectedPriority}
+              />
               <MenuReminder />
               <MenuThreeDote />
             </Flex>

@@ -12,29 +12,39 @@ import ColorFlagIcon from "../../../icons/ColorFlagIcon";
 import SmallFlag from "../../../icons/SmallFlag";
 import TickIcon from "../../../icons/TickIcon";
 import WhiteFlagIcon from "../../../icons/WhiteFlagIcon";
-import { useState } from "react";
 import DeleteIcon from "../../../icons/DeleteIcon";
 
 const menuItemsPriority = [
   {
-    number: "P1",
+    prio: "P1",
     color: "red"
   },
   {
-    number: "P2",
+    prio: "P2",
     color: "orange"
   },
   {
-    number: "P3",
+    prio: "P3",
     color: "blue"
   }
 ];
+type PRIORİTY_PROPS = {
+  selectedPriority: {
+    prio: string;
+    color: string;
+  };
+  setSelectedPriority: React.Dispatch<
+    React.SetStateAction<{
+      prio: string;
+      color: string;
+    }>
+  >;
+};
 
-function MenuPriority() {
-  const [selectedPriority, setSelectedPriority] = useState({
-    number: "",
-    color: ""
-  });
+function MenuPriority({
+  selectedPriority,
+  setSelectedPriority
+}: PRIORİTY_PROPS) {
   return (
     <Menu>
       <Tooltip hasArrow label="Set priority p1, p2, p3, p4" placement="top">
@@ -52,12 +62,12 @@ function MenuPriority() {
           pl="1"
           leftIcon={<SmallFlag color={selectedPriority.color} />}
           rightIcon={
-            selectedPriority.number != "" ? (
+            selectedPriority.prio ? (
               <Box
                 onClick={(e) => {
                   e.stopPropagation(),
                     setSelectedPriority({
-                      number: "",
+                      prio: "",
                       color: ""
                     });
                 }}
@@ -70,37 +80,33 @@ function MenuPriority() {
             ) : undefined
           }
         >
-          <Text fontSize="sm" display="inline-block">
-            {selectedPriority.number === ""
-              ? "Priority"
-              : selectedPriority.number}
+          <Text fontSize="sm">
+            {selectedPriority.prio ? selectedPriority.prio : "Priority"}
           </Text>
         </MenuButton>
       </Tooltip>
       <MenuList p="0" minWidth="150px" overflowY="scroll">
-        {menuItemsPriority.map((item) => (
+        {menuItemsPriority.map(({ prio, color }) => (
           <MenuItem
-            key={item.number}
+            key={prio}
             onClick={() =>
               setSelectedPriority({
-                number: item.number,
-                color: item.color
+                prio,
+                color
               })
             }
           >
-            <ColorFlagIcon color={item.color} />
+            <ColorFlagIcon color={color} />
             <Text ml="2" mr="2">
-              Priority {item.number.slice(-1)}
+              Priority {prio.slice(-1)}
             </Text>
-            {selectedPriority.number === item.number && (
-              <TickIcon color="red" />
-            )}
+            {selectedPriority.prio === prio && <TickIcon color="red" />}
           </MenuItem>
         ))}
         <MenuItem
           onClick={() =>
             setSelectedPriority({
-              number: "",
+              prio: "",
               color: ""
             })
           }
@@ -109,7 +115,7 @@ function MenuPriority() {
           <Text ml="2" mr="2">
             Priority 4
           </Text>
-          {selectedPriority.number === "" && <TickIcon color="red" />}
+          {!selectedPriority.prio && <TickIcon color="red" />}
         </MenuItem>
       </MenuList>
     </Menu>
