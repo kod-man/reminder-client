@@ -38,6 +38,11 @@ function CreateNewTask() {
     name: "Inbox",
     icon: <InboxIcon fontSize="sm" color="#246fe0" />
   });
+  const [selectedPriority, setSelectedPriority] = useState({
+    prio: "",
+    color: ""
+  });
+  const [label, setLabel] = useState({ name: "", color: "" });
   const toast = useToast();
   const dispatch = useDispatch();
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
