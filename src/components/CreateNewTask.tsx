@@ -20,6 +20,7 @@ import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
 import { API } from "../utils/usedApi";
 import InboxDropdown from "./Navbar/Components/InboxDropdown";
+import MenuLabel from "../pages/TodayPage/Components/MenuLabel";
 
 function CreateNewTask() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
@@ -41,6 +42,7 @@ function CreateNewTask() {
     prio: "",
     color: ""
   });
+  const [selectedLabel, setSelectedLabel] = useState({ name: "", color: "" });
   const toast = useToast();
   const dispatch = useDispatch();
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
@@ -49,6 +51,7 @@ function CreateNewTask() {
     const newUserData = {
       userId,
       ...toDoData,
+      label: selectedLabel.name,
       priority: selectedPriority.prio,
       title: titleRef.current?.value,
       description: descriptionRef.current?.value
@@ -119,7 +122,8 @@ function CreateNewTask() {
                 setSelectedPriority={setSelectedPriority}
               />
               <MenuReminder />
-              <MenuThreeDote />
+              <MenuLabel label={selectedLabel} setLabel={setSelectedLabel} />
+              <MenuThreeDote setLabel={setSelectedLabel} />
             </Flex>
           </Flex>
           <Divider />
