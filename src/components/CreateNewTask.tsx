@@ -42,7 +42,7 @@ function CreateNewTask() {
     prio: "",
     color: ""
   });
-  const [label, setLabel] = useState({ name: "", color: "" });
+  const [selectedLabel, setSelectedLabel] = useState({ name: "", color: "" });
   const toast = useToast();
   const dispatch = useDispatch();
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
@@ -51,6 +51,7 @@ function CreateNewTask() {
     const newUserData = {
       userId,
       ...toDoData,
+      label: selectedLabel.name,
       priority: selectedPriority.prio,
       title: titleRef.current?.value,
       description: descriptionRef.current?.value
@@ -121,8 +122,8 @@ function CreateNewTask() {
                 setSelectedPriority={setSelectedPriority}
               />
               <MenuReminder />
-              {label.name && <MenuLabel label={label} setLabel={setLabel} />}
-              <MenuThreeDote label={label} setLabel={setLabel} />
+              <MenuLabel label={selectedLabel} setLabel={setSelectedLabel} />
+              <MenuThreeDote setLabel={setSelectedLabel} />
             </Flex>
           </Flex>
           <Divider />

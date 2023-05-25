@@ -35,10 +35,6 @@ const menuItemsThreeDote = [
 ];
 
 type LABEL_PROPS = {
-  label: {
-    name: string;
-    color: string;
-  };
   setLabel: React.Dispatch<
     React.SetStateAction<{
       name: string;
@@ -47,7 +43,7 @@ type LABEL_PROPS = {
   >;
 };
 
-function MenuThreeDote({ label, setLabel }: LABEL_PROPS) {
+function MenuThreeDote({ setLabel }: LABEL_PROPS) {
   const [showLabels, setShowLabels] = useState(false);
   return (
     <>
@@ -78,9 +74,7 @@ function MenuThreeDote({ label, setLabel }: LABEL_PROPS) {
           {menuItemsThreeDote.map((item) => (
             <Box key={item.text}>
               <MenuItem
-                onClick={() =>
-                  item.text === "Labels" && setShowLabels(!showLabels)
-                }
+                onClick={() => item.text === "Labels" && setShowLabels(true)}
               >
                 {item.icon}
                 <Text ml="2">{item.text}</Text>
@@ -94,11 +88,7 @@ function MenuThreeDote({ label, setLabel }: LABEL_PROPS) {
         </MenuList>
       </Menu>
       {showLabels && (
-        <Labels
-          setShowLabels={setShowLabels}
-          label={label}
-          setLabel={setLabel}
-        />
+        <Labels setShowLabels={setShowLabels} setLabel={setLabel} />
       )}
     </>
   );

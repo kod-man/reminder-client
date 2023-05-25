@@ -1,15 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../..";
 import { Flex, Text } from "@chakra-ui/react";
 import MiniLabelIcon from "../../../icons/MiniLabelIcon";
+import { ItemData } from "../../FiltersAndLabels/components/FiltersAndLabels";
 
 type LABEL_PROPS = {
   setShowLabels: React.Dispatch<React.SetStateAction<boolean>>;
-  label: {
-    name: string;
-    color: string;
-  };
   setLabel: React.Dispatch<
     React.SetStateAction<{
       name: string;
@@ -18,15 +15,11 @@ type LABEL_PROPS = {
   >;
 };
 
-function Labels({ setShowLabels, label, setLabel }: LABEL_PROPS) {
+function Labels({ setShowLabels, setLabel }: LABEL_PROPS) {
   const labelsData = useSelector((state: RootState) => state.labels.labels);
-  useEffect(() => {
-    if (label.name) {
-      setShowLabels(false);
-      label.name = "";
-      label.color = "";
-    }
-  }, [label.name]);
+  const selectHandler = (item: ItemData) => {
+    setShowLabels(false), setLabel({ name: item.name, color: item.color });
+  };
   return (
     <Flex
       flexDirection="column"
@@ -49,7 +42,7 @@ function Labels({ setShowLabels, label, setLabel }: LABEL_PROPS) {
           padding={1}
           cursor="pointer"
           paddingY="5px"
-          onClick={() => setLabel({ name: item.name, color: item.color })}
+          onClick={() => selectHandler(item)}
         >
           <MiniLabelIcon color={item.color} />
           <Flex ml="2" color="#333" fontSize="14px">
