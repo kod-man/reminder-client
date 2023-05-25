@@ -20,6 +20,7 @@ import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
 import { API } from "../utils/usedApi";
 import InboxDropdown from "./Navbar/Components/InboxDropdown";
+import MenuLabel from "../pages/TodayPage/Components/MenuLabel";
 
 function CreateNewTask() {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
@@ -37,6 +38,12 @@ function CreateNewTask() {
     name: "Inbox",
     icon: <InboxIcon fontSize="sm" color="#246fe0" />
   });
+
+  const [label, setLabel] = useState({
+    name: "",
+    color: ""
+  });
+
   const toast = useToast();
   const dispatch = useDispatch();
   const submitHandler = (e: React.FormEvent<EventTarget>) => {
@@ -111,7 +118,8 @@ function CreateNewTask() {
               <MenuToday />
               <MenuPriority />
               <MenuReminder />
-              <MenuThreeDote />
+              {label.name && <MenuLabel label={label} setLabel={setLabel} />}
+              <MenuThreeDote label={label} setLabel={setLabel} />
             </Flex>
           </Flex>
           <Divider />
