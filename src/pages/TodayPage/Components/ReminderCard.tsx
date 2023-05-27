@@ -14,7 +14,7 @@ import {
 import { API } from "../../../utils/usedApi";
 
 import IconsBar from "./IconsBar";
-import EditReminder from "./EditReminder";
+import ReminderDetail from "./ReminderDetail/ReminderDetail";
 
 type ReminderCardProps = {
   title: string;
@@ -103,7 +103,7 @@ function ReminderCard({ title, description, id }: ReminderCardProps) {
         confirmButton="Yes"
         cancelButton="No"
       />
-      <EditReminder
+      <ReminderDetail
         isOpen={modal1.isOpen}
         onClose={modal1.onClose}
         title={title}

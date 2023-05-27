@@ -1,6 +1,5 @@
-import React from "react";
 import { IconProps } from "./types";
-function KeyIcon(props: IconProps) {
+function LockIcon(props: IconProps) {
   return (
     <svg
       width="24"
@@ -20,4 +19,4 @@ function KeyIcon(props: IconProps) {
   );
 }
 
-export default KeyIcon;
+export default LockIcon;
