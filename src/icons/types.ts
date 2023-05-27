@@ -4,4 +4,6 @@ export type IconProps = {
   cursor?: string;
   fontSize?: string;
   visibility?: string;
+  width?: string;
+  height?: string;
 };
