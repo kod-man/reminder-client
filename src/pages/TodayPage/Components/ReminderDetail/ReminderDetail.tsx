@@ -9,13 +9,16 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
-  Text
+  Text,
+  Tooltip
 } from "@chakra-ui/react";
 import FlagIcon from "../../../../icons/FlagIcon";
 import InboxIcon from "../../../../icons/InboxIcon";
 import LockIcon from "../../../../icons/LockIcon";
 import TodayIcon from "../../../../icons/TodayIcon";
 import ReminderDetailHeader from "./ReminderDetailHeader";
+import ToggleIcon from "../../../../icons/ToggleIcon";
+import DeleteIcon from "../../../../icons/DeleteIcon";
 
 type EDIT_PROPS = {
   isOpen: boolean;
@@ -28,7 +31,7 @@ function ReminderDetail({ isOpen, onClose, title, description }: EDIT_PROPS) {
     <Modal isOpen={isOpen} onClose={onClose} size="4xl">
       <ModalOverlay />
       <Flex>
-        <ModalContent height="90vh" border="5px solid red">
+        <ModalContent height="95vh" my="30px">
           <ModalHeader>
             <ReminderDetailHeader />
           </ModalHeader>
@@ -36,7 +39,7 @@ function ReminderDetail({ isOpen, onClose, title, description }: EDIT_PROPS) {
           <ModalCloseButton mt="5px" />
           <ModalBody p="0 0 0 20px ">
             <Flex height="100%">
-              <Box w="70%" height="100%" border="1px solid blue">
+              <Box flex="7" pt="25px">
                 <Flex>
                   <Box
                     border="1px solid gray"
@@ -48,76 +51,145 @@ function ReminderDetail({ isOpen, onClose, title, description }: EDIT_PROPS) {
                   <Box ml="20px">
                     <Text fontWeight="500">{title}</Text>
                     <Text mt="10px"> {description}</Text>
-                    <Text mt="50px" mb="10px" color="#666" fontSize="13px">
-                      + Add sub-task
-                    </Text>
                   </Box>
                 </Flex>
-                <Divider w="90%" ml="40px" my="10px" />
-                <Flex ml="40px" mt="25px" alignItems="center">
+                <Flex flexDirection="column" ml="40px" mr="20px" mt="40px">
                   <Flex
-                    border="1px solid gray"
-                    borderRadius="50%"
-                    h="25px"
-                    w="25px"
-                    mt="1"
-                    justifyContent="center"
-                    alignItems="center"
-                    bgColor="green.700"
-                    color="white"
-                  >
-                    h
-                  </Flex>
-                  <Input
-                    placeholder="Comment"
-                    w="90%"
-                    ml="20px"
-                    borderRightRadius="full"
-                    borderLeftRadius="full"
-                    h="30px"
+                    mb="10px"
+                    color="#666"
                     fontSize="13px"
-                  />
+                    fontWeight="500"
+                    _hover={{ backgroundColor: "#eee", color: "black" }}
+                    cursor="pointer"
+                    w="max-content"
+                    p="5px 10px"
+                    borderRadius="5px"
+                    alignItems="center"
+                  >
+                    <Text fontSize="25px" fontWeight="400">
+                      +
+                    </Text>
+                    <Text ml="8px"> Add sub-task</Text>
+                  </Flex>
+                  <Divider my="10px" />
+                  <Flex mt="25px" alignItems="center">
+                    <Flex
+                      border="1px solid gray"
+                      borderRadius="50%"
+                      h="35px"
+                      w="35px"
+                      justifyContent="center"
+                      alignItems="center"
+                      bgColor="green.800"
+                      color="white"
+                    >
+                      h
+                    </Flex>
+                    <Input
+                      placeholder="Comment"
+                      ml="20px"
+                      borderRightRadius="full"
+                      borderLeftRadius="full"
+                      h="35px"
+                      fontSize="13px"
+                      cursor="pointer"
+                      _hover={{
+                        bgColor: "#fafafa",
+                        border: "1px solid #999",
+                        _placeholder: { color: "black" }
+                      }}
+                    />
+                  </Flex>
                 </Flex>
               </Box>
               <Box
                 bg="#fafafa"
-                w="30%"
+                flex="3"
                 height="100%"
-                border="1px solid green"
                 px="30px"
                 fontSize="12px"
               >
                 <Text mt="15px">Project</Text>
-                <Flex alignItems="center" my="12px">
-                  <InboxIcon fontSize="sm" color="#246fe0" />
-                  <Text ml="7px" fontWeight="400">
-                    Inbox
-                  </Text>
-                </Flex>
+                <Tooltip label="Move to..." placement="top">
+                  <Flex
+                    alignItems="center"
+                    my="12px"
+                    _hover={{ bgColor: "#eee" }}
+                    cursor="pointer"
+                    p="5px 10px"
+                    borderRadius="5px"
+                    justifyContent="space-between"
+                  >
+                    <Flex>
+                      <InboxIcon fontSize="sm" color="#246fe0" />
+                      <Text ml="7px" fontWeight="400">
+                        Inbox
+                      </Text>
+                    </Flex>
+
+                    <ToggleIcon width="15" height="15" color="black" />
+                  </Flex>
+                </Tooltip>
                 <Divider my="12px" />
                 <Text my="12px">Due date</Text>
-                <Text display="flex" alignItems="center">
-                  <TodayIcon color="#d1453b" /> <Text ml="10px">24 May</Text>
-                </Text>
+                <Flex
+                  _hover={{ bgColor: "#eee" }}
+                  cursor="pointer"
+                  p="5px 10px"
+                  alignItems="center"
+                  borderRadius="5px"
+                  justifyContent="space-between"
+                >
+                  <Flex alignItems="center">
+                    <TodayIcon color="#d1453b" /> <Text ml="10px">24 May</Text>
+                  </Flex>
+                  <DeleteIcon />
+                </Flex>
                 <Divider my="12px" />
                 <Text>Priority</Text>
-                <Text display="flex" alignItems="center" mt="15px">
-                  <FlagIcon /> <Text ml="10px">P4</Text>
-                </Text>
+                <Tooltip label="Set prioroty..." placement="top">
+                  <Flex
+                    alignItems="center"
+                    mt="15px"
+                    _hover={{ bgColor: "#eee" }}
+                    cursor="pointer"
+                    p="5px 10px"
+                    borderRadius="5px"
+                    justifyContent="space-between"
+                  >
+                    <Flex>
+                      <FlagIcon /> <Text ml="10px">P4</Text>
+                    </Flex>
+
+                    <ToggleIcon width="15" height="15" color="black" />
+                  </Flex>
+                </Tooltip>
                 <Divider mt="12px" />
+                <Tooltip label="Change labels" placement="top">
+                  <Flex
+                    alignItems="center"
+                    justifyContent="space-between"
+                    my="7px"
+                    px="10px"
+                    _hover={{ bgColor: "#eee" }}
+                    cursor="pointer"
+                    borderRadius="5px"
+                  >
+                    <Text>Labels</Text>
+                    <Text fontSize="20px" color="#b2b2b2" fontWeight="400">
+                      +
+                    </Text>
+                  </Flex>
+                </Tooltip>
+                <Divider mb="12px" />
                 <Text
                   display="flex"
                   justifyContent="space-between"
-                  alignItems="center"
-                  mb="5px"
+                  _hover={{ bgColor: "#eee" }}
+                  cursor="pointer"
+                  p="5px 10px"
+                  borderRadius="5px"
                 >
-                  Labels
-                  <Text fontSize="30px" color="#b2b2b2" fontWeight="400">
-                    +
-                  </Text>
-                </Text>
-                <Divider mb="12px" />
-                <Text display="flex" justifyContent="space-between">
                   <Text display="flex" alignItems="center">
                     Reminders
                     <Text
@@ -131,7 +203,7 @@ function ReminderDetail({ isOpen, onClose, title, description }: EDIT_PROPS) {
                       alignItems="center"
                       borderRadius="3px"
                       fontSize="11px"
-                      fontWeight="500"
+                      fontWeight="700"
                     >
                       PRO
                     </Text>
