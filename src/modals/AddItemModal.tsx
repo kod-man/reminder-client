@@ -15,7 +15,7 @@ import {
   useToast
 } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CustomSelects from "../components/CustomSelects";
 import MyTooltip from "../components/Navbar/Components/MyTooltip";
@@ -25,6 +25,7 @@ import { Axios } from "../utils/axios";
 import { defaultToastProps, genericErrorToast } from "../utils/genericToast";
 import { PATHS } from "../utils/paths";
 import { API } from "../utils/usedApi";
+import { RootState } from "..";
 
 type AddItemModalProps = {
   tooltipLabel: string;
@@ -49,6 +50,9 @@ const AddItemModal: FC<AddItemModalProps> = ({
   const finalRef = React.useRef(null);
   const toast = useToast();
   const dispatch = useDispatch();
+
+  const [showLabelExist, setShowLabelExist] = useState(false);
+
   const [itemData, setItemData] = useState({
     name: name,
     color: action === "Edit" ? color : "gray",
@@ -57,6 +61,10 @@ const AddItemModal: FC<AddItemModalProps> = ({
   });
 
   const navigate = useNavigate();
+
+  const labelsName = useSelector((state: RootState) =>
+    state.labels.labels.map((item) => item.name)
+  );
 
   const onColorChangeHandler = (e: any) => {
     setItemData((prev) => ({ ...prev, color: e.value.toLowerCase() }));
@@ -75,6 +83,14 @@ const AddItemModal: FC<AddItemModalProps> = ({
       ? API.addProject
       : "";
   const title = tooltipLabel.slice(0, -1);
+  const onChangeHandler = (e: any) => {
+    if (labelsName.includes(e.target.value)) {
+      setShowLabelExist(true);
+    } else {
+      setShowLabelExist(false);
+    }
+    setItemData({ ...itemData, name: e.target.value });
+  };
 
   const submitHandler = () => {
     if (itemData.name) {
@@ -151,13 +167,18 @@ const AddItemModal: FC<AddItemModalProps> = ({
           <Divider />
           <ModalBody>
             <Flex flexDir="column">
-              <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
-                Name
-              </Text>
+              <Flex alignItems="center" justifyContent="space-between">
+                <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
+                  {title} name
+                </Text>
+                {showLabelExist && (
+                  <Text fontSize="13px" color="#D1453B">
+                    Label already exists
+                  </Text>
+                )}
+              </Flex>
               <Input
-                onChange={(e) =>
-                  setItemData({ ...itemData, name: e.target.value })
-                }
+                onChange={(e) => onChangeHandler(e)}
                 borderRadius="7px"
                 border="1px"
                 borderColor="gray"
@@ -172,7 +193,7 @@ const AddItemModal: FC<AddItemModalProps> = ({
             </Flex>
             <Flex flexDir="column" mt="12px">
               <Text fontWeight="bold" m="8px 0 5px 0" fontSize="14px">
-                Color
+                {title} color
               </Text>
               <CustomSelects
                 onChange={onColorChangeHandler}
@@ -195,7 +216,16 @@ const AddItemModal: FC<AddItemModalProps> = ({
             <Button
               colorScheme="gray"
               mr={3}
-              onClick={onClose}
+              onClick={() => {
+                onClose();
+                setItemData({
+                  name: "",
+                  color: "gray",
+                  userId: sessionStorage.getItem("userId"),
+                  isFavorite: false
+                });
+                setShowLabelExist(false);
+              }}
               width="70px"
               height="35px"
             >
@@ -210,6 +240,7 @@ const AddItemModal: FC<AddItemModalProps> = ({
               height="35px"
               textColor="white"
               _hover={{ backgroundColor: "red.700" }}
+              isDisabled={showLabelExist}
             >
               Add
             </Button>
