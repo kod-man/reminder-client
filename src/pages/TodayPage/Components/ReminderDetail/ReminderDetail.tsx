@@ -2,7 +2,6 @@ import {
   Box,
   Divider,
   Flex,
-  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -14,9 +13,10 @@ import {
 } from "@chakra-ui/react";
 
 import ReminderDetailHeader from "./ReminderDetailHeader";
-import ReminderMenu from "./ReminderMenu";
-import SmallPlusIcon from "../../../../icons/SmallPlusIcon";
-import ReminderDetailRightSide from "./ReminderDetailRightSide";
+import ReminderMenu from "./reminderMenu/ReminderMenu";
+import ReminderDetailRightSide from "./reminderRightSide/ReminderDetailRightSide";
+import AddSubTask from "./AddSubTask";
+import CommentMenu from "./CommentMenu";
 
 type EDIT_PROPS = {
   isOpen: boolean;
@@ -59,54 +59,12 @@ function ReminderDetail({ isOpen, onClose, title, description }: EDIT_PROPS) {
                   mt="30px"
                 >
                   {!isLargerThan750 && <ReminderMenu />}
-                  <Flex
-                    mb="10px"
-                    color="#666"
-                    fontSize="13px"
-                    fontWeight="500"
-                    _hover={{ backgroundColor: "#eee", color: "black" }}
-                    cursor="pointer"
-                    p="5px 10px"
-                    borderRadius="5px"
-                    alignItems="center"
-                  >
-                    <SmallPlusIcon color="gray.800" />
-                    <Text display="inline" ml="8px">
-                      Add sub-task
-                    </Text>
-                  </Flex>
+                  <AddSubTask />
                   <Divider
                     my="10px"
                     borderWidth={isLargerThan750 ? "" : "3px"}
                   />
-                  <Flex mt="25px" alignItems="center">
-                    <Flex
-                      border="1px solid gray"
-                      borderRadius="50%"
-                      h="35px"
-                      w="35px"
-                      justifyContent="center"
-                      alignItems="center"
-                      bgColor="green.800"
-                      color="white"
-                    >
-                      h
-                    </Flex>
-                    <Input
-                      placeholder="Comment"
-                      ml="20px"
-                      borderRightRadius="full"
-                      borderLeftRadius="full"
-                      h="35px"
-                      fontSize="13px"
-                      cursor="pointer"
-                      _hover={{
-                        bgColor: "#fafafa",
-                        border: "1px solid #999",
-                        _placeholder: { color: "black" }
-                      }}
-                    />
-                  </Flex>
+                  <CommentMenu />
                 </Flex>
               </Box>
               {isLargerThan750 && <ReminderDetailRightSide />}
