@@ -1,7 +1,7 @@
 import {
   Box,
   Button,
-  Input,
+  Flex,
   Menu,
   MenuButton,
   MenuDivider,
@@ -12,13 +12,18 @@ import {
   Text,
   Tooltip
 } from "@chakra-ui/react";
+import { useState } from "react";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import CouchIcon from "../../../icons/CouchIcon";
 import DeleteIcon from "../../../icons/DeleteIcon";
 import SunIcon from "../../../icons/SunIcon";
 import TodayIcon from "../../../icons/TodayIcon";
 import UpsentIcon from "../../../icons/UpsentIcon";
+
 function MenuToday() {
   const date = new Date(Date.now());
+  const [startDate, setStartDate] = useState(new Date());
   const weeksDate = new Date(Date.now() + 3600 * 1000 * 24);
   const nextWeeks = new Date(Date.now() + 3600 * 1000 * 24 * 7);
   const formatNextWeekOptions: Intl.DateTimeFormatOptions = {
@@ -99,14 +104,13 @@ function MenuToday() {
             </MenuItem>
           ))}
           <MenuDivider />
-          <MenuItem>
-            <Input fontSize="15px" type="date" />
-          </MenuItem>
-          <MenuItem>
-            <Text color=" #d1453b" fontWeight="600" fontSize="13px">
-              + Add time
-            </Text>
-          </MenuItem>
+          <Flex alignItems="center" justifyContent="center">
+            <ReactDatePicker
+              closeOnScroll={true}
+              selected={startDate}
+              onChange={(date: Date) => setStartDate(date)}
+            />
+          </Flex>
         </MenuGroup>
       </MenuList>
     </Menu>
