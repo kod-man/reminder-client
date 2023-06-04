@@ -20,34 +20,34 @@ import DeleteIcon from "../../../icons/DeleteIcon";
 import SunIcon from "../../../icons/SunIcon";
 import TodayIcon from "../../../icons/TodayIcon";
 import UpsentIcon from "../../../icons/UpsentIcon";
-
 function MenuToday() {
   const date = new Date(Date.now());
-  const [startDate, setStartDate] = useState(new Date());
+
+  const [startDate, setStartDate] = useState(date);
+
   const weeksDate = new Date(Date.now() + 3600 * 1000 * 24);
   const nextWeeks = new Date(Date.now() + 3600 * 1000 * 24 * 7);
-  const formatNextWeekOptions: Intl.DateTimeFormatOptions = {
+  const formatOptions: Intl.DateTimeFormatOptions = {
     weekday: "short",
     day: "numeric",
     month: "short"
   };
-  const formatTomorrowOptions: Intl.DateTimeFormatOptions = {
-    weekday: "short"
-  };
-  const formatTodayOptions: Intl.DateTimeFormatOptions = {
-    month: "short",
-    day: "numeric"
-  };
-  const today = date.toLocaleDateString("en-US", formatTodayOptions);
-  const tomorrow = weeksDate.toLocaleDateString("en-US", formatTomorrowOptions);
-  const nextWeek = nextWeeks.toLocaleDateString("en-US", formatNextWeekOptions);
-
+  const today = date.toLocaleDateString("en-US", formatOptions);
+  const tomorrow = weeksDate.toLocaleDateString("en-US", formatOptions);
+  const nextWeek = nextWeeks.toLocaleDateString("en-US", formatOptions);
+  const [checkedDate, setCheckedDate] = useState(today);
   const menuItemsToday = [
+    {
+      icon: <TodayIcon width="24" height="18" color="green" />,
+      text1: "Today",
+      text2: today.slice(0, 3)
+    },
     {
       icon: <SunIcon color="orange" />,
       text1: "Tomorrow",
-      text2: tomorrow
+      text2: tomorrow.slice(0, 3)
     },
+
     {
       icon: <CouchIcon color="#246fe0" />,
       text1: "Next weekend",
@@ -76,25 +76,64 @@ function MenuToday() {
           rightIcon={
             <Tooltip hasArrow label="Remove due date" placement="top">
               <Box
+                display={checkedDate ? "flex" : "none"}
                 bg="transparent"
                 _hover={{ bg: "#d3d3d3" }}
                 borderRadius="5px"
+                onClick={(e) => {
+                  e.stopPropagation(), setCheckedDate("");
+                }}
               >
                 <DeleteIcon />
               </Box>
             </Tooltip>
           }
         >
-          <Text fontSize="13px" fontFamily="inherit" fontWeight="400">
-            Today
+          <Text
+            fontSize="13px"
+            fontFamily="inherit"
+            fontWeight="400"
+            placeholder="Due date"
+          >
+            {checkedDate === today
+              ? "Today"
+              : checkedDate === tomorrow
+              ? "Tomorrow"
+              : checkedDate
+              ? checkedDate.slice(4)
+              : "Due date"}
           </Text>
         </MenuButton>
       </Tooltip>
-      <MenuList minWidth="275px">
-        <MenuGroup title={today}>
+      <MenuList minWidth="300px">
+        <MenuGroup>
+          <MenuItem>
+            <Text>{checkedDate.slice(4)}</Text>
+          </MenuItem>
           <MenuDivider />
           {menuItemsToday.map((item) => (
-            <MenuItem fontSize="13px" fontWeight="500" key={item.text1}>
+            <MenuItem
+              display={
+                (item.text1 === "Today" && checkedDate === today) ||
+                (item.text1 === "Tomorrow" && checkedDate === tomorrow)
+                  ? "none"
+                  : "flex"
+              }
+              fontSize="13px"
+              fontWeight="500"
+              key={item.text1}
+              onClick={() => {
+                if (item.text1 === "Tomorrow") {
+                  setCheckedDate(tomorrow);
+                } else if (item.text1 === "Today") {
+                  setCheckedDate(today);
+                } else if (item.text1 === "Next weekend") {
+                  setCheckedDate(nextWeek);
+                } else if (item.text1 === "No date") {
+                  setCheckedDate("");
+                }
+              }}
+            >
               {item.icon}
               <Text ml="2">{item.text1}</Text>
               <Spacer />
@@ -104,14 +143,24 @@ function MenuToday() {
             </MenuItem>
           ))}
           <MenuDivider />
-          <Flex alignItems="center" justifyContent="center">
-            <ReactDatePicker
-              closeOnScroll={true}
-              selected={startDate}
-              onChange={(date: Date) => setStartDate(date)}
-            />
-          </Flex>
         </MenuGroup>
+        <Flex ml="15px" alignItems="center">
+          <TodayIcon />
+          <Box ml="10px">
+            <ReactDatePicker
+              selected={startDate}
+              onChange={(date: Date) => {
+                setStartDate(date),
+                  setCheckedDate(
+                    startDate.toLocaleDateString("en-US", formatOptions)
+                  );
+              }}
+              showTimeSelect
+              dateFormat="d MMMM, yyyy h:mm aa"
+              minDate={new Date()}
+            />
+          </Box>
+        </Flex>
       </MenuList>
     </Menu>
   );
