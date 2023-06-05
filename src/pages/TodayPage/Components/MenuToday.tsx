@@ -20,6 +20,14 @@ import DeleteIcon from "../../../icons/DeleteIcon";
 import SunIcon from "../../../icons/SunIcon";
 import TodayIcon from "../../../icons/TodayIcon";
 import UpsentIcon from "../../../icons/UpsentIcon";
+
+const DATE_OPTIONS = {
+  TODAY: "Today",
+  TOMORROW: "Tomorrow",
+  NEXT_WEEK: "Next weekend",
+  NO_DATE: "No date"
+};
+
 function MenuToday() {
   const date = new Date(Date.now());
 
@@ -39,23 +47,23 @@ function MenuToday() {
   const menuItemsToday = [
     {
       icon: <TodayIcon width="24" height="18" color="green" />,
-      text1: "Today",
+      text1: DATE_OPTIONS.TODAY,
       text2: today.slice(0, 3)
     },
     {
       icon: <SunIcon color="orange" />,
-      text1: "Tomorrow",
+      text1: DATE_OPTIONS.TOMORROW,
       text2: tomorrow.slice(0, 3)
     },
 
     {
       icon: <CouchIcon color="#246fe0" />,
-      text1: "Next weekend",
+      text1: DATE_OPTIONS.NEXT_WEEK,
       text2: nextWeek
     },
     {
       icon: <UpsentIcon />,
-      text1: "No date"
+      text1: DATE_OPTIONS.NO_DATE
     }
   ];
 
